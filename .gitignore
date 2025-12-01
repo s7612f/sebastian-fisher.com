@@ -1,15 +1,6 @@
-# General temporary files
-*.log
-*.tmp
-*.swp
-
-# OS generated files
+.env
+node_modules
+__pycache__
+.pytest_cache
+frontend/dist
 .DS_Store
-Thumbs.db
-
-# Node modules (not used but ignored for safety)
-node_modules/
-
-# Build artifacts
-/dist/
-/.cache/

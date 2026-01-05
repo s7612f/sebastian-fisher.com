@@ -56,12 +56,12 @@ body {
 }
 
 .nav-menu a:hover {
-    color: #3498db;
+    color: #8F0D0D;
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #8F0D0D 0%, #450808 100%);
     color: white;
     padding: 100px 20px;
     text-align: center;
@@ -130,8 +130,9 @@ body {
 }
 
 .btn-primary {
-    background: white;
-    color: #667eea;
+    background: #E7D192;
+    color: #450808;
+    font-weight: 700;
 }
 
 .btn-primary:hover {
@@ -146,8 +147,9 @@ body {
 }
 
 .btn-secondary:hover {
-    background: white;
-    color: #667eea;
+    background: #E7D192;
+    color: #450808;
+    border-color: #E7D192;
 }
 
 /* Sections */
@@ -162,10 +164,10 @@ body {
 .section-title {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #450808;
+    border-bottom: 3px solid #E7D192;
+    padding-bottom: 10px;
+    display: inline-block;
 }
 
 .section-subtitle {
@@ -217,7 +219,8 @@ body {
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 15px 30px rgba(231, 209, 146, 0.4);
+    border-top: 3px solid #E7D192;
 }
 
 @keyframes fadeIn {
@@ -232,7 +235,7 @@ body {
 }
 
 .service-card h3 {
-    color: #667eea;
+    color: #8F0D0D;
     margin-bottom: 1rem;
     font-size: 1.5rem;
 }
@@ -256,7 +259,7 @@ body {
 
 .service-list li:before {
     content: "✓";
-    color: #667eea;
+    color: #8F0D0D;
     font-weight: bold;
     position: absolute;
     left: 0;
@@ -270,7 +273,7 @@ body {
 
 .timeline-item {
     padding: 2rem;
-    border-left: 3px solid #667eea;
+    border-left: 3px solid #E7D192;
     margin-bottom: 2rem;
     position: relative;
 }
@@ -279,7 +282,7 @@ body {
     content: "";
     width: 15px;
     height: 15px;
-    background: #667eea;
+    background: #8F0D0D;
     border-radius: 50%;
     position: absolute;
     left: -9px;
@@ -287,7 +290,7 @@ body {
 }
 
 .timeline-date {
-    color: #667eea;
+    color: #8F0D0D;
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
@@ -323,7 +326,7 @@ body {
 }
 
 .tag {
-    background: #667eea;
+    background: #8F0D0D;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -332,8 +335,9 @@ body {
 }
 
 .tag:hover {
-    background: #764ba2;
+    background: #450808;
     transform: scale(1.05);
+    box-shadow: 0 3px 10px rgba(231, 209, 146, 0.3);
 }
 
 /* Contact Section */

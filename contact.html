@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONTACT :: SEBASTIAN FISHER</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+  <header class="site-header">
+    <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+      <div>
+        <div class="site-title">&#9653; SEBASTIAN FISHER &#9653;</div>
+        <div class="site-subtitle"><span class="sep">::</span> CONTACT &amp; APPLY <span class="sep">::</span></div>
+        <div class="header-status">SEBASTIAN FISHER &middot; <a href="mailto:contact@sebastian-fisher.com" style="color:inherit;">contact@sebastian-fisher.com</a> &middot; <a href="cut.html" style="color:inherit;">WEEK 1/12 OF CUT</a></div>
+      </div>
+      <div class="header-right">
+        <a href="contact.html"><span class="dot-online">&#9679;</span> ONLINE &middot; REPLY &le;48H</a><br>
+        <span id="people-online">--</span> online now<br>
+        <span id="mag-toggle" onclick="toggleMagMode()" style="cursor:pointer; border:1px solid var(--border); padding:2px 6px;">[ DARK MODE ]</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="site-nav">
+    <a href="index.html">HOME</a>
+    <a href="shop.html">PROGRAMS</a>
+    <a href="coaching.html">COACHING</a>
+    <a href="vault.html">THE VAULT</a>
+    <a href="community.html">COMMUNITY</a>
+    <a href="calculator.html">CALCULATOR</a>
+    <a href="nutrition.html">NUTRITION</a>
+    <a href="blog.html">BLOG</a>
+    <a href="stack.html">THE STACK</a>
+    <a href="research.html">RESEARCH</a>
+    <a href="coaches.html">COACHES</a>
+    <a href="about.html">ABOUT</a>
+    <a href="contact.html" class="active">CONTACT</a>
+  </nav>
+
+  <div class="marquee-wrap">
+    <span class="marquee-inner">
+      &#9658;&nbsp; COACHING SPOTS: 2 REMAINING &mdash; APPLY NOW &nbsp;&#9658;&nbsp; T1 DIABETIC COACH &mdash; NUTRITION KNOWLEDGE RUNS DEEP &nbsp;&#9658;&nbsp; NEW PROGRAMS IN SHOP &mdash; FROM &pound;37 &nbsp;&#9658;&nbsp; THE VAULT: ARTICLES, FREE READS, RESOURCES &nbsp;&#9658;&nbsp; CHECK THE STACK &mdash; WHAT I ACTUALLY USE &nbsp;&#9658;&nbsp; LIFT LOG: POST YOUR NUMBERS &nbsp;&#9658;&nbsp; FREE BEGINNER PROGRAM &mdash; NO EMAIL REQUIRED &nbsp;&#9658;&nbsp; BLOG UPDATED MARCH 2026 &nbsp;&#9658;&nbsp;
+    </span>
+  </div>
+
+  <div class="two-col">
+  <main class="main-col">
+
+    <!-- 1-ON-1 COACHING APPLICATION — HIGHLIGHTED AT TOP -->
+    <section class="section">
+      <div style="border:1px solid var(--border); border-top:3px solid var(--accent); background:var(--bg2); padding:16px; margin-bottom:24px;">
+        <h1 style="border:none; margin-bottom:6px;">1-ON-1 ONLINE COACHING</h1>
+        <div style="color:var(--status-live); font-size:0.85em; margin-bottom:10px; animation:blink 2s step-start infinite;">
+          &#9679; 2 SPOTS CURRENTLY AVAILABLE
+        </div>
+        <p style="font-size:0.88em; margin-bottom:10px;">
+          Custom programming and nutrition built around you. Not a template. Not an app.
+          Direct access, weekly check-ins, form reviews. Minimum 3 months.
+          Starts from <strong style="color:var(--gold);">£250/month</strong>.
+        </p>
+        <p style="font-size:0.85em; color:var(--fg-dim); margin-bottom:14px;">
+          Fill in the application below. Be honest — I'll only take you on if I can genuinely help.
+          No hard sell. If I don't think we're a match, I'll tell you and point you somewhere useful.
+        </p>
+
+        <!--
+          INSTRUCTIONS: Replace YOUR_FORMSPREE_ID_COACHING with your Formspree form ID for coaching applications.
+          Create a separate form at formspree.io for coaching vs general enquiries.
+        -->
+        <form class="retro-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID_COACHING" method="POST">
+          <input type="hidden" name="subject" value="Coaching Application">
+          <input type="hidden" name="form_type" value="coaching_application">
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div>
+              <label for="app-name">FULL NAME *</label>
+              <input type="text" id="app-name" name="name" required placeholder="John Smith">
+            </div>
+            <div>
+              <label for="app-email">EMAIL *</label>
+              <input type="email" id="app-email" name="email" required placeholder="john@email.com">
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div>
+              <label for="app-age">AGE</label>
+              <input type="number" id="app-age" name="age" placeholder="e.g. 24">
+            </div>
+            <div>
+              <label for="app-bw">CURRENT BODYWEIGHT (KG)</label>
+              <input type="number" id="app-bw" name="bodyweight" placeholder="e.g. 82">
+            </div>
+          </div>
+
+          <label for="app-experience">TRAINING EXPERIENCE</label>
+          <select id="app-experience" name="experience" style="background:#000; color:var(--fg); border:1px solid var(--border2); font-family:var(--font); padding:6px 8px; width:100%; margin-bottom:12px;">
+            <option value="">Select...</option>
+            <option value="under1yr">Under 1 year</option>
+            <option value="1-2yr">1–2 years</option>
+            <option value="2-5yr">2–5 years</option>
+            <option value="5plus">5+ years</option>
+          </select>
+
+          <label for="app-goal">PRIMARY GOAL *</label>
+          <select id="app-goal" name="goal" required style="background:#000; color:var(--fg); border:1px solid var(--border2); font-family:var(--font); padding:6px 8px; width:100%; margin-bottom:12px;">
+            <option value="">Select...</option>
+            <option value="bulk">Build muscle / bulk</option>
+            <option value="cut">Lose fat / cut</option>
+            <option value="recomp">Body recomp</option>
+            <option value="strength">Get stronger</option>
+            <option value="comp">Compete in bodybuilding/powerlifting</option>
+          </select>
+
+          <label for="app-diet">DIET PREFERENCE</label>
+          <select id="app-diet" name="diet" style="background:#000; color:var(--fg); border:1px solid var(--border2); font-family:var(--font); padding:6px 8px; width:100%; margin-bottom:12px;">
+            <option value="standard">Standard (meat, fish, everything)</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="keto">Keto / low-carb</option>
+            <option value="other">Other (describe below)</option>
+          </select>
+
+          <label for="app-obstacles">BIGGEST OBSTACLE / WHAT'S HOLDING YOU BACK *</label>
+          <textarea id="app-obstacles" name="obstacles" required
+            placeholder="Be specific. What have you tried? What hasn't worked? What's the main thing preventing you from reaching your goal?"></textarea>
+
+          <label for="app-equipment">GYM ACCESS / EQUIPMENT</label>
+          <input type="text" id="app-equipment" name="equipment" placeholder="e.g. Commercial gym with full barbell setup / Home gym with dumbbells + rack">
+
+          <label for="app-days">DAYS PER WEEK AVAILABLE TO TRAIN</label>
+          <input type="number" id="app-days" name="days_available" placeholder="e.g. 4" min="2" max="7">
+
+          <label for="app-extra">ANYTHING ELSE I SHOULD KNOW</label>
+          <textarea id="app-extra" name="extra"
+            placeholder="Injuries, schedule constraints, previous coaching, anything relevant."></textarea>
+
+          <button type="submit" class="btn btn-big btn-primary" style="width:100%;">SUBMIT APPLICATION</button>
+        </form>
+        <p style="font-size:0.75em; color:var(--fg-dim); margin-top:8px;">
+          I reply within 48 hours. If you don't hear back, check spam or email directly below.
+        </p>
+      </div>
+    </section>
+
+    <hr class="thick">
+
+    <!-- DIET COACHING / MEAL PLAN SERVICE -->
+    <section class="section">
+      <h2>DIET COACHING &amp; MEAL PLANS</h2>
+      <p style="color:var(--fg-dim); font-size:0.85em; margin-bottom:14px;">
+        Standalone nutrition coaching — no training program required.
+        Custom meal plans with options for standard, vegetarian, or keto approaches.
+      </p>
+
+      <div class="listing-card" style="margin-bottom:12px;">
+        <span class="listing-price" style="color:var(--gold);">£75</span>
+        <div class="listing-title">CUSTOM MEAL PLAN — ONE-OFF</div>
+        <div class="listing-desc">
+          Full 4-week meal plan built around your calorie target, macros, food preferences
+          and schedule. Includes shopping list and meal prep guide.
+          Standard / Vegetarian / Keto — your choice.
+        </div>
+        <div class="listing-meta">Format: PDF &nbsp;|&nbsp; Turnaround: 3–5 days &nbsp;|&nbsp; Diet: Any</div>
+        <div class="mt-10">
+          <a href="#diet-enquiry" class="btn">ENQUIRE BELOW</a>
+        </div>
+      </div>
+
+      <div class="listing-card" style="margin-bottom:12px;">
+        <span class="listing-price" style="color:var(--gold);">£120/MO</span>
+        <div class="listing-title">DIET COACHING — MONTHLY</div>
+        <div class="listing-desc">
+          Ongoing nutrition coaching. Monthly check-ins, updated targets as you progress,
+          recipe support, and direct messaging for questions. No training program included.
+          Add training coaching separately or pair with a program.
+        </div>
+        <div class="listing-meta">Format: Ongoing &nbsp;|&nbsp; Check-ins: Weekly &nbsp;|&nbsp; Diet: Any</div>
+        <div class="mt-10">
+          <a href="#diet-enquiry" class="btn">ENQUIRE BELOW</a>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- GENERAL CONTACT -->
+    <section class="section">
+      <a name="diet-enquiry"></a>
+      <h2>GENERAL ENQUIRY / DIET COACHING</h2>
+      <form class="retro-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID_GENERAL" method="POST">
+        <input type="hidden" name="subject" value="Website Enquiry">
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+            <label for="gen-name">NAME *</label>
+            <input type="text" id="gen-name" name="name" required placeholder="Your name">
+          </div>
+          <div>
+            <label for="gen-email">EMAIL *</label>
+            <input type="email" id="gen-email" name="email" required placeholder="your@email.com">
+          </div>
+        </div>
+
+        <label for="gen-topic">TOPIC</label>
+        <select id="gen-topic" name="topic" style="background:#000; color:var(--fg); border:1px solid var(--border2); font-family:var(--font); padding:6px 8px; width:100%; margin-bottom:12px;">
+          <option value="diet">Diet coaching / meal plan</option>
+          <option value="program">Question about a program</option>
+          <option value="coaching">Coaching enquiry</option>
+          <option value="vault">Vault content submission</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="gen-message">MESSAGE *</label>
+        <textarea id="gen-message" name="message" required placeholder="Ask away."></textarea>
+
+        <button type="submit" class="btn btn-big btn-primary" style="width:100%;">SEND MESSAGE</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="side-col">
+
+    <div style="margin-bottom:14px;">
+      <img src="assets/img/dennis-tinerino-pro-universe.jpeg" alt="Dennis Tinerino" class="vintage-img" style="width:100%;">
+    </div>
+
+    <div class="widget">
+      <h4>DIRECT CONTACT</h4>
+      <p style="font-size:0.82em; color:var(--fg-dim);">Prefer to email directly?</p>
+      <p style="margin-top:6px;">
+        <!--
+          Replace with your actual email address
+        -->
+        <a href="mailto:contact@sebastian-fisher.com" style="font-size:0.85em;">contact@sebastian-fisher.com</a>
+      </p>
+    </div>
+
+    <div class="widget-proof">
+      <h4>&#9672; RESPONSE TIME</h4>
+      <p style="font-size:0.88em; color:var(--fg); margin-bottom:4px;">
+        I reply within <strong>48 hours</strong>, usually faster.
+      </p>
+      <p style="font-size:0.8em; color:var(--fg-dim);">
+        If it's been longer &mdash; check spam.
+      </p>
+    </div>
+
+    <div class="widget">
+      <h4>SERVICES SUMMARY</h4>
+      <table class="retro-table" style="font-size:0.78em;">
+        <tr><th>Service</th><th>Price</th></tr>
+        <tr><td>Free plan</td><td style="color:var(--fg-dim);">Free</td></tr>
+        <tr><td>Programs</td><td>£37–67</td></tr>
+        <tr><td>Meal plan</td><td>£75</td></tr>
+        <tr><td>Diet coaching</td><td>£120/mo</td></tr>
+        <tr><td>Full coaching</td><td>£250+/mo</td></tr>
+      </table>
+    </div>
+
+    <div style="margin-top:14px;">
+      <img src="assets/img/mr-olympia-1992.jpeg" alt="Mr Olympia 1992" class="vintage-img" style="width:100%;">
+    </div>
+  </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="index.html">HOME</a>
+      <a href="shop.html">PROGRAMS</a>
+      <a href="nutrition.html">NUTRITION</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+    <p>SEBASTIAN FISHER COACHING &copy; 2024</p>
+  </footer>
+
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

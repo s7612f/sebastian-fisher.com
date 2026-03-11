@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude internals
+.claude/
+
+# Archive folder
+_archive/
+
+# Amazon / browser-saved junk in assets
+assets/img/*.html
+assets/img/*_files/
+assets/downloads/
+
+# Env / logs
+.env
+*.log
+node_modules/
+
+assets/img/products/

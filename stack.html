@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE STACK :: SEBASTIAN FISHER</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- STACK PAGE SPECIFIC ---- */
+    .stack-intro {
+      border: 1px solid var(--border2);
+      border-left: 3px solid var(--accent);
+      background: var(--bg2);
+      padding: 14px 16px;
+      font-size: 0.88em;
+      margin-bottom: 22px;
+    }
+
+    .stack-category {
+      font-size: 0.72em;
+      letter-spacing: 3px;
+      color: var(--fg-dim);
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      margin: 28px 0 14px;
+    }
+
+    .stack-card {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--border2);
+      background: var(--bg2);
+      padding: 14px;
+      margin-bottom: 14px;
+      transition: border-color 0.15s;
+    }
+
+    .stack-card:hover {
+      border-color: var(--border2);
+      border-top-color: var(--accent);
+    }
+
+    .stack-card .product-img-wrap {
+      display: block;
+      background: #111;
+      border: 1px solid var(--border);
+      text-align: center;
+      padding: 6px;
+      flex-shrink: 0;
+    }
+
+    .stack-card .product-img-wrap img {
+      width: 100%;
+      max-height: 130px;
+      object-fit: contain;
+      display: block;
+      filter: contrast(1.05) brightness(0.95);
+    }
+
+    .stack-card .product-img-wrap.no-img {
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--fg-dim);
+      font-size: 0.72em;
+      letter-spacing: 1px;
+    }
+
+    .stack-body { display: flex; flex-direction: column; gap: 6px; }
+
+    .stack-name {
+      font-size: 1em;
+      font-weight: bold;
+      color: var(--fg);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .stack-tag {
+      display: inline-block;
+      font-size: 0.68em;
+      letter-spacing: 2px;
+      padding: 1px 6px;
+      border: 1px solid var(--border2);
+      color: var(--fg-dim);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .stack-tag.coach-pick {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .stack-desc {
+      font-size: 0.82em;
+      color: var(--fg-dim);
+      line-height: 1.55;
+    }
+
+    .stack-cta {
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    .btn-stack {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--font);
+      font-size: 0.78em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: background 0.12s, color 0.12s;
+    }
+
+    .btn-stack:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    @media (max-width: 520px) {
+      .stack-card {
+        grid-template-columns: 90px 1fr;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <header class="site-header">
+    <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+      <div>
+        <div class="site-title">&#9653; SEBASTIAN FISHER &#9653;</div>
+        <div class="site-subtitle"><span class="sep">::</span> THE STACK <span class="sep">::</span> GEAR I ACTUALLY USE <span class="sep">::</span></div>
+        <div class="header-status">SEBASTIAN FISHER &middot; <a href="mailto:contact@sebastian-fisher.com" style="color:inherit;">contact@sebastian-fisher.com</a> &middot; <a href="cut.html" style="color:inherit;">WEEK 1/12 OF CUT</a></div>
+      </div>
+      <div class="header-right">
+        <a href="contact.html"><span class="dot-online">&#9679;</span> ONLINE &middot; REPLY &le;48H</a><br>
+        <span id="people-online">--</span> online now<br>
+        <span id="mag-toggle" onclick="toggleMagMode()" style="cursor:pointer; border:1px solid var(--border); padding:2px 6px;">[ DARK MODE ]</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="site-nav">
+    <a href="index.html">HOME</a>
+    <a href="shop.html">PROGRAMS</a>
+    <a href="coaching.html">COACHING</a>
+    <a href="vault.html">THE VAULT</a>
+    <a href="community.html">COMMUNITY</a>
+    <a href="calculator.html">CALCULATOR</a>
+    <a href="nutrition.html">NUTRITION</a>
+    <a href="blog.html">BLOG</a>
+    <a href="stack.html" class="active">THE STACK</a>
+    <a href="research.html">RESEARCH</a>
+    <a href="coaches.html">COACHES</a>
+    <a href="about.html">ABOUT</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+
+  <div class="marquee-wrap">
+    <span class="marquee-inner">
+      &#9658;&nbsp; COACHING SPOTS: 2 REMAINING &mdash; APPLY NOW &nbsp;&#9658;&nbsp; T1 DIABETIC COACH &mdash; NUTRITION KNOWLEDGE RUNS DEEP &nbsp;&#9658;&nbsp; NEW PROGRAMS IN SHOP &mdash; FROM &pound;37 &nbsp;&#9658;&nbsp; THE VAULT: ARTICLES, FREE READS, RESOURCES &nbsp;&#9658;&nbsp; CHECK THE STACK &mdash; WHAT I ACTUALLY USE &nbsp;&#9658;&nbsp; LIFT LOG: POST YOUR NUMBERS &nbsp;&#9658;&nbsp; FREE BEGINNER PROGRAM &mdash; NO EMAIL REQUIRED &nbsp;&#9658;&nbsp; BLOG UPDATED MARCH 2026 &nbsp;&#9658;&nbsp;
+    </span>
+  </div>
+
+  <div class="two-col">
+  <main class="main-col">
+
+    <section class="section">
+      <h1>THE STACK</h1>
+
+      <div class="stack-intro">
+        <strong style="color:var(--fg);">These are the only supplements I recommend.</strong>
+        I don't take a fee to feature products. Everything on this page I have personally used,
+        and every one of them earns its place. If it's not here, it's because I don't use it,
+        don't trust it, or don't think it's worth your money.
+        <br><br>
+        The links here are affiliate links — if you buy through them, I get a small cut at no
+        extra cost to you. That's how the site stays free.
+      </div>
+
+      <!-- ===== ALL CATEGORIES — wrapped for JS shuffle ===== -->
+      <div id="stack-shuffle-wrap">
+
+      <!-- FOUNDATION -->
+      <div class="stack-section">
+      <div class="stack-category">&#9658; FOUNDATION — THE NON-NEGOTIABLES</div>
+
+      <!-- CREATINE GUMMIES -->
+      <div class="stack-card">
+        <a href="https://amzn.to/4b2CQUx" target="_blank" rel="nofollow noopener" class="product-img-wrap" title="Creatine Gummies">
+          <img src="assets/img/products/creatine-gummies.jpg" alt="Creatine Gummies">
+        </a>
+        <div class="stack-body">
+          <div class="stack-name">Creatine Gummies</div>
+          <div><span class="stack-tag coach-pick">&#9670; DAILY USE</span></div>
+          <p class="stack-desc">
+            Creatine monohydrate is the single most evidence-backed performance supplement on the market.
+            Full stop. I've used it for years. These gummies are the most convenient format — no mixing,
+            no mess. 5g per day, every day. No loading phase needed.
+          </p>
+          <div class="stack-cta">
+            <a href="https://amzn.to/4b2CQUx" target="_blank" rel="nofollow noopener" class="btn-stack">GET IT &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROTEIN POWDER -->
+      <div class="stack-card">
+        <a href="https://amzn.to/4uj4CUt" target="_blank" rel="nofollow noopener" class="product-img-wrap" title="Protein Powder">
+          <img src="assets/img/products/protein.jpg" alt="Protein Powder">
+        </a>
+        <div class="stack-body">
+          <div class="stack-name">Protein Powder</div>
+          <div><span class="stack-tag coach-pick">&#9670; DAILY USE</span></div>
+          <p class="stack-desc">
+            Food first. But if you're hitting 180g of protein a day, a shake fills the gap.
+            This is what I use. Clean ingredient list, decent flavour, mixes properly.
+            Not sponsored — just the one I keep buying.
+          </p>
+          <div class="stack-cta">
+            <a href="https://amzn.to/4uj4CUt" target="_blank" rel="nofollow noopener" class="btn-stack">GET IT &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- VITAMIN D3 + K2 -->
+      <div class="stack-card">
+        <a href="https://amzn.to/3NwkRg8" target="_blank" rel="nofollow noopener" class="product-img-wrap" title="Vitamin D3+K2">
+          <img src="assets/img/products/vit d.jpg" alt="Vitamin D3+K2">
+        </a>
+        <div class="stack-body">
+          <div class="stack-name">Vitamin D3 + K2 (High Dose)</div>
+          <div><span class="stack-tag coach-pick">&#9670; DAILY USE</span></div>
+          <p class="stack-desc">
+            Most people in the UK are deficient. D3 affects testosterone, immune function, mood,
+            and bone density. K2 makes sure the calcium goes where it should.
+            High-dose drops, vegetarian, 1000 IU D3 + MK-7 K2 per drop.
+            This is the exact product I've used for two years.
+          </p>
+          <div class="stack-cta">
+            <a href="https://amzn.to/3NwkRg8" target="_blank" rel="nofollow noopener" class="btn-stack">GET IT &rarr;</a>
+          </div>
+        </div>
+      </div>
+      </div><!-- end FOUNDATION -->
+
+      <!-- PERFORMANCE -->
+      <div class="stack-section">
+      <div class="stack-category">&#9658; PERFORMANCE — SITUATIONAL</div>
+
+      <!-- PRE-WORKOUT -->
+      <div class="stack-card">
+        <a href="https://amzn.to/4umrzpH" target="_blank" rel="nofollow noopener" class="product-img-wrap" title="Pre-Workout">
+          <img src="assets/img/products/preworkout.jpg" alt="Naughty Boy Menace Pre-Workout">
+        </a>
+        <div class="stack-body">
+          <div class="stack-name">Naughty Boy Menace V2 Pre-Workout</div>
+          <div><span class="stack-tag">SITUATIONAL</span></div>
+          <p class="stack-desc">
+            I don't train on pre-workout every session. On heavy days — squats, deadlifts,
+            sessions where focus matters — this is what I reach for.
+            Menace V2 is properly dosed. CDP-Choline and Uridine for focus that doesn't
+            feel like anxiety. Not a stimulant-dump product.
+          </p>
+          <div class="stack-cta">
+            <a href="https://amzn.to/4umrzpH" target="_blank" rel="nofollow noopener" class="btn-stack">GET IT &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MACA ROOT -->
+      <div class="stack-card">
+        <a href="https://amzn.to/4biw2kx" target="_blank" rel="nofollow noopener" class="product-img-wrap" title="Maca Root">
+          <img src="assets/img/products/maca root.jpg" alt="Maca Root">
+        </a>
+        <div class="stack-body">
+          <div class="stack-name">Maca Root</div>
+          <div><span class="stack-tag">SITUATIONAL</span></div>
+          <p class="stack-desc">
+            Peruvian adaptogen. Used for energy, libido, and stress management.
+            The evidence is decent, not definitive — but I've used it during heavy
+            training blocks for years and notice the difference. Not a stimulant.
+            Morning dose with food.
+          </p>
+          <div class="stack-cta">
+            <a href="https://amzn.to/4biw2kx" target="_blank" rel="nofollow noopener" class="btn-stack">GET IT &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TURKESTERONE -->
+      <div class="stack-card">
+        <a href="https://amzn.to/3OZcPgk" target="_blank" rel="nofollow noopener" class="product-img-wrap" title="Turkesterone">
+          <img src="assets/img/products/turkesterone.jpg" alt="Turkesterone">
+        </a>
+        <div class="stack-body">
+          <div class="stack-name">Turkesterone</div>
+          <div><span class="stack-tag">SITUATIONAL</span></div>
+          <p class="stack-desc">
+            Ecdysteroid from Ajuga plant extract. Decent data on protein synthesis
+            and nitrogen retention in natural athletes. Not a magic pill — but I include
+            it during competitive blocks. Consistent food, sleep, and training matter 100x more.
+            If those are sorted, this is worth considering.
+          </p>
+          <div class="stack-cta">
+            <a href="https://amzn.to/3OZcPgk" target="_blank" rel="nofollow noopener" class="btn-stack">GET IT &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BERBERINE -->
+      <div class="stack-card">
+        <a href="https://amzn.to/4roJyJm" target="_blank" rel="nofollow noopener" class="product-img-wrap" title="Berberine">
+          <img src="assets/img/products/berberine.jpg" alt="Berberine">
+        </a>
+        <div class="stack-body">
+          <div class="stack-name">Berberine</div>
+          <div><span class="stack-tag">CUTTING / HEALTH</span></div>
+          <p class="stack-desc">
+            Insulin sensitiser. Helps partition nutrients — more goes into muscle,
+            less into fat storage. Particularly useful during a cut or maintenance phase.
+            Also studied extensively for metabolic health. I cycle this — not year-round.
+            Take with a meal containing carbohydrates.
+          </p>
+          <div class="stack-cta">
+            <a href="https://amzn.to/4roJyJm" target="_blank" rel="nofollow noopener" class="btn-stack">GET IT &rarr;</a>
+          </div>
+        </div>
+      </div>
+      </div><!-- end PERFORMANCE -->
+
+      <!-- READS -->
+      <div class="stack-section">
+      <div class="stack-category">&#9658; READS — NO ALGORITHM RUBBISH</div>
+
+      <!-- ARNOLD ENCYCLOPEDIA -->
+      <div class="stack-card">
+        <a href="https://amzn.to/40ZkXQs" target="_blank" rel="nofollow noopener" class="product-img-wrap" title="Arnold's Encyclopedia">
+          <img src="assets/img/products/arnold book.jpg" alt="Arnold's Encyclopedia of Modern Bodybuilding">
+        </a>
+        <div class="stack-body">
+          <div class="stack-name">The New Encyclopedia of Modern Bodybuilding</div>
+          <div><span class="stack-tag coach-pick">&#9670; ESSENTIAL</span></div>
+          <p class="stack-desc">
+            Arnold's encyclopedia. Written in 1999. Still the best single reference
+            for natural bodybuilding training and nutrition. Covers everything from
+            beginner foundations to advanced competition prep — with real detail,
+            not the 800-word blog post version.
+            If you own one book about training, make it this.
+          </p>
+          <div class="stack-cta">
+            <a href="https://amzn.to/40ZkXQs" target="_blank" rel="nofollow noopener" class="btn-stack">GET THE BOOK &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- GYM WORKBOOK -->
+      <div class="stack-card">
+        <a href="https://amzn.to/4s5OPqs" target="_blank" rel="nofollow noopener" class="product-img-wrap" title="Gym Workbook">
+          <img src="assets/img/products/gym-workbook.jpg" alt="Gym Training Log">
+        </a>
+        <div class="stack-body">
+          <div class="stack-name">Gym Workbook — Training Log</div>
+          <div><span class="stack-tag coach-pick">&#9670; DAILY USE</span></div>
+          <p class="stack-desc">
+            Paper logs outlast every app. Every set, every rep, every PR — written down,
+            dated, tracked. You can't lie to paper. The discipline of logging sessions by
+            hand builds the habit of actually following a programme. Every serious lifter
+            I know keeps a logbook. There's a reason for that.
+          </p>
+          <div class="stack-cta">
+            <a href="https://amzn.to/4s5OPqs" target="_blank" rel="nofollow noopener" class="btn-stack">GET THE BOOK &rarr;</a>
+          </div>
+        </div>
+      </div>
+      </div><!-- end READS -->
+
+      <!-- GEAR -->
+      <div class="stack-section">
+      <div class="stack-category">&#9658; GEAR — WHAT I USE IN THE GYM</div>
+
+      <!-- APPLE WATCH -->
+      <div class="stack-card">
+        <a href="https://amzn.to/40ZvjQm" target="_blank" rel="nofollow noopener" class="product-img-wrap" title="Apple Watch">
+          <img src="assets/img/products/apple-watch.jpg" alt="Apple Watch">
+        </a>
+        <div class="stack-body">
+          <div class="stack-name">Apple Watch</div>
+          <div><span class="stack-tag">GEAR</span></div>
+          <p class="stack-desc">
+            Rest timing, heart rate monitoring, session logging — the watch does all three
+            without you having to think about it. I use it for timed rest periods between
+            heavy sets and to keep session logs when I'm away from the logbook.
+            If you're going to spend money on any piece of kit outside the gym, make it this.
+          </p>
+          <div class="stack-cta">
+            <a href="https://amzn.to/40ZvjQm" target="_blank" rel="nofollow noopener" class="btn-stack">GET IT &rarr;</a>
+          </div>
+        </div>
+      </div>
+      </div><!-- end GEAR -->
+
+      </div><!-- end #stack-shuffle-wrap -->
+
+      <hr>
+      <p style="font-size:0.78em; color:var(--fg-dim); margin-top:10px;">
+        Disclosure: Links on this page are affiliate links. If you buy through them, I earn a small
+        commission at no extra cost to you. I only list products I personally use.
+      </p>
+
+    </section>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="side-col">
+
+    <div style="margin-bottom:14px;">
+      <img src="assets/img/golden-era-0.jpeg" alt="Golden Era" class="vintage-img" style="width:100%;">
+    </div>
+
+    <div class="widget">
+      <h4>THE PRINCIPLE</h4>
+      <p style="font-size:0.82em; color:var(--fg-dim);">
+        Supplements are the 5% on top of a solid foundation.
+        Training, sleep, and food are the 95%.
+        <br><br>
+        Nothing on this page replaces any of those three.
+      </p>
+    </div>
+
+    <div class="widget">
+      <h4>FOUNDATION STACK</h4>
+      <p style="font-size:0.78em; color:var(--fg-dim); margin-bottom:8px;">The minimum viable stack for most people:</p>
+      <ul style="font-size:0.8em;">
+        <li><a href="https://amzn.to/4b2CQUx" target="_blank" rel="nofollow noopener">Creatine (daily)</a></li>
+        <li><a href="https://amzn.to/4uj4CUt" target="_blank" rel="nofollow noopener">Protein (if needed)</a></li>
+        <li><a href="https://amzn.to/3NwkRg8" target="_blank" rel="nofollow noopener">Vitamin D3 + K2</a></li>
+      </ul>
+    </div>
+
+    <div style="margin:14px 0;">
+      <img src="assets/img/tom-platz-special.jpeg" alt="Tom Platz" class="vintage-img" style="width:100%;">
+    </div>
+
+    <div class="widget">
+      <h4>COACHING STATUS</h4>
+      <p style="color:var(--status-live); animation:blink 2s step-start infinite;">&#9679; 2 SPOTS OPEN</p>
+      <p style="color:var(--fg-dim); font-size:0.82em; margin-top:6px;">£250+/month</p>
+      <div class="mt-10">
+        <a href="contact.html" class="btn" style="width:100%; display:block; text-align:center;">APPLY</a>
+      </div>
+    </div>
+
+    <div class="widget">
+      <h4>IRON WISDOM</h4>
+      <div id="iron-wisdom-quote" style="font-size:0.82em; font-style:italic; color:var(--fg-dim);">
+        Loading...
+      </div>
+    </div>
+
+  </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="index.html">HOME</a>
+      <a href="shop.html">PROGRAMS</a>
+      <a href="stack.html">THE STACK</a>
+      <a href="blog.html">BLOG</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+    <p>SEBASTIAN FISHER COACHING &copy; 2024</p>
+    <!-- Seek and you shall find: /secret.html -->
+  </footer>
+
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

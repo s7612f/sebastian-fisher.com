@@ -26,6 +26,11 @@ DONE
 [x] T1 diabetic line rewritten to be supportive, not intimidating
 [x] BFR + fascia stretching tagged as [RESEARCH], not coaching claims
 [x] Coaching page positioning broadened (body comp, energy, quality of life)
+[x] Site copy broadened: "bodybuilding" → "physique & strength" in titles, metas, subtitles
+[x] Vault sidebar links made clickable (anchor IDs added)
+[x] Homepage sidebar images now link to vault content
+[x] Homepage offer text tightened for scannability
+[x] Cloudflare caching fixed: no-cache headers on HTML via custom nginx config
 [x] Server disk cleaned: 407GB → 244GB (deleted media-stack, torrent downloads, dead containers)
 [x] check-services.sh health-check script created (was missing, cron was erroring)
 [x] 29 stopped Docker containers removed + unused images pruned
@@ -60,7 +65,7 @@ TODO
 [ ] Create 30-second homepage intro video
 [ ] Improve color scheme: consider lighter/ivory background
 [ ] Add more human elements to homepage (handwritten note, hero image, video)
-[ ] Reduce text-heavy homepage feel (more emotion + scannability)
+[ ] Research pages: BFR, testosterone + lifestyle, fascia stretching
 [ ] Self-hosted form capture (replace Formspree)
 [ ] Newsletter / notification email system
 [ ] View counter: server-side (replace localStorage hack)

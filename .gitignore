@@ -18,4 +18,5 @@ assets/downloads/
 *.log
 node_modules/
 
-assets/img/products/
+assets/img/products/*.html
+assets/img/products/*_files/

@@ -59,9 +59,10 @@
           <span style="color:var(--status-live); animation:blink 2s step-start infinite; font-size:0.82em;">&#9679; 2 SPOTS OPEN</span>
         </div>
         <p style="font-size:0.88em; color:var(--fg-dim);">
-          Custom training and nutrition. Direct access. No templates sold as bespoke.
-          Everything built around your schedule, equipment, and goal.
-          T1 diabetic coach — nutrition knowledge that runs deeper than most.
+          Custom training and nutrition for body composition, energy, and quality of life.
+          Direct access. No templates sold as bespoke.
+          Everything built around your schedule, equipment, and goals &mdash;
+          whether that's building a physique, losing weight, improving mobility, or just feeling better.
         </p>
       </div>
 
@@ -192,20 +193,55 @@
       </div>
     </section>
 
+    <hr class="thick">
+
+    <!-- BOOK A CALL — Cal.com embed -->
+    <section class="section" id="book">
+      <h2>BOOK A CALL</h2>
+      <p style="font-size:0.85em; color:var(--fg-dim); margin-bottom:14px;">
+        Ready to start? Book a free 15-minute discovery call. No hard sell &mdash; just a conversation
+        about where you're at and whether coaching is the right fit.
+      </p>
+      <div id="cal-booking" style="width:100%; min-height:500px; overflow:auto; border:1px solid var(--border); background:var(--bg2);"></div>
+      <script type="text/javascript">
+      (function (C, A, L) {
+        var p = function (a, ar) { a.q.push(ar); };
+        var d = C.document;
+        C.Cal = C.Cal || function () {
+          var cal = C.Cal; var ar = arguments;
+          if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+          if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; }
+          p(cal, ar);
+        };
+      })(window, "https://app.cal.com/embed/embed.js", "init");
+
+      Cal("init", { origin: "https://cal.com" });
+      Cal("inline", {
+        elementOrSelector: "#cal-booking",
+        calLink: "YOUR_CALCOM_USERNAME/discovery-call",
+        config: { layout: "month_view", theme: "dark" }
+      });
+      Cal("ui", { theme: "dark", hideEventTypeDetails: false });
+      </script>
+      <p style="font-size:0.78em; color:var(--fg-dim); margin-top:10px;">
+        Or email directly: <a href="mailto:contact@sebastian-fisher.com">contact@sebastian-fisher.com</a>
+      </p>
+    </section>
+
     <hr>
 
-    <!-- NOT FOR EVERYONE -->
+    <!-- WHAT I EXPECT -->
     <section class="section">
       <div style="border:1px solid var(--border2); border-left:3px solid var(--accent); background:var(--bg2); padding:16px;">
-        <strong style="color:var(--fg); letter-spacing:1px;">THIS ISN'T FOR EVERYONE</strong>
+        <strong style="color:var(--fg); letter-spacing:1px;">WHAT I EXPECT FROM CLIENTS</strong>
         <p style="font-size:0.85em; color:var(--fg-dim); margin-top:10px; line-height:1.8;">
-          Coaching spots are limited. I'll only take someone on if I can genuinely help.
-          You need to be willing to track your training, be honest about your diet, and do the actual work.
-          If you want someone to tell you what you want to hear, this isn't it.
+          Coaching spots are limited, so I want to make sure we're a good fit.
+          All I ask is that you track your training, be honest about your diet, and stay consistent.
+          You don't need to be advanced &mdash; you just need to be willing to do the work.
         </p>
         <p style="font-size:0.85em; color:var(--fg-dim); margin-top:8px; line-height:1.8;">
-          T1 diabetic myself. Nutrition knowledge runs deeper than most &mdash; if you're managing blood sugar
-          alongside training goals, that's something I understand from the inside.
+          I'm a Type 1 diabetic, so I understand first-hand what it's like to manage blood sugar
+          alongside training and nutrition goals. If that's something you deal with too, I can help.
         </p>
         <div class="mt-10">
           <a href="contact.html" class="btn btn-primary btn-big">APPLY NOW</a>
@@ -218,9 +254,9 @@
 
     <!-- METHODS WE USE -->
     <section class="section">
-      <h2>METHODS WE USE</h2>
+      <h2>TRAINING METHODS &amp; RESEARCH</h2>
       <p style="font-size:0.85em; color:var(--fg-dim); margin-bottom:14px;">
-        Not theoretical. These are the actual techniques used across coaching programmes. Each one earns its place. Where the research backs it, it&rsquo;s linked.
+        Techniques that inform how I programme. Some are staples of every coaching programme; others are research interests I continue to study. Where the evidence backs it, it&rsquo;s linked.
       </p>
       <div class="method-grid">
 
@@ -237,9 +273,9 @@
         </div>
 
         <div class="method-card">
-          <strong>Occlusion Training (BFR)</strong>
-          <p>Blood flow restriction — bands tied above the muscle to trap blood in the working tissue. Creates extreme pump and activates growth factors at lighter loads.</p>
-          <a href="research.html">&#9658; Research: Load vs Reps for Hypertrophy</a>
+          <strong>Occlusion Training (BFR) <span style="font-size:0.7em; color:var(--fg-dim); font-weight:normal;">[RESEARCH]</span></strong>
+          <p>Blood flow restriction &mdash; bands above the muscle to trap blood in the working tissue. Research suggests it activates growth factors at lighter loads. Not a standard part of coaching programmes &mdash; included here as an active research interest.</p>
+          <a href="research.html">&#9658; Research: BFR / Occlusion Training</a>
         </div>
 
         <div class="method-card">
@@ -267,9 +303,9 @@
         </div>
 
         <div class="method-card">
-          <strong>Fascia Stretching While Pumped</strong>
-          <p>At the end of a session, while the muscle is still full of blood, stretch aggressively. Expands the fascial sheath, creating more physical room for the muscle to grow.</p>
-          <a href="research.html">&#9658; Research: Recovery Protocols</a>
+          <strong>Fascia Stretching While Pumped <span style="font-size:0.7em; color:var(--fg-dim); font-weight:normal;">[RESEARCH]</span></strong>
+          <p>Stretching while the muscle is pumped. The hypothesis is that it expands the fascial sheath. Evidence is mostly anecdotal &mdash; included here as a research interest, not a coaching claim.</p>
+          <a href="research.html">&#9658; Research: Fascia Stretching</a>
         </div>
 
         <div class="method-card">

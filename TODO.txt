@@ -1,6 +1,6 @@
 SEBASTIAN FISHER COACHING SITE — TODO LIST
 ============================================
-Last updated: 11 Mar 2026
+Last updated: 12 Mar 2026
 
 DONE
 ----
@@ -19,6 +19,16 @@ DONE
 [x] Button contrast fixed (gold-on-red → white-on-red for CTAs)
 [x] Login gate + coming soon page (u: sebastian / p: Sf251)
 [x] Code Server on server (editor.sebastian-fisher.com, port 8007)
+[x] Font size increased to 17px / 120% (was 14px) — readability fix
+[x] Contrast improved: --fg-dim boosted in both light and dark modes
+[x] Line-height increased to 1.75 (was 1.65)
+[x] Coaching copy rewritten: "THIS ISN'T FOR EVERYONE" → "WHAT I EXPECT FROM CLIENTS"
+[x] T1 diabetic line rewritten to be supportive, not intimidating
+[x] BFR + fascia stretching tagged as [RESEARCH], not coaching claims
+[x] Coaching page positioning broadened (body comp, energy, quality of life)
+[x] Server disk cleaned: 407GB → 244GB (deleted media-stack, torrent downloads, dead containers)
+[x] check-services.sh health-check script created (was missing, cron was erroring)
+[x] 29 stopped Docker containers removed + unused images pruned
 
 IN PROGRESS
 -----------
@@ -36,8 +46,6 @@ IN PROGRESS
     - Set accent colour to #c42000
 
 [ ] Grafana iframes in cut.html (bodyweight + lift progression panels)
-[ ] Commit + push all local site changes to GitHub
-[ ] Update cut start date — cut starts in 4 days (15 Mar 2026)
 
 TODO
 ----
@@ -48,6 +56,14 @@ TODO
 [ ] Replace placeholder Hall of Fame data with real client results
 [ ] Replace placeholder credentials table in about.html
 [ ] Cal.com booking embed (deferred — can use free hosted tier)
+[ ] Add photos of Sebastian (homepage + About)
+[ ] Create 30-second homepage intro video
+[ ] Improve color scheme: consider lighter/ivory background
+[ ] Add more human elements to homepage (handwritten note, hero image, video)
+[ ] Reduce text-heavy homepage feel (more emotion + scannability)
+[ ] Self-hosted form capture (replace Formspree)
+[ ] Newsletter / notification email system
+[ ] View counter: server-side (replace localStorage hack)
 
 ARCHITECTURE DECISIONS PENDING
 ------------------------------
@@ -60,6 +76,9 @@ ARCHITECTURE DECISIONS PENDING
     Option A: Keep hall-of-fame.html as a curated showcase (current)
     Option B: Pinned thread / category in forum
     Recommendation: Keep as separate page (curated, not user-posted)
+
+[ ] NPM (Nginx Proxy Manager) — remove? Currently running but unused
+    (Cloudflare tunnel routes directly to service ports)
 
 ACCESS / CREDENTIALS
 --------------------

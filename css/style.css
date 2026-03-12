@@ -17,7 +17,7 @@
   --bg2:     #c8c0b4;
   --bg3:     #bab2a6;
   --fg:      #1a1714;
-  --fg-dim:  #5a5450;
+  --fg-dim:  #443e3a;
   --accent:  #8b0000;      /* blood red — single primary accent */
   --accent2: #5c0000;      /* darker red for borders/subtle use */
   --gold:    #6b5200;      /* muted gold — prices only */
@@ -35,7 +35,7 @@
     --bg2:     #1c1c1c;
     --bg3:     #242424;
     --fg:      #d0d0d0;
-    --fg-dim:  #808080;
+    --fg-dim:  #9a9a9a;
     --accent:  #c42000;
     --accent2: #8a1800;
     --gold:    #a07800;
@@ -51,7 +51,7 @@ body.mag-mode {
   --bg2:     #1c1c1c;
   --bg3:     #242424;
   --fg:      #d0d0d0;
-  --fg-dim:  #808080;
+  --fg-dim:  #9a9a9a;
   --accent:  #c42000;
   --accent2: #8a1800;
   --gold:    #a07800;
@@ -74,9 +74,9 @@ body {
   background-attachment: fixed;
   color: var(--fg);
   font-family: var(--font);
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 450;
-  line-height: 1.65;
+  line-height: 1.75;
   min-height: 100vh;
 }
 
@@ -137,7 +137,7 @@ body.force-light {
   --bg2:     #c8c0b4;
   --bg3:     #bab2a6;
   --fg:      #1a1714;
-  --fg-dim:  #5a5450;
+  --fg-dim:  #443e3a;
   --accent:  #8b0000;
   --accent2: #5c0000;
   --gold:    #6b5200;

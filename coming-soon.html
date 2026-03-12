@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sebastian Fisher — Coming Soon">
+  <title>COMING SOON :: SEBASTIAN FISHER</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .gate-wrap {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .gate-title {
+      font-size: 2.4em;
+      letter-spacing: 6px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .gate-sub {
+      font-size: 0.85em;
+      color: var(--fg-dim);
+      letter-spacing: 2px;
+      margin-bottom: 32px;
+    }
+    .gate-status {
+      font-size: 0.75em;
+      color: var(--accent);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .gate-form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 260px;
+    }
+    .gate-form input {
+      font-family: var(--font);
+      font-size: 0.85em;
+      padding: 8px 12px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--fg);
+      letter-spacing: 1px;
+    }
+    .gate-form input::placeholder {
+      color: var(--fg-dim);
+      letter-spacing: 2px;
+    }
+    .gate-form button {
+      font-family: var(--font);
+      font-size: 0.82em;
+      padding: 8px 12px;
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent2);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .gate-form button:hover {
+      background: var(--accent2);
+    }
+    .gate-error {
+      color: var(--accent);
+      font-size: 0.78em;
+      letter-spacing: 1px;
+      min-height: 1.4em;
+    }
+    .gate-line {
+      width: 60px;
+      border: none;
+      border-top: 2px solid var(--accent);
+      margin: 20px auto;
+    }
+    .gate-footer {
+      font-size: 0.7em;
+      color: var(--fg-dim);
+      letter-spacing: 1px;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="gate-wrap">
+    <div class="gate-title">&#9653; SEBASTIAN FISHER &#9653;</div>
+    <div class="gate-sub"><span style="color:var(--accent);">::</span> BODYBUILDING COACHING <span style="color:var(--accent);">::</span></div>
+    <hr class="gate-line">
+    <div class="gate-status">&#9658; COMING SOON &#9608;</div>
+    <p style="max-width:400px; font-size:0.82em; color:var(--fg-dim); line-height:1.7; margin-bottom:24px;">
+      Old school bodybuilding coaching. Raw programs. Real results. No fluff.<br>
+      The site is being built. Check back soon.
+    </p>
+    <hr class="gate-line">
+    <div style="font-size:0.72em; color:var(--fg-dim); letter-spacing:2px; margin-bottom:12px;">ADMIN LOGIN</div>
+    <form class="gate-form" onsubmit="return gateLogin(event)">
+      <input type="text" id="gate-user" placeholder="USERNAME" autocomplete="off">
+      <input type="password" id="gate-pass" placeholder="PASSWORD">
+      <button type="submit">LOGIN</button>
+      <div class="gate-error" id="gate-error"></div>
+    </form>
+    <div class="gate-footer">
+      <a href="mailto:contact@sebastian-fisher.com" style="color:var(--fg-dim);">contact@sebastian-fisher.com</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// If already logged in, redirect to home
+if (sessionStorage.getItem('sf_auth') === '1') {
+  window.location.replace('index.html');
+}
+
+function gateLogin(e) {
+  e.preventDefault();
+  var u = document.getElementById('gate-user').value;
+  var p = document.getElementById('gate-pass').value;
+  if (u === 'sebastian' && p === 'Sf251') {
+    sessionStorage.setItem('sf_auth', '1');
+    window.location.replace('index.html');
+  } else {
+    document.getElementById('gate-error').textContent = 'INVALID CREDENTIALS';
+  }
+  return false;
+}
+</script>
+<script async defer src="https://analytics.sebastian-fisher.com/script.js" data-website-id="ba5c0ed2-8f00-486c-91bf-00950971c34f"></script>
+</body>
+</html>

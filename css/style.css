@@ -28,7 +28,24 @@
   --font:    'Courier New', 'Lucida Console', monospace;
 }
 
-/* --- DARK MODE (toggled via .mag-mode on body) --- */
+/* --- DARK MODE — follows system preference by default --- */
+@media (prefers-color-scheme: dark) {
+  :root:not(.force-light) {
+    --bg:      #141414;
+    --bg2:     #1c1c1c;
+    --bg3:     #242424;
+    --fg:      #d0d0d0;
+    --fg-dim:  #808080;
+    --accent:  #c42000;
+    --accent2: #8a1800;
+    --gold:    #a07800;
+    --border:  #2e2e2e;
+    --border2: #404040;
+    --link:    #b0b0b0;
+  }
+}
+
+/* Manual override: force dark */
 body.mag-mode {
   --bg:      #141414;
   --bg2:     #1c1c1c;
@@ -79,6 +96,24 @@ body::after {
   z-index: 9999;
 }
 
+@media (prefers-color-scheme: dark) {
+  body:not(.force-light) {
+    background-color: #111;
+    background-image:
+      linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+      url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
+  }
+  body:not(.force-light)::after {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(0,0,0,0.07) 3px,
+      rgba(0,0,0,0.07) 4px
+    );
+  }
+}
+
 body.mag-mode {
   background-color: #111;
   background-image:
@@ -94,6 +129,25 @@ body.mag-mode::after {
     rgba(0,0,0,0.07) 3px,
     rgba(0,0,0,0.07) 4px
   );
+}
+
+/* Force light mode override (when user toggles light on a dark-preference system) */
+body.force-light {
+  --bg:      #d6cfc4;
+  --bg2:     #c8c0b4;
+  --bg3:     #bab2a6;
+  --fg:      #1a1714;
+  --fg-dim:  #5a5450;
+  --accent:  #8b0000;
+  --accent2: #5c0000;
+  --gold:    #6b5200;
+  --border:  #9a9088;
+  --border2: #7a7068;
+  --link:    #2a2420;
+  background-color: #c8c0b4;
+  background-image:
+    linear-gradient(rgba(180,160,130,0.82), rgba(180,160,130,0.82)),
+    url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
 }
 
 /* --- LAYOUT --- */
@@ -196,6 +250,17 @@ body.mag-mode::after {
 }
 
 .site-nav a:last-child { border-right: none; }
+
+/* Community sub-page group indicator */
+.nav-community-group {
+  display: inline;
+  border: 1px solid var(--accent2);
+  border-radius: 2px;
+  margin: 2px 0;
+  background: rgba(139,0,0,0.06);
+}
+.nav-community-group a { border-right-color: var(--accent2); }
+.nav-community-group a:last-child { border-right: 1px solid var(--border); }
 
 /* --- MARQUEE --- */
 .marquee-wrap {

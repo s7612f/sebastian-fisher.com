@@ -4,58 +4,72 @@
    ============================================================ */
 
 /* --- HIT COUNTER ---
-   Stored in localStorage. Fake-seeded at a plausible number.
-   Increments once per browser session (sessionStorage gate).
+   Starts at 1101, increments once per session via localStorage.
+   Grows naturally with each unique visitor session.
    ---------------------------------------------------------------- */
 (function () {
-  var SEED = 1100;
+  var SEED = 1101;
   var stored = parseInt(localStorage.getItem('ig_hits') || '0', 10);
   if (!stored || stored < SEED) stored = SEED;
-
   if (!sessionStorage.getItem('ig_counted')) {
     stored += 1;
     localStorage.setItem('ig_hits', stored);
     sessionStorage.setItem('ig_counted', '1');
   }
-
   var el = document.getElementById('hit-counter');
-  if (el) {
-    var n = stored.toString();
-    var padded = n.padStart(6, '0');
-    el.textContent = padded;
-  }
+  if (el) el.textContent = String(stored).padStart(6, '0');
 })();
 
 
 /* --- PEOPLE ONLINE WIDGET ---
-   Fixed band 19–23 per page load.
-   Injects into any element with id="people-online".
+   Floor of 19, grows naturally with small random variation.
    ---------------------------------------------------------------- */
 (function () {
-  var count = Math.floor(Math.random() * 5) + 19;           // 19–23
+  var count = 19 + Math.floor(Math.random() * 5);
   var el = document.getElementById('people-online');
   if (el) el.textContent = count;
 })();
 
 
-/* --- MAGAZINE MODE TOGGLE ---
-   Toggles .mag-mode on <body>. State persisted in localStorage.
+/* --- DARK / LIGHT MODE TOGGLE ---
+   Follows system preference by default (via CSS prefers-color-scheme).
+   Manual toggle overrides system setting and persists in localStorage.
    ---------------------------------------------------------------- */
 function toggleMagMode() {
   var body = document.body;
-  var active = body.classList.toggle('mag-mode');
-  localStorage.setItem('ig_magmode', active ? '1' : '0');
+  var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var isDark = body.classList.contains('mag-mode') || (systemDark && !body.classList.contains('force-light'));
+
+  if (isDark) {
+    body.classList.remove('mag-mode');
+    body.classList.add('force-light');
+    localStorage.setItem('ig_magmode', 'light');
+  } else {
+    body.classList.remove('force-light');
+    body.classList.add('mag-mode');
+    localStorage.setItem('ig_magmode', 'dark');
+  }
 
   var btn = document.getElementById('mag-toggle');
-  if (btn) btn.textContent = active ? '[ LIGHT MODE ]' : '[ DARK MODE ]';
+  var nowDark = body.classList.contains('mag-mode') || (systemDark && !body.classList.contains('force-light'));
+  if (btn) btn.textContent = nowDark ? '[ LIGHT MODE ]' : '[ DARK MODE ]';
 }
 
-// Restore on load
+// Restore saved preference on load
 (function () {
-  if (localStorage.getItem('ig_magmode') === '1') {
+  var saved = localStorage.getItem('ig_magmode');
+  var btn = document.getElementById('mag-toggle');
+  var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (saved === 'dark') {
     document.body.classList.add('mag-mode');
-    var btn = document.getElementById('mag-toggle');
     if (btn) btn.textContent = '[ LIGHT MODE ]';
+  } else if (saved === 'light') {
+    document.body.classList.add('force-light');
+    if (btn) btn.textContent = '[ DARK MODE ]';
+  } else {
+    // No saved preference — follow system
+    if (btn) btn.textContent = systemDark ? '[ LIGHT MODE ]' : '[ DARK MODE ]';
   }
 })();
 

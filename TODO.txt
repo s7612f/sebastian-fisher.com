@@ -1,0 +1,72 @@
+SEBASTIAN FISHER COACHING SITE — TODO LIST
+============================================
+Last updated: 11 Mar 2026
+
+DONE
+----
+[x] Full static site built (21 pages + CSS + JS)
+[x] GitHub repo: github.com/s7612f/sebastian-fisher.com
+[x] Server setup on 192.168.1.77 (Docker, all services)
+[x] Cloudflare tunnel live — sebastian-fisher.com returns 200
+[x] Umami analytics tracking on all 22 pages
+[x] Hit counter — starts at 1101, grows per session (localStorage)
+[x] People online — floor of 19 + random variation 0-4
+[x] YOURLS short links (6 created)
+[x] InfluxDB — workout CSV imported (1991 points)
+[x] Grafana — 5 training dashboards built
+[x] Community nav grouping (visual box around COMMUNITY/LIFT LOG/HALL OF FAME)
+[x] Dark/light mode follows system setting (prefers-color-scheme)
+[x] Button contrast fixed (gold-on-red → white-on-red for CTAs)
+[x] Login gate + coming soon page (u: sebastian / p: Sf251)
+[x] Code Server on server (editor.sebastian-fisher.com, port 8007)
+
+IN PROGRESS
+-----------
+[ ] Forum (Flarum) — container running, needs browser setup:
+    - Run installer at http://192.168.1.77:8001
+    - Create admin account
+    - Create categories: Announcements, Training, Nutrition, Coaching & Site
+    - Install dark mode extension
+    - Apply site theme/branding over the top
+
+[ ] Blog (Ghost) — container running, needs browser setup:
+    - Run installer at http://192.168.1.77:8002/ghost
+    - Create admin account
+    - Import 7 articles from blog.html as posts
+    - Set accent colour to #c42000
+
+[ ] Grafana iframes in cut.html (bodyweight + lift progression panels)
+[ ] Commit + push all local site changes to GitHub
+[ ] Update cut start date — cut starts in 4 days (15 Mar 2026)
+
+TODO
+----
+[ ] Replace Gumroad slugs in shop.html (YOUR_PRODUCT_SLUG_1/2/3)
+[ ] Replace Formspree IDs (liftlog.html, free.html, contact.html)
+[ ] Replace placeholder bio in about.html
+[ ] Upload actual PDFs to assets/downloads/
+[ ] Replace placeholder Hall of Fame data with real client results
+[ ] Replace placeholder credentials table in about.html
+[ ] Cal.com booking embed (deferred — can use free hosted tier)
+
+ARCHITECTURE DECISIONS PENDING
+------------------------------
+[ ] Lift Log — keep as separate page or merge into Flarum forum?
+    Option A: Keep liftlog.html as a standalone quick-post form
+    Option B: Make it a dedicated category in the Flarum forum
+    Recommendation: Category in forum (less maintenance, real discussions)
+
+[ ] Hall of Fame — keep as separate page or merge into forum?
+    Option A: Keep hall-of-fame.html as a curated showcase (current)
+    Option B: Pinned thread / category in forum
+    Recommendation: Keep as separate page (curated, not user-posted)
+
+ACCESS / CREDENTIALS
+--------------------
+Site login gate: u=sebastian / p=Sf251
+Code Server: editor.sebastian-fisher.com / p=46d829972f9a4817cac27aab62f9775c
+GitHub: github.com/s7612f/sebastian-fisher.com
+Server SSH: sebastian@192.168.1.77 / p=Sf251
+Umami: analytics.sebastian-fisher.com / admin / umami (CHANGE THIS)
+Grafana: grafana.sebastian-fisher.com / admin / 976b2fd9aa0f5ca869aaccab1f77b0f5
+YOURLS: s.sebastian-fisher.com/admin / admin / 44dff8bd46b361bdcd8cc937

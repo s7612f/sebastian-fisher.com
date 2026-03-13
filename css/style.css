@@ -13,9 +13,9 @@
 
 /* --- ROOT VARS --- */
 :root {
-  --bg:      #d6cfc4;
-  --bg2:     #c8c0b4;
-  --bg3:     #bab2a6;
+  --bg:      #f0ebe0;
+  --bg2:     #e5dece;
+  --bg3:     #d8d0be;
   --fg:      #1a1714;
   --fg-dim:  #443e3a;
   --accent:  #8b0000;      /* blood red — single primary accent */
@@ -31,32 +31,32 @@
 /* --- DARK MODE — follows system preference by default --- */
 @media (prefers-color-scheme: dark) {
   :root:not(.force-light) {
-    --bg:      #141414;
-    --bg2:     #1c1c1c;
-    --bg3:     #242424;
+    --bg:      #1d1508;
+    --bg2:     #261c0d;
+    --bg3:     #2f2314;
     --fg:      #d0d0d0;
     --fg-dim:  #9a9a9a;
     --accent:  #c42000;
     --accent2: #8a1800;
     --gold:    #a07800;
-    --border:  #2e2e2e;
-    --border2: #404040;
+    --border:  #3d2f1c;
+    --border2: #4e3e28;
     --link:    #b0b0b0;
   }
 }
 
 /* Manual override: force dark */
 body.mag-mode {
-  --bg:      #141414;
-  --bg2:     #1c1c1c;
-  --bg3:     #242424;
+  --bg:      #1d1508;
+  --bg2:     #261c0d;
+  --bg3:     #2f2314;
   --fg:      #d0d0d0;
   --fg-dim:  #9a9a9a;
   --accent:  #c42000;
   --accent2: #8a1800;
   --gold:    #a07800;
-  --border:  #2e2e2e;
-  --border2: #404040;
+  --border:  #3d2f1c;
+  --border2: #4e3e28;
   --link:    #b0b0b0;
 }
 
@@ -65,9 +65,9 @@ html { scroll-behavior: smooth; }
 
 body {
   /* Gutter: vintage photo with warm light overlay */
-  background-color: #c8c0b4;
+  background-color: #e5dece;
   background-image:
-    linear-gradient(rgba(180,160,130,0.82), rgba(180,160,130,0.82)),
+    linear-gradient(rgba(215,205,188,0.82), rgba(215,205,188,0.82)),
     url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
   background-size: cover;
   background-position: center 35%;
@@ -98,9 +98,9 @@ body::after {
 
 @media (prefers-color-scheme: dark) {
   body:not(.force-light) {
-    background-color: #111;
+    background-color: #150f04;
     background-image:
-      linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+      linear-gradient(rgba(12,8,2,0.68), rgba(12,8,2,0.68)),
       url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
   }
   body:not(.force-light)::after {
@@ -115,9 +115,9 @@ body::after {
 }
 
 body.mag-mode {
-  background-color: #111;
+  background-color: #150f04;
   background-image:
-    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+    linear-gradient(rgba(12,8,2,0.68), rgba(12,8,2,0.68)),
     url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
 }
 
@@ -133,9 +133,9 @@ body.mag-mode::after {
 
 /* Force light mode override (when user toggles light on a dark-preference system) */
 body.force-light {
-  --bg:      #d6cfc4;
-  --bg2:     #c8c0b4;
-  --bg3:     #bab2a6;
+  --bg:      #f0ebe0;
+  --bg2:     #e5dece;
+  --bg3:     #d8d0be;
   --fg:      #1a1714;
   --fg-dim:  #443e3a;
   --accent:  #8b0000;
@@ -144,9 +144,9 @@ body.force-light {
   --border:  #9a9088;
   --border2: #7a7068;
   --link:    #2a2420;
-  background-color: #c8c0b4;
+  background-color: #e5dece;
   background-image:
-    linear-gradient(rgba(180,160,130,0.82), rgba(180,160,130,0.82)),
+    linear-gradient(rgba(215,205,188,0.82), rgba(215,205,188,0.82)),
     url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
 }
 

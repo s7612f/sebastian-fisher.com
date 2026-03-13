@@ -36,6 +36,7 @@
   --border2: #9a8464;
   --link:    #3a2010;
   --status-live: #5a9a5a;
+  --blue:    #2a6496;       /* steel blue — new/fresh items */
   --font:    'Courier New', 'Lucida Console', monospace;
 }
 
@@ -53,6 +54,7 @@
     --border:  #4a3418;
     --border2: #6a5028;
     --link:    #c8a060;
+    --blue:    #5b9bd5;
   }
 }
 
@@ -69,6 +71,7 @@ body.mag-mode {
   --border:  #3d2f1c;
   --border2: #4e3e28;
   --link:    #b0b0b0;
+  --blue:    #5b9bd5;
 }
 
 /* --- BASE --- */
@@ -1182,13 +1185,13 @@ code {
   display: inline-block;
   margin-left: 4px;
 }
-.offer-badge-flagship { color: var(--accent); border-color: var(--accent); }
+.offer-badge-flagship { color: var(--gold); border-color: var(--gold); }
 .offer-badge-sale {
-  color: var(--gold);
-  border-color: var(--gold);
+  color: var(--status-live);
+  border-color: var(--status-live);
   animation: blink 1.2s step-start infinite;
 }
-.offer-badge-new { color: var(--accent); border-color: var(--accent); border-style: dashed; }
+.offer-badge-new { color: var(--blue); border-color: var(--blue); border-style: dashed; }
 .offer-card .offer-desc {
   font-size: 0.82em;
   color: var(--fg-dim);

@@ -11,19 +11,30 @@
   padding: 0;
 }
 
+
+/* ============================================================
+   COLOUR BACKUP v2 (warm brown dark / ivory light — Mar 2026)
+   To restore: swap these back into :root and the dark media query
+
+   LIGHT: --bg #f0ebe0  --bg2 #e5dece  --bg3 #d8d0be  --fg #1a1714
+          --fg-dim #443e3a  --accent #8b0000  --border #9a9088
+   DARK:  --bg #1d1508  --bg2 #261c0d  --bg3 #2f2314  --fg #d0d0d0
+          --fg-dim #9a9a9a  --accent #c42000  --border #3d2f1c
+   BODY DARK bg-color: #150f04  gradient: rgba(12,8,2,0.68)
+   ============================================================ */
 /* --- ROOT VARS --- */
 :root {
-  --bg:      #f0ebe0;
-  --bg2:     #e5dece;
-  --bg3:     #d8d0be;
-  --fg:      #1a1714;
-  --fg-dim:  #443e3a;
-  --accent:  #8b0000;      /* blood red — single primary accent */
-  --accent2: #5c0000;      /* darker red for borders/subtle use */
+  --bg:      #f0e8d8;
+  --bg2:     #e4d8c4;
+  --bg3:     #d8ccb4;
+  --fg:      #1a1410;
+  --fg-dim:  #5c4e40;
+  --accent:  #c42000;      /* signal red — single primary accent */
+  --accent2: #8a1800;      /* darker red for borders/subtle use */
   --gold:    #6b5200;      /* muted gold — prices only */
-  --border:  #9a9088;
-  --border2: #7a7068;
-  --link:    #2a2420;
+  --border:  #bca882;
+  --border2: #9a8464;
+  --link:    #3a2010;
   --status-live: #5a9a5a;
   --font:    'Courier New', 'Lucida Console', monospace;
 }
@@ -31,17 +42,17 @@
 /* --- DARK MODE — follows system preference by default --- */
 @media (prefers-color-scheme: dark) {
   :root:not(.force-light) {
-    --bg:      #1d1508;
-    --bg2:     #261c0d;
-    --bg3:     #2f2314;
-    --fg:      #d0d0d0;
-    --fg-dim:  #9a9a9a;
-    --accent:  #c42000;
-    --accent2: #8a1800;
-    --gold:    #a07800;
-    --border:  #3d2f1c;
-    --border2: #4e3e28;
-    --link:    #b0b0b0;
+    --bg:      #181008;
+    --bg2:     #221810;
+    --bg3:     #2c2018;
+    --fg:      #e8d8a8;
+    --fg-dim:  #a08850;
+    --accent:  #e03800;
+    --accent2: #a02800;
+    --gold:    #d0a030;
+    --border:  #4a3418;
+    --border2: #6a5028;
+    --link:    #c8a060;
   }
 }
 
@@ -65,9 +76,9 @@ html { scroll-behavior: smooth; }
 
 body {
   /* Gutter: vintage photo with warm light overlay */
-  background-color: #e5dece;
+  background-color: #e4d8c4;
   background-image:
-    linear-gradient(rgba(215,205,188,0.82), rgba(215,205,188,0.82)),
+    linear-gradient(rgba(208,196,172,0.80), rgba(208,196,172,0.80)),
     url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
   background-size: cover;
   background-position: center 35%;
@@ -98,9 +109,9 @@ body::after {
 
 @media (prefers-color-scheme: dark) {
   body:not(.force-light) {
-    background-color: #150f04;
+    background-color: #120a02;
     background-image:
-      linear-gradient(rgba(12,8,2,0.68), rgba(12,8,2,0.68)),
+      linear-gradient(rgba(8,4,0,0.72), rgba(8,4,0,0.72)),
       url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
   }
   body:not(.force-light)::after {
@@ -115,9 +126,9 @@ body::after {
 }
 
 body.mag-mode {
-  background-color: #150f04;
+  background-color: #120a02;
   background-image:
-    linear-gradient(rgba(12,8,2,0.68), rgba(12,8,2,0.68)),
+    linear-gradient(rgba(8,4,0,0.72), rgba(8,4,0,0.72)),
     url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
 }
 
@@ -133,20 +144,20 @@ body.mag-mode::after {
 
 /* Force light mode override (when user toggles light on a dark-preference system) */
 body.force-light {
-  --bg:      #f0ebe0;
-  --bg2:     #e5dece;
-  --bg3:     #d8d0be;
-  --fg:      #1a1714;
-  --fg-dim:  #443e3a;
+  --bg:      #f0e8d8;
+  --bg2:     #e4d8c4;
+  --bg3:     #d8ccb4;
+  --fg:      #1a1410;
+  --fg-dim:  #5c4e40;
   --accent:  #8b0000;
-  --accent2: #5c0000;
+  --accent2: #8a1800;
   --gold:    #6b5200;
-  --border:  #9a9088;
-  --border2: #7a7068;
-  --link:    #2a2420;
-  background-color: #e5dece;
+  --border:  #bca882;
+  --border2: #9a8464;
+  --link:    #3a2010;
+  background-color: #e4d8c4;
   background-image:
-    linear-gradient(rgba(215,205,188,0.82), rgba(215,205,188,0.82)),
+    linear-gradient(rgba(208,196,172,0.80), rgba(208,196,172,0.80)),
     url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
 }
 

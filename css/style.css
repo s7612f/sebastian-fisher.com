@@ -512,7 +512,7 @@ hr.thick {
   padding: 6px;
   font-family: 'Courier New', monospace;
   margin: 8px 0;
-  text-shadow: 0 0 4px var(--accent);
+  text-shadow: none;
 }
 
 /* --- FORMS --- */

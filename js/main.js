@@ -22,12 +22,32 @@
 
 
 /* --- PEOPLE ONLINE WIDGET ---
-   Floor of 19, grows naturally with small random variation.
+   Drifts between 18–25 using a time-seeded value that changes every
+   ~5 minutes, so it looks live across the day without jumping on refresh.
    ---------------------------------------------------------------- */
 (function () {
-  var count = 19 + Math.floor(Math.random() * 5);
+  function getPeopleOnline() {
+    // Slot advances every 5 minutes — deterministic so refresh gives same number
+    var slotMs = 5 * 60 * 1000;
+    var slot = Math.floor(Date.now() / slotMs);
+    // Cheap hash of slot number
+    var h = (slot * 2654435761) >>> 0;
+    h = (((h >>> 16) ^ h) * 0x45d9f3b) >>> 0;
+    return 18 + (h % 8); // 18–25
+  }
+
   var el = document.getElementById('people-online');
-  if (el) el.textContent = count;
+  if (!el) return;
+
+  function update() {
+    el.textContent = getPeopleOnline();
+    // Schedule next update for when the current 5-min slot expires
+    var slotMs = 5 * 60 * 1000;
+    var msUntilNext = slotMs - (Date.now() % slotMs);
+    setTimeout(update, msUntilNext + Math.floor(Math.random() * 20000));
+  }
+
+  update();
 })();
 
 

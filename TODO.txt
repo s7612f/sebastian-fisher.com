@@ -37,6 +37,9 @@ DONE
 [x] Copyright year updated 2024 → 2025 (all 20 HTML files)
 [x] Footer "No analytics" claim fixed → "Privacy-first analytics (Umami)" (5 files)
 [x] Deduplicated STACK_PRODUCTS array in main.js (was copy-pasted in two IIFEs)
+[x] Copyright year updated 2025 → 2026 (all 20 HTML files)
+[x] Fixed image filenames with spaces in stack.html (vit d.jpg → vit-d.jpg, etc.)
+[x] Cleaned up ~76MB of accidentally saved Amazon HTML pages from assets/img/
 
 IN PROGRESS
 -----------

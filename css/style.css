@@ -573,9 +573,11 @@ hr.thick {
 
 /* --- IMAGES --- */
 img {
+  max-width: 100%;
+}
+img.pixelated {
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
-  max-width: 100%;
 }
 
 .vintage-img {
@@ -1300,3 +1302,18 @@ code {
 /* --- PRODUCT IMAGE PLACEHOLDER (stack widgets) --- */
 .product-img-frame { display:flex; align-items:center; justify-content:center; border:1px solid var(--border2); background:var(--bg3); height:72px; width:72px; font-size:0.55em; letter-spacing:2px; color:var(--fg-dim); text-transform:uppercase; float:right; margin:0 0 8px 10px; flex-shrink:0; }
 .stack-widget-inner { overflow:hidden; }
+
+/* --- REDUCED MOTION --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- SITE TITLE OVERFLOW ON NARROW SCREENS --- */
+@media (max-width: 400px) {
+  .site-title { font-size: 1.6em; letter-spacing: 3px; }
+  .site-subtitle { font-size: 0.68em; letter-spacing: 1px; }
+}

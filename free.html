@@ -225,7 +225,7 @@ function sideCalc() {
   const el = document.getElementById('side-result');
   if (!bw || bw < 30 || bw > 300) { el.textContent = 'Enter a valid weight.'; return; }
   const maint = Math.round(bw * 33);
-  el.textContent = `~${maint} kcal/day maintenance\nProtein: ~${Math.round(bw*2)}g/day`;
+  el.innerHTML = `~${maint} kcal/day maintenance<br>Protein: ~${Math.round(bw*2)}g/day`;
 }
 </script>
 <script async defer src="https://analytics.sebastian-fisher.com/script.js" data-website-id="ba5c0ed2-8f00-486c-91bf-00950971c34f"></script>

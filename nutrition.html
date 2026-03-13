@@ -79,10 +79,10 @@
 
       <!-- TAB SWITCHER -->
       <div style="margin-bottom:16px;">
-        <button class="btn tab-btn active" onclick="showTab('standard')">STANDARD</button>
-        <button class="btn tab-btn" onclick="showTab('vegetarian')">VEGETARIAN</button>
-        <button class="btn tab-btn" onclick="showTab('keto')">KETO</button>
-        <button class="btn tab-btn" onclick="showTab('recipes')">RECIPES</button>
+        <button class="btn tab-btn active" data-tab="standard" onclick="showTab('standard', event)">STANDARD</button>
+        <button class="btn tab-btn" data-tab="vegetarian" onclick="showTab('vegetarian', event)">VEGETARIAN</button>
+        <button class="btn tab-btn" data-tab="keto" onclick="showTab('keto', event)">KETO</button>
+        <button class="btn tab-btn" data-tab="recipes" onclick="showTab('recipes', event)">RECIPES</button>
       </div>
 
       <!-- STANDARD TAB -->
@@ -475,11 +475,16 @@
 </div>
 <script src="js/main.js"></script>
 <script>
-function showTab(name) {
+function showTab(name, e) {
   document.querySelectorAll('.diet-tab').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
-  event.target.classList.add('active');
+  if (e && e.target) e.target.classList.add('active');
+  else {
+    document.querySelectorAll('.tab-btn').forEach(function(b) {
+      if (b.getAttribute('data-tab') === name) b.classList.add('active');
+    });
+  }
 }
 </script>
 <script async defer src="https://analytics.sebastian-fisher.com/script.js" data-website-id="ba5c0ed2-8f00-486c-91bf-00950971c34f"></script>

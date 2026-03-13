@@ -426,19 +426,20 @@ h4 {
 }
 
 .btn:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
+  background: var(--bg3);
+  color: var(--fg);
+  border-color: var(--gold);
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: var(--gold);
   color: #fff;
-  border-color: var(--accent2);
+  border-color: var(--gold);
 }
 
 .btn-primary:hover {
-  background: var(--accent2);
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .btn-big {

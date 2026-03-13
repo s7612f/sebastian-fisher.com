@@ -192,8 +192,9 @@
     <section class="section">
       <a name="diet-enquiry"></a>
       <h2>GENERAL ENQUIRY / DIET COACHING</h2>
-      <form class="retro-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID_GENERAL" method="POST">
-        <input type="hidden" name="subject" value="Website Enquiry">
+      <form class="retro-form" id="general-contact-form">
+        <!-- Honeypot field — hidden from real users, catches bots -->
+        <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
 
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
           <div>
@@ -218,7 +219,12 @@
         <label for="gen-message">MESSAGE *</label>
         <textarea id="gen-message" name="message" required placeholder="Ask away."></textarea>
 
-        <button type="submit" class="btn btn-big btn-primary" style="width:100%;">SEND MESSAGE</button>
+        <p style="font-size:0.78em; color:var(--fg-dim); margin-bottom:12px;">
+          Your details are stored privately on this server and used only to respond to your enquiry.
+        </p>
+
+        <button type="submit" id="gen-submit-btn" class="btn btn-big btn-primary" style="width:100%;">SEND MESSAGE</button>
+        <div id="gen-form-msg" style="display:none; margin-top:12px; padding:10px 14px; border:1px solid var(--border); font-size:0.85em;"></div>
       </form>
     </section>
 
@@ -283,5 +289,59 @@
 </div>
 <script src="js/main.js"></script>
 <script async defer src="https://analytics.sebastian-fisher.com/script.js" data-website-id="ba5c0ed2-8f00-486c-91bf-00950971c34f"></script>
+<script>
+(function() {
+  var form = document.getElementById('general-contact-form');
+  var msgBox = document.getElementById('gen-form-msg');
+  var submitBtn = document.getElementById('gen-submit-btn');
+
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var name = form.querySelector('[name="name"]').value.trim();
+    var email = form.querySelector('[name="email"]').value.trim();
+    var message = form.querySelector('[name="message"]').value.trim();
+    var website = form.querySelector('[name="website"]').value;
+    var topic = form.querySelector('[name="topic"]').value;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'SENDING...';
+    msgBox.style.display = 'none';
+
+    fetch('https://forms.sebastian-fisher.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, message: '[' + topic.toUpperCase() + '] ' + message, website: website })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.success) {
+        msgBox.style.display = 'block';
+        msgBox.style.borderColor = '#00a000';
+        msgBox.style.color = '#00a000';
+        msgBox.textContent = data.message;
+        form.reset();
+      } else {
+        msgBox.style.display = 'block';
+        msgBox.style.borderColor = '#c42000';
+        msgBox.style.color = '#c42000';
+        msgBox.textContent = data.message || 'Something went wrong. Please try again.';
+      }
+    })
+    .catch(function() {
+      msgBox.style.display = 'block';
+      msgBox.style.borderColor = '#c42000';
+      msgBox.style.color = '#c42000';
+      msgBox.textContent = 'Could not send message. Please email directly: contact@sebastian-fisher.com';
+    })
+    .finally(function() {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'SEND MESSAGE';
+    });
+  });
+})();
+</script>
 </body>
 </html>

@@ -47,6 +47,9 @@ DONE
 [x] Removed dead calcMacros/calcORM/calcTimeline from main.js (wrong IDs, unused — calc page has inline versions)
 [x] Fixed hardcoded background:#000 on <select> elements → var(--bg2) for light/dark theme support
 [x] Added responsive font-size for .site-title on screens under 400px (was overflowing)
+[x] Built vault jukebox UI — 9-track list with YouTube embed player (#yt-placeholder + .track-list)
+[x] Removed dead jukebox/toggleArticle code from main.js (vault.html defines its own inline versions)
+[x] Fixed nutrition.html showTab() — removed stale extra `event` parameter from tab button onclick calls
 
 IN PROGRESS
 -----------
@@ -67,8 +70,6 @@ IN PROGRESS
 
 TODO
 ----
-[ ] Vault jukebox — JS exists but no HTML track list UI (playTrack() crashes on missing #yt-placeholder)
-    Either add a track list section to vault.html or remove the dead jukebox JS
 [ ] Replace Gumroad slugs in shop.html (YOUR_PRODUCT_SLUG_1/2/3)
 [ ] Replace Formspree IDs (liftlog.html, free.html, contact.html)
 [ ] Replace placeholder bio in about.html

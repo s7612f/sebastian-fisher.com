@@ -238,6 +238,22 @@
 
     <hr class="thick">
 
+    <!-- JUKEBOX -->
+    <section class="section">
+      <h2 id="jukebox">IRON JUKEBOX <span class="badge-new">9 TRACKS</span></h2>
+      <p style="color:var(--fg-dim); font-size:0.82em; margin-bottom:15px;">
+        Training soundtrack from the golden era. Click a track to play.
+      </p>
+      <div class="jukebox">
+        <div id="yt-placeholder" style="margin-bottom:12px;">
+          <p style="color:var(--fg-dim); font-size:0.8em;">&#9654; SELECT A TRACK BELOW</p>
+        </div>
+        <ul class="track-list" id="track-list"></ul>
+      </div>
+    </section>
+
+    <hr class="thick">
+
     <!-- OLD MEDIA SECTION -->
     <section class="section">
       <h2 id="old-media">OLD MEDIA ARCHIVE <span class="badge-new">UPDATED</span></h2>
@@ -377,6 +393,7 @@
         <li><a href="#platz-legs">Platz Legs</a></li>
         <li><a href="#bro-science">Modern Failures</a></li>
         <li><a href="#old-school-nutrition">Old School Nutrition</a></li>
+        <li><a href="#jukebox">Iron Jukebox</a></li>
         <li><a href="#old-media">Old Media Archive</a></li>
         <li><a href="#external-archives">External Archives</a></li>
       </ul>
@@ -436,32 +453,44 @@ function toggleArticle(id) {
   el.style.display = el.style.display === 'none' ? 'block' : 'none';
 }
 
-// Jukebox — opens YouTube in new tab
-const tracks = [
-  { id: 'btPJPFnesV4', title: 'Eye of the Tiger' },
-  { id: 'etAIpkdhU9Q', title: 'Back in Black' },
-  { id: '7kwqiz0cz-E', title: 'We Will Rock You' },
-  { id: '2lHgmC6PBBE', title: 'TNT' },
-  { id: 'D_Vg4uyYwEk', title: 'Eye of the Tiger (Video)' },
-  { id: 'T3yGRPeFcRs', title: 'Gonna Fly Now' },
-  { id: '9jK-NcRmVtw', title: 'Born to Be Wild' },
-  { id: 'l482T0yNkeo', title: 'Welcome to the Jungle' },
-  { id: '1qN72LEQnaU', title: "Hell's Bells" },
-  { id: 'dQw4w9WgXcQ', title: 'Thunderstruck' }
+// Jukebox
+var tracks = [
+  { id: 'btPJPFnesV4', title: 'Eye of the Tiger', artist: 'Survivor' },
+  { id: 'pAgnJDJN4VA', title: 'Back in Black', artist: 'AC/DC' },
+  { id: '-tJYN-eG1zk', title: 'We Will Rock You', artist: 'Queen' },
+  { id: 'TNHGRkn3hYo', title: 'TNT', artist: 'AC/DC' },
+  { id: 'I_3YWBiEjTg', title: 'Gonna Fly Now', artist: 'Bill Conti' },
+  { id: 'p-W4FVZH-hI', title: 'Born to Be Wild', artist: 'Steppenwolf' },
+  { id: 'o1tj2zJ2Wvg', title: 'Welcome to the Jungle', artist: "Guns N' Roses" },
+  { id: 'etAIpkdhU9Q', title: "Hell's Bells", artist: 'AC/DC' },
+  { id: 'v2AC41dglnM', title: 'Thunderstruck', artist: 'AC/DC' }
 ];
 
+// Build track list
+(function () {
+  var list = document.getElementById('track-list');
+  if (!list) return;
+  tracks.forEach(function (t, i) {
+    var li = document.createElement('li');
+    li.textContent = (i + 1) + '. ' + t.title + ' — ' + t.artist;
+    li.style.cursor = 'pointer';
+    li.onclick = function () { playTrack(i); };
+    list.appendChild(li);
+  });
+})();
+
 function playTrack(idx) {
-  const track = tracks[idx];
-  // Embed YouTube in placeholder
-  const placeholder = document.getElementById('yt-placeholder');
-  placeholder.innerHTML = `
-    <iframe width="100%" height="120" src="https://www.youtube.com/embed/${track.id}?autoplay=1"
-      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
-      style="display:block; border:2px inset var(--border);"></iframe>
-    <p style="color:var(--status-live); font-size:0.8em; margin-top:6px;">&#9654; NOW PLAYING: ${track.title}</p>
-  `;
+  var track = tracks[idx];
+  if (!track) return;
+  var placeholder = document.getElementById('yt-placeholder');
+  if (!placeholder) return;
+  placeholder.innerHTML =
+    '<iframe width="100%" height="120" src="https://www.youtube.com/embed/' + track.id + '?autoplay=1&rel=0"' +
+    ' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen' +
+    ' style="display:block; border:2px inset var(--border);"></iframe>' +
+    '<p style="color:var(--status-live); font-size:0.8em; margin-top:6px;">&#9654; NOW PLAYING: ' + track.title.toUpperCase() + ' — ' + track.artist.toUpperCase() + '</p>';
   // Highlight active track
-  document.querySelectorAll('.track-list li').forEach((li, i) => {
+  document.querySelectorAll('.track-list li').forEach(function (li, i) {
     li.classList.toggle('playing', i === idx);
   });
 }

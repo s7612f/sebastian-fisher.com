@@ -180,67 +180,9 @@ function quickCalc() {
 }
 
 
-/* --- VAULT: JUKEBOX ---
-   Injects a YouTube iframe into #jukebox-player on track click.
+/* --- VAULT: JUKEBOX + ARTICLE TOGGLE ---
+   Both defined inline in vault.html (page-specific element IDs).
    ---------------------------------------------------------------- */
-var jukeboxTracks = [
-  { title: 'Eye of the Tiger',        artist: 'Survivor',          yt: 'btPJPFnesV4' },
-  { title: 'Back in Black',           artist: 'AC/DC',             yt: 'pAgnJDJN4VA' },
-  { title: 'TNT',                     artist: 'AC/DC',             yt: 'TNHGRkn3hYo' },
-  { title: 'Gonna Fly Now (Rocky)',   artist: 'Bill Conti',        yt: 'I_3YWBiEjTg' },
-  { title: 'Born to Be Wild',         artist: 'Steppenwolf',       yt: 'p-W4FVZH-hI' },
-  { title: 'Welcome to the Jungle',   artist: 'Guns N\' Roses',    yt: 'o1tj2zJ2Wvg' },
-  { title: 'Hell\'s Bells',           artist: 'AC/DC',             yt: 'etAIpkdhU9Q' },
-  { title: 'Thunderstruck',           artist: 'AC/DC',             yt: 'v2AC41dglnM' },
-  { title: 'We Will Rock You',        artist: 'Queen',             yt: '-tJYN-eG1zk' },
-  { title: 'Gonna Fly Now (Full)',     artist: 'Rocky Soundtrack',  yt: 'I_3YWBiEjTg' },
-];
-
-function playTrack(idx) {
-  var player = document.getElementById('jukebox-player');
-  if (!player) return;
-  var track = jukeboxTracks[idx];
-  if (!track) return;
-
-  // Highlight active track
-  var items = document.querySelectorAll('.track-item');
-  items.forEach(function (el) { el.classList.remove('active'); });
-  var active = document.querySelector('.track-item[data-idx="' + idx + '"]');
-  if (active) active.classList.add('active');
-
-  // Inject iframe
-  player.innerHTML =
-    '<div style="font-size:0.8em;color:var(--fg-dim);margin-bottom:6px;">NOW PLAYING: ' +
-    track.title.toUpperCase() + ' — ' + track.artist.toUpperCase() + '</div>' +
-    '<iframe width="100%" height="80" src="https://www.youtube.com/embed/' + track.yt +
-    '?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-}
-
-
-/* --- VAULT: ARTICLE TOGGLE ---
-   Expand/collapse article sections.
-   ---------------------------------------------------------------- */
-function toggleArticle(id) {
-  var body = document.getElementById('article-' + id);
-  var btn  = document.getElementById('toggle-' + id);
-  if (!body) return;
-
-  var open = body.style.display !== 'none' && body.style.display !== '';
-
-  if (open) {
-    body.style.display = 'none';
-    if (btn) btn.textContent = '[ READ MORE ]';
-  } else {
-    body.style.display = 'block';
-    if (btn) btn.textContent = '[ COLLAPSE ]';
-  }
-}
-
-// Collapse all on load
-(function () {
-  var bodies = document.querySelectorAll('[id^="article-"]');
-  bodies.forEach(function (el) { el.style.display = 'none'; });
-})();
 
 
 /* --- NUTRITION: TAB SWITCHER ---

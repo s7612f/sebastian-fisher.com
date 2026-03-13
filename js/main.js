@@ -74,36 +74,6 @@ function toggleMagMode() {
 })();
 
 
-/* --- IRON WISDOM QUOTE ROTATOR ---
-   Rotates quotes in any element with id="iron-wisdom-quote".
-   ---------------------------------------------------------------- */
-(function () {
-  var quotes = [
-    { q: 'The mind is the limit. As long as the mind can envision the fact that you can do something, you can do it.', a: 'Arnold Schwarzenegger' },
-    { q: 'It never gets easier. You just get stronger.', a: 'Unknown' },
-    { q: 'The last three or four reps is what makes the muscle grow.', a: 'Arnold Schwarzenegger' },
-    { q: 'Pain is temporary. Quitting lasts forever.', a: 'Lance Armstrong' },
-    { q: 'The iron never lies to you.', a: 'Henry Rollins' },
-    { q: 'Strength does not come from winning. Your struggles develop your strengths.', a: 'Arnold Schwarzenegger' },
-    { q: 'There are no shortcuts. Everything is reps, reps, reps.', a: 'Arnold Schwarzenegger' },
-    { q: 'A champion is someone who gets up when they can\'t.', a: 'Jack Dempsey' },
-    { q: 'To be a champion, you must act like one.', a: 'Lou Ferrigno' },
-    { q: 'Blood, sweat, and respect. First two you give. Last one you earn.', a: 'Dwayne Johnson' },
-    { q: 'Success is usually the culmination of controlling failure.', a: 'Sylvester Stallone' },
-    { q: 'Train insane or remain the same.', a: 'Unknown' },
-    { q: 'I don\'t count my sit-ups. I only start counting when it starts hurting.', a: 'Muhammad Ali' },
-    { q: 'Bodybuilding is much like any other sport. To be successful, you must dedicate yourself 100% to your training, diet and mental approach.', a: 'Arnold Schwarzenegger' },
-    { q: 'You must expect great things of yourself before you can do them.', a: 'Michael Jordan' },
-    { q: 'If it doesn\'t challenge you, it won\'t change you.', a: 'Fred DeVito' },
-  ];
-
-  var el = document.getElementById('iron-wisdom-quote');
-  if (!el) return;
-
-  var idx = Math.floor(Math.random() * quotes.length);
-  var q = quotes[idx];
-  el.innerHTML = '&ldquo;' + q.q + '&rdquo;<div style="font-size:0.7em;color:var(--fg-dim);text-align:right;margin-top:4px;">— ' + q.a + '</div>';
-})();
 
 
 /* --- GLITCH EFFECT ---

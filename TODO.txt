@@ -1,6 +1,6 @@
 SEBASTIAN FISHER COACHING SITE — TODO LIST
 ============================================
-Last updated: 12 Mar 2026
+Last updated: 13 Mar 2026
 
 DONE
 ----
@@ -34,6 +34,9 @@ DONE
 [x] Server disk cleaned: 407GB → 244GB (deleted media-stack, torrent downloads, dead containers)
 [x] check-services.sh health-check script created (was missing, cron was erroring)
 [x] 29 stopped Docker containers removed + unused images pruned
+[x] Copyright year updated 2024 → 2025 (all 20 HTML files)
+[x] Footer "No analytics" claim fixed → "Privacy-first analytics (Umami)" (5 files)
+[x] Deduplicated STACK_PRODUCTS array in main.js (was copy-pasted in two IIFEs)
 
 IN PROGRESS
 -----------

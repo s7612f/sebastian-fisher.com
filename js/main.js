@@ -399,6 +399,22 @@ function calcTimeline() {
 })();
 
 
+/* --- STACK PRODUCTS (shared by sidebar + right gutter widgets) ---
+   ---------------------------------------------------------------- */
+var STACK_PRODUCTS = [
+  { name: 'Creatine Gummies',         tag: 'DAILY USE',      icon: 'SUPPL', url: 'https://amzn.to/4b2CQUx', desc: '5g every day. The most evidence-backed supplement on the market. No loading phase.' },
+  { name: 'Protein Powder',            tag: 'DAILY USE',      icon: 'SUPPL', url: 'https://amzn.to/4uj4CUt', desc: 'Food first — shake fills the gap when hitting 180g+ protein per day.' },
+  { name: 'Vitamin D3 + K2',           tag: 'DAILY USE',      icon: 'SUPPL', url: 'https://amzn.to/3NwkRg8', desc: 'Most UK lifters are deficient. D3 affects testosterone, mood, and immune function.' },
+  { name: 'Pre-Workout (Menace V2)',    tag: 'HEAVY DAYS',     icon: 'SUPPL', url: 'https://amzn.to/4umrzpH', desc: 'Properly dosed. CDP-Choline for focus. Used on squat and deadlift days only.' },
+  { name: 'Maca Root',                 tag: 'SITUATIONAL',    icon: 'SUPPL', url: 'https://amzn.to/4biw2kx', desc: 'Adaptogen. Used during heavy training blocks for energy and stress management.' },
+  { name: 'Turkesterone',              tag: 'SITUATIONAL',    icon: 'SUPPL', url: 'https://amzn.to/3OZcPgk', desc: 'Ecdysteroid. Worth considering once food, sleep, and training are properly sorted.' },
+  { name: 'Berberine',                 tag: 'CUTTING',        icon: 'SUPPL', url: 'https://amzn.to/4roJyJm', desc: 'Insulin sensitiser. Cycles during a cut. Particularly useful with carb-heavy meals.' },
+  { name: 'Gym Workbook',              tag: 'READS',          icon: 'BOOK',  url: 'https://amzn.to/4s5OPqs', desc: 'Paper training logs outlast every app. Track every session. Never forget a number.' },
+  { name: "Arnold's Encyclopedia",     tag: 'ESSENTIAL READ', icon: 'BOOK',  url: 'https://amzn.to/40ZkXQs', desc: 'The best single reference on bodybuilding. If you own one book, make it this.' },
+  { name: 'Apple Watch',               tag: 'GEAR',           icon: 'GEAR',  url: 'https://amzn.to/40ZvjQm', desc: 'Rest timing, HR monitoring, session tracking. Earns its place in the gym bag.' },
+];
+
+
 /* --- SIDEBAR STACK PICK ---
    Renders a randomly chosen product from the stack into any element
    with id="stack-pick-widget". New pick on every page load.
@@ -407,20 +423,7 @@ function calcTimeline() {
   var el = document.getElementById('stack-pick-widget');
   if (!el) return;
 
-  var products = [
-    { name: 'Creatine Gummies',         tag: 'DAILY USE',      icon: 'SUPPL', url: 'https://amzn.to/4b2CQUx', desc: '5g every day. The most evidence-backed supplement on the market. No loading phase.' },
-    { name: 'Protein Powder',            tag: 'DAILY USE',      icon: 'SUPPL', url: 'https://amzn.to/4uj4CUt', desc: 'Food first — shake fills the gap when hitting 180g+ protein per day.' },
-    { name: 'Vitamin D3 + K2',           tag: 'DAILY USE',      icon: 'SUPPL', url: 'https://amzn.to/3NwkRg8', desc: 'Most UK lifters are deficient. D3 affects testosterone, mood, and immune function.' },
-    { name: 'Pre-Workout (Menace V2)',    tag: 'HEAVY DAYS',     icon: 'SUPPL', url: 'https://amzn.to/4umrzpH', desc: 'Properly dosed. CDP-Choline for focus. Used on squat and deadlift days only.' },
-    { name: 'Maca Root',                 tag: 'SITUATIONAL',    icon: 'SUPPL', url: 'https://amzn.to/4biw2kx', desc: 'Adaptogen. Used during heavy training blocks for energy and stress management.' },
-    { name: 'Turkesterone',              tag: 'SITUATIONAL',    icon: 'SUPPL', url: 'https://amzn.to/3OZcPgk', desc: 'Ecdysteroid. Worth considering once food, sleep, and training are properly sorted.' },
-    { name: 'Berberine',                 tag: 'CUTTING',        icon: 'SUPPL', url: 'https://amzn.to/4roJyJm', desc: 'Insulin sensitiser. Cycles during a cut. Particularly useful with carb-heavy meals.' },
-    { name: 'Gym Workbook',              tag: 'READS',          icon: 'BOOK',  url: 'https://amzn.to/4s5OPqs', desc: 'Paper training logs outlast every app. Track every session. Never forget a number.' },
-    { name: "Arnold's Encyclopedia",     tag: 'ESSENTIAL READ', icon: 'BOOK',  url: 'https://amzn.to/40ZkXQs', desc: 'The best single reference on bodybuilding. If you own one book, make it this.' },
-    { name: 'Apple Watch',               tag: 'GEAR',           icon: 'GEAR',  url: 'https://amzn.to/40ZvjQm', desc: 'Rest timing, HR monitoring, session tracking. Earns its place in the gym bag.' },
-  ];
-
-  var pick = products[Math.floor(Math.random() * products.length)];
+  var pick = STACK_PRODUCTS[Math.floor(Math.random() * STACK_PRODUCTS.length)];
 
   el.innerHTML =
     '<div style="font-size:0.68em;letter-spacing:3px;color:var(--fg-dim);margin-bottom:5px;">&#9658; FROM THE STACK</div>' +
@@ -446,20 +449,7 @@ function calcTimeline() {
   var el = document.getElementById('right-stack-widget');
   if (!el) return;
 
-  var products = [
-    { name: 'Creatine Gummies',         tag: 'DAILY USE',      icon: 'SUPPL', url: 'https://amzn.to/4b2CQUx', desc: '5g every day. The most evidence-backed supplement on the market. No loading phase.' },
-    { name: 'Protein Powder',            tag: 'DAILY USE',      icon: 'SUPPL', url: 'https://amzn.to/4uj4CUt', desc: 'Food first — shake fills the gap when hitting 180g+ protein per day.' },
-    { name: 'Vitamin D3 + K2',           tag: 'DAILY USE',      icon: 'SUPPL', url: 'https://amzn.to/3NwkRg8', desc: 'Most UK lifters are deficient. D3 affects testosterone, mood, and immune function.' },
-    { name: 'Pre-Workout (Menace V2)',    tag: 'HEAVY DAYS',     icon: 'SUPPL', url: 'https://amzn.to/4umrzpH', desc: 'Properly dosed. CDP-Choline for focus. Used on squat and deadlift days only.' },
-    { name: 'Maca Root',                 tag: 'SITUATIONAL',    icon: 'SUPPL', url: 'https://amzn.to/4biw2kx', desc: 'Adaptogen. Used during heavy training blocks for energy and stress management.' },
-    { name: 'Turkesterone',              tag: 'SITUATIONAL',    icon: 'SUPPL', url: 'https://amzn.to/3OZcPgk', desc: 'Ecdysteroid. Worth considering once food, sleep, and training are properly sorted.' },
-    { name: 'Berberine',                 tag: 'CUTTING',        icon: 'SUPPL', url: 'https://amzn.to/4roJyJm', desc: 'Insulin sensitiser. Cycles during a cut. Particularly useful with carb-heavy meals.' },
-    { name: 'Gym Workbook',              tag: 'READS',          icon: 'BOOK',  url: 'https://amzn.to/4s5OPqs', desc: 'Paper training logs outlast every app. Track every session. Never forget a number.' },
-    { name: "Arnold's Encyclopedia",     tag: 'ESSENTIAL READ', icon: 'BOOK',  url: 'https://amzn.to/40ZkXQs', desc: 'The best single reference on bodybuilding. If you own one book, make it this.' },
-    { name: 'Apple Watch',               tag: 'GEAR',           icon: 'GEAR',  url: 'https://amzn.to/40ZvjQm', desc: 'Rest timing, HR monitoring, session tracking. Earns its place in the gym bag.' },
-  ];
-
-  var pick = products[Math.floor(Math.random() * products.length)];
+  var pick = STACK_PRODUCTS[Math.floor(Math.random() * STACK_PRODUCTS.length)];
 
   el.innerHTML =
     '<div style="font-size:0.65em;letter-spacing:3px;color:var(--fg-dim);margin-bottom:6px;">&#9658; FROM THE STACK</div>' +

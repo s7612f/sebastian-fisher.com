@@ -13,9 +13,9 @@
 
 /* --- ROOT VARS --- */
 :root {
-  --bg:      #d6cfc4;
-  --bg2:     #c8c0b4;
-  --bg3:     #bab2a6;
+  --bg:      #e0d8cc;
+  --bg2:     #d0c9bc;
+  --bg3:     #c2bab0;
   --fg:      #1a1714;
   --fg-dim:  #443e3a;
   --accent:  #8b0000;      /* blood red — single primary accent */
@@ -31,9 +31,9 @@
 /* --- DARK MODE — follows system preference by default --- */
 @media (prefers-color-scheme: dark) {
   :root:not(.force-light) {
-    --bg:      #1a1a1a;
-    --bg2:     #222222;
-    --bg3:     #2a2a2a;
+    --bg:      #1a1815;
+    --bg2:     #221f1c;
+    --bg3:     #2a2725;
     --fg:      #e0ddd8;
     --fg-dim:  #b0a99e;
     --accent:  #c42000;
@@ -47,9 +47,9 @@
 
 /* Manual override: force dark */
 body.mag-mode {
-  --bg:      #1a1a1a;
-  --bg2:     #222222;
-  --bg3:     #2a2a2a;
+  --bg:      #1a1815;
+  --bg2:     #221f1c;
+  --bg3:     #2a2725;
   --fg:      #e0ddd8;
   --fg-dim:  #b0a99e;
   --accent:  #c42000;
@@ -98,7 +98,7 @@ body::after {
 
 @media (prefers-color-scheme: dark) {
   body:not(.force-light) {
-    background-color: #1a1a1a;
+    background-color: #1a1815;
     background-image:
       linear-gradient(rgba(20,18,15,0.88), rgba(20,18,15,0.88)),
       url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
@@ -115,7 +115,7 @@ body::after {
 }
 
 body.mag-mode {
-  background-color: #1a1a1a;
+  background-color: #1a1815;
   background-image:
     linear-gradient(rgba(20,18,15,0.88), rgba(20,18,15,0.88)),
     url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
@@ -133,9 +133,9 @@ body.mag-mode::after {
 
 /* Force light mode override (when user toggles light on a dark-preference system) */
 body.force-light {
-  --bg:      #d6cfc4;
-  --bg2:     #c8c0b4;
-  --bg3:     #bab2a6;
+  --bg:      #e0d8cc;
+  --bg2:     #d0c9bc;
+  --bg3:     #c2bab0;
   --fg:      #1a1714;
   --fg-dim:  #443e3a;
   --accent:  #8b0000;
@@ -1302,6 +1302,23 @@ code {
 /* --- PRODUCT IMAGE PLACEHOLDER (stack widgets) --- */
 .product-img-frame { display:flex; align-items:center; justify-content:center; border:1px solid var(--border2); background:var(--bg3); height:72px; width:72px; font-size:0.55em; letter-spacing:2px; color:var(--fg-dim); text-transform:uppercase; float:right; margin:0 0 8px 10px; flex-shrink:0; }
 .stack-widget-inner { overflow:hidden; }
+
+/* --- MOBILE FIXES --- */
+@media (max-width: 600px) {
+  /* Tables scroll horizontally rather than overflow */
+  .retro-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+  /* Tighten wrapper padding on very narrow screens */
+  .wrapper { padding: 8px 10px; }
+  /* Offer grid always single column on phones */
+  .offer-grid { grid-template-columns: 1fr !important; }
+  /* Method grid single column on phones */
+  .method-grid { grid-template-columns: 1fr !important; }
+}
 
 /* --- REDUCED MOTION --- */
 @media (prefers-reduced-motion: reduce) {

@@ -1,6 +1,6 @@
 SEBASTIAN FISHER COACHING SITE — TODO LIST
 ============================================
-Last updated: 13 Mar 2026 (scheduled run 14:00)
+Last updated: 13 Mar 2026 (scheduled run — 2nd pass)
 
 DONE
 ----
@@ -44,47 +44,61 @@ DONE
 [x] Fixed free.html sideCalc() — textContent with \n didn't render line break, switched to innerHTML+br
 [x] Scoped image-rendering:pixelated to .pixelated class (was degrading all photos globally)
 [x] Added @media (prefers-reduced-motion) — disables animations for users who opt out
-[x] Removed dead calcMacros/calcORM/calcTimeline from main.js (wrong IDs, unused — calc page has inline versions)
+[x] Removed dead calcMacros/calcORM/calcTimeline from main.js (wrong IDs, unused)
 [x] Fixed hardcoded background:#000 on <select> elements → var(--bg2) for light/dark theme support
 [x] Added responsive font-size for .site-title on screens under 400px (was overflowing)
-[x] Built vault jukebox UI — 9-track list with YouTube embed player (#yt-placeholder + .track-list)
-[x] Removed dead jukebox/toggleArticle code from main.js (vault.html defines its own inline versions)
-[x] Fixed nutrition.html showTab() — removed stale extra `event` parameter from tab button onclick calls
+[x] Built vault jukebox UI — 9-track list with YouTube embed player
+[x] Removed dead jukebox/toggleArticle code from main.js
+[x] Fixed nutrition.html showTab() — removed stale extra `event` parameter
+[x] Dark mode readability pass: --fg #e0ddd8, --fg-dim #b0a99e, warm dark backgrounds — 13 Mar 2026
+[x] Research page: 4 new studies (BFR, fascia stretching, Vit D/T, physical activity), modals + filter counts (18 total) — 13 Mar 2026
+[x] Vault: all archive images link to archive.org or in-page toggles — 13 Mar 2026
+[x] All sidebar images link to vault.html across all pages — 13 Mar 2026
+[x] Iron Wisdom quotes removed from site — 13 Mar 2026
+[x] "No BS" / "bullshit" language removed from all pages — 13 Mar 2026
+[x] Blog (Ghost) installed: posts imported, admin configured, subdomain routing live — 13 Mar 2026
+[x] Forum (Flarum) installed: admin configured, categories created, branding set — 13 Mar 2026
+[x] OpenClaw installed on server (Node 22, v2026.3.12), AGENTS.md written, systemd service set up — 13 Mar 2026 [PAUSED — see Archive]
+[x] Light mode background lightened to ivory (#e0d8cc from #d6cfc4) — 13 Mar 2026
+[x] Dark mode backgrounds warmed (subtle brown tint: #1a1815/#221f1c/#2a2725) — 13 Mar 2026
+[x] Homepage "no X/no Y/no Z" bullets replaced with positive copy (Paul's advice) — 13 Mar 2026
+[x] Mobile CSS: retro tables scrollable, wrapper tightened, grids single-col on <600px — 13 Mar 2026
 
 IN PROGRESS
 -----------
-[ ] Forum (Flarum) — container running, needs browser setup:
-    - Run installer at http://192.168.1.77:8001
-    - Create admin account
-    - Create categories: Announcements, Training, Nutrition, Coaching & Site
-    - Install dark mode extension
-    - Apply site theme/branding over the top
+[ ] Forum (Flarum) — needs dark mode extension + custom CSS theme
+    Admin: http://192.168.1.77:8001/admin
+    Admin credentials: sebastian / [see .env]
 
-[ ] Blog (Ghost) — container running, needs browser setup:
-    - Run installer at http://192.168.1.77:8002/ghost
-    - Create admin account
-    - Import 7 articles from blog.html as posts
-    - Set accent colour to #c42000
+[ ] Blog (Ghost) — needs theme customisation to match main site aesthetic
+    Admin: http://192.168.1.77:8002/ghost
 
 [ ] Grafana iframes in cut.html (bodyweight + lift progression panels)
 
 TODO
 ----
 [ ] Replace Gumroad slugs in shop.html (YOUR_PRODUCT_SLUG_1/2/3)
-[ ] Replace Formspree IDs (liftlog.html, free.html, contact.html)
+[ ] Replace Formspree IDs (liftlog.html, free.html, contact.html) — or replace with self-hosted form
 [ ] Replace placeholder bio in about.html
 [ ] Upload actual PDFs to assets/downloads/
 [ ] Replace placeholder Hall of Fame data with real client results
 [ ] Replace placeholder credentials table in about.html
 [ ] Cal.com booking embed (deferred — can use free hosted tier)
 [ ] Add photos of Sebastian (homepage + About)
-[ ] Create 30-second homepage intro video
-[ ] Improve color scheme: consider lighter/ivory background
-[ ] Add more human elements to homepage (handwritten note, hero image, video)
-[ ] Research pages: BFR, testosterone + lifestyle, fascia stretching
-[ ] Self-hosted form capture (replace Formspree)
-[ ] Newsletter / notification email system
+[ ] Create 30-second homepage intro video (hero, talking head, point to tools)
+[ ] Add more human elements to homepage (handwritten note style, hero image, video)
+[ ] Fix console errors on key pages (desktop + mobile check)
+[ ] Navigation: sidebar web ring links — add real URLs or remove
+[ ] Mobile pass: WHO IS THIS section + vault teaser section — verify 2-col grids OK at 375px
+[ ] Ghost theme customisation (match main site aesthetic)
+[ ] Flarum dark mode extension + custom CSS
+[ ] Self-hosted form capture (replace Formspree) — honeypot + rate limiting + submission log
+[ ] Newsletter system (listmonk self-hosted)
+[ ] Secured admin area (manage.sebastian-fisher.com)
+[ ] Client progress tracker (wger)
+[ ] EasyAppointments booking (book.sebastian-fisher.com)
 [ ] View counter: server-side (replace localStorage hack)
+[ ] OpenClaw: re-activate when ready (credentials stored in config, Telegram bot @Sebsitebot ready)
 
 ARCHITECTURE DECISIONS PENDING
 ------------------------------

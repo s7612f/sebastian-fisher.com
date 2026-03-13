@@ -241,7 +241,7 @@ var STACK_PRODUCTS = [
     '</a>' +
     '<div style="display:inline-block;font-size:0.65em;letter-spacing:2px;padding:1px 6px;border:1px solid var(--accent);color:var(--accent);margin-bottom:7px;">' + pick.tag + '</div>' +
     '<p style="font-size:0.78em;color:var(--fg-dim);line-height:1.5;margin-bottom:9px;">' + pick.desc + '</p>' +
-    '<a href="' + pick.url + '" target="_blank" rel="nofollow noopener" style="display:inline-block;font-size:0.72em;letter-spacing:2px;color:#fff;background:var(--accent);text-decoration:none;padding:4px 12px;border:1px solid var(--accent);">GET IT &rarr;</a>' +
+    '<a href="' + pick.url + '" target="_blank" rel="nofollow noopener" style="display:inline-block;font-size:0.72em;letter-spacing:2px;color:#fff;background:var(--gold);text-decoration:none;padding:4px 12px;border:1px solid var(--gold);">GET IT &rarr;</a>' +
     '&nbsp;&nbsp;<a href="stack.html" style="font-size:0.72em;color:var(--fg-dim);">full stack &raquo;</a>' +
     '</div></div>';
 })();
@@ -265,7 +265,7 @@ var STACK_PRODUCTS = [
     '</a>' +
     '<div style="display:inline-block;font-size:0.62em;letter-spacing:2px;padding:1px 5px;border:1px solid var(--accent);color:var(--accent);margin-bottom:6px;">' + pick.tag + '</div>' +
     '<p style="font-size:0.75em;color:var(--fg-dim);line-height:1.5;margin-bottom:8px;">' + pick.desc + '</p>' +
-    '<a href="' + pick.url + '" target="_blank" rel="nofollow noopener" style="display:inline-block;font-size:0.7em;letter-spacing:2px;color:#fff;background:var(--accent);text-decoration:none;padding:4px 10px;border:1px solid var(--accent);">GET IT &rarr;</a>' +
+    '<a href="' + pick.url + '" target="_blank" rel="nofollow noopener" style="display:inline-block;font-size:0.7em;letter-spacing:2px;color:#fff;background:var(--gold);text-decoration:none;padding:4px 10px;border:1px solid var(--gold);">GET IT &rarr;</a>' +
     '&nbsp;&nbsp;<a href="stack.html" style="font-size:0.7em;color:var(--fg-dim);">full stack &raquo;</a>';
 })();
 

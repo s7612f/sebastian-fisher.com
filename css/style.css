@@ -31,33 +31,33 @@
 /* --- DARK MODE — follows system preference by default --- */
 @media (prefers-color-scheme: dark) {
   :root:not(.force-light) {
-    --bg:      #141414;
-    --bg2:     #1c1c1c;
-    --bg3:     #242424;
-    --fg:      #d0d0d0;
-    --fg-dim:  #9a9a9a;
+    --bg:      #1a1a1a;
+    --bg2:     #222222;
+    --bg3:     #2a2a2a;
+    --fg:      #e0ddd8;
+    --fg-dim:  #b0a99e;
     --accent:  #c42000;
     --accent2: #8a1800;
-    --gold:    #a07800;
-    --border:  #2e2e2e;
-    --border2: #404040;
-    --link:    #b0b0b0;
+    --gold:    #c49a30;
+    --border:  #3a3a3a;
+    --border2: #4a4a4a;
+    --link:    #c8c0b4;
   }
 }
 
 /* Manual override: force dark */
 body.mag-mode {
-  --bg:      #141414;
-  --bg2:     #1c1c1c;
-  --bg3:     #242424;
-  --fg:      #d0d0d0;
-  --fg-dim:  #9a9a9a;
+  --bg:      #1a1a1a;
+  --bg2:     #222222;
+  --bg3:     #2a2a2a;
+  --fg:      #e0ddd8;
+  --fg-dim:  #b0a99e;
   --accent:  #c42000;
   --accent2: #8a1800;
-  --gold:    #a07800;
-  --border:  #2e2e2e;
-  --border2: #404040;
-  --link:    #b0b0b0;
+  --gold:    #c49a30;
+  --border:  #3a3a3a;
+  --border2: #4a4a4a;
+  --link:    #c8c0b4;
 }
 
 /* --- BASE --- */
@@ -98,9 +98,9 @@ body::after {
 
 @media (prefers-color-scheme: dark) {
   body:not(.force-light) {
-    background-color: #111;
+    background-color: #1a1a1a;
     background-image:
-      linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+      linear-gradient(rgba(20,18,15,0.88), rgba(20,18,15,0.88)),
       url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
   }
   body:not(.force-light)::after {
@@ -115,9 +115,9 @@ body::after {
 }
 
 body.mag-mode {
-  background-color: #111;
+  background-color: #1a1a1a;
   background-image:
-    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+    linear-gradient(rgba(20,18,15,0.88), rgba(20,18,15,0.88)),
     url('../assets/img/muscle-fitness-1993-ferrigno.jpeg');
 }
 
@@ -1175,8 +1175,8 @@ code {
 }
 .offer-badge-new { color: var(--accent); border-color: var(--accent); border-style: dashed; }
 .offer-card .offer-desc {
-  font-size: 0.82em;
-  color: var(--fg-dim);
+  font-size: 0.85em;
+  color: var(--fg);
   margin: 8px 0 6px;
   line-height: 1.5;
   flex: 1;

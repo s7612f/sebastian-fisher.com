@@ -45,7 +45,7 @@
 
   <div class="marquee-wrap">
     <span class="marquee-inner">
-      &#9658;&nbsp; 14 STUDIES INDEXED &nbsp;&#9658;&nbsp; TRAINING &middot; NUTRITION &middot; RECOVERY &nbsp;&#9658;&nbsp; ALL PUBMED-LINKED &nbsp;&#9658;&nbsp; ABSTRACTS ALWAYS FREE &nbsp;&#9658;&nbsp; COACHING SPOTS: 2 REMAINING &nbsp;&#9658;&nbsp; BLOG UPDATED MARCH 2026 &nbsp;&#9658;&nbsp;
+      &#9658;&nbsp; 18 STUDIES INDEXED &nbsp;&#9658;&nbsp; TRAINING &middot; NUTRITION &middot; RECOVERY &nbsp;&#9658;&nbsp; ALL PUBMED-LINKED &nbsp;&#9658;&nbsp; ABSTRACTS ALWAYS FREE &nbsp;&#9658;&nbsp; COACHING SPOTS: 2 REMAINING &nbsp;&#9658;&nbsp; BLOG UPDATED MARCH 2026 &nbsp;&#9658;&nbsp;
     </span>
   </div>
 
@@ -83,10 +83,10 @@
         <!-- LEFT FILTER RAIL -->
         <div class="research-filter-col">
           <div style="font-size:0.68em; letter-spacing:2px; color:var(--fg-dim); margin-bottom:10px;">FILTER</div>
-          <button data-cat="all" class="active" onclick="filterResearch('all')">ALL (14)</button>
-          <button data-cat="training" onclick="filterResearch('training')">TRAINING (5)</button>
+          <button data-cat="all" class="active" onclick="filterResearch('all')">ALL (18)</button>
+          <button data-cat="training" onclick="filterResearch('training')">TRAINING (7)</button>
           <button data-cat="nutrition" onclick="filterResearch('nutrition')">NUTRITION (4)</button>
-          <button data-cat="recovery" onclick="filterResearch('recovery')">RECOVERY (5)</button>
+          <button data-cat="recovery" onclick="filterResearch('recovery')">RECOVERY (7)</button>
         </div>
 
         <!-- STUDY CARDS -->
@@ -208,6 +208,40 @@
             <div class="research-card-meta">Beaudart C et al &nbsp;&middot;&nbsp; J Clin Endocrinol Metab &nbsp;&middot;&nbsp; 2014 &nbsp;&middot;&nbsp; PMID 24932806</div>
             <div class="research-card-abstract">30 studies on vitamin D and muscle outcomes. Deficiency — common in the UK — reduces muscle strength. Supplementation improved outcomes in deficient individuals. 1,000&ndash;4,000 IU/day is broadly justified for UK lifters.</div>
             <button class="research-read-btn" onclick="openModal('study14')">READ FULL STUDY &rarr;</button>
+          </div>
+
+          <!-- ====== NEW: BFR, FASCIA, LIFESTYLE ====== -->
+
+          <div class="research-card" data-cat="training">
+            <div><span class="research-cat-badge">TRAINING</span><span class="research-cat-badge">REVIEW</span></div>
+            <div class="research-card-title">Blood Flow Restriction (BFR) Training</div>
+            <div class="research-card-meta">Loenneke JP et al &nbsp;&middot;&nbsp; Acta Physiol Hung &nbsp;&middot;&nbsp; 2012 &nbsp;&middot;&nbsp; PMID 22849837</div>
+            <div class="research-card-abstract">BFR training at 20&ndash;30% 1RM produces hypertrophy comparable to higher loads in some studies. Proposed mechanism: metabolic stress triggers growth factor release. Evidence is promising but practical application still debated. <em>Research interest &mdash; not a standard coaching method.</em></div>
+            <button class="research-read-btn" onclick="openModal('study15')">READ FULL STUDY &rarr;</button>
+          </div>
+
+          <div class="research-card" data-cat="training">
+            <div><span class="research-cat-badge">TRAINING</span><span class="research-cat-badge">ANECDOTAL + THEORY</span></div>
+            <div class="research-card-title">Fascia Stretching While Pumped</div>
+            <div class="research-card-meta">Schleip R et al &nbsp;&middot;&nbsp; J Bodywork Mov Ther &nbsp;&middot;&nbsp; 2012 &nbsp;&middot;&nbsp; PMID 22703740 &nbsp;&middot;&nbsp; + anecdotal</div>
+            <div class="research-card-abstract">The hypothesis: stretching while a muscle is engorged with blood expands the fascial sheath, creating room for growth. Formal evidence is thin. Heavy anecdotal support from golden era bodybuilders (Zane, Haney). Fascia research is still early-stage. <em>Research interest &mdash; worth studying, not a proven mechanism.</em></div>
+            <button class="research-read-btn" onclick="openModal('study16')">READ FULL STUDY &rarr;</button>
+          </div>
+
+          <div class="research-card" data-cat="recovery">
+            <div><span class="research-cat-badge">RECOVERY</span><span class="research-cat-badge">RCT</span></div>
+            <div class="research-card-title">Sun Exposure, Vitamin D, and Testosterone</div>
+            <div class="research-card-meta">Pilz S et al &nbsp;&middot;&nbsp; Horm Metab Res &nbsp;&middot;&nbsp; 2011 &nbsp;&middot;&nbsp; PMID 21154195</div>
+            <div class="research-card-abstract">Men supplementing vitamin D (3,332 IU/day) for 12 months saw significant increases in total testosterone, bioactive testosterone, and free testosterone vs placebo. Morning sunlight exposure supports circadian rhythm, cortisol regulation, and vitamin D synthesis.</div>
+            <button class="research-read-btn" onclick="openModal('study17')">READ FULL STUDY &rarr;</button>
+          </div>
+
+          <div class="research-card" data-cat="recovery">
+            <div><span class="research-cat-badge">RECOVERY</span><span class="research-cat-badge">REVIEW</span></div>
+            <div class="research-card-title">Physical Activity, Movement, and Hormonal Health</div>
+            <div class="research-card-meta">Kumagai H et al &nbsp;&middot;&nbsp; Eur J Appl Physiol &nbsp;&middot;&nbsp; 2016 &nbsp;&middot;&nbsp; PMID 26914484</div>
+            <div class="research-card-abstract">Regular physical activity (not just gym training) is consistently associated with higher testosterone and lower cortisol. Walking, outdoor movement, and general non-exercise activity thermogenesis (NEAT) contribute to hormonal health independently of structured training.</div>
+            <button class="research-read-btn" onclick="openModal('study18')">READ FULL STUDY &rarr;</button>
           </div>
 
         </div><!-- /#research-list -->
@@ -399,6 +433,58 @@
       <p style="font-size:0.88em; margin-bottom:12px;">Supplementation at adequate doses improved strength outcomes in deficient individuals. Given the UK population is broadly deficient for six or more months of the year, 1,000&ndash;4,000 IU/day is genuinely justified without blood testing first.</p>
       <p style="font-size:0.88em; margin-bottom:16px; color:var(--fg-dim);">This is one of a small number of supplements where blanket recommendation makes sense for a UK population. Cheap, safe, and directly relevant to both strength and general health outcomes.</p>
       <a href="https://pubmed.ncbi.nlm.nih.gov/24932806/" target="_blank" rel="noopener" class="btn btn-primary">VIEW ON PUBMED &rarr;</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-study15">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">[ CLOSE ]</button>
+      <div style="font-size:0.68em; letter-spacing:2px; color:var(--fg-dim); margin-bottom:8px;">TRAINING &middot; REVIEW</div>
+      <h2>Blood Flow Restriction (BFR) Training</h2>
+      <div class="research-card-meta" style="margin-bottom:14px;">Loenneke JP et al &nbsp;&middot;&nbsp; Acta Physiol Hung &nbsp;&middot;&nbsp; 2012 &nbsp;&middot;&nbsp; PMID 22849837</div>
+      <p style="font-size:0.88em; margin-bottom:12px;">Loenneke et al. reviewed the evidence for blood flow restriction training &mdash; applying a cuff or wrap to partially restrict venous outflow during exercise at loads as low as 20&ndash;30% of 1RM. Some studies show hypertrophy comparable to traditional higher-load training.</p>
+      <p style="font-size:0.88em; margin-bottom:12px;">The proposed mechanism is metabolic stress: the restricted blood flow causes lactate and metabolite accumulation, which may trigger growth factor release and cell swelling. The evidence base is growing but practical application &mdash; cuff placement, pressure, duration &mdash; is still being standardised.</p>
+      <p style="font-size:0.88em; margin-bottom:16px; color:var(--fg-dim);">Interesting as a research area, particularly for injury rehab (low load on damaged joints). Not a standard coaching method here &mdash; included as an area worth watching rather than a proven protocol.</p>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/22849837/" target="_blank" rel="noopener" class="btn btn-primary">VIEW ON PUBMED &rarr;</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-study16">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">[ CLOSE ]</button>
+      <div style="font-size:0.68em; letter-spacing:2px; color:var(--fg-dim); margin-bottom:8px;">TRAINING &middot; ANECDOTAL + THEORY</div>
+      <h2>Fascia Stretching While Pumped</h2>
+      <div class="research-card-meta" style="margin-bottom:14px;">Schleip R et al &nbsp;&middot;&nbsp; J Bodywork Mov Ther &nbsp;&middot;&nbsp; 2012 &nbsp;&middot;&nbsp; PMID 22703740 &nbsp;&middot;&nbsp; + anecdotal</div>
+      <p style="font-size:0.88em; margin-bottom:12px;">Schleip et al. explored fascial plasticity &mdash; the idea that fascia (the connective tissue sheath surrounding muscle) responds to mechanical load and can remodel over time. Fascia contains contractile cells (myofibroblasts) and behaves differently to passive connective tissue.</p>
+      <p style="font-size:0.88em; margin-bottom:12px;">The bodybuilding hypothesis: stretching a fully pumped muscle maximises the pressure inside the fascial sheath, potentially promoting expansion and creating more room for long-term growth. This was popularised by Frank Zane and Lee Haney, who performed extended stretches between sets.</p>
+      <p style="font-size:0.88em; margin-bottom:16px; color:var(--fg-dim);">Formal evidence is thin. The mechanism is plausible, and the downside of stretching between sets is essentially zero. Filed as &ldquo;worth doing, not proven&rdquo; rather than a guaranteed hypertrophy tool.</p>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/22703740/" target="_blank" rel="noopener" class="btn btn-primary">VIEW ON PUBMED &rarr;</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-study17">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">[ CLOSE ]</button>
+      <div style="font-size:0.68em; letter-spacing:2px; color:var(--fg-dim); margin-bottom:8px;">RECOVERY &middot; RCT</div>
+      <h2>Sun Exposure, Vitamin D, and Testosterone</h2>
+      <div class="research-card-meta" style="margin-bottom:14px;">Pilz S et al &nbsp;&middot;&nbsp; Horm Metab Res &nbsp;&middot;&nbsp; 2011 &nbsp;&middot;&nbsp; PMID 21154195</div>
+      <p style="font-size:0.88em; margin-bottom:12px;">Pilz et al. conducted a randomised controlled trial in which men supplemented 3,332 IU of vitamin D per day for 12 months. The vitamin D group saw significant increases in total testosterone, bioactive testosterone, and free testosterone compared to placebo.</p>
+      <p style="font-size:0.88em; margin-bottom:12px;">Beyond supplementation, morning sunlight exposure supports vitamin D synthesis in the skin, entrains the circadian rhythm, and influences cortisol patterns throughout the day. Getting outside in the morning is a low-cost intervention with compounding hormonal effects.</p>
+      <p style="font-size:0.88em; margin-bottom:16px; color:var(--fg-dim);">This sits alongside the physical activity data: lifestyle behaviour outside the gym matters. Morning sunlight and daily movement are not wellness fluff &mdash; they have measurable effects on the hormonal environment in which training takes place.</p>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/21154195/" target="_blank" rel="noopener" class="btn btn-primary">VIEW ON PUBMED &rarr;</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-study18">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">[ CLOSE ]</button>
+      <div style="font-size:0.68em; letter-spacing:2px; color:var(--fg-dim); margin-bottom:8px;">RECOVERY &middot; REVIEW</div>
+      <h2>Physical Activity, Movement, and Hormonal Health</h2>
+      <div class="research-card-meta" style="margin-bottom:14px;">Kumagai H et al &nbsp;&middot;&nbsp; Eur J Appl Physiol &nbsp;&middot;&nbsp; 2016 &nbsp;&middot;&nbsp; PMID 26914484</div>
+      <p style="font-size:0.88em; margin-bottom:12px;">Kumagai et al. examined the relationship between habitual physical activity and testosterone in healthy men. Regular physical activity &mdash; defined broadly, not just structured gym sessions &mdash; was consistently associated with higher testosterone and lower resting cortisol.</p>
+      <p style="font-size:0.88em; margin-bottom:12px;">Walking, outdoor activity, and non-exercise activity thermogenesis (NEAT) contributed independently of structured training frequency. Sedentary periods between gym sessions were associated with worse hormonal profiles than active recovery days.</p>
+      <p style="font-size:0.88em; margin-bottom:16px; color:var(--fg-dim);">The practical message: the 23 hours per day outside the gym matter. Getting up, walking, leaving the house, staying physically active in an unstructured way all feed into the hormonal environment that makes training effective.</p>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/26914484/" target="_blank" rel="noopener" class="btn btn-primary">VIEW ON PUBMED &rarr;</a>
     </div>
   </div>
 

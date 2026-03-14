@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cutting Phase 12wk — introduction | Sebastian Fisher Coaching</title>
+<style>
+/* ===== PRINT / PAGE ===== */
+@page { size: A4; margin: 18mm 16mm; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 9.5pt;
+  line-height: 1.45;
+  color: #1a1410;
+  background: #fff;
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 18mm 16mm;
+}
+
+/* ===== COVER ===== */
+.cover {
+  text-align: center;
+  padding: 80px 0 60px;
+}
+.cover .brand {
+  font-size: 10pt;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #6b5c3e;
+  margin-bottom: 18px;
+}
+.cover h1 {
+  font-size: 32pt;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1a1410;
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+.cover .subtitle {
+  font-size: 13pt;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #a07800;
+  margin-bottom: 10px;
+}
+.cover .tagline {
+  font-size: 9pt;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+/* ===== PAGE BREAKS ===== */
+.page-break { page-break-before: always; margin-top: 0; }
+
+/* ===== SECTION HEADERS ===== */
+h2 {
+  font-size: 14pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1a1410;
+  margin: 36px 0 10px;
+}
+h2::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #c42000;
+  margin-top: 6px;
+}
+
+/* ===== PHASE HEADERS ===== */
+.phase-header {
+  font-size: 16pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #c42000;
+  margin: 36px 0 10px;
+}
+.phase-header::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #c42000;
+  margin-top: 6px;
+}
+
+/* ===== DAY HEADERS ===== */
+.day-header {
+  font-size: 12pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #3a3020;
+  margin: 28px 0 10px;
+}
+
+/* ===== DELOAD HEADERS ===== */
+.deload-header {
+  font-size: 14pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b5c3e;
+  margin: 36px 0 10px;
+}
+.deload-header::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #6b5c3e;
+  margin-top: 6px;
+}
+
+/* ===== TABLES ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 20px;
+  font-size: 9pt;
+}
+th {
+  background: #3a3020;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 7.5pt;
+  padding: 7px 10px;
+  text-align: left;
+}
+td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #e0dbd2;
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: #faf8f4; }
+
+.exercise-name { font-weight: 700; }
+.muscle-target { font-size: 7.5pt; color: #888; font-style: italic; }
+.bold { font-weight: 700; }
+
+/* ===== NOTE / WARNING / INFO BOXES ===== */
+.note-box {
+  background: #f0ebe0;
+  border-left: 4px solid #6b5c3e;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 9pt;
+}
+.note-box h4 {
+  font-size: 8.5pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #3a3020;
+  margin-bottom: 8px;
+}
+.note-box ul { margin-left: 16px; }
+.note-box li { margin-bottom: 4px; }
+
+.warning-box {
+  background: #fdf2f0;
+  border-left: 4px solid #c42000;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 9pt;
+}
+.warning-box h4 {
+  font-size: 8.5pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #c42000;
+  margin-bottom: 8px;
+}
+.warning-box ul { margin-left: 16px; }
+.warning-box li { margin-bottom: 4px; }
+
+.info-box {
+  background: #f0f4f8;
+  border-left: 4px solid #3a6ea0;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 9pt;
+}
+.info-box h4 {
+  font-size: 8.5pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #3a6ea0;
+  margin-bottom: 8px;
+}
+.info-box ul { margin-left: 16px; }
+.info-box li { margin-bottom: 4px; }
+
+/* ===== TOC ===== */
+.toc { margin: 20px 0; }
+.toc ol { margin-left: 20px; }
+.toc li {
+  margin-bottom: 6px;
+  font-size: 9.5pt;
+}
+.toc a { color: #1a1410; text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+
+/* ===== PARAGRAPHS ===== */
+p { margin: 8px 0; }
+strong { font-weight: 700; }
+
+/* ===== LOG CELLS ===== */
+.log-cell {
+  color: #aaa;
+  font-style: italic;
+  font-size: 8pt;
+}
+
+/* ===== FOOTER ===== */
+.doc-footer {
+  border-top: 2px solid #c42000;
+  text-align: center;
+  padding-top: 16px;
+  margin-top: 40px;
+}
+.doc-footer .brand {
+  font-size: 10pt;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #1a1410;
+}
+.doc-footer .contact {
+  font-size: 8.5pt;
+  color: #555;
+  margin-top: 4px;
+}
+.doc-footer .legal {
+  font-size: 7.5pt;
+  color: #a07800;
+  margin-top: 8px;
+}
+
+/* ===== CHECKIN TABLE ===== */
+.checkin-table td:first-child {
+  font-weight: 700;
+  width: 35%;
+}
+
+/* ===== PRINT TWEAKS ===== */
+@media print {
+  body { padding: 0; }
+  .page-break { page-break-before: always; }
+}
+</style>
+</head>
+<body>
+<h2>Programme Overview</h2>
+
+<p>This is a 12-week structured fat-loss programme built for intermediate-to-advanced lifters who want to strip body fat whilst preserving as much muscle and strength as possible. Six training days per week using an Arnold split, with strategic deload weeks and a final taper to transition into a reverse diet.</p>
+
+<p><strong>Training split:</strong> Arnold Split &mdash; Chest &amp; Back / Shoulders &amp; Arms / Legs / Chest &amp; Back / Shoulders &amp; Arms / Legs (6 days/week)</p>
+<p><strong>Session length:</strong> 50&ndash;65 minutes</p>
+<p><strong>Equipment needed:</strong> Barbell, dumbbells, cables, pull-up bar, leg press</p>
+<p><strong>Rest days:</strong> Sunday (mandatory)</p>
+<p><strong>Rep scheme:</strong> Pyramid &mdash; 5 sets of 15, 12, 8, 8, 6 (ascending load, descending reps)</p>
+
+<div class="note-box">
+  <h4>How to Use This Programme</h4>
+  <ul>
+    <li>Track every session in a logbook &mdash; write sets, reps, weight used, and RPE.</li>
+    <li>Pyramid loading: increase weight each set as reps decrease. The set of 15 is a warm-up/feeder set; the sets of 6&ndash;8 are your working weight.</li>
+    <li>RPE targets are given per block. RPE 8 = 2 reps left in the tank. RPE 9 = 1 rep left.</li>
+    <li>Deload weeks (4 &amp; 8): compounds only, heavy low-rep (3&ndash;5 reps), reduce volume by 50%.</li>
+    <li>Nutrition: aim for a 400&ndash;600 kcal deficit. Minimum 2.2g protein per kg bodyweight.</li>
+    <li>Cardio: 2&ndash;3 HIIT sessions per week, 15&ndash;20 minutes, on non-leg days or post-session.</li>
+    <li>If strength drops more than 10% on any compound, add a refeed day or reduce deficit.</li>
+  </ul>
+</div>
+
+<div class="warning-box">
+  <h4>Signs You Need to Pull Back</h4>
+  <ul>
+    <li>Strength declining week-on-week on compounds (not just a bad day).</li>
+    <li>Persistent joint pain that worsens during sessions.</li>
+    <li>Sleep quality tanking &mdash; waking unrested, insomnia.</li>
+    <li>Mood and motivation consistently low for 5+ consecutive days.</li>
+    <li>Resting heart rate elevated 8&ndash;10 bpm above baseline.</li>
+  </ul>
+  <p><strong>Action:</strong> Take an extra rest day, add a refeed, or reduce deficit by 200 kcal. Do not push through &mdash; you will lose muscle.</p>
+</div>
+
+<div class="page-break"></div>
+<h2>Table of Contents</h2>
+<div class="toc">
+  <ol>
+    <li><a href="#overview">Programme Overview</a></li>
+    <li><a href="#block1">Block 1 &mdash; Foundation (Weeks 1&ndash;3)</a></li>
+    <li><a href="#deload1">Deload Week 4</a></li>
+    <li><a href="#block2">Block 2 &mdash; Volume Maintenance (Weeks 5&ndash;7)</a></li>
+    <li><a href="#deload2">Deload Week 8</a></li>
+    <li><a href="#block3">Block 3 &mdash; Intensity (Weeks 9&ndash;11)</a></li>
+    <li><a href="#taper">Week 12 &mdash; Taper &amp; Reverse Diet Prep</a></li>
+    <li><a href="#cardio">Cardio &amp; Conditioning Protocol</a></li>
+    <li><a href="#nutrition">Nutrition Guidelines</a></li>
+    <li><a href="#refeed">Refeed Day Strategy</a></li>
+    <li><a href="#exercise-guide">Exercise Guide &amp; Substitutions</a></li>
+    <li><a href="#tracking">Training Log Template</a></li>
+    <li><a href="#checkin">Weekly Check-In Template</a></li>
+  </ol>
+</div>
+
+<div class="doc-footer">
+  <div class="brand">Sebastian Fisher Coaching</div>
+  <div class="contact">contact@sebastian-fisher.com &nbsp;&middot;&nbsp; sebastian-fisher.com</div>
+  <div class="legal">&copy; 2026 Sebastian Fisher Coaching. All rights reserved. Personal use only.</div>
+</div>
+
+</body>
+</html>

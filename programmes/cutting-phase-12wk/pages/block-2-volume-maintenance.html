@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cutting Phase 12wk — Block 2 — Volume Maintenance | Sebastian Fisher Coaching</title>
+<style>
+/* ===== PRINT / PAGE ===== */
+@page { size: A4; margin: 18mm 16mm; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 9.5pt;
+  line-height: 1.45;
+  color: #1a1410;
+  background: #fff;
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 18mm 16mm;
+}
+
+/* ===== COVER ===== */
+.cover {
+  text-align: center;
+  padding: 80px 0 60px;
+}
+.cover .brand {
+  font-size: 10pt;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #6b5c3e;
+  margin-bottom: 18px;
+}
+.cover h1 {
+  font-size: 32pt;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1a1410;
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+.cover .subtitle {
+  font-size: 13pt;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #a07800;
+  margin-bottom: 10px;
+}
+.cover .tagline {
+  font-size: 9pt;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+/* ===== PAGE BREAKS ===== */
+.page-break { page-break-before: always; margin-top: 0; }
+
+/* ===== SECTION HEADERS ===== */
+h2 {
+  font-size: 14pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1a1410;
+  margin: 36px 0 10px;
+}
+h2::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #c42000;
+  margin-top: 6px;
+}
+
+/* ===== PHASE HEADERS ===== */
+.phase-header {
+  font-size: 16pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #c42000;
+  margin: 36px 0 10px;
+}
+.phase-header::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #c42000;
+  margin-top: 6px;
+}
+
+/* ===== DAY HEADERS ===== */
+.day-header {
+  font-size: 12pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #3a3020;
+  margin: 28px 0 10px;
+}
+
+/* ===== DELOAD HEADERS ===== */
+.deload-header {
+  font-size: 14pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b5c3e;
+  margin: 36px 0 10px;
+}
+.deload-header::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #6b5c3e;
+  margin-top: 6px;
+}
+
+/* ===== TABLES ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 20px;
+  font-size: 9pt;
+}
+th {
+  background: #3a3020;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 7.5pt;
+  padding: 7px 10px;
+  text-align: left;
+}
+td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #e0dbd2;
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: #faf8f4; }
+
+.exercise-name { font-weight: 700; }
+.muscle-target { font-size: 7.5pt; color: #888; font-style: italic; }
+.bold { font-weight: 700; }
+
+/* ===== NOTE / WARNING / INFO BOXES ===== */
+.note-box {
+  background: #f0ebe0;
+  border-left: 4px solid #6b5c3e;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 9pt;
+}
+.note-box h4 {
+  font-size: 8.5pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #3a3020;
+  margin-bottom: 8px;
+}
+.note-box ul { margin-left: 16px; }
+.note-box li { margin-bottom: 4px; }
+
+.warning-box {
+  background: #fdf2f0;
+  border-left: 4px solid #c42000;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 9pt;
+}
+.warning-box h4 {
+  font-size: 8.5pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #c42000;
+  margin-bottom: 8px;
+}
+.warning-box ul { margin-left: 16px; }
+.warning-box li { margin-bottom: 4px; }
+
+.info-box {
+  background: #f0f4f8;
+  border-left: 4px solid #3a6ea0;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 9pt;
+}
+.info-box h4 {
+  font-size: 8.5pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #3a6ea0;
+  margin-bottom: 8px;
+}
+.info-box ul { margin-left: 16px; }
+.info-box li { margin-bottom: 4px; }
+
+/* ===== TOC ===== */
+.toc { margin: 20px 0; }
+.toc ol { margin-left: 20px; }
+.toc li {
+  margin-bottom: 6px;
+  font-size: 9.5pt;
+}
+.toc a { color: #1a1410; text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+
+/* ===== PARAGRAPHS ===== */
+p { margin: 8px 0; }
+strong { font-weight: 700; }
+
+/* ===== LOG CELLS ===== */
+.log-cell {
+  color: #aaa;
+  font-style: italic;
+  font-size: 8pt;
+}
+
+/* ===== FOOTER ===== */
+.doc-footer {
+  border-top: 2px solid #c42000;
+  text-align: center;
+  padding-top: 16px;
+  margin-top: 40px;
+}
+.doc-footer .brand {
+  font-size: 10pt;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #1a1410;
+}
+.doc-footer .contact {
+  font-size: 8.5pt;
+  color: #555;
+  margin-top: 4px;
+}
+.doc-footer .legal {
+  font-size: 7.5pt;
+  color: #a07800;
+  margin-top: 8px;
+}
+
+/* ===== CHECKIN TABLE ===== */
+.checkin-table td:first-child {
+  font-weight: 700;
+  width: 35%;
+}
+
+/* ===== PRINT TWEAKS ===== */
+@media print {
+  body { padding: 0; }
+  .page-break { page-break-before: always; }
+}
+</style>
+</head>
+<body>
+<div class="page-break" id="block2"></div>
+<div class="phase-header">Block 2: Weeks 5&ndash;7 &mdash; Volume Maintenance</div>
+
+<p>Maintain training volume to preserve muscle mass whilst the deficit deepens. Slightly higher intensity on compounds (RPE 8&ndash;9). Same exercises, but we begin tracking weekly set changes to auto-regulate based on recovery. If you cannot hit the prescribed sets at the given RPE, drop one set.</p>
+
+<p><strong>Target RPE:</strong> 8&ndash;9 on compounds, 8 on accessories.<br>
+<strong>Deficit:</strong> 500&ndash;600 kcal below maintenance.<br>
+<strong>Cardio:</strong> 2&ndash;3 &times; HIIT sessions, 15&ndash;20 minutes.<br>
+<strong>Refeed:</strong> 1 day per week &mdash; bump carbs to maintenance (see Refeed section).</p>
+
+<div class="info-box">
+  <h4>Volume Auto-Regulation</h4>
+  <ul>
+    <li>The tables below show target sets for Weeks 5, 6, and 7.</li>
+    <li>If RPE consistently exceeds target by 0.5+ across a session, drop 1 set from each isolation exercise the following week.</li>
+    <li>If you complete all prescribed sets at or below target RPE, maintain volume.</li>
+    <li>Compound sets are fixed &mdash; do not drop compound volume. Drop isolation first.</li>
+  </ul>
+</div>
+
+<!-- DAY 1 — CHEST & BACK -->
+<div class="day-header">Day 1 / Day 4 &mdash; Chest &amp; Back</div>
+<table>
+  <tr><th>Exercise</th><th>Sets W5</th><th>Sets W6</th><th>Sets W7</th><th>Reps</th><th>RPE</th><th>Notes</th></tr>
+  <tr>
+    <td><span class="exercise-name">Incline Barbell Press</span><br><span class="muscle-target">Upper chest</span></td>
+    <td>5</td><td>5</td><td>5</td>
+    <td>15, 12, 8, 8, 6</td>
+    <td>8&ndash;9</td>
+    <td>Pyramid. Push the top sets hard.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Weighted Pull-Up</span><br><span class="muscle-target">Lats, upper back</span></td>
+    <td>5</td><td>5</td><td>5</td>
+    <td>15, 12, 8, 8, 6</td>
+    <td>8&ndash;9</td>
+    <td>Add 1.25&ndash;2.5kg from Block 1 if possible.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Flat DB Press / Barbell Bench</span><br><span class="muscle-target">Mid chest</span></td>
+    <td>5</td><td>5</td><td>4</td>
+    <td>15, 12, 8, 8, (6)</td>
+    <td>8&ndash;9</td>
+    <td>W7: drop to 4 sets if recovery is lagging.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Barbell / T-Bar Row</span><br><span class="muscle-target">Mid back</span></td>
+    <td>5</td><td>5</td><td>4</td>
+    <td>15, 12, 8, 8, (6)</td>
+    <td>8&ndash;9</td>
+    <td>Match chest volume. Back = chest.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Cable Crossover / Pec Deck</span><br><span class="muscle-target">Chest isolation</span></td>
+    <td>3</td><td>3</td><td>2</td>
+    <td>15, 12, (10)</td>
+    <td>8</td>
+    <td>First to cut if fatigued.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Seated Cable Row / Straight-Arm PD</span><br><span class="muscle-target">Back isolation</span></td>
+    <td>3</td><td>3</td><td>2</td>
+    <td>15, 12, (10)</td>
+    <td>8</td>
+    <td>First to cut if fatigued.</td>
+  </tr>
+</table>
+
+<!-- DAY 2 — SHOULDERS & ARMS -->
+<div class="day-header">Day 2 / Day 5 &mdash; Shoulders &amp; Arms</div>
+<table>
+  <tr><th>Exercise</th><th>Sets W5</th><th>Sets W6</th><th>Sets W7</th><th>Reps</th><th>RPE</th><th>Notes</th></tr>
+  <tr>
+    <td><span class="exercise-name">Overhead Press</span><br><span class="muscle-target">Delts</span></td>
+    <td>5</td><td>5</td><td>5</td>
+    <td>15, 12, 8, 8, 6</td>
+    <td>8&ndash;9</td>
+    <td>Standing barbell or seated DB. Pyramid.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Barbell / EZ-Bar Curl</span><br><span class="muscle-target">Biceps</span></td>
+    <td>5</td><td>5</td><td>4</td>
+    <td>15, 12, 8, 8, (6)</td>
+    <td>8&ndash;9</td>
+    <td>Strict. No body English.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Close-Grip Bench / Dips</span><br><span class="muscle-target">Triceps</span></td>
+    <td>5</td><td>5</td><td>4</td>
+    <td>15, 12, 8, 8, (6)</td>
+    <td>8&ndash;9</td>
+    <td>Compound tricep movement. Priority.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Lateral Raise (DB or Cable)</span><br><span class="muscle-target">Side delts</span></td>
+    <td>4</td><td>4</td><td>3</td>
+    <td>15, 12, 10, (10)</td>
+    <td>8</td>
+    <td>Light and controlled. Chase the burn.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Incline Curl / Hammer Curl</span><br><span class="muscle-target">Biceps</span></td>
+    <td>3</td><td>3</td><td>2</td>
+    <td>12, 10, (8)</td>
+    <td>8</td>
+    <td>Drop if recovery is poor.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Tricep Pushdown / OH Extension</span><br><span class="muscle-target">Triceps</span></td>
+    <td>3</td><td>3</td><td>2</td>
+    <td>12, 10, (8)</td>
+    <td>8</td>
+    <td>Drop if recovery is poor.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Face Pull / Rear Delt Fly</span><br><span class="muscle-target">Rear delts</span></td>
+    <td>3</td><td>3</td><td>3</td>
+    <td>15, 15, 12</td>
+    <td>7</td>
+    <td>Never cut this. Prehab non-negotiable.</td>
+  </tr>
+</table>
+
+<!-- DAY 3 — LEGS -->
+<div class="page-break"></div>
+<div class="day-header">Day 3 / Day 6 &mdash; Legs</div>
+<table>
+  <tr><th>Exercise</th><th>Sets W5</th><th>Sets W6</th><th>Sets W7</th><th>Reps</th><th>RPE</th><th>Notes</th></tr>
+  <tr>
+    <td><span class="exercise-name">Back Squat / Front Squat</span><br><span class="muscle-target">Quads, glutes</span></td>
+    <td>5</td><td>5</td><td>5</td>
+    <td>15, 12, 8, 8, 6</td>
+    <td>8&ndash;9</td>
+    <td>Alternate back/front across days. Pyramid.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">RDL / Conventional Deadlift</span><br><span class="muscle-target">Posterior chain</span></td>
+    <td>5</td><td>5</td><td>5</td>
+    <td>12, 10, 8, 6, 4</td>
+    <td>8&ndash;9</td>
+    <td>Alternate RDL/conv across days. Key lift.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Leg Press / Bulgarian Split Squat</span><br><span class="muscle-target">Quads</span></td>
+    <td>4</td><td>4</td><td>3</td>
+    <td>15, 12, 10, (8)</td>
+    <td>8&ndash;9</td>
+    <td>Alternate across days.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Walking Lunges</span><br><span class="muscle-target">Quads, glutes</span></td>
+    <td>3</td><td>3</td><td>2</td>
+    <td>12, 10, (8)/leg</td>
+    <td>8</td>
+    <td>Cut in W7 if legs are fried.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Leg Curl / GHR</span><br><span class="muscle-target">Hamstrings</span></td>
+    <td>3</td><td>3</td><td>3</td>
+    <td>15, 12, 10</td>
+    <td>8</td>
+    <td>Maintain hamstring volume. Never cut.</td>
+  </tr>
+  <tr>
+    <td><span class="exercise-name">Calf Raise (Standing or Seated)</span><br><span class="muscle-target">Calves</span></td>
+    <td>4</td><td>4</td><td>3</td>
+    <td>15, 12, 10, (10)</td>
+    <td>8</td>
+    <td>Alternate standing/seated across days.</td>
+  </tr>
+</table>
+
+<div class="doc-footer">
+  <div class="brand">Sebastian Fisher Coaching</div>
+  <div class="contact">contact@sebastian-fisher.com &nbsp;&middot;&nbsp; sebastian-fisher.com</div>
+  <div class="legal">&copy; 2026 Sebastian Fisher Coaching. All rights reserved. Personal use only.</div>
+</div>
+
+</body>
+</html>

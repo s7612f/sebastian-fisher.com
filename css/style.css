@@ -1295,7 +1295,9 @@ code {
 /* --- CLASSIFIEDS / LISTINGS SEPARATION --- */
 .classifieds-block { margin-bottom:24px; }
 .classifieds-heading { font-size:0.7em; letter-spacing:4px; color:var(--fg-dim); text-transform:uppercase; padding:6px 0; border-top:1px solid var(--accent2); border-bottom:1px solid var(--border); margin-bottom:10px; }
-.classified-row { border:1px solid var(--border); border-left:2px solid var(--border2); padding:10px 14px; margin-bottom:2px; display:flex; justify-content:space-between; align-items:baseline; background:var(--bg2); gap:14px; flex-wrap:wrap; }
+.classified-row { border:1px solid var(--border); border-left:2px solid var(--border2); padding:10px 14px; margin-bottom:2px; display:flex; justify-content:space-between; align-items:flex-start; background:var(--bg2); gap:14px; flex-wrap:nowrap; }
+.classified-row-left { flex:1; min-width:0; }
+.classified-row-right { flex-shrink:0; text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
 .classified-row:hover { border-left-color:var(--accent); background:var(--bg3); }
 .classified-name { font-size:0.9em; font-weight:bold; text-transform:uppercase; letter-spacing:1px; color:var(--fg); }
 .classified-desc { font-size:0.78em; color:var(--fg-dim); flex:1; margin:0 10px; }

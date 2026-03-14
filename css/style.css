@@ -242,8 +242,8 @@ body.force-light {
   border-top: 2px solid var(--accent);
   padding: 0;
   margin-bottom: 18px;
-  overflow-x: auto;
-  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .site-nav a {
@@ -267,7 +267,7 @@ body.force-light {
 
 /* Community sub-page group indicator */
 .nav-community-group {
-  display: inline;
+  display: contents;
   border: 1px solid var(--accent2);
   border-radius: 2px;
   margin: 2px 0;

@@ -208,16 +208,16 @@ function showTab(name) {
 /* --- STACK PRODUCTS (shared by sidebar + right gutter widgets) ---
    ---------------------------------------------------------------- */
 var STACK_PRODUCTS = [
-  { name: 'Creatine Gummies',         tag: 'DAILY USE',      icon: 'SUPPL', url: 'https://amzn.to/4b2CQUx', desc: '5g every day. The most evidence-backed supplement on the market. No loading phase.' },
-  { name: 'Protein Powder',            tag: 'DAILY USE',      icon: 'SUPPL', url: 'https://amzn.to/4uj4CUt', desc: 'Food first — shake fills the gap when hitting 180g+ protein per day.' },
-  { name: 'Vitamin D3 + K2',           tag: 'DAILY USE',      icon: 'SUPPL', url: 'https://amzn.to/3NwkRg8', desc: 'Most UK lifters are deficient. D3 affects testosterone, mood, and immune function.' },
-  { name: 'Pre-Workout (Menace V2)',    tag: 'HEAVY DAYS',     icon: 'SUPPL', url: 'https://amzn.to/4umrzpH', desc: 'Properly dosed. CDP-Choline for focus. Used on squat and deadlift days only.' },
-  { name: 'Maca Root',                 tag: 'SITUATIONAL',    icon: 'SUPPL', url: 'https://amzn.to/4biw2kx', desc: 'Adaptogen. Used during heavy training blocks for energy and stress management.' },
-  { name: 'Turkesterone',              tag: 'SITUATIONAL',    icon: 'SUPPL', url: 'https://amzn.to/3OZcPgk', desc: 'Ecdysteroid. Worth considering once food, sleep, and training are properly sorted.' },
-  { name: 'Berberine',                 tag: 'CUTTING',        icon: 'SUPPL', url: 'https://amzn.to/4roJyJm', desc: 'Insulin sensitiser. Cycles during a cut. Particularly useful with carb-heavy meals.' },
-  { name: 'Gym Workbook',              tag: 'READS',          icon: 'BOOK',  url: 'https://amzn.to/4s5OPqs', desc: 'Paper training logs outlast every app. Track every session. Never forget a number.' },
-  { name: "Arnold's Encyclopedia",     tag: 'ESSENTIAL READ', icon: 'BOOK',  url: 'https://amzn.to/40ZkXQs', desc: 'The best single reference on bodybuilding. If you own one book, make it this.' },
-  { name: 'Apple Watch',               tag: 'GEAR',           icon: 'GEAR',  url: 'https://amzn.to/40ZvjQm', desc: 'Rest timing, HR monitoring, session tracking. Earns its place in the gym bag.' },
+  { name: 'Creatine Gummies',         tag: 'DAILY USE',      img: 'assets/img/products/creatine-gummies.jpg', url: 'https://amzn.to/4b2CQUx', desc: '5g every day. The most evidence-backed supplement on the market. No loading phase.' },
+  { name: 'Protein Powder',            tag: 'DAILY USE',      img: 'assets/img/products/protein.jpg', url: 'https://amzn.to/4uj4CUt', desc: 'Food first — shake fills the gap when hitting 180g+ protein per day.' },
+  { name: 'Vitamin D3 + K2',           tag: 'DAILY USE',      img: 'assets/img/products/vit-d.jpg', url: 'https://amzn.to/3NwkRg8', desc: 'Most UK lifters are deficient. D3 affects testosterone, mood, and immune function.' },
+  { name: 'Pre-Workout (Menace V2)',    tag: 'HEAVY DAYS',     img: 'assets/img/products/preworkout.jpg', url: 'https://amzn.to/4umrzpH', desc: 'Properly dosed. CDP-Choline for focus. Used on squat and deadlift days only.' },
+  { name: 'Maca Root',                 tag: 'SITUATIONAL',    img: 'assets/img/products/maca-root.jpg', url: 'https://amzn.to/4biw2kx', desc: 'Adaptogen. Used during heavy training blocks for energy and stress management.' },
+  { name: 'Turkesterone',              tag: 'SITUATIONAL',    img: 'assets/img/products/turkesterone.jpg', url: 'https://amzn.to/3OZcPgk', desc: 'Ecdysteroid. Worth considering once food, sleep, and training are properly sorted.' },
+  { name: 'Berberine',                 tag: 'CUTTING',        img: 'assets/img/products/berberine.jpg', url: 'https://amzn.to/4roJyJm', desc: 'Insulin sensitiser. Cycles during a cut. Particularly useful with carb-heavy meals.' },
+  { name: 'Gym Workbook',              tag: 'READS',          img: 'assets/img/products/gym-workbook.jpg', url: 'https://amzn.to/4s5OPqs', desc: 'Paper training logs outlast every app. Track every session. Never forget a number.' },
+  { name: "Arnold's Encyclopedia",     tag: 'ESSENTIAL READ', img: 'assets/img/products/arnold-book.jpg', url: 'https://amzn.to/40ZkXQs', desc: 'The best single reference on bodybuilding. If you own one book, make it this.' },
+  { name: 'Apple Watch',               tag: 'GEAR',           img: 'assets/img/products/apple-watch.jpg', url: 'https://amzn.to/40ZvjQm', desc: 'Rest timing, HR monitoring, session tracking. Earns its place in the gym bag.' },
 ];
 
 
@@ -234,7 +234,9 @@ var STACK_PRODUCTS = [
   el.innerHTML =
     '<div style="font-size:0.68em;letter-spacing:3px;color:var(--fg-dim);margin-bottom:5px;">&#9658; FROM THE STACK</div>' +
     '<div style="display:flex;gap:10px;align-items:flex-start;">' +
-    '<a href="' + pick.url + '" target="_blank" rel="nofollow noopener" class="product-img-frame" style="text-decoration:none;">' + pick.icon + '</a>' +
+    '<a href="' + pick.url + '" target="_blank" rel="nofollow noopener" style="text-decoration:none;flex-shrink:0;width:60px;height:60px;border:1px solid var(--border2);overflow:hidden;">' +
+    '<img src="' + pick.img + '" alt="' + pick.name + '" style="width:100%;height:100%;object-fit:cover;">' +
+    '</a>' +
     '<div class="stack-widget-inner" style="flex:1;">' +
     '<a href="' + pick.url + '" target="_blank" rel="nofollow noopener" style="display:block;text-decoration:none;">' +
     '<div style="font-size:0.9em;font-weight:bold;color:var(--fg);margin-bottom:3px;">' + pick.name + '</div>' +
@@ -259,7 +261,9 @@ var STACK_PRODUCTS = [
 
   el.innerHTML =
     '<div style="font-size:0.65em;letter-spacing:3px;color:var(--fg-dim);margin-bottom:6px;">&#9658; FROM THE STACK</div>' +
-    '<a href="' + pick.url + '" target="_blank" rel="nofollow noopener" style="display:flex;align-items:center;justify-content:center;border:1px solid var(--border2);background:var(--bg3);height:80px;font-size:0.55em;letter-spacing:2px;color:var(--fg-dim);text-decoration:none;margin-bottom:8px;">' + pick.icon + '</a>' +
+    '<a href="' + pick.url + '" target="_blank" rel="nofollow noopener" style="display:block;border:1px solid var(--border2);overflow:hidden;height:80px;margin-bottom:8px;text-decoration:none;">' +
+    '<img src="' + pick.img + '" alt="' + pick.name + '" style="width:100%;height:100%;object-fit:cover;">' +
+    '</a>' +
     '<a href="' + pick.url + '" target="_blank" rel="nofollow noopener" style="display:block;text-decoration:none;">' +
     '<div style="font-size:0.88em;font-weight:bold;color:var(--fg);margin-bottom:3px;">' + pick.name + '</div>' +
     '</a>' +

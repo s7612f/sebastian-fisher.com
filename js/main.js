@@ -22,12 +22,49 @@
 
 
 /* --- PEOPLE ONLINE WIDGET ---
-   Floor of 19, grows naturally with small random variation.
+   5-minute slot seed; consistent per slot; 18–25.
+   Small random transition offset (<=20s) per day.
    ---------------------------------------------------------------- */
 (function () {
-  var count = 19 + Math.floor(Math.random() * 5);
-  var el = document.getElementById('people-online');
-  if (el) el.textContent = count;
+  try {
+    var now = Date.now();
+
+    // Per-day offset up to 20s to avoid mechanical transitions
+    var d = new Date();
+    var dayKey = [d.getFullYear(), d.getMonth()+1, d.getDate()].join('-');
+    var dayKeyStore = 'ig_slot_offset_day';
+    var offKey = 'ig_slot_offset_ms';
+    var savedDay = localStorage.getItem(dayKeyStore);
+    var offsetMs = 0;
+    if (savedDay === dayKey) {
+      offsetMs = parseInt(localStorage.getItem(offKey) || '0', 10) || 0;
+    } else {
+      offsetMs = Math.floor(Math.random() * 20000); // 0..19999 ms
+      localStorage.setItem(dayKeyStore, dayKey);
+      localStorage.setItem(offKey, String(offsetMs));
+    }
+
+    // 5-minute slot index (shifted by offset)
+    var slot = Math.floor((now - offsetMs) / (5 * 60 * 1000));
+
+    // Deterministic pseudo-random based on slot and current day
+    function hash32(x) {
+      x = ((x >>> 0) + 0x7ed55d16) + (x << 12); x = (x ^ 0xc761c23c) ^ (x >>> 19);
+      x = ((x >>> 0) + 0x165667b1) + (x << 5);  x = (x + 0xd3a2646c) ^ (x << 9);
+      x = ((x >>> 0) + 0xfd7046c5) + (x << 3);  x = (x ^ 0xb55a4f09) ^ (x >>> 16);
+      return x >>> 0;
+    }
+
+    var daySeed = (d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate()) >>> 0;
+    var mixed = hash32(slot ^ daySeed);
+
+    var val = 18 + (mixed % 8); // 18..25 inclusive
+    var el = document.getElementById('people-online');
+    if (el) el.textContent = String(val);
+  } catch (e) {
+    var el2 = document.getElementById('people-online');
+    if (el2) el2.textContent = '21';
+  }
 })();
 
 

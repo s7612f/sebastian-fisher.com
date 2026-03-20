@@ -3,15 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coach Network | Sebastian Fisher</title>
-  <link rel="stylesheet" href="css/style.css?v=6">
-  <meta name="description" content="Join the coach referral network. Qualified coaches who share the same evidence-based, no-nonsense approach.">
-  <link rel="canonical" href="https://sebastian-fisher.com/coaches.html">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Coach Network | Sebastian Fisher">
-  <meta property="og:description" content="Join the coach referral network. Qualified coaches who share the same evidence-based, no-nonsense approach.">
-  <meta property="og:url" content="https://sebastian-fisher.com/coaches.html">
-  <meta property="og:site_name" content="Sebastian Fisher Coaching">
+  <title>JOIN THE NETWORK :: SEBASTIAN FISHER</title>
+  <link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
 
@@ -39,7 +32,7 @@
     <a href="shop.html">programmes</a>
     <a href="coaching.html">COACHING</a>
     <a href="vault.html">THE VAULT</a>
-    <a href="community.html">COMMUNITY</a>
+    <a href="https://forum.sebastian-fisher.com">FORUM</a>
     <a href="calculator.html">CALCULATOR</a>
     <a href="nutrition.html">NUTRITION</a>
     <a href="https://blog.sebastian-fisher.com">BLOG</a>
@@ -113,8 +106,8 @@
           </p>
         </div>
 
-        <form action="https://formspree.io/YOUR_FORMSPREE_ID" method="POST" style="max-width:620px;">
-          <input type="hidden" name="application_type" value="coach">
+        <form id="coach-app-form" style="max-width:620px">
+          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
 
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px;">
             <div>
@@ -203,8 +196,9 @@
             Your details will not be shared with third parties.
           </div>
 
-          <button type="submit" class="btn btn-big btn-primary">SUBMIT COACH APPLICATION</button>
+          <button id="coach-submit" id="coach-submit" type="submit" class="btn btn-big btn-primary">SUBMIT COACH APPLICATION</button>
         </form>
+        <div id="coach-msg" style="display:none;margin-top:12px"></div>
       </div>
 
       <!-- ===== AFFILIATE APPLICATION FORM ===== -->
@@ -218,8 +212,8 @@
           </p>
         </div>
 
-        <form action="https://formspree.io/YOUR_FORMSPREE_ID" method="POST" style="max-width:620px;">
-          <input type="hidden" name="application_type" value="affiliate">
+        <form id="coach-app-form2" style="max-width:620px">
+          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
 
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px;">
             <div>
@@ -263,8 +257,9 @@
             By submitting this form you agree to be contacted by Iron Gospel regarding your application.
           </div>
 
-          <button type="submit" class="btn btn-big" style="border-color:var(--status-live); color:var(--status-live);">SUBMIT AFFILIATE APPLICATION</button>
+          <button id="coach-submit2" type="submit" class="btn btn-big" style="border-color:var(--status-live); color:var(--status-live);">SUBMIT AFFILIATE APPLICATION</button>
         </form>
+        <div id="coach-msg2" style="display:none;margin-top:12px"></div>
       </div>
 
       <!-- DEFAULT STATE — prompt to select -->
@@ -368,7 +363,7 @@
   </footer>
 
 </div>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 <script>
 function showForm(type) {
   document.getElementById('form-coach').style.display = 'none';
@@ -383,5 +378,51 @@ function showForm(type) {
 }
 </script>
 <script async defer src="https://analytics.sebastian-fisher.com/script.js" data-website-id="ba5c0ed2-8f00-486c-91bf-00950971c34f"></script>
+<script>
+(function() {
+var EP="https://forms.sebastian-fisher.com/submit";
+function wire(fid,mid,bid){
+var form=document.getElementById(fid),msg=document.getElementById(mid),btn=document.getElementById(bid);
+if(form===null)return;
+var orig=btn?btn.textContent:"";
+form.addEventListener("submit",function(e){
+e.preventDefault();
+var fd=new FormData(form),parts=[];
+var SKIP={"name":1,"email":1,"website":1};
+fd.forEach(function(v,k){if(SKIP[k])return;var t=v.trim();if(t)parts.push(k.replace(/_/g," ").toUpperCase()+": "+t);});
+var n=fd.get("name")||"";
+var em=fd.get("email")||"";
+var m=parts.join("\n");
+var w=fd.get("website")||"";
+if(n.trim().length===0||m.length===0){
+if(msg){
+msg.style.display="block";
+msg.style.borderColor="#c42000";
+msg.style.color="#c42000";
+msg.textContent="Fill in required fields.";
+}return;}
+if(btn){btn.disabled=true;btn.textContent="SENDING...";}
+if(msg)msg.style.display="none";
+fetch(EP,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:n,email:em,message:m,website:w})})
+.then(function(r){return r.json();})
+.then(function(d){
+if(msg)msg.style.display="block";
+if(d.success){
+if(msg){msg.style.borderColor="#00a000";msg.style.color="#00a000";msg.textContent=d.message;form.reset();}
+} else {
+if(msg){msg.style.borderColor="#c42000";msg.style.color="#c42000";msg.textContent=d.message||"Error. Try again.";}}
+
+})
+.catch(function(){
+if(msg){msg.style.display="block";msg.style.borderColor="#c42000";msg.style.color="#c42000";msg.textContent="Could not send. Email: contact@sebastian-fisher.com";}
+})
+.finally(function(){if(btn){btn.disabled=false;btn.textContent=orig;}})
+;});
+}
+wire("coach-app-form","coach-msg","coach-submit");
+wire("coach-app-form2","coach-msg2","coach-submit2");
+})();
+</script>
+
 </body>
 </html>

@@ -532,7 +532,7 @@ hr.thick {
   padding: 6px;
   font-family: 'Courier New', monospace;
   margin: 8px 0;
-  text-shadow: 0 0 4px var(--accent);
+  text-shadow: none;
 }
 
 /* --- FORMS --- */
@@ -1342,3 +1342,9 @@ code {
   .site-title { font-size: 1.6em; letter-spacing: 3px; }
   .site-subtitle { font-size: 0.68em; letter-spacing: 1px; }
 }
+/* Compact stack widgets: hide image frames to remove reserved space */
+.product-img-frame { display:none !important; }
+#right-stack-widget > a:first-of-type { display:none !important; }
+/* Compact stack widgets: hide image frames to remove reserved space */
+.product-img-frame { display:none !important; }
+#right-stack-widget > a:first-of-type { display:none !important; }

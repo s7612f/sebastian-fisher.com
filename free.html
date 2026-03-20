@@ -3,15 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free 12-Week Beginner Programme | Sebastian Fisher</title>
-  <link rel="stylesheet" href="css/style.css?v=6">
-  <meta name="description" content="A free 12-week foundation training programme. Linear progression, form cues, and nutrition basics. No email required — just download.">
-  <link rel="canonical" href="https://sebastian-fisher.com/free.html">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Free 12-Week Beginner Programme | Sebastian Fisher">
-  <meta property="og:description" content="A free 12-week foundation training programme. Linear progression, form cues, and nutrition basics. No email required — just download.">
-  <meta property="og:url" content="https://sebastian-fisher.com/free.html">
-  <meta property="og:site_name" content="Sebastian Fisher Coaching">
+  <title>FREE PLANS :: SEBASTIAN FISHER</title>
+  <link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
 
@@ -39,7 +32,7 @@
     <a href="shop.html">programmes</a>
     <a href="coaching.html">COACHING</a>
     <a href="vault.html">THE VAULT</a>
-    <a href="community.html">COMMUNITY</a>
+    <a href="https://forum.sebastian-fisher.com">FORUM</a>
     <a href="calculator.html">CALCULATOR</a>
     <a href="nutrition.html">NUTRITION</a>
     <a href="https://blog.sebastian-fisher.com">BLOG</a>
@@ -92,12 +85,7 @@
           &#9658; Form cue sheet for squat, deadlift, bench, press, row<br>
           &#9658; Beginner nutrition guide (no calorie counting required)<br>
           &#9658; FAQ: common beginner mistakes and how to avoid them
-        </p>
-        <!--
-          INSTRUCTIONS: Replace assets/downloads/beginner-foundation.pdf with
-          your actual PDF file path once you've uploaded it to the assets/downloads/ folder.
-        -->
-        <a href="assets/downloads/beginner-foundation.pdf" class="btn btn-green btn-big" download>
+        </p>        <a href="assets/downloads/beginner-foundation.pdf" class="btn btn-green btn-big" download>
           &#9660; DOWNLOAD FREE — PDF (Coming Soon)
         </a>
         <p style="font-size:0.75em; color:var(--fg-dim); margin-top:8px;">
@@ -148,14 +136,8 @@
         <p style="color:var(--fg-dim); font-size:0.85em; margin-bottom:15px;">
           If downloads aren't working or you want the files sent to you directly,
           drop your email below. No mailing list. No newsletters. Just the files.
-        </p>
-        <!--
-          INSTRUCTIONS: Replace YOUR_FORMSPREE_ID with your actual Formspree form ID.
-          Sign up free at formspree.io — create a form and paste the endpoint here.
-          Example: https://formspree.io/f/xabc1234
-        -->
-        <form class="retro-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-          <input type="hidden" name="subject" value="Free Plan Email Request">
+        <form class="retro-form" id="free-email-form">
+          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
           <label for="free-name">YOUR NAME</label>
           <input type="text" id="free-name" name="name" placeholder="John Smith" required>
 
@@ -165,8 +147,9 @@
           <label for="free-which">WHICH PLANS? (tick all that apply)</label>
           <textarea name="plans" id="free-which" placeholder="e.g. Beginner Foundation, Nutrition Primer, Warmup Protocol — or just say 'all of them'"></textarea>
 
-          <button type="submit" class="btn btn-green btn-big">SEND ME THE FILES</button>
+          <button id="free-submit" type="submit" class="btn btn-green btn-big">SEND ME THE FILES</button>
         </form>
+          <div id="free-msg" style="display:none;margin-top:12px"></div>
       </section>
 
     </section>
@@ -200,7 +183,6 @@
         <li><a href="calculator.html">Macro Calculator</a></li>
         <li><a href="calculator.html">1RM Estimator</a></li>
         <li><a href="vault.html">Old Media Vault</a></li>
-        <li><a href="liftlog.html">Post Your Lift Log</a></li>
       </ul>
     </div>
 
@@ -226,7 +208,7 @@
   </footer>
 
 </div>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 <script>
 function sideCalc() {
   const bw = parseFloat(document.getElementById('side-bw').value);
@@ -237,5 +219,52 @@ function sideCalc() {
 }
 </script>
 <script async defer src="https://analytics.sebastian-fisher.com/script.js" data-website-id="ba5c0ed2-8f00-486c-91bf-00950971c34f"></script>
+<script>
+(function() {
+var EP="https://forms.sebastian-fisher.com/submit";
+function wire(fid,mid,bid){
+var form=document.getElementById(fid),msg=document.getElementById(mid),btn=document.getElementById(bid);
+if(form===null)return;
+var orig=btn?btn.textContent:"";
+form.addEventListener("submit",function(e){
+e.preventDefault();
+var fd=new FormData(form),parts=[];
+var SKIP={"name":1,"email":1,"website":1};
+fd.forEach(function(v,k){if(SKIP[k])return;var t=v.trim();if(t)parts.push(k.replace(/_/g," ").toUpperCase()+": "+t);});
+var n=fd.get("name")||"";
+var em=fd.get("email")||"";
+var m=parts.join("\n");
+var w=fd.get("website")||"";
+if(n.trim().length===0||m.length===0){
+if(msg){
+msg.style.display="block";
+msg.style.borderColor="#c42000";
+msg.style.color="#c42000";
+msg.textContent="Fill in required fields.";
+}return;}
+if(btn){btn.disabled=true;btn.textContent="SENDING...";}
+if(msg)msg.style.display="none";
+fetch(EP,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:n,email:em,message:m,website:w})})
+.then(function(r){return r.json();})
+.then(function(d){
+if(msg)msg.style.display="block";
+if(d.success){
+if(msg){msg.style.borderColor="#00a000";msg.style.color="#00a000";msg.textContent=d.message;form.reset();}
+} else {
+if(msg){msg.style.borderColor="#c42000";msg.style.color="#c42000";msg.textContent=d.message||"Error. Try again.";}}
+
+})
+.catch(function(){
+if(msg){msg.style.display="block";msg.style.borderColor="#c42000";msg.style.color="#c42000";msg.textContent="Could not send. Email: contact@sebastian-fisher.com";}
+})
+.finally(function(){if(btn){btn.disabled=false;btn.textContent=orig;}})
+;});
+}
+
+wire("free-email-form","free-msg","free-submit");
+
+})();
+</script>
+
 </body>
 </html>

@@ -3,15 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apply for Coaching | Sebastian Fisher</title>
-  <link rel="stylesheet" href="css/style.css?v=6">
-  <meta name="description" content="Apply for 1-on-1 online coaching with Sebastian Fisher. Fill in the application and expect a reply within 48 hours.">
-  <link rel="canonical" href="https://sebastian-fisher.com/contact.html">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Apply for Coaching | Sebastian Fisher">
-  <meta property="og:description" content="Apply for 1-on-1 online coaching with Sebastian Fisher. Fill in the application and expect a reply within 48 hours.">
-  <meta property="og:url" content="https://sebastian-fisher.com/contact.html">
-  <meta property="og:site_name" content="Sebastian Fisher Coaching">
+  <title>CONTACT :: SEBASTIAN FISHER</title>
+  <link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
 
@@ -39,7 +32,7 @@
     <a href="shop.html">programmes</a>
     <a href="coaching.html">COACHING</a>
     <a href="vault.html">THE VAULT</a>
-    <a href="community.html">COMMUNITY</a>
+    <a href="https://forum.sebastian-fisher.com">FORUM</a>
     <a href="calculator.html">CALCULATOR</a>
     <a href="nutrition.html">NUTRITION</a>
     <a href="https://blog.sebastian-fisher.com">BLOG</a>
@@ -74,15 +67,8 @@
         <p style="font-size:0.85em; color:var(--fg-dim); margin-bottom:14px;">
           Fill in the application below. Be honest — I'll only take you on if I can genuinely help.
           No hard sell. If I don't think we're a match, I'll tell you and point you somewhere useful.
-        </p>
-
-        <!--
-          INSTRUCTIONS: Replace YOUR_FORMSPREE_ID_COACHING with your Formspree form ID for coaching applications.
-          Create a separate form at formspree.io for coaching vs general enquiries.
-        -->
-        <form class="retro-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID_COACHING" method="POST">
-          <input type="hidden" name="subject" value="Coaching Application">
-          <input type="hidden" name="form_type" value="coaching_application">
+        <form class="retro-form" id="coaching-app-form">
+          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
 
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
             <div>
@@ -147,8 +133,9 @@
           <textarea id="app-extra" name="extra"
             placeholder="Injuries, schedule constraints, previous coaching, anything relevant."></textarea>
 
-          <button type="submit" class="btn btn-big btn-primary" style="width:100%;">SUBMIT APPLICATION</button>
+          <button id="coaching-submit" type="submit" class="btn btn-big btn-primary" style="width:100%;">SUBMIT APPLICATION</button>
         </form>
+        <div id="coaching-msg" style="display:none;margin-top:12px"></div>
         <p style="font-size:0.75em; color:var(--fg-dim); margin-top:8px;">
           I reply within 48 hours. If you don't hear back, check spam or email directly below.
         </p>
@@ -295,7 +282,7 @@
   </footer>
 
 </div>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 <script async defer src="https://analytics.sebastian-fisher.com/script.js" data-website-id="ba5c0ed2-8f00-486c-91bf-00950971c34f"></script>
 <script>
 (function() {
@@ -351,5 +338,50 @@
   });
 })();
 </script>
+<script>
+(function() {
+var EP="https://forms.sebastian-fisher.com/submit";
+function wire(fid,mid,bid){
+var form=document.getElementById(fid),msg=document.getElementById(mid),btn=document.getElementById(bid);
+if(form===null)return;
+var orig=btn?btn.textContent:"";
+form.addEventListener("submit",function(e){
+e.preventDefault();
+var fd=new FormData(form),parts=[];
+var SKIP={"name":1,"email":1,"website":1};
+fd.forEach(function(v,k){if(SKIP[k])return;var t=v.trim();if(t)parts.push(k.replace(/_/g," ").toUpperCase()+": "+t);});
+var n=fd.get("name")||"";
+var em=fd.get("email")||"";
+var m=parts.join("\n");
+var w=fd.get("website")||"";
+if(n.trim().length===0||m.length===0){
+if(msg){
+msg.style.display="block";
+msg.style.borderColor="#c42000";
+msg.style.color="#c42000";
+msg.textContent="Fill in required fields.";
+}return;}
+if(btn){btn.disabled=true;btn.textContent="SENDING...";}
+if(msg)msg.style.display="none";
+fetch(EP,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:n,email:em,message:m,website:w})})
+.then(function(r){return r.json();})
+.then(function(d){
+if(msg)msg.style.display="block";
+if(d.success){
+if(msg){msg.style.borderColor="#00a000";msg.style.color="#00a000";msg.textContent=d.message;form.reset();}
+} else {
+if(msg){msg.style.borderColor="#c42000";msg.style.color="#c42000";msg.textContent=d.message||"Error. Try again.";}}
+
+})
+.catch(function(){
+if(msg){msg.style.display="block";msg.style.borderColor="#c42000";msg.style.color="#c42000";msg.textContent="Could not send. Email: contact@sebastian-fisher.com";}
+})
+.finally(function(){if(btn){btn.disabled=false;btn.textContent=orig;}})
+;});
+}
+wire("coaching-app-form","coaching-msg","coaching-submit");
+})();
+</script>
+
 </body>
 </html>

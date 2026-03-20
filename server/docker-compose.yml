@@ -1,0 +1,59 @@
+version: '3.8'
+
+# Services running on the VPS alongside the static site.
+# Start with: docker compose up -d
+# Stop with:  docker compose down
+
+services:
+
+  # ── Umami — self-hosted analytics ──────────────────────────────────────
+  # Runs at http://127.0.0.1:3000
+  # Proxied to analytics.sebastian-fisher.com via nginx
+  umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    container_name: umami
+    restart: always
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      DATABASE_URL: postgresql://umami:${UMAMI_DB_PASSWORD}@umami-db:5432/umami
+      DATABASE_TYPE: postgresql
+      APP_SECRET: ${UMAMI_APP_SECRET}
+    depends_on:
+      umami-db:
+        condition: service_healthy
+
+  umami-db:
+    image: postgres:15-alpine
+    container_name: umami-db
+    restart: always
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: ${UMAMI_DB_PASSWORD}
+    volumes:
+      - umami-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Booking app ─────────────────────────────────────────────────────────
+  # TODO: Replace this block with your actual booking service.
+  # If using Cal.com (self-hosted), see: https://cal.com/docs/self-hosting
+  # If using EasyAppointments, see: https://easyappointments.org/docs
+  # The nginx config proxies book.sebastian-fisher.com → port 5000
+  #
+  # booking:
+  #   image: YOUR_BOOKING_IMAGE
+  #   container_name: booking
+  #   restart: always
+  #   ports:
+  #     - "127.0.0.1:5000:5000"
+  #   environment:
+  #     ...
+
+volumes:
+  umami-db-data:
+    name: umami-db-data

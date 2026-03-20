@@ -1,0 +1,15 @@
+name = "sebastian-fisher-maintenance"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Worker Routes — add these in the Cloudflare dashboard under Workers → Triggers
+# OR uncomment the routes block below if using wrangler to manage routes.
+# Replace YOUR_ZONE_ID with the Zone ID from your Cloudflare domain dashboard.
+
+# [[routes]]
+# pattern = "sebastian-fisher.com/*"
+# zone_id = "YOUR_ZONE_ID"
+
+# [[routes]]
+# pattern = "*.sebastian-fisher.com/*"
+# zone_id = "YOUR_ZONE_ID"

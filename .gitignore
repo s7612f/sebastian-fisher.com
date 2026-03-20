@@ -20,3 +20,15 @@ node_modules/
 
 assets/img/products/*.html
 assets/img/products/*_files/
+
+# Server backup/temp files
+*.bak
+*.bak-*
+*.broken-*
+.archive_*
+.backup_*
+.mobile_backup_*
+.restore_*
+bloodwork.html.bak
+free/
+mobile/

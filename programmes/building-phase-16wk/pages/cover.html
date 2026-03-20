@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cover — Building Phase 16 Weeks | Sebastian Fisher Coaching</title>
+<style>
+  @page {
+    size: A4;
+    margin: 18mm 16mm 18mm 16mm;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    font-size: 9.5pt;
+    line-height: 1.45;
+    color: #1a1410;
+    background: #fff;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 18mm 16mm;
+  }
+
+  /* --- PAGE BREAKS --- */
+  .page-break { page-break-before: always; margin-top: 0; }
+
+  /* --- COVER --- */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 257mm; /* A4 minus margins */
+    text-align: center;
+    border: 3px solid #1a1410;
+    padding: 40px;
+  }
+  .cover h1 {
+    font-size: 28pt;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .cover .subtitle {
+    font-size: 14pt;
+    letter-spacing: 3px;
+    color: #8a6d10;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+  .cover .divider {
+    width: 120px;
+    height: 3px;
+    background: #8a6d10;
+    margin: 20px auto;
+  }
+  .cover .author {
+    font-size: 11pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+  .cover .website {
+    font-size: 9pt;
+    color: #5c4e40;
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+  .cover .edition {
+    font-size: 8pt;
+    color: #8a6d10;
+    margin-top: 30px;
+    letter-spacing: 1px;
+  }
+
+  /* --- HEADERS --- */
+  h1 { font-size: 16pt; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; border-bottom: 2px solid #1a1410; padding-bottom: 6px; }
+  h2 { font-size: 12pt; letter-spacing: 2px; text-transform: uppercase; color: #8a6d10; margin: 18px 0 8px; }
+  h3 { font-size: 10pt; letter-spacing: 1px; text-transform: uppercase; margin: 12px 0 6px; }
+  h4 { font-size: 9pt; letter-spacing: 1px; text-transform: uppercase; color: #5c4e40; margin: 8px 0 4px; }
+
+  /* --- TEXT --- */
+  p { margin-bottom: 8px; }
+  .dim { color: #5c4e40; }
+  .gold { color: #8a6d10; }
+  .red { color: #b81e00; }
+  .bold { font-weight: bold; }
+  .small { font-size: 8pt; }
+  .center { text-align: center; }
+  .note {
+    background: #f5f0e6;
+    border-left: 3px solid #8a6d10;
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 8.5pt;
+  }
+  .warning {
+    background: #fdf2f0;
+    border-left: 3px solid #b81e00;
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 8.5pt;
+  }
+
+  /* --- TABLE OF CONTENTS --- */
+  .toc { list-style: none; padding: 0; }
+  .toc li {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px dotted #c4b08a;
+    font-size: 9pt;
+  }
+  .toc li.section {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 8px;
+    border-bottom: 1px solid #1a1410;
+    font-size: 9.5pt;
+  }
+
+  /* --- TABLES --- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 14px;
+    font-size: 8.5pt;
+  }
+  th {
+    background: #1a1410;
+    color: #f5f0e6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 6px;
+    text-align: left;
+    font-size: 7.5pt;
+    font-weight: bold;
+  }
+  td {
+    padding: 4px 6px;
+    border-bottom: 1px solid #ddd4c0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #faf6ef; }
+  .exercise-name { font-weight: bold; }
+  .muscle-target { color: #5c4e40; font-size: 7.5pt; }
+
+  /* --- WORKOUT DAY HEADER --- */
+  .day-header {
+    background: #8a6d10;
+    color: #fff;
+    padding: 6px 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 9pt;
+    margin-top: 14px;
+    margin-bottom: 0;
+  }
+
+  /* --- DELOAD HEADER --- */
+  .deload-header {
+    background: #2a6496;
+    color: #fff;
+    padding: 6px 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 9pt;
+    margin-top: 14px;
+    margin-bottom: 0;
+  }
+
+  /* --- PHASE HEADER --- */
+  .phase-header {
+    background: #b81e00;
+    color: #fff;
+    padding: 8px 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10pt;
+    margin: 20px 0 4px;
+    text-align: center;
+  }
+
+  /* --- LOG TABLE --- */
+  .log-table td { height: 22px; }
+  .log-table td.log-cell {
+    border: 1px solid #c4b08a;
+    background: #fff;
+    min-width: 40px;
+  }
+
+  /* --- TWO COLUMN --- */
+  .two-col {
+    display: flex;
+    gap: 16px;
+  }
+  .two-col > div { flex: 1; }
+
+  /* --- FOOTER --- */
+  .page-footer {
+    border-top: 1px solid #c4b08a;
+    padding-top: 6px;
+    margin-top: 20px;
+    font-size: 7pt;
+    color: #8a6d10;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* --- LISTS --- */
+  ul { margin: 6px 0 10px 18px; }
+  li { margin-bottom: 3px; }
+  ol { margin: 6px 0 10px 18px; }
+
+  /* --- RPE SCALE --- */
+  .rpe-table td:first-child { font-weight: bold; width: 50px; text-align: center; }
+
+  @media print {
+    body { padding: 0; max-width: none; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="edition">SEBASTIAN FISHER COACHING</div>
+  <div class="divider"></div>
+  <h1>BUILDING PHASE</h1>
+  <div class="subtitle">16-Week Hypertrophy Programme</div>
+  <div class="divider"></div>
+  <p style="font-size:9pt; color:#5c4e40; max-width:380px; margin:10px auto;">
+    Arnold Split · Periodised Volume · High Frequency<br>
+    4 Mesocycles · Deload Weeks · Training Logs
+  </p>
+  <div style="margin-top:40px;">
+    <div class="author">Sebastian Fisher</div>
+    <div class="website">sebastian-fisher.com</div>
+  </div>
+  <div style="margin-top:60px; font-size:7.5pt; color:#999;">
+    Version 2.0 · 2026
+  </div>
+</div>
+
+<div class="page-footer"><span>Sebastian Fisher Coaching</span><span>Building Phase — 16 Weeks</span></div>
+</body>
+</html>

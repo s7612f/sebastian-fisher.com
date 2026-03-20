@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building Phase — 16 Weeks | Sebastian Fisher Coaching</title>
+<style>
+  @page {
+    size: A4;
+    margin: 18mm 16mm 18mm 16mm;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    font-size: 9.5pt;
+    line-height: 1.45;
+    color: #1a1410;
+    background: #fff;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 18mm 16mm;
+  }
+
+  /* --- PAGE BREAKS --- */
+  .page-break { page-break-before: always; margin-top: 0; }
+
+  /* --- COVER --- */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 257mm; /* A4 minus margins */
+    text-align: center;
+    border: 3px solid #1a1410;
+    padding: 40px;
+  }
+  .cover h1 {
+    font-size: 28pt;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .cover .subtitle {
+    font-size: 14pt;
+    letter-spacing: 3px;
+    color: #8a6d10;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+  .cover .divider {
+    width: 120px;
+    height: 3px;
+    background: #8a6d10;
+    margin: 20px auto;
+  }
+  .cover .author {
+    font-size: 11pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+  .cover .website {
+    font-size: 9pt;
+    color: #5c4e40;
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+  .cover .edition {
+    font-size: 8pt;
+    color: #8a6d10;
+    margin-top: 30px;
+    letter-spacing: 1px;
+  }
+
+  /* --- HEADERS --- */
+  h1 { font-size: 16pt; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; border-bottom: 2px solid #1a1410; padding-bottom: 6px; }
+  h2 { font-size: 12pt; letter-spacing: 2px; text-transform: uppercase; color: #8a6d10; margin: 18px 0 8px; }
+  h3 { font-size: 10pt; letter-spacing: 1px; text-transform: uppercase; margin: 12px 0 6px; }
+  h4 { font-size: 9pt; letter-spacing: 1px; text-transform: uppercase; color: #5c4e40; margin: 8px 0 4px; }
+
+  /* --- TEXT --- */
+  p { margin-bottom: 8px; }
+  .dim { color: #5c4e40; }
+  .gold { color: #8a6d10; }
+  .red { color: #b81e00; }
+  .bold { font-weight: bold; }
+  .small { font-size: 8pt; }
+  .center { text-align: center; }
+  .note {
+    background: #f5f0e6;
+    border-left: 3px solid #8a6d10;
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 8.5pt;
+  }
+  .warning {
+    background: #fdf2f0;
+    border-left: 3px solid #b81e00;
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 8.5pt;
+  }
+
+  /* --- TABLE OF CONTENTS --- */
+  .toc { list-style: none; padding: 0; }
+  .toc li {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px dotted #c4b08a;
+    font-size: 9pt;
+  }
+  .toc li.section {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 8px;
+    border-bottom: 1px solid #1a1410;
+    font-size: 9.5pt;
+  }
+
+  /* --- TABLES --- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 14px;
+    font-size: 8.5pt;
+  }
+  th {
+    background: #1a1410;
+    color: #f5f0e6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 6px;
+    text-align: left;
+    font-size: 7.5pt;
+    font-weight: bold;
+  }
+  td {
+    padding: 4px 6px;
+    border-bottom: 1px solid #ddd4c0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #faf6ef; }
+  .exercise-name { font-weight: bold; }
+  .muscle-target { color: #5c4e40; font-size: 7.5pt; }
+
+  /* --- WORKOUT DAY HEADER --- */
+  .day-header {
+    background: #8a6d10;
+    color: #fff;
+    padding: 6px 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 9pt;
+    margin-top: 14px;
+    margin-bottom: 0;
+  }
+
+  /* --- DELOAD HEADER --- */
+  .deload-header {
+    background: #2a6496;
+    color: #fff;
+    padding: 6px 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 9pt;
+    margin-top: 14px;
+    margin-bottom: 0;
+  }
+
+  /* --- PHASE HEADER --- */
+  .phase-header {
+    background: #b81e00;
+    color: #fff;
+    padding: 8px 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10pt;
+    margin: 20px 0 4px;
+    text-align: center;
+  }
+
+  /* --- LOG TABLE --- */
+  .log-table td { height: 22px; }
+  .log-table td.log-cell {
+    border: 1px solid #c4b08a;
+    background: #fff;
+    min-width: 40px;
+  }
+
+  /* --- TWO COLUMN --- */
+  .two-col {
+    display: flex;
+    gap: 16px;
+  }
+  .two-col > div { flex: 1; }
+
+  /* --- FOOTER --- */
+  .page-footer {
+    border-top: 1px solid #c4b08a;
+    padding-top: 6px;
+    margin-top: 20px;
+    font-size: 7pt;
+    color: #8a6d10;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* --- LISTS --- */
+  ul { margin: 6px 0 10px 18px; }
+  li { margin-bottom: 3px; }
+  ol { margin: 6px 0 10px 18px; }
+
+  /* --- RPE SCALE --- */
+  .rpe-table td:first-child { font-weight: bold; width: 50px; text-align: center; }
+
+  @media print {
+    body { padding: 0; max-width: none; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     COVER PAGE
+     ============================================================ -->
+<div class="cover">
+  <div class="edition">SEBASTIAN FISHER COACHING</div>
+  <div class="divider"></div>
+  <h1>BUILDING PHASE</h1>
+  <div class="subtitle">16-Week Hypertrophy Programme</div>
+  <div class="divider"></div>
+  <p style="font-size:9pt; color:#5c4e40; max-width:380px; margin:10px auto;">
+    Arnold Split · Periodised Volume · High Frequency<br>
+    4 Mesocycles · Deload Weeks · Training Logs
+  </p>
+  <div style="margin-top:40px;">
+    <div class="author">Sebastian Fisher</div>
+    <div class="website">sebastian-fisher.com</div>
+  </div>
+  <div style="margin-top:60px; font-size:7.5pt; color:#999;">
+    Version 2.0 · 2026
+  </div>
+</div>
+
+<!-- ============================================================
+     TABLE OF CONTENTS
+     ============================================================ -->
+<div class="page-break">
+  <h1>Table of Contents</h1>
+
+  <ul class="toc">
+    <li class="section"><span>Section 1: Introduction</span></li>
+    <li><span>Who This Programme Is For</span><span>3</span></li>
+    <li><span>How to Use This Guide</span><span>3</span></li>
+    <li><span>Programme Overview &amp; Periodisation Model</span><span>4</span></li>
+    <li><span>Arnold Split Explained</span><span>4</span></li>
+
+    <li class="section"><span>Section 2: Training Principles</span></li>
+    <li><span>Volume Periodisation: The Wave Model</span><span>5</span></li>
+    <li><span>RPE &amp; RIR Scale</span><span>5</span></li>
+    <li><span>Progressive Overload in Practice</span><span>6</span></li>
+    <li><span>Mind-Muscle Connection &amp; Tempo</span><span>6</span></li>
+    <li><span>Deload Philosophy: Heavy Compounds</span><span>7</span></li>
+
+    <li class="section"><span>Section 3: The Programme</span></li>
+    <li><span>Block 1 — Foundation (Weeks 1–4)</span><span>8</span></li>
+    <li><span>Block 2 — Volume Ramp (Weeks 5–8)</span><span>10</span></li>
+    <li><span>Block 3 — Peak Volume (Weeks 9–12)</span><span>12</span></li>
+    <li><span>Block 4 — Intensity &amp; Taper (Weeks 13–16)</span><span>14</span></li>
+    <li><span>Deload Weeks (4, 8, 12)</span><span>16</span></li>
+
+    <li class="section"><span>Section 4: Exercise Guide</span></li>
+    <li><span>Chest &amp; Back Day — Exercise Notes</span><span>17</span></li>
+    <li><span>Shoulders &amp; Arms Day — Exercise Notes</span><span>18</span></li>
+    <li><span>Legs Day — Exercise Notes</span><span>19</span></li>
+    <li><span>Substitution Guide</span><span>20</span></li>
+
+    <li class="section"><span>Section 5: Nutrition</span></li>
+    <li><span>Caloric Surplus Guidelines</span><span>21</span></li>
+    <li><span>Macronutrient Targets</span><span>21</span></li>
+    <li><span>Meal Timing &amp; Training Nutrition</span><span>22</span></li>
+    <li><span>Supplements Worth Taking</span><span>22</span></li>
+
+    <li class="section"><span>Section 6: Tracking &amp; Logs</span></li>
+    <li><span>Weekly Training Log Templates</span><span>23</span></li>
+    <li><span>Weekly Check-in Template</span><span>25</span></li>
+    <li><span>Progress Photo Guide</span><span>25</span></li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     SECTION 1: INTRODUCTION
+     ============================================================ -->
+<div class="page-break">
+  <h1>Section 1: Introduction</h1>
+
+  <h2>Who This Programme Is For</h2>
+  <p>This programme is built for intermediate to advanced lifters (1+ years consistent training) who want to maximise muscle growth over a structured 16-week block. You should already be comfortable in the gym and familiar with the core movement patterns.</p>
+  <p>It is <strong>not</strong> a beginner programme. If you've been training less than 12 months, start with the free Foundation Plan at sebastian-fisher.com/free.</p>
+
+  <div class="note">
+    <strong>Prerequisites:</strong> You should be able to perform a full range-of-motion squat, hip hinge, overhead press, and pull-up (or lat pulldown at bodyweight equivalent) before starting this programme.
+  </div>
+
+  <h2>How to Use This Guide</h2>
+  <ol>
+    <li><strong>Read Sections 1–2 first.</strong> Understanding the periodisation model and RPE scale is essential.</li>
+    <li><strong>Follow the blocks in order.</strong> Each block builds on the previous. Do not skip ahead.</li>
+    <li><strong>Use the training logs.</strong> Print them or copy to a notebook. Track every session.</li>
+    <li><strong>Take deload weeks seriously.</strong> They are programmed — not optional.</li>
+    <li><strong>Check the exercise guide</strong> for form cues and substitutions before starting.</li>
+    <li><strong>Adjust nutrition</strong> to match the phase. Surplus should increase with volume.</li>
+  </ol>
+
+  <h2>Programme Overview</h2>
+
+  <table>
+    <tr>
+      <th>Block</th><th>Weeks</th><th>Focus</th><th>Volume</th><th>Intensity</th>
+    </tr>
+    <tr>
+      <td class="bold">1 — Foundation</td><td>1–3 + Deload</td><td>Base volume, technique</td><td>Moderate</td><td>RPE 7–8</td>
+    </tr>
+    <tr>
+      <td class="bold">2 — Volume Ramp</td><td>5–7 + Deload</td><td>Progressive overload</td><td>High</td><td>RPE 7–9</td>
+    </tr>
+    <tr>
+      <td class="bold">3 — Peak Volume</td><td>9–11 + Deload</td><td>Maximum stimulus</td><td>Very High</td><td>RPE 8–9</td>
+    </tr>
+    <tr>
+      <td class="bold">4 — Intensity</td><td>13–16</td><td>Intensity techniques</td><td>Moderate–High</td><td>RPE 9–10</td>
+    </tr>
+  </table>
+
+  <h2>The Arnold Split</h2>
+  <p>This programme uses a 6-day Arnold split — the classic bodybuilding frequency that lets you train each muscle group twice per week with sufficient volume and recovery:</p>
+
+  <table>
+    <tr><th>Day</th><th>Split</th><th>Primary Muscles</th></tr>
+    <tr><td class="bold">Monday</td><td>Chest &amp; Back</td><td>Pecs, lats, rhomboids, traps, rear delts</td></tr>
+    <tr><td class="bold">Tuesday</td><td>Shoulders &amp; Arms</td><td>All 3 delt heads, biceps, triceps, forearms</td></tr>
+    <tr><td class="bold">Wednesday</td><td>Legs</td><td>Quads, hamstrings, glutes, calves, adductors</td></tr>
+    <tr><td class="bold">Thursday</td><td>Chest &amp; Back</td><td>Pecs, lats, rhomboids, traps, rear delts</td></tr>
+    <tr><td class="bold">Friday</td><td>Shoulders &amp; Arms</td><td>All 3 delt heads, biceps, triceps, forearms</td></tr>
+    <tr><td class="bold">Saturday</td><td>Legs</td><td>Quads, hamstrings, glutes, calves, adductors</td></tr>
+    <tr><td class="bold gold">Sunday</td><td class="gold">Rest</td><td class="gold">Full recovery day</td></tr>
+  </table>
+
+  <div class="note">
+    <strong>Why Arnold Split?</strong> Each muscle gets hit twice per week — the sweet spot for hypertrophy. Unlike PPL, chest and back are paired together, creating a natural push-pull superset dynamic and keeping sessions balanced. Shoulders &amp; arms get a dedicated day, meaning no fatigue carryover from heavy pressing.
+  </div>
+</div>
+
+<!-- ============================================================
+     SECTION 2: TRAINING PRINCIPLES
+     ============================================================ -->
+<div class="page-break">
+  <h1>Section 2: Training Principles</h1>
+
+  <h2>Volume Periodisation: The Wave Model</h2>
+  <p>This programme uses an ascending wave model — volume starts moderate and climbs over 3 weeks, then drops on deload week. Each new block starts slightly higher than the previous block's starting point.</p>
+
+  <table>
+    <tr><th>Week</th><th>Sets Per Muscle/Week</th><th>Character</th></tr>
+    <tr><td>1</td><td>12–14</td><td>Introductory — establish loads</td></tr>
+    <tr><td>2</td><td>14–16</td><td>Building — pushing RPE up</td></tr>
+    <tr><td>3</td><td>16–18</td><td>Overreaching — hard week</td></tr>
+    <tr><td class="gold bold">4 (Deload)</td><td class="gold">8–10 (compounds)</td><td class="gold">Heavy singles/triples — CNS recovery</td></tr>
+    <tr><td>5</td><td>14–16</td><td>New base — higher than Block 1 start</td></tr>
+    <tr><td>6</td><td>16–18</td><td>Building</td></tr>
+    <tr><td>7</td><td>18–20</td><td>Overreaching</td></tr>
+    <tr><td class="gold bold">8 (Deload)</td><td class="gold">8–10 (compounds)</td><td class="gold">Heavy doubles/triples — recover</td></tr>
+    <tr><td>9</td><td>16–18</td><td>Peak base</td></tr>
+    <tr><td>10</td><td>18–22</td><td>Peak volume</td></tr>
+    <tr><td>11</td><td>22–24</td><td>Functional overreaching — hardest week</td></tr>
+    <tr><td class="gold bold">12 (Deload)</td><td class="gold">8–10 (compounds)</td><td class="gold">Heavy work — strength expression</td></tr>
+    <tr><td>13</td><td>14–16</td><td>Intensity techniques begin</td></tr>
+    <tr><td>14</td><td>14–16</td><td>Drop sets, myo-reps, partials</td></tr>
+    <tr><td>15</td><td>16–18</td><td>Peak intensity</td></tr>
+    <tr><td>16</td><td>12–14</td><td>Taper — programme complete</td></tr>
+  </table>
+
+  <h2>RPE &amp; RIR Scale</h2>
+  <p>All working sets use RPE (Rate of Perceived Exertion) to autoregulate intensity. RIR = Reps In Reserve.</p>
+
+  <table class="rpe-table">
+    <tr><th>RPE</th><th>RIR</th><th>Description</th></tr>
+    <tr><td>10</td><td>0</td><td>Maximum effort. Could not do another rep with good form.</td></tr>
+    <tr><td>9.5</td><td>0–1</td><td>Might have had one more, but not confident.</td></tr>
+    <tr><td>9</td><td>1</td><td>Definitely one more rep left. Hard set.</td></tr>
+    <tr><td>8</td><td>2</td><td>Two reps left. Challenging but controlled.</td></tr>
+    <tr><td>7</td><td>3</td><td>Three reps left. Working weight, good form throughout.</td></tr>
+    <tr><td>6</td><td>4+</td><td>Warm-up territory. Speed work only.</td></tr>
+  </table>
+
+  <div class="warning">
+    <strong>Common mistake:</strong> Most lifters train at RPE 9–10 every session and wonder why they plateau. This programme keeps most work at RPE 7–8, with RPE 9+ reserved for peak weeks and the final block. Trust the process.
+  </div>
+
+  <h2>Progressive Overload in Practice</h2>
+  <p>Overload in this programme comes from <strong>three levers</strong> — not just adding weight:</p>
+  <ol>
+    <li><strong>Volume:</strong> More sets per week as the block progresses.</li>
+    <li><strong>Load:</strong> Small weight increases week to week (1–2.5kg on machines/cables, 2.5–5kg on free weights).</li>
+    <li><strong>Effort:</strong> RPE creeps up from 7 to 9 across a block, even at the same weight.</li>
+  </ol>
+  <p>Do <strong>not</strong> chase load at the expense of form. A slow, controlled cable fly at RPE 8 builds more muscle than a swinging 30kg dumbbell at RPE 10.</p>
+
+  <h2>Mind-Muscle Connection &amp; Tempo</h2>
+  <p>Unless otherwise noted, use the following default tempo:</p>
+  <table>
+    <tr><th>Phase</th><th>Seconds</th><th>Note</th></tr>
+    <tr><td>Eccentric (lowering)</td><td>2–3 sec</td><td>Control the negative. This is where damage occurs.</td></tr>
+    <tr><td>Stretch</td><td>1 sec pause</td><td>Brief pause at full stretch position.</td></tr>
+    <tr><td>Concentric (lifting)</td><td>1–2 sec</td><td>Controlled but not explosive unless noted.</td></tr>
+    <tr><td>Peak contraction</td><td>1 sec squeeze</td><td>Hard squeeze at the top where applicable.</td></tr>
+  </table>
+
+  <h2>Deload Philosophy: Heavy Compounds</h2>
+  <p>Deload weeks in this programme are <strong>not</strong> "do nothing" weeks. Instead of dropping volume on isolation work, you swap the entire week to compound-focused, low-rep, heavy work:</p>
+  <ul>
+    <li>Strip back to 4–5 exercises per session (all compounds)</li>
+    <li>Work up to heavy singles, doubles, and triples (RPE 8–9)</li>
+    <li>Total volume drops by ~50%, but intensity per set is high</li>
+    <li>This maintains neural drive and strength while letting connective tissue recover from high-rep isolation work</li>
+    <li>You'll often come back to the next block feeling stronger and more responsive to volume</li>
+  </ul>
+
+  <div class="note">
+    <strong>Think of it this way:</strong> 3 weeks of bodybuilding → 1 week of powerlifting → repeat. The contrast is the recovery.
+  </div>
+</div>
+
+<!-- ============================================================
+     BLOCK 1 — FOUNDATION (Weeks 1–3)
+     Based on Arnold's Advanced Training Programme II pyramid scheme
+     ============================================================ -->
+<div class="page-break">
+  <div class="phase-header">Block 1 — Foundation · Weeks 1–3</div>
+  <p style="margin-top:8px;" class="dim">Arnold pyramid rep scheme: increase weight each set, decrease reps. Establish working weights. Focus on tempo and mind-muscle connection.</p>
+
+  <div class="note">
+    <strong>How to read the pyramid:</strong> "5 × 15,12,8,8,6" means 5 sets — start light at 15 reps, add weight each set, finish heavy at 6. Rest increases as weight goes up: 60 sec for 15s, 90 sec for 12s, 2 min for 8s and 6s.
+  </div>
+
+  <!-- DAY 1: CHEST & BACK -->
+  <div class="day-header">Day 1 — Chest &amp; Back (Monday)</div>
+  <table>
+    <tr><th>Exercise</th><th>Sets × Reps</th><th>Rest</th><th>Notes</th></tr>
+    <tr><td><span class="exercise-name">Incline DB Press</span><br><span class="muscle-target">Upper chest</span></td><td class="bold">5 × 15, 12, 8, 8, 6</td><td>60–120s</td><td>30° incline. Pyramid up in weight. Full stretch at bottom, squeeze at top.</td></tr>
+    <tr><td><span class="exercise-name">Cable Chest Fly</span><br><span class="muscle-target">Mid chest</span></td><td class="bold">5 × 15, 12, 10, 8, 8</td><td>60–90s</td><td>High-to-low angle. Constant tension — don't let cables go slack.</td></tr>
+    <tr><td><span class="exercise-name">Machine Chest Press</span><br><span class="muscle-target">Overall chest</span></td><td class="bold">5 × 15, 12, 8, 8, 6</td><td>60–120s</td><td>Slow 3-sec eccentric. Don't lock out. Pause at stretch.</td></tr>
+    <tr><td><span class="exercise-name">Pec Deck</span><br><span class="muscle-target">Inner chest</span></td><td class="bold">4 × 12, 10, 8, 8</td><td>60–90s</td><td>2-sec squeeze at centre. Control the return.</td></tr>
+    <tr><td><span class="exercise-name">Wide-Grip Lat Pulldown</span><br><span class="muscle-target">Lats, teres</span></td><td class="bold">5 × 15, 12, 8, 8, 6</td><td>60–120s</td><td>Lean back 15°. Drive elbows down and back. Full stretch at top.</td></tr>
+    <tr><td><span class="exercise-name">Seated Cable Row</span><br><span class="muscle-target">Mid back, rhomboids</span></td><td class="bold">5 × 15, 12, 10, 8, 6</td><td>60–120s</td><td>V-handle. Chest up. Squeeze shoulder blades 1 sec.</td></tr>
+    <tr><td><span class="exercise-name">Straight-Arm Pulldown</span><br><span class="muscle-target">Lats</span></td><td class="bold">4 × 15, 12, 10, 10</td><td>60–90s</td><td>Arms locked straight. Feel the lat stretch overhead.</td></tr>
+    <tr><td><span class="exercise-name">Machine Rear Delt Fly</span><br><span class="muscle-target">Rear delts</span></td><td class="bold">4 × 15, 12, 12, 10</td><td>60s</td><td>Constant tension. Squeeze at back for 1 sec.</td></tr>
+  </table>
+
+  <!-- DAY 2: SHOULDERS & ARMS -->
+  <div class="day-header">Day 2 — Shoulders &amp; Arms (Tuesday)</div>
+  <table>
+    <tr><th>Exercise</th><th>Sets × Reps</th><th>Rest</th><th>Notes</th></tr>
+    <tr><td><span class="exercise-name">Seated DB Lateral Raise</span><br><span class="muscle-target">Side delts</span></td><td class="bold">5 × 15, 12, 10, 8, 8</td><td>60–90s</td><td>Slight lean forward. Lead with elbows. 3-sec negatives.</td></tr>
+    <tr><td><span class="exercise-name">Cable Lateral Raise</span><br><span class="muscle-target">Side delts</span></td><td class="bold">4 × 15, 12, 10, 10</td><td>60s</td><td>Behind-body cable. Peak tension at top — hold 1 sec.</td></tr>
+    <tr><td><span class="exercise-name">Machine Shoulder Press</span><br><span class="muscle-target">Front delts</span></td><td class="bold">5 × 15, 12, 8, 8, 6</td><td>60–120s</td><td>Don't lock out. Keep tension on delts throughout.</td></tr>
+    <tr><td><span class="exercise-name">Cable Face Pull</span><br><span class="muscle-target">Rear delts, ext. rotators</span></td><td class="bold">4 × 15, 15, 12, 12</td><td>60s</td><td>Rope attachment. Pull to forehead. Health movement — don't ego lift.</td></tr>
+    <tr><td><span class="exercise-name">Incline DB Curl</span><br><span class="muscle-target">Long head biceps</span></td><td class="bold">5 × 15, 12, 8, 8, 6</td><td>60–90s</td><td>45° incline. Full stretch at bottom. No swing — strict form.</td></tr>
+    <tr><td><span class="exercise-name">Cable Rope Pushdown</span><br><span class="muscle-target">Lateral head triceps</span></td><td class="bold">5 × 15, 12, 10, 8, 8</td><td>60–90s</td><td>Split rope at bottom. Squeeze triceps 1 sec. Elbows pinned.</td></tr>
+    <tr><td><span class="exercise-name">Preacher Curl (Machine)</span><br><span class="muscle-target">Short head biceps</span></td><td class="bold">4 × 12, 10, 8, 6</td><td>60–90s</td><td>Slow 3-sec negative. Full extension at bottom.</td></tr>
+    <tr><td><span class="exercise-name">Overhead Cable Extension</span><br><span class="muscle-target">Long head triceps</span></td><td class="bold">4 × 12, 10, 8, 8</td><td>60–90s</td><td>Rope attachment. Deep stretch overhead. Control the eccentric.</td></tr>
+  </table>
+</div>
+
+<div class="page-break">
+  <!-- DAY 3: LEGS -->
+  <div class="day-header">Day 3 — Legs (Wednesday)</div>
+  <table>
+    <tr><th>Exercise</th><th>Sets × Reps</th><th>Rest</th><th>Notes</th></tr>
+    <tr><td><span class="exercise-name">Leg Press</span><br><span class="muscle-target">Quads, glutes</span></td><td class="bold">5 × 15, 12, 10, 8, 6</td><td>90–150s</td><td>Medium foot placement. Full depth — don't round lower back off pad.</td></tr>
+    <tr><td><span class="exercise-name">Leg Extension</span><br><span class="muscle-target">Quads</span></td><td class="bold">5 × 15, 12, 10, 8, 8</td><td>60–90s</td><td>Squeeze at top 1 sec. Slow 3-sec negative.</td></tr>
+    <tr><td><span class="exercise-name">Hack Squat</span><br><span class="muscle-target">Quads</span></td><td class="bold">5 × 15, 12, 8, 8, 6</td><td>90–150s</td><td>Narrow stance. Heels elevated. Deep — arse to ankles.</td></tr>
+    <tr><td><span class="exercise-name">Lying Leg Curl</span><br><span class="muscle-target">Hamstrings</span></td><td class="bold">5 × 15, 12, 10, 8, 8</td><td>60–90s</td><td>Point toes. Squeeze at top. Don't let it drop on negative.</td></tr>
+    <tr><td><span class="exercise-name">Seated Leg Curl</span><br><span class="muscle-target">Hamstrings</span></td><td class="bold">4 × 12, 10, 8, 8</td><td>60–90s</td><td>Lean forward for hamstring stretch. Control eccentric.</td></tr>
+    <tr><td><span class="exercise-name">Standing Calf Raise</span><br><span class="muscle-target">Gastrocnemius</span></td><td class="bold">5 × 15, 12, 10, 8, 8</td><td>60–90s</td><td>Full stretch at bottom (3 sec). Hard squeeze at top (2 sec).</td></tr>
+    <tr><td><span class="exercise-name">Hip Adductor Machine</span><br><span class="muscle-target">Adductors</span></td><td class="bold">3 × 15, 12, 10</td><td>60s</td><td>Controlled squeeze. Slow release. Don't slam the weight.</td></tr>
+  </table>
+
+  <div class="note">
+    <strong>Days 4–6</strong> repeat the same split with exercise variations. Same pyramid structure, different angles and machines.
+  </div>
+
+  <!-- DAY 4: CHEST & BACK -->
+  <div class="day-header">Day 4 — Chest &amp; Back (Thursday)</div>
+  <table>
+    <tr><th>Exercise</th><th>Sets × Reps</th><th>Rest</th><th>Notes</th></tr>
+    <tr><td><span class="exercise-name">Flat DB Fly</span><br><span class="muscle-target">Mid/lower chest</span></td><td class="bold">5 × 15, 12, 10, 8, 8</td><td>60–90s</td><td>Deep stretch. Slight elbow bend — locked angle throughout.</td></tr>
+    <tr><td><span class="exercise-name">Low Incline Smith Press</span><br><span class="muscle-target">Upper/mid chest</span></td><td class="bold">5 × 15, 12, 8, 8, 6</td><td>60–120s</td><td>15° incline. Wide grip. Slow eccentric.</td></tr>
+    <tr><td><span class="exercise-name">Machine Chest Press (Wide)</span><br><span class="muscle-target">Outer chest</span></td><td class="bold">4 × 12, 10, 8, 6</td><td>60–120s</td><td>Wide grip handle if available. Stretch at bottom.</td></tr>
+    <tr><td><span class="exercise-name">Close-Grip Lat Pulldown</span><br><span class="muscle-target">Lower lats</span></td><td class="bold">5 × 15, 12, 10, 8, 6</td><td>60–120s</td><td>Neutral grip. Lean back slightly. Pull to upper chest.</td></tr>
+    <tr><td><span class="exercise-name">Single-Arm DB Row</span><br><span class="muscle-target">Lats, lower traps</span></td><td class="bold">4 × 12, 10, 8, 6</td><td>60–90s</td><td>Pull to hip. Full stretch at bottom. Per arm.</td></tr>
+    <tr><td><span class="exercise-name">Cable Pullover</span><br><span class="muscle-target">Lats, serratus</span></td><td class="bold">4 × 15, 12, 10, 10</td><td>60–90s</td><td>Long ROM. Stretch overhead. Arms nearly straight.</td></tr>
+    <tr><td><span class="exercise-name">Reverse Pec Deck</span><br><span class="muscle-target">Rear delts</span></td><td class="bold">4 × 15, 12, 10, 10</td><td>60s</td><td>Controlled. Squeeze at back for 1 sec.</td></tr>
+  </table>
+</div>
+
+<div class="page-break">
+  <!-- DAY 5: SHOULDERS & ARMS -->
+  <div class="day-header">Day 5 — Shoulders &amp; Arms (Friday)</div>
+  <table>
+    <tr><th>Exercise</th><th>Sets × Reps</th><th>Rest</th><th>Notes</th></tr>
+    <tr><td><span class="exercise-name">Cable Y-Raise</span><br><span class="muscle-target">Side/rear delts</span></td><td class="bold">4 × 15, 12, 10, 10</td><td>60s</td><td>Low cable. Arms in Y shape. Light weight, high control.</td></tr>
+    <tr><td><span class="exercise-name">DB Lateral Raise (Standing)</span><br><span class="muscle-target">Side delts</span></td><td class="bold">5 × 15, 12, 10, 8, 8</td><td>60–90s</td><td>Strict form. Partials allowed on final 2–3 reps of heavy sets.</td></tr>
+    <tr><td><span class="exercise-name">Smith Machine OHP</span><br><span class="muscle-target">Front delts</span></td><td class="bold">5 × 15, 12, 8, 8, 6</td><td>60–120s</td><td>Seated. Lower to chin level. Press just short of lockout.</td></tr>
+    <tr><td><span class="exercise-name">Rear Delt Cable Pull</span><br><span class="muscle-target">Rear delts</span></td><td class="bold">4 × 15, 12, 12, 10</td><td>60s</td><td>Single-arm, cross-body. Squeeze at full contraction.</td></tr>
+    <tr><td><span class="exercise-name">Bayesian Cable Curl</span><br><span class="muscle-target">Long head biceps</span></td><td class="bold">5 × 15, 12, 10, 8, 6</td><td>60–90s</td><td>Cable behind body. Full stretch. No swing — strict.</td></tr>
+    <tr><td><span class="exercise-name">Single-Arm Tricep Pushdown</span><br><span class="muscle-target">Triceps</span></td><td class="bold">4 × 12, 10, 8, 8</td><td>60s</td><td>Underhand or overhand. Squeeze at bottom. Per arm.</td></tr>
+    <tr><td><span class="exercise-name">Hammer Curl</span><br><span class="muscle-target">Brachialis, forearms</span></td><td class="bold">4 × 12, 10, 8, 6</td><td>60–90s</td><td>Cross-body variation. Strict — no body English.</td></tr>
+    <tr><td><span class="exercise-name">Dip Machine</span><br><span class="muscle-target">Triceps</span></td><td class="bold">4 × 12, 10, 8, 6</td><td>60–90s</td><td>Upright torso for tricep focus. Pyramid up in weight.</td></tr>
+  </table>
+
+  <!-- DAY 6: LEGS -->
+  <div class="day-header">Day 6 — Legs (Saturday)</div>
+  <table>
+    <tr><th>Exercise</th><th>Sets × Reps</th><th>Rest</th><th>Notes</th></tr>
+    <tr><td><span class="exercise-name">Pendulum Squat / V-Squat</span><br><span class="muscle-target">Quads</span></td><td class="bold">5 × 15, 12, 10, 8, 6</td><td>90–150s</td><td>Full depth. Quad focus. Pyramid up in weight.</td></tr>
+    <tr><td><span class="exercise-name">Single-Leg Extension</span><br><span class="muscle-target">Quads</span></td><td class="bold">4 × 15, 12, 10, 8</td><td>60s</td><td>Per leg. Squeeze at top 1 sec. Slow negative.</td></tr>
+    <tr><td><span class="exercise-name">Bulgarian Split Squat (Smith)</span><br><span class="muscle-target">Quads, glutes</span></td><td class="bold">4 × 12, 10, 8, 8</td><td>90s</td><td>Front foot elevated. Deep stretch. Per leg.</td></tr>
+    <tr><td><span class="exercise-name">Stiff-Leg DB Deadlift</span><br><span class="muscle-target">Hamstrings, glutes</span></td><td class="bold">5 × 15, 12, 10, 8, 6</td><td>60–120s</td><td>Slight knee bend. Feel hamstring stretch. Pyramid up.</td></tr>
+    <tr><td><span class="exercise-name">Leg Curl (Seated)</span><br><span class="muscle-target">Hamstrings</span></td><td class="bold">4 × 12, 10, 8, 8</td><td>60–90s</td><td>Lean forward for stretch. Slow eccentric.</td></tr>
+    <tr><td><span class="exercise-name">Seated Calf Raise</span><br><span class="muscle-target">Soleus</span></td><td class="bold">5 × 20, 15, 12, 10, 10</td><td>60s</td><td>3-sec stretch at bottom. 2-sec hold at top.</td></tr>
+    <tr><td><span class="exercise-name">Hip Abductor Machine</span><br><span class="muscle-target">Glute med, abductors</span></td><td class="bold">3 × 15, 12, 10</td><td>60s</td><td>Lean forward for glute focus. Controlled.</td></tr>
+  </table>
+</div>
+
+<!-- ============================================================
+     BLOCK 2 — VOLUME RAMP (Weeks 5–7)
+     ============================================================ -->
+<div class="page-break">
+  <div class="phase-header">Block 2 — Volume Ramp · Weeks 5–7</div>
+  <p style="margin-top:8px;" class="dim">Volume increases. Extra sets added to priority muscles. RPE 7–9. Same Arnold split.</p>
+
+  <div class="note">
+    <strong>What changes from Block 1:</strong> +1 set on most exercises. RPE ceiling rises to 9. Two exercises per session get an extra set in Week 7. Tempo remains the same. Rest periods can drop by 15 sec on isolation work if conditioning allows.
+  </div>
+
+  <div class="day-header">Day 1 — Chest &amp; Back (Monday)</div>
+  <table>
+    <tr><th>Exercise</th><th>Sets W5</th><th>Sets W6</th><th>Sets W7</th><th>Reps</th><th>RPE</th><th>Notes</th></tr>
+    <tr><td><span class="exercise-name">Incline DB Press</span></td><td>3</td><td>4</td><td>4</td><td>10–12</td><td>8</td><td>Increase load from Block 1</td></tr>
+    <tr><td><span class="exercise-name">Cable Chest Fly</span></td><td>3</td><td>3</td><td>4</td><td>12–15</td><td>8</td><td>Add partials on final set W7</td></tr>
+    <tr><td><span class="exercise-name">Machine Chest Press</span></td><td>3</td><td>3</td><td>4</td><td>10–12</td><td>8–9</td><td>Push RPE higher this block</td></tr>
+    <tr><td><span class="exercise-name">Chest Dip (Machine)</span></td><td>2</td><td>3</td><td>3</td><td>10–12</td><td>8</td><td>NEW — lower chest focus</td></tr>
+    <tr><td><span class="exercise-name">Wide-Grip Lat Pulldown</span></td><td>3</td><td>4</td><td>4</td><td>10–12</td><td>8</td><td>Increase load</td></tr>
+    <tr><td><span class="exercise-name">Seated Cable Row</span></td><td>3</td><td>3</td><td>4</td><td>10–12</td><td>8</td><td>Try wide grip variation</td></tr>
+    <tr><td><span class="exercise-name">Straight-Arm Pulldown</span></td><td>3</td><td>3</td><td>3</td><td>12–15</td><td>8</td><td>Increase load or slow tempo</td></tr>
+    <tr><td><span class="exercise-name">Machine Rear Delt Fly</span></td><td>3</td><td>3</td><td>3</td><td>15–20</td><td>8</td><td>Increase to 3 sets from Block 1</td></tr>
+  </table>
+
+  <div class="day-header">Day 2 — Shoulders &amp; Arms (Tuesday)</div>
+  <table>
+    <tr><th>Exercise</th><th>Sets W5</th><th>Sets W6</th><th>Sets W7</th><th>Reps</th><th>RPE</th><th>Notes</th></tr>
+    <tr><td><span class="exercise-name">Seated DB Lateral Raise</span></td><td>4</td><td>4</td><td>5</td><td>12–15</td><td>8</td><td>Priority muscle — extra volume</td></tr>
+    <tr><td><span class="exercise-name">Cable Lateral Raise</span></td><td>3</td><td>3</td><td>4</td><td>15–20</td><td>8</td><td>Constant tension, slow negative</td></tr>
+    <tr><td><span class="exercise-name">Machine Shoulder Press</span></td><td>3</td><td>3</td><td>3</td><td>10–12</td><td>8</td><td>Increase load from Block 1</td></tr>
+    <tr><td><span class="exercise-name">Cable Face Pull</span></td><td>3</td><td>3</td><td>3</td><td>15–20</td><td>7–8</td><td>Health movement — keep RPE moderate</td></tr>
+    <tr><td><span class="exercise-name">Incline DB Curl</span></td><td>3</td><td>3</td><td>4</td><td>10–12</td><td>8</td><td>Full stretch, increase load</td></tr>
+    <tr><td><span class="exercise-name">Cable Rope Pushdown</span></td><td>3</td><td>3</td><td>4</td><td>12–15</td><td>8</td><td>Increase load</td></tr>
+    <tr><td><span class="exercise-name">Preacher Curl (Machine)</span></td><td>3</td><td>3</td><td>3</td><td>12–15</td><td>8</td><td>Up from 2 sets</td></tr>
+    <tr><td><span class="exercise-name">Overhead Cable Extension</span></td><td>3</td><td>3</td><td>3</td><td>12–15</td><td>8</td><td>Up from 2 sets</td></tr>
+  </table>
+
+  <div class="day-header">Day 3 — Legs (Wednesday)</div>
+  <table>
+    <tr><th>Exercise</th><th>Sets W5</th><th>Sets W6</th><th>Sets W7</th><th>Reps</th><th>RPE</th><th>Notes</th></tr>
+    <tr><td><span class="exercise-name">Leg Press</span></td><td>4</td><td>4</td><td>4</td><td>10–12</td><td>8</td><td>Increase load, full ROM</td></tr>
+    <tr><td><span class="exercise-name">Leg Extension</span></td><td>3</td><td>4</td><td>4</td><td>12–15</td><td>8</td><td>Squeeze harder at top</td></tr>
+    <tr><td><span class="exercise-name">Hack Squat</span></td><td>3</td><td>3</td><td>4</td><td>10–12</td><td>8–9</td><td>Push effort this block</td></tr>
+    <tr><td><span class="exercise-name">Lying Leg Curl</span></td><td>3</td><td>3</td><td>4</td><td>10–12</td><td>8</td><td>Increase load</td></tr>
+    <tr><td><span class="exercise-name">Seated Leg Curl</span></td><td>3</td><td>3</td><td>3</td><td>12–15</td><td>8</td><td>Lean forward for stretch</td></tr>
+    <tr><td><span class="exercise-name">Standing Calf Raise</span></td><td>3</td><td>4</td><td>4</td><td>12–15</td><td>8</td><td>Add set in W6</td></tr>
+    <tr><td><span class="exercise-name">Hip Adductor Machine</span></td><td>3</td><td>3</td><td>3</td><td>15–20</td><td>7</td><td>Up from 2 sets</td></tr>
+  </table>
+
+  <p class="dim" style="margin-top:8px;"><strong>Days 4–6:</strong> Follow the same Day 4–6 variations from Block 1, applying the same set increases (+1 set progression across weeks 5–7).</p>
+</div>
+
+<!-- ============================================================
+     DELOAD WEEK
+     ============================================================ -->
+<div class="page-break">
+  <div class="phase-header" style="background:#2a6496;">Deload Week — Weeks 4, 8, 12</div>
+  <p style="margin-top:8px;" class="dim">Swap to compound movements. Low volume, high intensity. 4 sessions in 6 days. RPE 8–9 on top sets.</p>
+
+  <div class="note">
+    <strong>Purpose:</strong> Recover from accumulated fatigue while maintaining (or testing) strength. You should feel fresh and strong by the end of deload week. If you still feel fatigued going into the next block, extend the deload by 2–3 days.
+  </div>
+
+  <div class="deload-header">Day 1 — Chest &amp; Back (Compounds)</div>
+  <table>
+    <tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>RPE</th><th>Rest</th><th>Notes</th></tr>
+    <tr><td class="exercise-name">Barbell Bench Press</td><td>4</td><td>3–5</td><td>8–9</td><td>3 min</td><td>Work up to a heavy triple</td></tr>
+    <tr><td class="exercise-name">Barbell Row (Pendlay)</td><td>4</td><td>3–5</td><td>8</td><td>3 min</td><td>Strict form, pull from floor</td></tr>
+    <tr><td class="exercise-name">Weighted Pull-Up</td><td>3</td><td>3–5</td><td>8</td><td>3 min</td><td>Add weight if BW is easy for 5</td></tr>
+    <tr><td class="exercise-name">Incline Barbell Press</td><td>3</td><td>5</td><td>7–8</td><td>2 min</td><td>Moderate load, quality reps</td></tr>
+  </table>
+
+  <div class="deload-header">Day 2 — Shoulders &amp; Arms (Compounds)</div>
+  <table>
+    <tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>RPE</th><th>Rest</th><th>Notes</th></tr>
+    <tr><td class="exercise-name">Barbell OHP (Standing)</td><td>4</td><td>3–5</td><td>8–9</td><td>3 min</td><td>Strict press, work up to heavy triple</td></tr>
+    <tr><td class="exercise-name">Weighted Dips</td><td>3</td><td>5–6</td><td>8</td><td>2 min</td><td>Upright for triceps</td></tr>
+    <tr><td class="exercise-name">Barbell Curl</td><td>3</td><td>5–6</td><td>8</td><td>2 min</td><td>Strict, no swing, heavy</td></tr>
+    <tr><td class="exercise-name">Close-Grip Bench Press</td><td>3</td><td>5–6</td><td>8</td><td>2 min</td><td>Hands shoulder width</td></tr>
+  </table>
+
+  <div class="deload-header">Day 3 — Legs (Compounds)</div>
+  <table>
+    <tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>RPE</th><th>Rest</th><th>Notes</th></tr>
+    <tr><td class="exercise-name">Barbell Back Squat</td><td>4</td><td>3–5</td><td>8–9</td><td>3 min</td><td>Work up to heavy triple, ATG</td></tr>
+    <tr><td class="exercise-name">Romanian Deadlift</td><td>4</td><td>5–6</td><td>8</td><td>3 min</td><td>Hamstring stretch, heavy</td></tr>
+    <tr><td class="exercise-name">Walking Lunges</td><td>3</td><td>8/leg</td><td>7</td><td>2 min</td><td>Moderate load, full stride</td></tr>
+    <tr><td class="exercise-name">Standing Calf Raise</td><td>3</td><td>8–10</td><td>7</td><td>90 sec</td><td>Heavy, full ROM</td></tr>
+  </table>
+
+  <div class="deload-header">Day 4 — Full Body (Optional Light)</div>
+  <table>
+    <tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>RPE</th><th>Rest</th><th>Notes</th></tr>
+    <tr><td class="exercise-name">Trap Bar Deadlift</td><td>3</td><td>3–5</td><td>8</td><td>3 min</td><td>If available. Otherwise conventional DL.</td></tr>
+    <tr><td class="exercise-name">DB Bench Press</td><td>3</td><td>6–8</td><td>7</td><td>2 min</td><td>Moderate, controlled</td></tr>
+    <tr><td class="exercise-name">Chin-Up</td><td>3</td><td>5–8</td><td>7</td><td>2 min</td><td>Bodyweight or light added</td></tr>
+    <tr><td class="exercise-name">DB Shoulder Press</td><td>3</td><td>6–8</td><td>7</td><td>2 min</td><td>Seated, moderate</td></tr>
+  </table>
+
+  <p class="dim" style="margin-top:8px;">Days 5–6: Rest or light cardio only. No resistance training.</p>
+</div>
+
+<!-- ============================================================
+     BLOCK 3 — PEAK VOLUME (Weeks 9–11) — summary
+     ============================================================ -->
+<div class="page-break">
+  <div class="phase-header">Block 3 — Peak Volume · Weeks 9–11</div>
+  <p style="margin-top:8px;" class="dim">Highest volume block. This is where growth happens. RPE 8–9. Additional sets on all exercises. Intensity techniques introduced in Week 11.</p>
+
+  <div class="warning">
+    <strong>This block is hard.</strong> Sleep 7+ hours. Eat in a surplus. If you're not recovering between sessions, reduce volume by 1 set per exercise rather than pushing through.
+  </div>
+
+  <h3>Key Changes from Block 2</h3>
+  <ul>
+    <li>+1 set on most exercises compared to Block 2 Week 7</li>
+    <li>Week 11 introduces intensity techniques on final sets: <strong>drop sets</strong> on machine work, <strong>myo-reps</strong> on cables, <strong>partials</strong> on isolation</li>
+    <li>RPE 8–9 across the board — you should be close to failure on most working sets</li>
+    <li>Total weekly sets per muscle group: 22–24</li>
+  </ul>
+
+  <h3>Week 11 Intensity Techniques</h3>
+  <table>
+    <tr><th>Technique</th><th>How to Apply</th><th>When</th></tr>
+    <tr><td class="bold">Drop Set</td><td>After final set, reduce weight 25–30% and go to failure. One drop only.</td><td>Machine exercises (chest press, leg press, leg ext)</td></tr>
+    <tr><td class="bold">Myo-Reps</td><td>Hit ~12 reps to failure, rest 5 breaths, do 3–5 reps, repeat 3 times.</td><td>Cable exercises (flys, laterals, curls)</td></tr>
+    <tr><td class="bold">Partials</td><td>After failure on full reps, continue with half-reps in the shortened range.</td><td>Lateral raises, curls, extensions</td></tr>
+    <tr><td class="bold">Lengthened Partials</td><td>After failure, do 4–5 reps in the bottom stretched position only.</td><td>Incline curls, flys, pullovers</td></tr>
+  </table>
+
+  <h3>Sample Volume — Chest &amp; Back Day (Week 11)</h3>
+  <table>
+    <tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>RPE</th><th>Technique</th></tr>
+    <tr><td class="exercise-name">Incline DB Press</td><td>4</td><td>10–12</td><td>9</td><td>—</td></tr>
+    <tr><td class="exercise-name">Cable Chest Fly</td><td>4</td><td>12–15</td><td>9</td><td>Myo-reps on final set</td></tr>
+    <tr><td class="exercise-name">Machine Chest Press</td><td>4</td><td>10–12</td><td>9</td><td>Drop set on final set</td></tr>
+    <tr><td class="exercise-name">Chest Dip (Machine)</td><td>3</td><td>10–12</td><td>9</td><td>—</td></tr>
+    <tr><td class="exercise-name">Wide-Grip Lat Pulldown</td><td>4</td><td>10–12</td><td>9</td><td>—</td></tr>
+    <tr><td class="exercise-name">Seated Cable Row</td><td>4</td><td>10–12</td><td>9</td><td>Myo-reps on final set</td></tr>
+    <tr><td class="exercise-name">Straight-Arm Pulldown</td><td>3</td><td>12–15</td><td>8</td><td>Lengthened partials</td></tr>
+    <tr><td class="exercise-name">Machine Rear Delt Fly</td><td>3</td><td>15–20</td><td>8</td><td>Partials on final set</td></tr>
+  </table>
+  <p class="dim small">Total chest sets this session: 15 · Total back sets: 14 · Combined with Day 4 = ~28 chest, ~26 back per week.</p>
+</div>
+
+<!-- ============================================================
+     BLOCK 4 — INTENSITY & TAPER (Weeks 13–16)
+     ============================================================ -->
+<div class="page-break">
+  <div class="phase-header">Block 4 — Intensity &amp; Taper · Weeks 13–16</div>
+  <p style="margin-top:8px;" class="dim">Volume drops back to moderate. Every set counts — intensity techniques on most exercises. RPE 9–10. Week 16 is a taper.</p>
+
+  <h3>Block 4 Philosophy</h3>
+  <p>You've spent 12 weeks building volume tolerance. Now you cash it in. Lower total sets but <strong>maximum effort</strong> per set. Every working set should be within 1 rep of failure. Intensity techniques are applied systematically.</p>
+
+  <h3>Intensity Protocol by Week</h3>
+  <table>
+    <tr><th>Week</th><th>Sets/Muscle</th><th>RPE</th><th>Techniques</th></tr>
+    <tr><td class="bold">13</td><td>14–16</td><td>9</td><td>Drop sets on machines, myo-reps on cables</td></tr>
+    <tr><td class="bold">14</td><td>14–16</td><td>9–10</td><td>Add lengthened partials, supersets</td></tr>
+    <tr><td class="bold">15</td><td>16–18</td><td>9–10</td><td>All techniques. Hardest training week of programme.</td></tr>
+    <tr><td class="bold gold">16 (Taper)</td><td class="gold">12–14</td><td class="gold">8–9</td><td class="gold">Reduce techniques. Quality reps. Finish strong.</td></tr>
+  </table>
+
+  <div class="note">
+    <strong>After Week 16:</strong> Take a full deload week (compound heavy or complete rest), then you can either repeat the programme with higher starting loads, transition to a cutting phase, or begin a new training block.
+  </div>
+</div>
+
+<!-- ============================================================
+     SECTION 4: EXERCISE GUIDE
+     ============================================================ -->
+<div class="page-break">
+  <h1>Section 4: Exercise Guide</h1>
+
+  <h2>Chest &amp; Back Day — Key Cues</h2>
+
+  <h4>Incline DB Press</h4>
+  <p>Set bench to 30°. Bring dumbbells down until upper arms are parallel to floor or slightly below. Don't bounce. Press up and slightly in — dumbbells should nearly touch at the top. Squeeze pecs at top for 1 second.</p>
+
+  <h4>Cable Chest Fly</h4>
+  <p>Set pulleys at shoulder height or slightly above. Step forward for stretch. Arms slightly bent — locked elbow angle throughout. Bring hands together at chest level, squeeze 2 seconds. Control the return.</p>
+
+  <h4>Machine Chest Press</h4>
+  <p>Adjust seat so handles align with mid-chest. Press without locking elbows. Slow 2-sec eccentric. If machine has converging arms, use it — better chest activation.</p>
+
+  <h4>Wide-Grip Lat Pulldown</h4>
+  <p>Grip 1.5× shoulder width. Lean back 15°. Initiate by depressing shoulder blades, then pull elbows down and back. Lower the bar to upper chest. Control the return — feel the stretch at the top.</p>
+
+  <h4>Seated Cable Row</h4>
+  <p>Sit upright, slight forward lean at start for stretch. Pull to lower chest/upper abdomen. Squeeze shoulder blades together for 1 second. Don't use momentum.</p>
+
+  <h4>Straight-Arm Pulldown</h4>
+  <p>Stand facing cable, rope or straight bar at high position. Arms locked straight. Pull down in an arc until hands reach thighs. Feel lats stretch overhead on the return. Do not bend elbows.</p>
+
+  <h2>Shoulders &amp; Arms Day — Key Cues</h2>
+
+  <h4>Seated DB Lateral Raise</h4>
+  <p>Sit on bench edge, slight forward lean. Raise dumbbells out to sides, leading with elbows (not hands). Stop at shoulder height. Lower slowly — 3 seconds down. Don't use momentum.</p>
+
+  <h4>Cable Lateral Raise</h4>
+  <p>Stand side-on to low cable. Cable runs behind legs. Raise arm to shoulder height, hold 1 second. Lower slowly. This provides peak tension at the top where DBs lose it.</p>
+
+  <h4>Incline DB Curl</h4>
+  <p>Set bench to 45°. Let arms hang straight down — full stretch on biceps. Curl without moving upper arms. Squeeze at top. Lower slowly — this is the money part of the movement.</p>
+
+  <h4>Cable Rope Pushdown</h4>
+  <p>Elbows pinned to sides throughout. Push down and split the rope at the bottom. Squeeze triceps for 1 second. Control the return — don't let the cable yank your arms up.</p>
+
+  <h2>Legs Day — Key Cues</h2>
+
+  <h4>Leg Press</h4>
+  <p>Feet shoulder-width, mid-platform. Lower until knees are at 90° or slightly below. Don't round lower back off the pad. Press through whole foot. Don't lock out knees at top.</p>
+
+  <h4>Hack Squat</h4>
+  <p>Narrow stance, feet low on platform for quad bias. Go deep — arse to ankles if mobility allows. Heels elevated on a plate if needed. Control the eccentric.</p>
+
+  <h4>Lying Leg Curl</h4>
+  <p>Point toes (plantar flexion) to reduce calf involvement. Curl fully — try to touch pad to glutes. Hold peak contraction 1 second. Lower slowly, don't let it drop.</p>
+</div>
+
+<!-- ============================================================
+     SUBSTITUTION GUIDE
+     ============================================================ -->
+<div class="page-break">
+  <h2>Substitution Guide</h2>
+  <p class="dim">If your gym doesn't have a specific machine or you need alternatives due to injury, use these swaps. Priority: match the resistance profile and muscle target.</p>
+
+  <table>
+    <tr><th>Exercise</th><th>Sub Option 1</th><th>Sub Option 2</th></tr>
+    <tr><td>Incline DB Press</td><td>Incline Smith Press</td><td>Incline Cable Press</td></tr>
+    <tr><td>Cable Chest Fly</td><td>Pec Deck</td><td>DB Fly</td></tr>
+    <tr><td>Machine Chest Press</td><td>Smith Flat Press</td><td>Hammer Strength Press</td></tr>
+    <tr><td>Wide-Grip Lat Pulldown</td><td>Pull-Up (wide grip)</td><td>Machine Pulldown</td></tr>
+    <tr><td>Seated Cable Row</td><td>Machine Row</td><td>Chest-Supported DB Row</td></tr>
+    <tr><td>Straight-Arm Pulldown</td><td>DB Pullover</td><td>Cable Pullover</td></tr>
+    <tr><td>Seated DB Lateral Raise</td><td>Machine Lateral Raise</td><td>Cable Lateral Raise</td></tr>
+    <tr><td>Machine Shoulder Press</td><td>Smith OHP (seated)</td><td>DB Shoulder Press</td></tr>
+    <tr><td>Incline DB Curl</td><td>Bayesian Cable Curl</td><td>Spider Curl</td></tr>
+    <tr><td>Cable Rope Pushdown</td><td>Single-Arm Pushdown</td><td>Machine Dip</td></tr>
+    <tr><td>Leg Press</td><td>Hack Squat</td><td>Smith Squat</td></tr>
+    <tr><td>Hack Squat</td><td>Pendulum Squat</td><td>Belt Squat</td></tr>
+    <tr><td>Leg Extension</td><td>Sissy Squat</td><td>Single-Leg Ext</td></tr>
+    <tr><td>Lying Leg Curl</td><td>Seated Leg Curl</td><td>Nordic Curl</td></tr>
+    <tr><td>Standing Calf Raise</td><td>Leg Press Calf Raise</td><td>Smith Calf Raise</td></tr>
+  </table>
+</div>
+
+<!-- ============================================================
+     SECTION 5: NUTRITION
+     ============================================================ -->
+<div class="page-break">
+  <h1>Section 5: Nutrition</h1>
+
+  <h2>Caloric Surplus Guidelines</h2>
+  <p>Building muscle requires a caloric surplus. Too much and you gain unnecessary fat. Too little and you leave gains on the table.</p>
+
+  <table>
+    <tr><th>Training Experience</th><th>Surplus</th><th>Expected Gain</th></tr>
+    <tr><td>Beginner (< 1 year)</td><td>300–500 kcal/day</td><td>1–1.5 kg/month</td></tr>
+    <tr><td>Intermediate (1–3 years)</td><td>200–350 kcal/day</td><td>0.5–1 kg/month</td></tr>
+    <tr><td>Advanced (3+ years)</td><td>150–250 kcal/day</td><td>0.25–0.5 kg/month</td></tr>
+  </table>
+
+  <div class="note">
+    <strong>Weigh daily, average weekly.</strong> If your weekly average isn't moving up at the rate above, add 100–150 kcal. If it's climbing too fast, remove 100–150 kcal. Adjust every 2 weeks.
+  </div>
+
+  <h2>Macronutrient Targets</h2>
+  <table>
+    <tr><th>Macro</th><th>Target</th><th>Example (85kg)</th><th>Notes</th></tr>
+    <tr><td class="bold">Protein</td><td>2.0–2.2g/kg BW</td><td>170–187g</td><td>Non-negotiable. Hit this daily.</td></tr>
+    <tr><td class="bold">Fat</td><td>0.8–1.2g/kg BW</td><td>68–102g</td><td>Hormonal health. Don't go below 0.7g/kg.</td></tr>
+    <tr><td class="bold">Carbs</td><td>Fill remaining cals</td><td>300–450g</td><td>Training fuel. More on leg days.</td></tr>
+  </table>
+
+  <h2>Meal Timing &amp; Training Nutrition</h2>
+  <ul>
+    <li><strong>Pre-training (1–2 hrs before):</strong> Meal with protein + carbs. 30–40g protein, 50–80g carbs.</li>
+    <li><strong>Intra-workout:</strong> Optional — 20–30g fast carbs (juice, gummy bears, cyclic dextrin) if sessions exceed 75 minutes.</li>
+    <li><strong>Post-training (within 2 hrs):</strong> Protein + carbs. 30–50g protein, 50–100g carbs.</li>
+    <li><strong>Before bed:</strong> Slow-digesting protein (casein, cottage cheese, Greek yoghurt).</li>
+    <li><strong>Total meals:</strong> 3–5 per day. Spread protein evenly (30–50g per meal).</li>
+  </ul>
+
+  <h2>Supplements Worth Taking</h2>
+  <table>
+    <tr><th>Supplement</th><th>Dose</th><th>Evidence</th></tr>
+    <tr><td class="bold">Creatine Monohydrate</td><td>5g/day, every day</td><td>Strong — proven muscle + strength benefits</td></tr>
+    <tr><td class="bold">Vitamin D3 + K2</td><td>2000–4000 IU/day</td><td>Strong in UK (limited sun exposure)</td></tr>
+    <tr><td class="bold">Whey Protein</td><td>As needed to hit target</td><td>Convenience — not magic</td></tr>
+    <tr><td class="bold">Omega-3 (Fish Oil)</td><td>2–3g EPA+DHA/day</td><td>Moderate — anti-inflammatory, heart health</td></tr>
+    <tr><td class="bold">Magnesium</td><td>200–400mg before bed</td><td>Moderate — sleep quality, recovery</td></tr>
+    <tr><td class="dim">Caffeine</td><td>200–400mg pre-workout</td><td>Performance — not required</td></tr>
+  </table>
+
+  <div class="warning">
+    <strong>Everything else is probably a waste of money.</strong> BCAAs, fat burners, testosterone boosters, greens powders — save your money. Train hard, eat enough protein, sleep 7+ hours. That's 95% of results.
+  </div>
+</div>
+
+<!-- ============================================================
+     SECTION 6: TRACKING & LOGS
+     ============================================================ -->
+<div class="page-break">
+  <h1>Section 6: Tracking &amp; Logs</h1>
+
+  <h2>Weekly Training Log — Chest &amp; Back</h2>
+  <p class="dim">Print this page or copy the format. One log per training day. Record weight, reps, and RPE for every working set.</p>
+
+  <table class="log-table">
+    <tr>
+      <th>Exercise</th>
+      <th colspan="2">Set 1</th>
+      <th colspan="2">Set 2</th>
+      <th colspan="2">Set 3</th>
+      <th colspan="2">Set 4</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <th></th><th style="font-size:6.5pt">kg</th><th style="font-size:6.5pt">reps</th><th style="font-size:6.5pt">kg</th><th style="font-size:6.5pt">reps</th><th style="font-size:6.5pt">kg</th><th style="font-size:6.5pt">reps</th><th style="font-size:6.5pt">kg</th><th style="font-size:6.5pt">reps</th><th></th>
+    </tr>
+    <tr><td class="exercise-name">Incline DB Press</td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell" style="min-width:60px;"></td></tr>
+    <tr><td class="exercise-name">Cable Chest Fly</td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td></tr>
+    <tr><td class="exercise-name">Machine Chest Press</td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td></tr>
+    <tr><td class="exercise-name">Lat Pulldown</td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td></tr>
+    <tr><td class="exercise-name">Seated Cable Row</td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td></tr>
+    <tr><td class="exercise-name">Straight-Arm PD</td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td></tr>
+    <tr><td class="exercise-name">Rear Delt Fly</td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td><td class="log-cell"></td></tr>
+  </table>
+
+  <h2 style="margin-top:16px;">Weekly Check-In Template</h2>
+  <p class="dim">Fill in every Sunday. Compare week-on-week.</p>
+
+  <table>
+    <tr><th style="width:40%;">Metric</th><th>This Week</th><th>Last Week</th><th>Change</th></tr>
+    <tr><td>Bodyweight (avg, kg)</td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td></tr>
+    <tr><td>Waist (cm, at navel)</td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td></tr>
+    <tr><td>Sleep (avg hrs)</td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td></tr>
+    <tr><td>Training sessions completed</td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td></tr>
+    <tr><td>Energy / motivation (1–10)</td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td></tr>
+    <tr><td>Joint / niggle status</td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td></tr>
+    <tr><td>Calories (avg/day)</td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td></tr>
+    <tr><td>Protein (avg/day, g)</td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td><td style="border:1px solid #c4b08a; background:#fff;"></td></tr>
+  </table>
+
+  <h2 style="margin-top:16px;">Progress Photo Guide</h2>
+  <ul>
+    <li>Take photos <strong>every 4 weeks</strong> (start of each block)</li>
+    <li>Same time of day (morning, post-bathroom, pre-food)</li>
+    <li>Same lighting, same location, same distance</li>
+    <li>Front relaxed, front flexed, side, back</li>
+    <li>Consistent underwear/shorts</li>
+    <li>Don't judge weekly — compare Block 1 vs Block 4</li>
+  </ul>
+
+  <div class="page-footer">
+    <span>SEBASTIAN FISHER COACHING · sebastian-fisher.com</span>
+    <span>Building Phase — 16 Weeks · v2.0</span>
+  </div>
+</div>
+
+</body>
+</html>

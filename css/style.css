@@ -358,6 +358,11 @@ h4 {
   margin-bottom: 12px;
   background: var(--bg2);
 }
+.listing-card::after {
+  content: '';
+  display: table;
+  clear: both;
+}
 
 .listing-card:hover {
   border-left-color: var(--accent);
@@ -1144,7 +1149,7 @@ code {
 }
 .offer-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 14px;
   margin-bottom: 28px;
 }
@@ -1209,7 +1214,7 @@ code {
 }
 .offer-related a { color: var(--fg-dim); text-decoration: underline; }
 .offer-related a:hover { color: var(--fg); }
-@media (max-width: 800px) { .offer-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .offer-grid { grid-template-columns: 1fr; } }
 
 /* --- METHOD GRID (coaching.html training methods section) --- */
 .method-grid {

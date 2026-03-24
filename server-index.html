@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FISHER SERVER</title>
+    <style>
+        :root {
+            --bg: #1a1a1a;
+            --bg2: #2a2a2a;
+            --text: #e8dcc8;
+            --accent: #d4a86a;
+            --border: #444;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* CRT scanline overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.08) 2px,
+                rgba(0, 0, 0, 0.08) 4px
+            );
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* ── HEADER ── */
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        #clock {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            letter-spacing: 0.1em;
+        }
+
+        /* ── SERVICE GRID ── */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        .card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.4rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        a.card:hover, a.card:focus-visible {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(212, 168, 106, 0.12);
+            outline: none;
+        }
+
+        .card-static {
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .card-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .card-name {
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+        }
+
+        .card-desc {
+            font-size: 0.78rem;
+            opacity: 0.65;
+            line-height: 1.4;
+        }
+
+        .card-path {
+            font-size: 0.7rem;
+            opacity: 0.35;
+            margin-top: auto;
+            padding-top: 0.5rem;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.35;
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 600px) {
+            .container { padding: 1.2rem 1rem; }
+            h1 { font-size: 1.6rem; letter-spacing: 0.2em; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fisher Server</h1>
+            <div class="subtitle">Home Network Services</div>
+            <div id="clock"></div>
+        </header>
+
+        <div class="grid">
+
+            <a class="card" href="/">
+                <div class="card-icon">&gt;_</div>
+                <div class="card-name">Personal Site</div>
+                <div class="card-desc">Sebastian Fisher's personal site</div>
+                <div class="card-path">/</div>
+            </a>
+
+            <a class="card" href="/prepping.html">
+                <div class="card-icon">&#9888;</div>
+                <div class="card-name">Prepping Hub</div>
+                <div class="card-desc">Threat monitoring &amp; disaster planning</div>
+                <div class="card-path">/prepping.html</div>
+            </a>
+
+            <a class="card" href=":8003">
+                <div class="card-icon">|||</div>
+                <div class="card-name">Grafana</div>
+                <div class="card-desc">Live dashboards &amp; prepping meter</div>
+                <div class="card-path">:8003</div>
+            </a>
+
+            <a class="card" href=":8013">
+                <div class="card-icon">&#9776;</div>
+                <div class="card-name">FreshRSS</div>
+                <div class="card-desc">RSS feed reader</div>
+                <div class="card-path">:8013</div>
+            </a>
+
+            <a class="card" href=":8002">
+                <div class="card-icon">&#9998;</div>
+                <div class="card-name">Ghost</div>
+                <div class="card-desc">Blog &amp; publishing platform</div>
+                <div class="card-path">:8002</div>
+            </a>
+
+            <a class="card" href=":8012">
+                <div class="card-icon">[W]</div>
+                <div class="card-name">wger</div>
+                <div class="card-desc">Workout &amp; fitness tracker</div>
+                <div class="card-path">:8012</div>
+            </a>
+
+            <a class="card" href=":8007">
+                <div class="card-icon">&gt;_</div>
+                <div class="card-name">Code Server</div>
+                <div class="card-desc">VS Code in the browser</div>
+                <div class="card-path">:8007</div>
+            </a>
+
+            <a class="card" href=":8004">
+                <div class="card-icon">&#9636;</div>
+                <div class="card-name">Umami</div>
+                <div class="card-desc">Web analytics</div>
+                <div class="card-path">:8004</div>
+            </a>
+
+            <a class="card" href=":8006">
+                <div class="card-icon">&#8599;</div>
+                <div class="card-name">YOURLS</div>
+                <div class="card-desc">URL shortener</div>
+                <div class="card-path">:8006</div>
+            </a>
+
+            <a class="card" href=":8010">
+                <div class="card-icon">&#9993;</div>
+                <div class="card-name">Listmonk</div>
+                <div class="card-desc">Newsletter &amp; mailing lists</div>
+                <div class="card-path">:8010</div>
+            </a>
+
+            <a class="card" href=":8005">
+                <div class="card-icon">&#9776;</div>
+                <div class="card-name">Cal.com</div>
+                <div class="card-desc">Scheduling &amp; bookings</div>
+                <div class="card-path">:8005</div>
+            </a>
+
+            <a class="card" href=":8001">
+                <div class="card-icon">&#9731;</div>
+                <div class="card-name">Flarum</div>
+                <div class="card-desc">Community forum</div>
+                <div class="card-path">:8001</div>
+            </a>
+
+            <a class="card" href=":8017">
+                <div class="card-icon">{W}</div>
+                <div class="card-name">Wikipedia</div>
+                <div class="card-desc">Offline encyclopedia (Kiwix)</div>
+                <div class="card-path">:8017</div>
+            </a>
+
+            <div class="card card-static">
+                <div class="card-icon">[=]</div>
+                <div class="card-name">File Server</div>
+                <div class="card-desc">Samba NAS &mdash; shared drives</div>
+                <div class="card-path">smb://server/</div>
+            </div>
+
+            <a class="card" href=":81">
+                <div class="card-icon">&lt;/&gt;</div>
+                <div class="card-name">NPM Admin</div>
+                <div class="card-desc">Nginx Proxy Manager</div>
+                <div class="card-path">:81</div>
+            </a>
+
+        </div>
+
+        <footer>fisherserver &middot; 192.168.1.108 &middot; LAN only</footer>
+    </div>
+
+    <script>
+        (function() {
+            var el = document.getElementById('clock');
+            function tick() {
+                var now = new Date();
+                var opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+                var date = now.toLocaleDateString('en-GB', opts).toUpperCase();
+                var time = now.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
+                el.textContent = date + '  //  ' + time;
+            }
+            tick();
+            setInterval(tick, 1000);
+
+            // Fix port-based links to use current hostname
+            document.querySelectorAll('a.card').forEach(function(a) {
+                var href = a.getAttribute('href');
+                if (href && href.match(/^:\d+/)) {
+                    a.href = location.protocol + '//' + location.hostname + href;
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

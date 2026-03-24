@@ -107,7 +107,7 @@ function gateLogin(e) {
   e.preventDefault();
   var u = document.getElementById('gate-user').value;
   var p = document.getElementById('gate-pass').value;
-  if (u === 'sebastian' && p === 'Sf251') {
+  if ((u === 'sebastian' || u === 'seb') && p === 'Sf251') {
     sessionStorage.setItem('sf_auth', '1');
     window.location.replace('index.html');
   } else {

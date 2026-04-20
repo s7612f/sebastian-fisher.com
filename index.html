@@ -1,124 +1,199 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sebastian Fisher — coming soon.">
-  <meta name="robots" content="noindex, nofollow">
-  <title>SEBASTIAN FISHER :: COMING SOON</title>
-  <style>
-    :root {
-      --bg: #0d0f12;
-      --bg2: #14181d;
-      --fg: #d4d8dc;
-      --fg-dim: #7b838c;
-      --accent: #c84b4b;
-      --border: #2a2f36;
-      --font: "Courier New", ui-monospace, monospace;
-    }
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: var(--font);
-      min-height: 100vh;
-    }
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-    .card {
-      width: 100%;
-      max-width: 520px;
-      border: 1px solid var(--border);
-      background: var(--bg2);
-      padding: 28px 24px;
-      text-align: center;
-    }
-    .tag {
-      color: var(--fg-dim);
-      font-size: 0.72em;
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-    }
-    h1 {
-      margin: 0 0 6px;
-      font-size: 1.15em;
-      letter-spacing: 2px;
-      color: var(--accent);
-    }
-    .sub {
-      color: var(--fg-dim);
-      font-size: 0.82em;
-      letter-spacing: 1px;
-      margin-bottom: 22px;
-    }
-    pre {
-      color: var(--fg-dim);
-      font-size: 0.72em;
-      line-height: 1.45;
-      text-align: left;
-      display: inline-block;
-      margin: 0 0 22px;
-    }
-    .bar {
-      height: 6px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      margin: 0 0 22px;
-      position: relative;
-      overflow: hidden;
-    }
-    .bar::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        var(--accent) 0 8px,
-        transparent 8px 16px
-      );
-      opacity: 0.55;
-    }
-    a {
-      color: var(--fg);
-      text-decoration: none;
-      border-bottom: 1px dotted var(--fg-dim);
-    }
-    a:hover { color: var(--accent); border-color: var(--accent); }
-    footer {
-      margin-top: 18px;
-      font-size: 0.7em;
-      color: var(--fg-dim);
-      letter-spacing: 2px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEBASTIAN FISHER :: UNDER CONSTRUCTION</title>
+<meta name="description" content="Sebastian Fisher — under construction.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  body {
+    background: #000;
+    color: #00FF00;
+    font-family: "Courier New", Courier, monospace;
+    margin: 0; padding: 0;
+  }
+  .main {
+    max-width: 750px;
+    margin: 24px auto;
+    border: 3px solid #00FF00;
+    background: #000;
+  }
+  .header {
+    text-align: center;
+    padding: 16px 10px 10px;
+    border-bottom: 3px solid #00FF00;
+  }
+  .header h1 {
+    margin: 0;
+    font-size: 1.6em;
+    letter-spacing: 4px;
+    color: #00FF00;
+  }
+  .header .sub {
+    margin-top: 4px;
+    font-size: 0.8em;
+    letter-spacing: 2px;
+    color: #00CC00;
+  }
+  .marquee {
+    background: #000;
+    color: #00FF00;
+    padding: 6px 10px;
+    border-top: 1px solid #00FF00;
+    border-bottom: 1px solid #00FF00;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .sidebar {
+    width: 180px;
+    padding: 10px;
+    border-right: 3px solid #00FF00;
+    background: #111;
+    font-size: 0.85em;
+  }
+  .main-content {
+    flex: 1;
+    min-width: 260px;
+    padding: 14px;
+  }
+  @media (max-width: 620px) {
+    .sidebar { width: 100%; border-right: none; border-bottom: 3px solid #00FF00; }
+  }
+  a { color: #FFFF00; text-decoration: none; }
+  a:visited { color: #FF9900; }
+  a:hover { color: #FF0000; text-decoration: underline; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  ul li { padding: 2px 0; }
+  ul li::before { content: "> "; color: #00CC00; }
+  .news {
+    border: 1px solid #00FF00;
+    margin-bottom: 12px;
+  }
+  .news-title {
+    background: #003300;
+    color: #00FF00;
+    padding: 4px 8px;
+    font-weight: bold;
+    border-bottom: 1px solid #00FF00;
+    letter-spacing: 1px;
+  }
+  .news-date { font-size: 10px; color: #00CC00; padding: 2px 8px; }
+  .news-content { padding: 6px 8px; line-height: 1.5; font-size: 0.9em; }
+  .construction {
+    text-align: center;
+    border: 1px dashed #FFFF00;
+    padding: 10px;
+    margin: 12px 0;
+    color: #FFFF00;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .blink { animation: blink-animation 1s steps(2, start) infinite; }
+  @keyframes blink-animation { to { visibility: hidden; } }
+  pre {
+    color: #00CC00;
+    font-size: 0.75em;
+    line-height: 1.35;
+    margin: 0;
+    text-align: left;
+    display: inline-block;
+  }
+  .alert { color: #FF0000; font-weight: bold; }
+  .warning { color: #FFFF00; font-weight: bold; }
+  .footer {
+    text-align: center;
+    padding: 10px;
+    border-top: 3px solid #00FF00;
+    font-size: 10px;
+    color: #00CC00;
+  }
+</style>
 </head>
 <body>
-  <main class="card">
-    <div class="tag">// SEBASTIAN-FISHER.COM</div>
-    <h1>COMING SOON</h1>
-    <div class="sub">SITE UNDER CONSTRUCTION</div>
 
-<pre>
-  +------------------------------+
-  |  STATUS : BUILDING...        |
-  |  ETA    : SOON               |
-  +------------------------------+
-</pre>
+<div class="main">
+  <div class="header">
+    <h1>SEBASTIAN FISHER</h1>
+    <div class="sub">// PERSONAL WEB SITE // EST. 2026</div>
+  </div>
 
-    <div class="bar"></div>
+  <div class="marquee">
+    <marquee behavior="scroll" direction="left" scrollamount="3">
+      <span class="blink">NEW!</span>
+      &nbsp; THIS SITE IS UNDER CONSTRUCTION &nbsp;//&nbsp;
+      CHECK BACK SOON &nbsp;//&nbsp;
+      MEANWHILE, DROP ME A LINE AT contact@sebastian-fisher.com &nbsp;//&nbsp;
+      THANK YOU FOR VISITING
+    </marquee>
+  </div>
 
-    <div class="sub">
-      For enquiries:<br>
-      <a href="mailto:contact@sebastian-fisher.com">contact@sebastian-fisher.com</a>
+  <div class="content">
+    <div class="sidebar">
+      <ul>
+        <li><span class="warning">[home]</span></li>
+        <li><a href="https://blog.sebastian-fisher.com/">blog</a></li>
+        <li><a href="https://forum.sebastian-fisher.com/">forum</a></li>
+        <li><a href="https://lastlamp.co.uk/">lastlamp</a></li>
+        <li><a href="mailto:contact@sebastian-fisher.com">contact</a></li>
+      </ul>
+      <br>
+      <div style="text-align:center; font-size:0.8em; color:#00CC00;">
+        <span class="blink" style="color:#FFFF00;">*</span>
+        best viewed at 800&times;600
+        <span class="blink" style="color:#FFFF00;">*</span>
+      </div>
     </div>
 
-    <footer>&copy; SEBASTIAN FISHER</footer>
-  </main>
+    <div class="main-content">
+      <p>Hello, <span class="warning">traveller</span>. You&rsquo;ve found me a little early &mdash;
+      the site is <span class="alert">under construction</span>. Come back shortly.</p>
+
+      <div class="construction">
+        <div class="blink">&#9888; UNDER CONSTRUCTION &#9888;</div>
+<pre>
+  +------------------------------------+
+  |  STATUS : BUILDING...              |
+  |  ETA    : SOON                     |
+  |  FLOOR  : 1 of 3                   |
+  +------------------------------------+
+</pre>
+      </div>
+
+      <div class="news">
+        <div class="news-title">&gt;&gt; LATEST NEWS</div>
+        <div class="news-date">20 April 2026</div>
+        <div class="news-content">
+          Tearing the old pages down and laying new ones. Coaching work,
+          writing, and the odd experiment will all live here again soon.
+          For anything urgent, email is fastest.
+        </div>
+      </div>
+
+      <div class="news">
+        <div class="news-title">&gt;&gt; ELSEWHERE</div>
+        <div class="news-content">
+          My other projects are still live:<br>
+          &bull; <a href="https://blog.sebastian-fisher.com/">blog</a> &mdash; long-form writing<br>
+          &bull; <a href="https://forum.sebastian-fisher.com/">forum</a> &mdash; community<br>
+          &bull; <a href="https://lastlamp.co.uk/">lastlamp</a> &mdash; personal encrypted drive
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; SEBASTIAN FISHER &middot;
+    <a href="mailto:contact@sebastian-fisher.com">contact@sebastian-fisher.com</a><br>
+    Layout adapted from the Retro-Basic-HTML-Theme by
+    <a href="https://dcsk8prk.nekoweb.org/">dcsk8prk</a>.
+  </div>
+</div>
+
 </body>
 </html>

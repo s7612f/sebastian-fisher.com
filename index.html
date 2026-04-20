@@ -1,488 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Online coaching for physique, strength, and body composition. Programmes that work. No fluff.">
-  <title>SEBASTIAN FISHER :: Online Coaching</title>
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <meta name="description" content="Sebastian Fisher — coming soon.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>SEBASTIAN FISHER :: COMING SOON</title>
+  <style>
+    :root {
+      --bg: #0d0f12;
+      --bg2: #14181d;
+      --fg: #d4d8dc;
+      --fg-dim: #7b838c;
+      --accent: #c84b4b;
+      --border: #2a2f36;
+      --font: "Courier New", ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font);
+      min-height: 100vh;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      width: 100%;
+      max-width: 520px;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .tag {
+      color: var(--fg-dim);
+      font-size: 0.72em;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: 1.15em;
+      letter-spacing: 2px;
+      color: var(--accent);
+    }
+    .sub {
+      color: var(--fg-dim);
+      font-size: 0.82em;
+      letter-spacing: 1px;
+      margin-bottom: 22px;
+    }
+    pre {
+      color: var(--fg-dim);
+      font-size: 0.72em;
+      line-height: 1.45;
+      text-align: left;
+      display: inline-block;
+      margin: 0 0 22px;
+    }
+    .bar {
+      height: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      margin: 0 0 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bar::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--accent) 0 8px,
+        transparent 8px 16px
+      );
+      opacity: 0.55;
+    }
+    a {
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--fg-dim);
+    }
+    a:hover { color: var(--accent); border-color: var(--accent); }
+    footer {
+      margin-top: 18px;
+      font-size: 0.7em;
+      color: var(--fg-dim);
+      letter-spacing: 2px;
+    }
+  </style>
 </head>
 <body>
+  <main class="card">
+    <div class="tag">// SEBASTIAN-FISHER.COM</div>
+    <h1>COMING SOON</h1>
+    <div class="sub">SITE UNDER CONSTRUCTION</div>
 
-<!-- COMING SOON OVERLAY -->
-<div id="coming-soon-overlay" style="position:fixed; inset:0; z-index:99999; background:#000; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:'Courier New',monospace; text-align:center; padding:20px;">
-  <div style="font-size:clamp(28px,6vw,64px); letter-spacing:0.15em; border:2px solid #fff; padding:24px 40px;">SITE COMING SOON</div>
-  <div style="margin-top:24px; font-size:clamp(12px,2vw,16px); letter-spacing:0.1em; opacity:0.7;">SEBASTIAN FISHER &middot; ONLINE COACHING</div>
-  <div style="margin-top:8px; font-size:clamp(11px,1.6vw,14px); opacity:0.5;"><a href="mailto:contact@sebastian-fisher.com" style="color:inherit;">contact@sebastian-fisher.com</a></div>
-</div>
+<pre>
+  +------------------------------+
+  |  STATUS : BUILDING...        |
+  |  ETA    : SOON               |
+  +------------------------------+
+</pre>
 
-<div class="wrapper">
+    <div class="bar"></div>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-      <div>
-        <div class="site-title">&#9653; SEBASTIAN FISHER &#9653;</div>
-        <div class="site-subtitle"><span class="sep">::</span> ONLINE COACHING <span class="sep">::</span> PHYSIQUE &amp; STRENGTH <span class="sep">::</span> REAL RESULTS <span class="sep">::</span></div>
-        <div class="header-status">SEBASTIAN FISHER &middot; <a href="mailto:contact@sebastian-fisher.com" style="color:inherit;">contact@sebastian-fisher.com</a> &middot; <a href="cut.html" style="color:inherit;">CUT STARTS 15 MAR</a></div>
-      </div>
-      <div class="header-right">
-        <a href="contact.html"><span class="dot-online">&#9679;</span> ONLINE &middot; REPLY &le;48H</a><br>
-        <span id="people-online">--</span> online now<br>
-        <span id="mag-toggle" onclick="toggleMagMode()" style="cursor:pointer; border:1px solid var(--border); padding:2px 6px;">[ DARK MODE ]</span><br>
-        <span style="font-size:0.78em; letter-spacing:0.06em;"><a href="https://blog.sebastian-fisher.com" target="_blank" style="color:var(--fg-dim);">BLOG</a> &nbsp;&middot;&nbsp; <a href="https://forum.sebastian-fisher.com" target="_blank" style="color:var(--fg-dim);">FORUM</a></span>
-      </div>
+    <div class="sub">
+      For enquiries:<br>
+      <a href="mailto:contact@sebastian-fisher.com">contact@sebastian-fisher.com</a>
     </div>
-  </header>
 
-  <!-- NAV -->
-  <nav class="site-nav">
-    <a href="index.html" class="active">HOME</a>
-    <a href="shop.html">programmes</a>
-    <a href="coaching.html">COACHING</a>
-    <a href="vault.html">THE VAULT</a>
-    <a href="https://forum.sebastian-fisher.com">FORUM</a>
-    <a href="calculator.html">CALCULATOR</a>
-    <a href="nutrition.html">NUTRITION</a>
-    <a href="https://blog.sebastian-fisher.com">BLOG</a>
-    <a href="stack.html">THE STACK</a>
-    <a href="research.html">RESEARCH</a>
-    <a href="coaches.html">COACHES</a>
-    <a href="about.html">ABOUT</a>
-    <a href="contact.html">CONTACT</a>
-  </nav>
-
-  <!-- MARQUEE -->
-  <div class="marquee-wrap">
-    <span class="marquee-inner">
-      &#9658;&nbsp; COACHING SPOTS: 2 REMAINING &mdash; APPLY NOW &nbsp;&#9658;&nbsp; T1 DIABETIC &mdash; NUTRITION IS PERSONAL &nbsp;&#9658;&nbsp; PROGRAMMES FROM &pound;37 &nbsp;&#9658;&nbsp; FREE TOOLS: CALCULATORS, PLANS, ARTICLES &nbsp;&#9658;&nbsp; CHECK THE STACK &mdash; WHAT I ACTUALLY USE &nbsp;&#9658;&nbsp; FREE BEGINNER PROGRAMME &mdash; NO EMAIL REQUIRED &nbsp;&#9658;&nbsp; BLOG UPDATED MARCH 2026 &nbsp;&#9658;&nbsp;
-    </span>
-  </div>
-
-  <!-- TWO COLUMN LAYOUT -->
-  <div class="two-col">
-
-    <!-- MAIN CONTENT -->
-    <main class="main-col">
-
-            <!-- HERO — ABOUT & EXPLORE -->
-      <section class="section" style="border:2px solid var(--gold); padding:16px; background:var(--bg2); margin-bottom:0;">
-        <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:8px;">
-          <h2 style="color:var(--accent); font-size:1.1em; margin:0;">&#9660; HI, I’M SEBASTIAN — WELCOME &#9660;</h2>
-        </div>
-        <p style="font-size:0.9em; margin-bottom:10px;">
-          I’m a coach and a builder. I put this site together so you can train smarter, eat better, and get stronger. Whether you ever hire me or not, take what’s useful and run with it.</p>
-        <p style="font-size:0.82em; color:var(--fg-dim); margin-bottom:12px;">
-          Explore some fun parts: calculators and planners, research write‑ups, my training log and case studies, plus the exact tools I use day to day.</p>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a href="/free" class="btn btn-primary" style="border-color:var(--gold);">START EXPLORING</a>
-        </div>
-        <p style="margin-top:10px; font-size:0.9em; color:var(--gold);">Free plans, calculators, and tools — no email, just click.</p>
-      </section>
-
-      <!-- FEATURED OFFERS -->
-      <div class="offer-section-heading">&#9668; CURRENT OFFERS &mdash; LIMITED AVAILABILITY &#9658;</div>
-      <div class="offer-grid">
-
-        <!-- 1-on-1 Coaching -->
-        <div class="offer-card" style="border-top:3px solid var(--gold);">
-          <h3>1-ON-1 ONLINE COACHING</h3>
-          <span class="offer-badge offer-badge-flagship">FLAGSHIP</span>
-          <div class="offer-price">FROM £250<span style="font-size:0.55em; font-weight:normal;">/MO</span></div>
-          <div class="offer-desc">Custom training + nutrition. Weekly check-ins. Direct message access. Form review. Monthly rolling — no lock-in.</div>
-          <div class="offer-related">
-            &#9658; Blog: <a href="https://blog.sebastian-fisher.com">Adherence Is the Programme</a><br>
-            &#9658; Research: <a href="research.html">Progressive Overload &amp; Long-Term Adaptation</a>
-          </div>
-          <div class="mt-10">
-            <a href="contact.html" class="btn btn-primary" style="display:block; text-align:center;">APPLY FOR COACHING</a>
-          </div>
-        </div>
-
-        <!-- Summer Cut Discount -->
-        <div class="offer-card" style="border-top:3px solid var(--status-live);">
-          <h3>SUMMER CUT &mdash; 12 WEEKS</h3>
-          <span class="offer-badge offer-badge-sale">SALE &mdash; UNTIL MAY</span>
-          <div class="offer-price"><span class="offer-was">£57</span> £37</div>
-          <div class="offer-desc">Caloric deficit done right. Muscle preservation. Structured deloads. Fat loss without wrecking gym progress.</div>
-          <div class="offer-related">
-            &#9658; Blog: <a href="https://blog.sebastian-fisher.com">How to Cut Without Losing the Gym</a><br>
-            &#9658; Research: <a href="research.html">Volume and Hypertrophy: How Many Sets?</a>
-          </div>
-          <div class="mt-10">
-            <a href="shop.html" class="btn btn-primary" style="display:block; text-align:center;">BUY NOW &mdash; £37</a>
-          </div>
-        </div>
-
-        <!-- 6-Week Overhaul -->
-        <div class="offer-card" style="border-top:3px solid var(--blue);">
-          <h3>6-WEEK COMPLETE OVERHAUL</h3>
-          <span class="offer-badge offer-badge-new">NEW</span>
-          <div class="offer-price">£349 <span style="font-size:0.55em; font-weight:normal;">ONE PAYMENT</span></div>
-          <div class="offer-desc">Complete reset. 6 weeks: training, nutrition, sleep, habits. 90-min audit call + weekly check-ins + direct messaging. Fixed-term, no ongoing commitment.</div>
-          <div class="offer-related">
-            &#9658; Blog: <a href="https://blog.sebastian-fisher.com">Volume Periodisation: Building the Wave</a><br>
-            &#9658; Research: <a href="research.html">Sleep: The Most Underrated Recovery Tool</a>
-          </div>
-          <div class="mt-10">
-            <a href="coaching.html" class="btn" style="display:block; text-align:center; border-color:var(--accent); color:var(--accent);">ENQUIRE &mdash; 6-WEEK OVERHAUL</a>
-          </div>
-        </div>
-
-      </div><!-- /.offer-grid -->
-
-      <!-- CLASSIFIEDS LISTING -->
-      <section class="section">
-        <h1>CLASSIFIEDS</h1>
-        <p style="color:var(--fg-dim); font-size:0.82em; margin-bottom:16px;">
-          No algorithms. No influencer nonsense. Programmes that work.
-        </p>
-
-        <!-- FREE -->
-        <div class="classifieds-block">
-          <div class="classifieds-heading">&#9644;&#9644; FREE PLANS &#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;</div>
-          <div class="classified-row">
-            <div class="classified-row-left">
-              <div class="classified-name">Beginner Foundation Programme <span class="badge-new">FREE</span></div>
-              <div class="classified-desc">12 weeks. Linear progression. Learn the lifts properly. Nutrition basics and form cues included. No signup — just download.</div>
-              <div style="font-size:0.7em; color:var(--fg-dim); margin-top:4px;">PDF &middot; Beginner &middot; Free download</div>
-            </div>
-            <div class="classified-row-right">
-              <div class="classified-price">FREE</div>
-              <a href="free.html" class="classified-btn">GRAB IT &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- PROGRAMMES -->
-        <div class="classifieds-block">
-          <div class="classifieds-heading">&#9644;&#9644; PROGRAMMES &#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;</div>
-
-          <div class="classified-row">
-            <div class="classified-row-left">
-              <div class="classified-name">Building Phase &mdash; 16 Weeks <span class="badge-new">HOT</span></div>
-              <div class="classified-desc">Hypertrophy-focused periodisation. Progressive overload baked in week by week. Meal plan templates included.</div>
-              <div style="font-size:0.7em; color:var(--fg-dim); margin-top:4px;">PDF &middot; Intermediate &middot; 16 weeks</div>
-            </div>
-            <div class="classified-row-right">
-              <div class="classified-price">£47</div>
-              <a href="shop.html" class="classified-btn">VIEW + BUY &rarr;</a>
-            </div>
-          </div>
-
-          <div class="classified-row">
-            <div class="classified-row-left">
-              <div class="classified-name">Cutting Phase &mdash; 12 Weeks <span class="badge-new" style="background:var(--accent);">SALE</span></div>
-              <div class="classified-desc">Caloric deficit done right. Muscle preservation emphasis. Structured deloads built in.</div>
-              <div style="font-size:0.7em; color:var(--fg-dim); margin-top:4px;">PDF &middot; Intermediate &middot; 12 weeks</div>
-            </div>
-            <div class="classified-row-right">
-              <div class="classified-price">£37</div>
-              <a href="shop.html" class="classified-btn">VIEW + BUY &rarr;</a>
-            </div>
-          </div>
-
-          <div class="classified-row">
-            <div class="classified-row-left">
-              <div class="classified-name">Strength &amp; Size &mdash; 20 Weeks</div>
-              <div class="classified-desc">Powerlifting principles applied to bodybuilding. Big compounds, intelligent accessory work, auto-populating tracker.</div>
-              <div style="font-size:0.7em; color:var(--fg-dim); margin-top:4px;">PDF + Spreadsheet &middot; Intermediate&ndash;Advanced &middot; 20 weeks</div>
-            </div>
-            <div class="classified-row-right">
-              <div class="classified-price">£67</div>
-              <a href="shop.html" class="classified-btn">VIEW + BUY &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- COACHING -->
-        <div class="classifieds-block">
-          <div class="classifieds-heading">&#9644;&#9644; COACHING &#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;</div>
-
-          <div class="classified-row">
-            <div class="classified-row-left">
-              <div class="classified-name">1-on-1 Online Coaching <span class="badge-new">FEATURED</span></div>
-              <div class="classified-desc">Fully custom training and nutrition. Weekly check-ins, form review, direct messaging. Not a template with your name on it.</div>
-              <div style="font-size:0.7em; color:var(--fg-dim); margin-top:4px;">Monthly rolling &middot; Min. 3 months &middot; 2 spots open</div>
-            </div>
-            <div class="classified-row-right">
-              <div class="classified-price">£250+/mo</div>
-              <a href="coaching.html" class="classified-btn">APPLY &rarr;</a>
-            </div>
-          </div>
-
-          <div class="classified-row">
-            <div class="classified-row-left">
-              <div class="classified-name">6-Week Complete Overhaul</div>
-              <div class="classified-desc">Fixed-term intensive. Training, nutrition, sleep, stress, habits. One payment, no rolling contract. Full reset.</div>
-              <div style="font-size:0.7em; color:var(--fg-dim); margin-top:4px;">Fixed 6 weeks &middot; One payment &middot; Spots limited</div>
-            </div>
-            <div class="classified-row-right">
-              <div class="classified-price">£349</div>
-              <a href="coaching.html" class="classified-btn">ENQUIRE &rarr;</a>
-            </div>
-          </div>
-
-          <div class="classified-row">
-            <div class="classified-row-left">
-              <div class="classified-name">Diet Coaching &mdash; Monthly</div>
-              <div class="classified-desc">Weekly check-ins, macro adjustments from real data. Pairs with any training programme. Cancel any time.</div>
-              <div style="font-size:0.7em; color:var(--fg-dim); margin-top:4px;">Monthly rolling &middot; Nutrition only</div>
-            </div>
-            <div class="classified-row-right">
-              <div class="classified-price">£120/mo</div>
-              <a href="coaching.html" class="classified-btn">ENQUIRE &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-      <hr>
-
-      <hr>
-
-      <!-- FROM THE VAULT -->
-      <section class="section">
-        <h2>FROM THE VAULT <span class="badge-new">UPDATED</span></h2>
-        <p style="font-size:0.85em; color:var(--fg-dim); margin-bottom:12px;">
-          Golden era training content, scanned mags, motivation, old media.
-          Iron jukebox inside — playlist of what the legends actually trained to.
-        </p>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:0.88em; margin-bottom:12px;">
-          <div class="listing-card" style="padding:8px;">
-            <div style="color:var(--gold);">&#9658; Arnold's 1974 Training Split</div>
-            <div style="color:var(--fg-dim); font-size:0.8em;">Golden era blueprint</div>
-            <a href="vault.html" style="font-size:0.8em;">Read &raquo;</a>
-          </div>
-          <div class="listing-card" style="padding:8px;">
-            <div style="color:var(--gold);">&#9658; Frank Zane: Peak Week Protocol</div>
-            <div style="color:var(--fg-dim); font-size:0.8em;">The aesthetic era</div>
-            <a href="vault.html" style="font-size:0.8em;">Read &raquo;</a>
-          </div>
-          <div class="listing-card" style="padding:8px;">
-            <div style="color:var(--gold);">&#9658; Tom Platz: The Leg King</div>
-            <div style="color:var(--fg-dim); font-size:0.8em;">Squat obsession &amp; volume</div>
-            <a href="vault.html" style="font-size:0.8em;">Read &raquo;</a>
-          </div>
-          <div class="listing-card" style="padding:8px;">
-            <div style="color:var(--gold);">&#9658; Why Modern Bro Science Fails</div>
-            <div style="color:var(--fg-dim); font-size:0.8em;">Opinion piece</div>
-            <a href="vault.html" style="font-size:0.8em;">Read &raquo;</a>
-          </div>
-        </div>
-        <a href="vault.html" class="btn">ENTER THE VAULT</a>
-      </section>
-
-
-      <!-- BLOG TEASER -->
-      <section class="section">
-        <h2>FIELD NOTES</h2>
-        <p style="font-size:0.85em; color:var(--fg-dim); margin-bottom:12px;">
-          No clickbait. No hot takes for engagement. Articles when there's something worth saying.
-        </p>
-        <div style="font-size:0.88em;">
-          <div style="border-bottom:1px dashed var(--border); padding:8px 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
-            <a href="https://blog.sebastian-fisher.com">Progressive Overload: Why Most People Get It Wrong</a>
-            <span style="color:var(--fg-dim); font-size:0.82em;">08 Mar</span>
-          </div>
-          <div style="border-bottom:1px dashed var(--border); padding:8px 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
-            <a href="https://blog.sebastian-fisher.com">How Much Protein Do You Actually Need?</a>
-            <span style="color:var(--fg-dim); font-size:0.82em;">01 Mar</span>
-          </div>
-          <div style="border-bottom:1px dashed var(--border); padding:8px 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
-            <a href="https://blog.sebastian-fisher.com">The Case for the Deload Week (That You Keep Skipping)</a>
-            <span style="color:var(--fg-dim); font-size:0.82em;">20 Feb</span>
-          </div>
-          <div style="padding:8px 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
-            <a href="https://blog.sebastian-fisher.com">Why Beginners Should Ignore Almost Everything Online</a>
-            <span style="color:var(--fg-dim); font-size:0.82em;">10 Feb</span>
-          </div>
-        </div>
-        <div class="mt-10">
-          <a href="https://blog.sebastian-fisher.com" class="btn">ALL POSTS</a>
-        </div>
-      </section>
-
-      <hr>
-
-      <!-- LIFT LOG TEASER -->
-      <section class="section">
-        <h2>RECENT LIFT LOG ENTRIES</h2>
-        <p style="font-size:0.82em; color:var(--fg-dim); margin-bottom:12px;">Old school accountability. Post your session, your PRs, your struggles.</p>
-        <div class="log-entry">
-          <span class="log-user">CoachIronGospel</span>
-          <span class="log-date">10 Mar 2026</span>
-          <div class="log-body">
-            Squat: 200kg x5x3. Bench: 140kg x6x4. Pull-ups: BW+30kg x8x4.
-            Volume week — felt strong. Eating 4200kcal. Sleep must be 9hrs minimum when running this volume.
-          </div>
-        </div>
-        <div class="log-entry">
-          <span class="log-user">BigMike_Gains</span>
-          <span class="log-date">9 Mar 2026</span>
-          <div class="log-body">
-            Week 8 of Bulking Blueprint. Deadlift hit 160kg today — 20kg PR.
-            Coach's cue clicked in week 3. Eating is on point, up 4kg since start.
-          </div>
-        </div>
-        <div class="mt-10">
-        </div>
-      </section>
-
-      <hr>
-
-      <!-- HALL OF FAME TEASER -->
-      <section class="section">
-        <h2>HALL OF FAME</h2>
-        <table class="retro-table" style="font-size:0.82em; margin-bottom:12px;">
-          <tr><th>Client</th><th>Programme</th><th>Key Result</th></tr>
-          <tr><td>Mike T.</td><td>Bulking Blueprint</td><td style="color:var(--gold);">+60kg deadlift / 20 weeks</td></tr>
-          <tr><td>James K.</td><td>Cut Protocol</td><td style="color:var(--gold);">−13kg bodyweight / 16 weeks</td></tr>
-          <tr><td>Dan W.</td><td>Power &amp; Size</td><td style="color:var(--gold);">210kg deadlift / 24 weeks</td></tr>
-          <tr><td>Sam R.</td><td>Foundation + Bulking</td><td style="color:var(--gold);">65→77kg / 32 weeks</td></tr>
-        </table>
-      </section>
-
-    </main>
-
-    <!-- SIDEBAR -->
-    <aside class="side-col">
-
-      <!-- HIT COUNTER -->
-      <div class="widget">
-        <h4>SITE VISITS</h4>
-        <div class="hit-counter" id="hit-counter">000000</div>
-        <div style="text-align:center; font-size:0.75em; color:var(--fg-dim);">GAINERS HAVE VISITED</div>
-      </div>
-
-      <!-- COACHING STATUS -->
-      <div class="widget">
-        <h4>COACHING STATUS</h4>
-        <p style="color:var(--status-live); animation:blink 2s step-start infinite;">&#9679; 2 SPOTS OPEN</p>
-        <p style="margin-top:6px; color:var(--fg-dim); font-size:0.82em;">Custom programme + nutrition. Weekly check-ins. Monthly rolling.</p>
-        <p style="margin-top:4px; color:var(--gold); font-size:0.88em;">£250+/month</p>
-        <div class="mt-10">
-          <a href="contact.html" class="btn btn-primary" style="width:100%; text-align:center; display:block;">APPLY NOW</a>
-        </div>
-      </div>
-
-      <!-- THE CUT WIDGET -->
-      <div class="widget widget-cut">
-        <h4>&#9660; THE CUT &mdash; LIVE</h4>
-        <div style="font-size:0.95em; font-weight:bold; color:var(--accent); letter-spacing:2px; margin-bottom:4px;">WEEK 1 / 12</div>
-        <div class="cut-sidebar-bar-wrap">
-          <div class="cut-sidebar-bar-fill"></div>
-        </div>
-        <table style="width:100%; font-size:0.75em; border-collapse:collapse;">
-          <tr><td style="color:var(--fg-dim); padding:2px 0;">Start weight</td><td style="color:var(--fg); text-align:right;">89.0 kg</td></tr>
-          <tr><td style="color:var(--fg-dim); padding:2px 0;">Target</td><td style="color:var(--fg); text-align:right;">~84 kg</td></tr>
-          <tr><td style="color:var(--fg-dim); padding:2px 0;">Duration</td><td style="color:var(--fg); text-align:right;">12 weeks</td></tr>
-          <tr><td style="color:var(--fg-dim); padding:2px 0;">Phase</td><td style="color:var(--accent); text-align:right; font-weight:bold;">ACTIVE</td></tr>
-        </table>
-        <div class="mt-10">
-          <a href="cut.html" style="font-size:0.75em; color:var(--fg-dim);">Full log + recomp data &raquo;</a>
-        </div>
-      </div><!-- QUICK LINKS -->
-      <div class="widget">
-        <h4>QUICK LINKS</h4>
-        <ul>
-          <li><a href="free.html">Free Beginner Plan</a></li>
-          <li><a href="shop.html">Buy programmes</a></li>
-          <li><a href="nutrition.html">Nutrition Guide</a></li>
-          <li><a href="calculator.html">Macro Calculator</a></li>
-          <li><a href="vault.html">The Vault</a></li>
-          <li></li>
-          <li><a href="stack.html">The Stack</a></li>
-        </ul>
-      </div>
-
-      <!-- STACK PICK — JS populates this on every load -->
-      <div class="widget" style="border-top:2px solid var(--accent);">
-        <div id="stack-pick-widget" style="min-height:80px;">
-          <!-- loaded by main.js -->
-        </div>
-      </div>
-
-      <!-- QUICK MACROS -->
-      <div class="widget">
-        <h4>QUICK MACROS</h4>
-        <p style="color:var(--fg-dim); font-size:0.8em; margin-bottom:8px;">Bodyweight estimate — takes 5 seconds.</p>
-        <div style="font-size:0.82em;">
-          <label style="color:var(--gold);">BODYWEIGHT (KG)</label>
-          <input type="number" id="q-weight" placeholder="80" style="background:#000; color:var(--status-live); border:1px solid var(--border); font-family:var(--font); padding:4px; width:100%; margin-bottom:6px;">
-          <label style="color:var(--gold);">GOAL</label>
-          <select id="q-goal" style="background:var(--bg2); color:var(--fg); border:1px solid var(--border); font-family:var(--font); padding:4px; width:100%; margin-bottom:6px;">
-            <option value="cut">Cut</option>
-            <option value="maintain" selected>Maintain</option>
-            <option value="bulk">Bulk</option>
-          </select>
-          <button class="btn" onclick="quickCalc()" style="width:100%; font-size:0.8em;">CALCULATE</button>
-          <div id="q-result" style="margin-top:8px; color:var(--status-live); font-size:0.85em; min-height:20px;"></div>
-        </div>
-        <div class="mt-10">
-          <a href="calculator.html" style="font-size:0.78em;">Full calculator &raquo;</a>
-        </div>
-      </div><!-- SERVICES SUMMARY -->
-      <div class="widget">
-        <h4>SERVICES</h4>
-        <table class="retro-table" style="font-size:0.78em;">
-          <tr><td>Free plan</td><td style="color:var(--fg-dim);">Free</td></tr>
-          <tr><td>programmes</td><td>£37–67</td></tr>
-          <tr><td>Meal plan</td><td>£75</td></tr>
-          <tr><td>Diet coaching</td><td>£120/mo</td></tr>
-          <tr><td style="color:var(--accent);">Train + Eat Bundle</td><td style="color:var(--accent);">£150/mo</td></tr>
-          <tr><td>Full coaching</td><td>£250+/mo</td></tr>
-        </table>
-        <div class="mt-10">
-          <a href="shop.html" style="font-size:0.78em;">View all &raquo;</a>
-        </div>
-      </div>
-
-      <!-- WEB RING -->
-      <div class="widget">
-        <h4>IRON WEB RING</h4>
-        <ul style="list-style:none;">
-          <li><a href="#" style="font-size:0.8em;">Starting Strength HQ</a></li>
-          <li><a href="#" style="font-size:0.8em;">70's Big Archives</a></li>
-          <li><a href="#" style="font-size:0.8em;">Sandow &amp; Friends Museum</a></li>
-          <li><a href="#" style="font-size:0.8em;">Vintage Iron Forum</a></li>
-          <li><a href="#" style="font-size:0.8em;">Strongman History</a></li>
-        </ul>
-        <div style="font-size:0.75em; margin-top:6px;">[ &#171; PREV | RING | NEXT &#187; ]</div>
-      </div>
-
-    </aside>
-  </div><!-- end two-col -->
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="index.html">HOME</a>
-      <a href="shop.html">programmes</a>
-      <a href="coaching.html">COACHING</a>
-      <a href="vault.html">VAULT</a>
-      
-      <a href="nutrition.html">NUTRITION</a>
-      <a href="calculator.html">CALCULATOR</a>
-      
-      <a href="https://blog.sebastian-fisher.com">BLOG</a>
-      <a href="stack.html">THE STACK</a>
-      <a href="about.html">ABOUT</a>
-      <a href="contact.html">CONTACT</a>
-    </div>
-    <p>SEBASTIAN FISHER COACHING &copy; 2026 &mdash; Privacy-first analytics (Umami). No cookies.</p>
-    <p style="margin-top:5px;">
-      Built raw. Hand-coded. Old school.
-      &nbsp;|&nbsp; <a href="mailto:contact@sebastian-fisher.com">contact@sebastian-fisher.com</a>
-    </p>
-    <!-- Seek and you shall find: /secret.html -->
-  </footer>
-
-</div><!-- end wrapper -->
-
-<div id="right-stack-widget"></div>
-<script src="js/main.js?v=2"></script>
-<script async defer src="https://analytics.sebastian-fisher.com/script.js" data-website-id="ba5c0ed2-8f00-486c-91bf-00950971c34f"></script>
+    <footer>&copy; SEBASTIAN FISHER</footer>
+  </main>
 </body>
 </html>

@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /coming-soon.html
-Disallow: /maintenance.html
-Disallow: /secret.html
-
-Sitemap: https://sebastian-fisher.com/sitemap.xml

@@ -41,8 +41,8 @@ full rebuild, pull in the rest of the kit as well:
       status: coaching spots left, latest blog, cut kickoff date, etc.
 - [ ] **Sidebar nav** (pages + "I'm feeling lucky" button) with `>` bullet prefix.
       Replace the lucky button with a `/random` that links to a random blog post.
-- [ ] **Guestbook / 88×31 button stack** — host 88×31 badges for lastlamp, the
-      forum, the blog, ProtonMail. One optional real guestbook via a form → Formcapture.
+- [ ] **Guestbook / 88×31 button stack** — host 88×31 badges for the forum, the
+      blog, ProtonMail, webrings. One optional real guestbook via a form → Formcapture.
 - [ ] **News cards** (`.news`, `.news-title`, `.news-date`, `.news-content`) —
       reuse for blog teasers, programme drops, and site changelog entries.
 - [ ] **Under-construction box** (`.construction` with dashed yellow border) — keep

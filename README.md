@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sebastian Fisher — Static Site
 
-## Getting Started
+Minimal, elegant static site with a stone palette and a smooth “Enquire now” scroll to the enquiry box.
 
-First, run the development server:
+Contents
+- `index.html` — main page
+- `assets/styles.css` — theme and layout
+- `assets/script.js` — smooth scroll + placeholder form toast
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Deploy options
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1) Cloudflare Pages (recommended)
+- Create a new Pages project in Cloudflare Dashboard → Pages → Create project → Upload assets.
+- Upload the contents of this folder (keep the same structure).
+- Build settings: Framework preset = None, Build command = None, Output directory = `/`.
+- After deploy, add a Custom domain (e.g. `sebastian-fisher.com` and `www.sebastian-fisher.com`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+DNS setup for Cloudflare Pages
+- If your domain is in Cloudflare (nameservers point to Cloudflare):
+  - Add the custom domain in Pages; Cloudflare will create the DNS records automatically (CNAME for `www`, apex handled by CNAME flattening/ALIAS).
+- If your domain is at IONOS and you keep IONOS DNS:
+  - In Pages, you’ll be given a `*.pages.dev` target.
+  - Create a CNAME at IONOS for `www` → `<your-project>.pages.dev`.
+  - For the apex `sebastian-fisher.com`, IONOS may not support CNAME at root. Easiest path is to switch nameservers to Cloudflare so flattening works. Alternative: host at IONOS Web Hosting (see option 2).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2) IONOS Web Hosting (no build, just upload)
+- Provision a web space and point the domain’s root and/or `www` to that web space.
+- Upload all files in this folder to the web root (via SFTP/FTP or IONOS File Manager).
+- Ensure `index.html` is the default document.
 
-## Learn More
+3) Git + Cloudflare Pages (CI)
+- Initialize a git repo with this folder and push to GitHub/GitLab.
+- In Cloudflare Pages, connect the repo. Build command: None. Output dir: `/`.
+- Any push to `main` redeploys automatically.
 
-To learn more about Next.js, take a look at the following resources:
+Wiring the enquiry form
+- Current form shows a success toast only. Options to make it deliver:
+  - Cloudflare Workers + Email (Durable Object/Queue -> Email routing), or a lightweight Worker that calls a webhook.
+  - Form services (Formspree, Basin) — add their action URL to the `<form>`.
+  - IONOS: small PHP handler if you host there.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Next steps
+- Provide brand assets (logo/mark), preferred font, and copy.
+- I can add Analytics (Cloudflare Web Analytics) and a privacy page.
+- If you want me to set up Cloudflare Pages + DNS, confirm which account to use.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

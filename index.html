@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sebastian Fisher — Professional Services</title>
+    <meta name="description" content="Sebastian Fisher — pragmatic professional services. Strategy. Delivery. Discretion." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Using system fonts by default; replace with brand font later if desired -->
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <!-- GSAP and ScrollTrigger for professional scroll animations -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#top" class="brand" aria-label="Sebastian Fisher Home">
+          <span class="brand-mark">SF</span>
+          <span class="brand-text">Sebastian&nbsp;Fisher</span>
+        </a>
+        <nav class="nav">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#enquire" class="button small primary">Enquire now</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-inner">
+          <h1 class="animate-fade-in">Stone‑simple professional services</h1>
+          <p class="lede animate-fade-in">Strategy. Delivery. Discretion. Built on clarity and craft.</p>
+          <div class="cta animate-fade-in">
+            <a href="#enquire" class="button primary cta-button">Enquire now</a>
+            <a href="#services" class="button ghost">Explore services</a>
+          </div>
+        </div>
+        <div class="hero-texture" aria-hidden="true"></div>
+      </section>
+
+      <section id="services" class="section">
+        <div class="container">
+          <header class="section-head animate-slide-up">
+            <h2>Services</h2>
+            <p>Focused, senior support across ambiguous problems.</p>
+          </header>
+          <div class="grid cards">
+            <article class="card animate-scale">
+              <h3>Advisory</h3>
+              <p>Clear, actionable guidance on product, delivery, or technical direction when stakes are high and time is short.</p>
+            </article>
+            <article class="card animate-scale">
+              <h3>Execution</h3>
+              <p>Hands‑on delivery to get critical initiatives unstuck and shipped without drama.</p>
+            </article>
+            <article class="card animate-scale">
+              <h3>Confidential</h3>
+              <p>Discreet, need‑to‑know engagements where sensitivity and judgment matter as much as results.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section muted">
+        <div class="container about">
+          <div class="about-copy animate-slide-up">
+            <h2>About</h2>
+            <p>Sebastian Fisher is a senior operator and builder. Calm under pressure, precise in scope, and relentless about outcomes. Available for short, sharp projects or ongoing advisory.</p>
+          </div>
+          <div class="about-aside animate-fade-in">
+            <div class="stamp">Available Q1/Q2</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="enquire" class="section">
+        <div class="container">
+          <header class="section-head animate-slide-up">
+            <h2>Enquire</h2>
+            <p>Tell me a little about the challenge. I'll respond within one business day.</p>
+          </header>
+          <div class="enquire-wrapper">
+            <form class="card enquire animate-scale" id="enquire-form">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="A few lines on the objective, timelines, and constraints." required></textarea>
+              </div>
+              <div class="actions">
+                <button type="submit" class="button primary">Send enquiry</button>
+                <span class="hint">This form isn’t wired yet — we can connect email or a serverless endpoint later.</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="left">© <span id="year"></span> Sebastian Fisher</div>
+        <div class="right">
+          <a href="#top" class="to-top">Back to top</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./assets/script.js"></script>
+    <script src="./assets/animations.js"></script>
+  </body>
+  </html>
+

@@ -124,9 +124,37 @@
         <div class="card">
             <img src="Welcometo-Welcometo.png" style="max-width: 100%; display: block; margin: 0 auto 10px;">
             <h1 style="color: #ff00aa; font-family: 'Courier New', monospace; font-size: 1.6em; margin: 0 0 30px; text-shadow: 0 0 10px #ff00aa;">SEBASTIAN-FISHER.COM</h1>
-            <h2 style="margin: 0;"><a href="login.html" style="text-decoration: none;">&#10038;&#10097;&#10097; ENTER &#10096;&#10096;&#10038;</a></h2>
+            <h2 style="margin: 0;"><a id="enter-btn" href="home.html" style="text-decoration: none;">&#10038;&#10097;&#10097; ENTER &#10096;&#10096;&#10038;</a></h2>
         </div>
     </div>
+
+<script>
+// music + honk on index
+(function(){
+    var ROOT = '/media/audio/music/';
+    var bg = null, started = false;
+
+    function startBg() {
+        if (started) return;
+        started = true;
+        bg = new Audio(ROOT + 'your-song-melon.mp3');
+        bg.volume = 0.3;
+        bg.loop = true;
+        bg.play().catch(function(){});
+    }
+
+    document.addEventListener('click', function(){ startBg(); }, {once:true});
+
+    var enterBtn = document.getElementById('enter-btn');
+    if (enterBtn) {
+        enterBtn.addEventListener('click', function(){
+            var h = new Audio(ROOT + 'honk.mp3');
+            h.volume = 0.7;
+            h.play().catch(function(){});
+        });
+    }
+})();
+</script>
 
 <script>
 (function () {

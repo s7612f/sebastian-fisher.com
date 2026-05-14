@@ -11,11 +11,59 @@
         .welcome-text { font-size: 1.1em; }
         .currently-box { background: #fffde7; border: 2px inset #ffd600; padding: 15px; margin-top: 20px; }
     </style>
+    <style>
+    #loading-screen {
+        position: fixed; inset: 0; z-index: 9999;
+        background: #0a0a0a;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        transition: opacity .5s ease;
+    }
+    #loading-screen.fade-out { opacity: 0; pointer-events: none; }
+    #loading-screen .ld-gif {
+        width: 80px; height: auto; image-rendering: pixelated;
+        margin-bottom: 24px;
+    }
+    #loading-screen .ld-logo {
+        font-family: 'Courier New', monospace;
+        font-size: 26px; color: #c0c0c0; letter-spacing: 5px;
+        text-shadow: 0 0 16px #c0c0c0, 0 0 32px #888;
+        margin-bottom: 6px;
+    }
+    #loading-screen .ld-sub {
+        font-family: 'Courier New', monospace;
+        font-size: 11px; color: #555; letter-spacing: 3px;
+        margin-bottom: 30px; text-transform: uppercase;
+    }
+    #loading-screen .ld-bar-wrap {
+        width: 240px; height: 14px;
+        border: 1px solid #333;
+        background: #111;
+        overflow: hidden;
+    }
+    #loading-screen .ld-bar {
+        height: 100%; width: 0%;
+        background: linear-gradient(90deg, #444, #c0c0c0);
+        transition: width .3s linear;
+    }
+    #loading-screen .ld-status {
+        font-size: 10px; color: #444; margin-top: 8px;
+        font-family: 'Courier New', monospace; letter-spacing: 1px;
+    }
+    </style>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/smore-inc/clippy.js@master/build/clippy.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/smore-inc/clippy.js@master/build/clippy.min.js"></script>
 </head>
 <body>
+    <div id="loading-screen">
+        <img class="ld-gif" src="/media/monitor.gif" alt="">
+        <div class="ld-logo">SEBASTIAN FISHER</div>
+        <div class="ld-sub">personal web &nbsp;&middot;&nbsp; 2026</div>
+        <div class="ld-bar-wrap"><div class="ld-bar" id="ld-bar"></div></div>
+        <div class="ld-status" id="ld-status">Initialising...</div>
+    </div>
+
     <div class="shade"></div>
     
     <!-- Music Element -->
@@ -34,6 +82,7 @@
             <a href="links.html">Links</a>
             <a href="projects.html">Projects</a>
             <a href="homelab.html">NetSec</a>
+            <a href="design.html">Design</a>
             <a href="giphy-gallery.html">Giphy</a>
         </nav>
 
@@ -59,6 +108,45 @@
         </footer>
     </div>
 
+    <script>
+    (function () {
+        const STEPS = [
+            'Initialising kernel…',
+            'Loading modules…',
+            'Mounting volumes…',
+            'Starting services…',
+            'Applying themes…',
+            'Almost there…',
+            'Welcome.',
+        ];
+
+        function play(src, vol) {
+            const a = new Audio(src);
+            a.volume = vol || 0.35;
+            a.play().catch(() => {});
+        }
+
+        const bar = document.getElementById('ld-bar');
+        const status = document.getElementById('ld-status');
+        const screen = document.getElementById('loading-screen');
+        let step = 0;
+
+        const iv = setInterval(() => {
+            step++;
+            bar.style.width = Math.round((step / STEPS.length) * 100) + '%';
+            status.textContent = STEPS[Math.min(step, STEPS.length - 1)];
+            if (step === 1) play('/media/audio/ui/drip.mp3');
+            if (step >= STEPS.length) {
+                clearInterval(iv);
+                play('/media/audio/ui/magic.mp3');
+                setTimeout(() => {
+                    screen.classList.add('fade-out');
+                    screen.addEventListener('transitionend', () => screen.remove(), { once: true });
+                }, 600);
+            }
+        }, 380);
+    })();
+    </script>
     <script src="retro.js"></script>
     <script>
         // Clippy Loader

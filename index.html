@@ -3,160 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/favicon.png" type="image/png">
-    <title>Sebastian Fisher // Welcome</title>
-    <link rel="stylesheet" href="retro.css">
-    <style>
-        body { background-image: url("media/backgrounds/STONE04.png"); }
-        .welcome-text { font-size: 1.1em; }
-        .currently-box { background: #fffde7; border: 2px inset #ffd600; padding: 15px; margin-top: 20px; }
-    </style>
-    <style>
-    #loading-screen {
-        position: fixed; inset: 0; z-index: 9999;
-        background: #0a0a0a;
-        display: flex; flex-direction: column;
-        align-items: center; justify-content: center;
-        transition: opacity .5s ease;
-    }
-    #loading-screen.fade-out { opacity: 0; pointer-events: none; }
-    #loading-screen .ld-gif {
-        width: 80px; height: auto; image-rendering: pixelated;
-        margin-bottom: 24px;
-    }
-    #loading-screen .ld-logo {
-        font-family: 'Courier New', monospace;
-        font-size: 26px; color: #c0c0c0; letter-spacing: 5px;
-        text-shadow: 0 0 16px #c0c0c0, 0 0 32px #888;
-        margin-bottom: 6px;
-    }
-    #loading-screen .ld-sub {
-        font-family: 'Courier New', monospace;
-        font-size: 11px; color: #555; letter-spacing: 3px;
-        margin-bottom: 30px; text-transform: uppercase;
-    }
-    #loading-screen .ld-bar-wrap {
-        width: 240px; height: 14px;
-        border: 1px solid #333;
-        background: #111;
-        overflow: hidden;
-    }
-    #loading-screen .ld-bar {
-        height: 100%; width: 0%;
-        background: linear-gradient(90deg, #444, #c0c0c0);
-        transition: width .3s linear;
-    }
-    #loading-screen .ld-status {
-        font-size: 10px; color: #444; margin-top: 8px;
-        font-family: 'Courier New', monospace; letter-spacing: 1px;
-    }
-    </style>
+    <title>Sebastian Fisher's Web Lounge</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/smore-inc/clippy.js@master/build/clippy.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/smore-inc/clippy.js@master/build/clippy.min.js"></script>
+    <style>
+        /* Loading Screen Styles */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .loader-bar {
+            width: 300px;
+            height: 20px;
+            border: 2px solid #00ff00;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .loader-progress {
+            width: 0%;
+            height: 100%;
+            background: #00ff00;
+            transition: width 0.1s linear;
+        }
+
+        body {
+            background-image: url("media/anlucas/starsbg.gif");
+            color: magenta;
+            font-family: "Times New Roman", serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .welcome-header {
+            text-align: center;
+            font-size: 24px;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .logo-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .logo-row img {
+            height: 60px;
+        }
+
+        hr {
+            border: 0;
+            height: 2px;
+            margin: 10px 0;
+        }
+
+        .hr-blue { background-color: #0000FF; }
+        .hr-light-blue { background-color: #0080FF; }
+        .hr-cyan { background-color: #00FFFF; }
+        .hr-magenta { background-color: #FF00FF; }
+
+        /* Improved Navigation Visibility */
+        .nav-center {
+            text-align: center;
+            margin: 25px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-center a {
+            color: #ffee00; /* Bright Yellow */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-shadow: 2px 2px #000;
+            border: 2px outset gold;
+            padding: 5px 15px;
+            background: blue url("media/anlucas/bluetexture.gif");
+            min-width: 100px;
+            display: inline-block;
+        }
+
+        .nav-center a:hover {
+            background: #ffee00;
+            color: blue;
+            border-style: inset;
+        }
+
+        .main-card {
+            width: 670px;
+            margin: 0 auto;
+            border: 5px outset gold;
+            background: blue url("media/anlucas/bluetexture.gif") repeat;
+            padding: 20px;
+            color: yellow;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
+        }
+
+        .inner-content {
+            border: 1px inset gold;
+            padding: 20px;
+            background: rgba(0,0,255,0.3);
+        }
+
+        .inner-content h2 {
+            text-align: center;
+            font-size: 1.2em;
+            margin-top: 0;
+        }
+
+        .inner-content p {
+            font-size: 1.1em;
+            line-height: 1.4;
+            color: white;
+        }
+
+        .fireplace {
+            display: block;
+            margin: 20px auto;
+            border: 2px solid gold;
+        }
+
+        .footer-badges {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .footer-badges img {
+            margin: 5px;
+        }
+
+        .copyright-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            color: aqua;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+
+        marquee {
+            color: white;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Boot Loading Screen -->
     <div id="loading-screen">
-        <img class="ld-gif" src="/media/monitor.gif" alt="">
-        <div class="ld-logo">SEBASTIAN FISHER</div>
-        <div class="ld-sub">personal web &nbsp;&middot;&nbsp; 2026</div>
-        <div class="ld-bar-wrap"><div class="ld-bar" id="ld-bar"></div></div>
-        <div class="ld-status" id="ld-status">Initialising...</div>
+        <div id="loading-text" style="font-size: 2em; margin-bottom: 10px;">SYSTEM BOOTING...</div>
+        <div id="loading-subtext">Initializing Sebastian-Fisher.com v0.42</div>
+        <div class="loader-bar">
+            <div id="progress" class="loader-progress"></div>
+        </div>
+        <div id="percent" style="margin-top: 10px;">0%</div>
     </div>
 
-    <div class="shade"></div>
+    <div class="welcome-header">Hello, and welcome to:</div>
     
-    <!-- Music Element -->
-    <audio id="bg-music" loop>
-        <source src="media/audio/music/gif-gallery-theme.mp3" type="audio/mpeg">
-    </audio>
+    <div class="logo-row">
+        <img src="media/anlucas/fireworks.gif">
+        <h1 style="color: #00ffff; text-shadow: 2px 2px #ff00ff; font-size: 2.5em; margin: 0;">SEBASTIAN FISHER.COM</h1>
+        <img src="media/anlucas/fireworks.gif">
+    </div>
 
-    <div class="retro-container">
-        <header class="retro-header">
-            <h1>Sebastian Fisher</h1>
-            <span>Welcome to my slice of the web!</span>
-        </header>
+    <hr class="hr-blue">
 
-        <nav class="retro-nav">
-            <a href="index.html">Index</a>
-            <a href="links.html">Links</a>
-            <a href="projects.html">Projects</a>
-            <a href="homelab.html">NetSec</a>
-            <a href="design.html">Design</a>
-            <a href="giphy-gallery.html">Giphy</a>
-        </nav>
+    <div class="nav-center">
+        <a href="index.html">Index</a>
+        <a href="links.html">Links</a>
+        <a href="projects.html">Projects</a>
+        <a href="homelab.html">NetSec</a>
+        <a href="design.html">Design</a>
+        <a href="library.html">Library</a>
+        <a href="giphy-gallery.html">Giphy</a>
+    </div>
 
-        <main class="retro-body">
-            <div class="welcome-text">
-                <p>Hi. I'm Seb. This is my website. You probably got here from noticing I have my own email domain. If that's you, welcome. This is where I keep the things I am currently up to. Feel free to look around!</p>
-                <p>Under the <a href="links.html">links</a> page you'll find tools for accessing the web, privacy resources, and a growing collection of personal sites and fun stuff.</p>
-                <p>Get in touch: <a href="mailto:contact@sebastian-fisher.com">contact@sebastian-fisher.com</a></p>
-            </div>
+    <hr class="hr-light-blue">
 
-            <div class="currently-box">
-                <h2>Currently</h2>
+    <div class="main-card">
+        <div class="inner-content">
+            <h2>Welcome, websurfer!</h2>
+            <p>Kick back, and relax for a while at my site! And to make you feel more at home, enjoy this fireplace.</p>
+            
+            <img src="media/anlucas/fireplace.gif" class="fireplace">
+            
+            <p style="font-size: 0.8em; color: yellow; text-align: center;">*May not make you feel at home if you have no fireplace.</p>
+
+            <p>Hi! I'm Sebastian Fisher, and welcome to my own little slice of the web. Here you'll find a wide assortment of stuff including my own creative work, technical research into security and design, and a collection of interesting things from the web. My website is always under construction, so bookmark this page so you can keep up to date.</p>
+            
+            <div style="background: #fffde7; border: 2px inset #ffd600; padding: 15px; margin-top: 20px; color: black;">
+                <h3 style="margin-top: 0;">Currently</h3>
                 <ul>
                     <li>Working on my homelab</li>
                     <li>Studying basic principles of design</li>
                     <li>Building websites (like this one!)</li>
                 </ul>
             </div>
-        </main>
+        </div>
 
-        <footer>
-            &copy; 2026 Sebastian Fisher
-        </footer>
+        <marquee>
+            <img src="https://anlucas.neocities.org/Animated-pink-flickering-stars.gif">
+            <i>"Celebrating 2026 on the World Wide Web!"</i>
+            <img src="https://anlucas.neocities.org/Animated-pink-flickering-stars.gif">
+        </marquee>
     </div>
 
-    <script>
-    (function () {
-        const STEPS = [
-            'Initialising kernel…',
-            'Loading modules…',
-            'Mounting volumes…',
-            'Starting services…',
-            'Applying themes…',
-            'Almost there…',
-            'Welcome.',
-        ];
+    <div class="footer-badges">
+        <p style="color: yellow; font-size: 0.9em;">Proud to be part of the World Wide Web</p>
+        <img src="https://anlucas.neocities.org/worldwideweb_badge.gif">
+        <br>
+        <img src="https://anlucas.neocities.org/neocities_button.gif">
+        <img src="https://anlucas.neocities.org/anlucasbutton.gif">
+        <img src="https://anlucas.neocities.org/bookmark_this_page.gif">
+        <img src="https://anlucas.neocities.org/freespeechforever.gif">
+        <img src="https://anlucas.neocities.org/built_with_microsoft_notepad.gif">
+    </div>
 
-        function play(src, vol) {
-            const a = new Audio(src);
-            a.volume = vol || 0.35;
-            a.play().catch(() => {});
-        }
+    <hr class="hr-blue">
+    <hr class="hr-light-blue">
+    <hr class="hr-cyan">
+    <hr class="hr-magenta">
 
-        const bar = document.getElementById('ld-bar');
-        const status = document.getElementById('ld-status');
-        const screen = document.getElementById('loading-screen');
-        let step = 0;
+    <div class="copyright-row">
+        <span>All text and site design &copy; Sebastian Fisher, 2026-forever</span>
+        <span>est. May 14, 2026</span>
+    </div>
 
-        const iv = setInterval(() => {
-            step++;
-            bar.style.width = Math.round((step / STEPS.length) * 100) + '%';
-            status.textContent = STEPS[Math.min(step, STEPS.length - 1)];
-            if (step === 1) play('/media/audio/ui/drip.mp3');
-            if (step >= STEPS.length) {
-                clearInterval(iv);
-                play('/media/audio/ui/magic.mp3');
-                setTimeout(() => {
-                    screen.classList.add('fade-out');
-                    screen.addEventListener('transitionend', () => screen.remove(), { once: true });
-                }, 600);
-            }
-        }, 380);
-    })();
-    </script>
+    <!-- Music Element -->
+    <audio id="bg-music" loop>
+        <source src="media/audio/music/gif-gallery-theme.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/smore-inc/clippy.js@master/build/clippy.min.js"></script>
     <script src="retro.js"></script>
     <script>
-        // Clippy Loader
-        clippy.load('Clippy', function(agent) {
-            agent.show();
-            agent.speak("Welcome! I'm Clippy, your guide to Sebastian's world.");
-            setInterval(() => {
-                agent.animate();
-            }, 15000);
-        });
+        // Loading Screen Script
+        let progress = 0;
+        const progressBar = document.getElementById('progress');
+        const percentText = document.getElementById('percent');
+        const loadingScreen = document.getElementById('loading-screen');
+
+        const interval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                setTimeout(() => {
+                    loadingScreen.style.opacity = '0';
+                    loadingScreen.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                        // Initialize Clippy after loading
+                        initClippy();
+                    }, 500);
+                }, 500);
+            }
+            progressBar.style.width = progress + '%';
+            percentText.textContent = Math.floor(progress) + '%';
+        }, 200);
+
+        function initClippy() {
+            clippy.load('Clippy', function(agent) {
+                agent.show();
+                agent.speak("Welcome! Kick back and enjoy the fireplace.");
+                setInterval(() => {
+                    agent.animate();
+                }, 15000);
+            });
+        }
 
         // Music Start on first interaction
         document.addEventListener('click', () => {

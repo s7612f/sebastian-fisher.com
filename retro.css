@@ -1,0 +1,142 @@
+/* Retro Theme Shared Styles - A.N. Lucas Edition */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', serif;
+    min-height: 100vh;
+    cursor: crosshair;
+}
+
+body {
+    background-color: #352d32;
+    background-repeat: repeat;
+}
+
+/* Header & Logo Styles */
+.welcome-header {
+    text-align: center;
+    font-size: 24px;
+    font-style: italic;
+    margin-bottom: 10px;
+    color: magenta;
+}
+
+.logo-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.logo-row img {
+    height: 60px;
+}
+
+.logo-row h1 {
+    color: #00ffff; 
+    text-shadow: 2px 2px #ff00ff; 
+    font-size: 2.5em; 
+    margin: 0;
+}
+
+/* Horizontal Rules */
+hr {
+    border: 0;
+    height: 2px;
+    margin: 10px 0;
+}
+
+.hr-blue { background-color: #0000FF; }
+.hr-light-blue { background-color: #0080FF; }
+.hr-cyan { background-color: #00FFFF; }
+.hr-magenta { background-color: #FF00FF; }
+
+/* Navigation Styles (The Selection Bar) */
+.nav-center {
+    text-align: center;
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.nav-center a {
+    color: #ffee00; /* Bright Yellow */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-shadow: 2px 2px #000;
+    border: 2px outset gold;
+    padding: 5px 15px;
+    background: blue url("media/anlucas/bluetexture.gif");
+    min-width: 100px;
+    display: inline-block;
+}
+
+.nav-center a:hover {
+    background: #ffee00;
+    color: blue;
+    border-style: inset;
+}
+
+/* Main Content Containers */
+.main-card {
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    border: 5px outset gold;
+    background: blue url("media/anlucas/bluetexture.gif") repeat;
+    padding: 20px;
+    color: yellow;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
+}
+
+.inner-content {
+    border: 1px inset gold;
+    padding: 20px;
+    background: rgba(0,0,255,0.3);
+}
+
+.inner-content p, .inner-content li {
+    color: white;
+    line-height: 1.6;
+}
+
+.inner-content h2 {
+    color: yellow;
+    font-size: 1.4em;
+    border-bottom: 1px solid gold;
+    padding-bottom: 5px;
+    margin-top: 1.5em;
+}
+
+a { color: #00ffff; font-weight: bold; }
+a:visited { color: #ff00ff; }
+a:hover { text-decoration: underline; }
+
+footer {
+    border-top: 1px solid gold;
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.8em;
+    color: aqua;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Shade effect */
+.shade {
+    background-color: #12bb84;
+    opacity: 0.1;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -5;
+    pointer-events: none;
+}

@@ -3,310 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sebastian Fisher's Web Lounge</title>
+    <title>SEBASTIAN FISHER</title>
     <link rel="icon" href="/favicon.png" type="image/png">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/smore-inc/clippy.js@master/build/clippy.css">
     <style>
-        /* Loading Screen Styles */
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-            z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
-        }
 
-        .loader-bar {
-            width: 300px;
-            height: 20px;
-            border: 2px solid #00ff00;
-            margin-top: 20px;
-            position: relative;
-        }
+@font-face {
+    font-family: 'pixel basiic';
+    src: url('/fonts/basiic.ttf') format('truetype');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Chicago';
+    src: url('/fonts/Chicago-Normal.ttf') format('truetype');
+    font-display: swap;
+}
 
-        .loader-progress {
-            width: 0%;
-            height: 100%;
-            background: #00ff00;
-            transition: width 0.1s linear;
-        }
-
+#loading-screen {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #000;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    transition: opacity .5s ease;
+}
+#loading-screen.fade-out { opacity: 0; pointer-events: none; }
+#loading-screen .ld-logo {
+    font-family: 'pixel basiic', 'Chicago', monospace;
+    font-size: 36px; color: #7ec8e3; letter-spacing: 4px;
+    text-shadow: 0 0 20px #7ec8e3, 0 0 40px #3a90c8;
+    margin-bottom: 16px;
+}
+#loading-screen .ld-sub {
+    font-family: 'pixel basiic', 'Chicago', monospace;
+    font-size: 13px; color: #5599bb; letter-spacing: 2px;
+    margin-bottom: 32px;
+}
+#loading-screen img.ld-gif {
+    width: 80px; height: auto; image-rendering: pixelated;
+    margin-bottom: 28px;
+}
+#loading-screen .ld-bar-wrap {
+    width: 240px; height: 16px;
+    border: 1px solid #3a6688;
+    background: #0a1a2a;
+    position: relative; overflow: hidden;
+}
+#loading-screen .ld-bar {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, #1a6aaa, #7ec8e3);
+    transition: width .3s linear;
+}
+#loading-screen .ld-status {
+    font-size: 10px; color: #5599bb; margin-top: 8px;
+    font-family: 'Courier New', monospace; letter-spacing: 1px;
+}
         body {
-            background-image: url("media/anlucas/starsbg.gif");
-            color: magenta;
-            font-family: "Times New Roman", serif;
+            color: #008cff;
+            font-family: "Courier New", Courier, monospace;
+            background-color: black;
+            overflow: hidden;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
 
-        .welcome-header {
-            text-align: center;
-            font-size: 24px;
-            font-style: italic;
-            margin-bottom: 10px;
+        .starbg {
+            width: 100%; height: 100%;
+            background-repeat: repeat;
+            position: fixed; top: 0; left: 0;
+            background-image: url("media/backgrounds/stripes.png");
+            animation: backgroundScroll 5s linear infinite;
+            mix-blend-mode: screen;
+            z-index: -1;
         }
 
-        .logo-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
+        @keyframes backgroundScroll {
+            0%   { background-position: 0px 0px; }
+            100% { background-position: 100px 100px; }
         }
 
-        .logo-row img {
-            height: 60px;
+        .characterbg {
+            width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0;
+            background-image: url("media/backgrounds/landing.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            mix-blend-mode: screen;
+            z-index: -2;
         }
 
-        hr {
-            border: 0;
-            height: 2px;
-            margin: 10px 0;
+        .center-screen {
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center; min-height: 100vh;
         }
 
-        .hr-blue { background-color: #0000FF; }
-        .hr-light-blue { background-color: #0080FF; }
-        .hr-cyan { background-color: #00FFFF; }
-        .hr-magenta { background-color: #FF00FF; }
-
-        /* Improved Navigation Visibility */
-        .nav-center {
-            text-align: center;
-            margin: 25px 0;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
+        .card {
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 1px solid #ff00aa;
+            padding: 50px;
+            box-shadow: 0px 0px 30px 1px #ff00aa;
+            width: 510px;
         }
 
-        .nav-center a {
-            color: #ffee00; /* Bright Yellow */
+        .logo { margin-bottom: 25px; }
+
+        h2 a {
+            color: #ff00aa;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2em;
-            text-shadow: 2px 2px #000;
-            border: 2px outset gold;
-            padding: 5px 15px;
-            background: blue url("media/anlucas/bluetexture.gif");
-            min-width: 100px;
-            display: inline-block;
+            font-weight: normal;
         }
 
-        .nav-center a:hover {
-            background: #ffee00;
-            color: blue;
-            border-style: inset;
-        }
-
-        .main-card {
-            width: 670px;
-            margin: 0 auto;
-            border: 5px outset gold;
-            background: blue url("media/anlucas/bluetexture.gif") repeat;
-            padding: 20px;
-            color: yellow;
-            box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
-        }
-
-        .inner-content {
-            border: 1px inset gold;
-            padding: 20px;
-            background: rgba(0,0,255,0.3);
-        }
-
-        .inner-content h2 {
-            text-align: center;
-            font-size: 1.2em;
-            margin-top: 0;
-        }
-
-        .inner-content p {
-            font-size: 1.1em;
-            line-height: 1.4;
-            color: white;
-        }
-
-        .fireplace {
-            display: block;
-            margin: 20px auto;
-            border: 2px solid gold;
-        }
-
-        .footer-badges {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .footer-badges img {
-            margin: 5px;
-        }
-
-        .copyright-row {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-            color: aqua;
-            font-style: italic;
-            font-size: 0.9em;
-        }
-
-        marquee {
-            color: white;
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
+        h2 a:hover { color: white; }
     </style>
 </head>
 <body>
+    <div class="characterbg"></div>
+    <div class="starbg"></div>
 
-    <!-- Boot Loading Screen -->
-    <div id="loading-screen">
-        <div id="loading-text" style="font-size: 2em; margin-bottom: 10px;">SYSTEM BOOTING...</div>
-        <div id="loading-subtext">Initializing Sebastian-Fisher.com v0.42</div>
-        <div class="loader-bar">
-            <div id="progress" class="loader-progress"></div>
+    <div class="center-screen">
+        <div class="card">
+            <img src="Welcometo-Welcometo.png" style="max-width: 100%; display: block; margin: 0 auto 10px;">
+            <h1 style="color: #ff00aa; font-family: 'Courier New', monospace; font-size: 1.6em; margin: 0 0 30px; text-shadow: 0 0 10px #ff00aa;">SEBASTIAN-FISHER.COM</h1>
+            <h2 style="margin: 0;"><a href="login.html" style="text-decoration: none;">&#10038;&#10097;&#10097; ENTER &#10096;&#10096;&#10038;</a></h2>
         </div>
-        <div id="percent" style="margin-top: 10px;">0%</div>
     </div>
 
-    <div class="welcome-header">Hello, and welcome to:</div>
-    
-    <div class="logo-row">
-        <img src="media/anlucas/fireworks.gif">
-        <h1 style="color: #00ffff; text-shadow: 2px 2px #ff00ff; font-size: 2.5em; margin: 0;">SEBASTIAN FISHER.COM</h1>
-        <img src="media/anlucas/fireworks.gif">
-    </div>
+<script>
+(function () {
+    'use strict';
 
-    <hr class="hr-blue">
+    const STEPS = [
+        'Initialising kernel…',
+        'Loading modules…',
+        'Mounting volumes…',
+        'Starting services…',
+        'Applying themes…',
+        'Almost there…',
+        'Welcome.',
+    ];
 
-    <div class="nav-center">
-        <a href="index.html">Index</a>
-        <a href="links.html">Links</a>
-        <a href="projects.html">Projects</a>
-        <a href="homelab.html">NetSec</a>
-        <a href="design.html">Design</a>
-        <a href="library.html">Library</a>
-        <a href="giphy-gallery.html">Giphy</a>
-    </div>
+    function buildLoadingScreen() {
+        const div = document.createElement('div');
+        div.id = 'loading-screen';
+        div.innerHTML = `
+            <img class="ld-gif" src="media/monitor-screen-0002.gif" alt="">
+            <div class="ld-logo">SEBASTIAN FISHER</div>
+            <div class="ld-sub">SERVER LOADING</div>
+            <div class="ld-bar-wrap"><div class="ld-bar" id="ld-bar"></div></div>
+            <div class="ld-status" id="ld-status">${STEPS[0]}</div>
+        `;
+        document.body.prepend(div);
+        return div;
+    }
 
-    <hr class="hr-light-blue">
+    function runLoadingScreen(onDone) {
+        const screen = buildLoadingScreen();
+        const bar    = document.getElementById('ld-bar');
+        const status = document.getElementById('ld-status');
+        let step = 0;
+        let done = false;
 
-    <div class="main-card">
-        <div class="inner-content">
-            <h2 style="color: yellow;">Welcome!</h2>
-            <p>
-                Hi. I'm Seb. This is my website. You probably got here from noticing I have my own email domain. If that's you, welcome. This is where I keep the things I am currently up to. Feel free to look around!
-            </p>
-
-            <p>
-                Under the <a href="links.html">links</a> page you'll find tools for accessing the web, privacy resources,
-                and a growing collection of personal sites and fun stuff.
-            </p>
-
-            <p>
-                Get in touch: <a href="mailto:contact@sebastian-fisher.com">contact@sebastian-fisher.com</a>
-            </p>
-            
-            <img src="media/anlucas/fireplace.gif" class="fireplace">
-            <p style="font-size: 0.8em; color: yellow; text-align: center;">*May not make you feel at home if you have no fireplace.</p>
-
-            <h2 style="color: yellow; margin-top: 20px;">Currently</h2>
-            <ul>
-                <li>working on my homelab</li>
-                <li>studying basic principles of design</li>
-                <li>working</li>
-                <li>building websites</li>
-            </ul>
-        </div>
-
-        <marquee>
-            <img src="https://anlucas.neocities.org/Animated-pink-flickering-stars.gif">
-            <i>"Celebrating 2026 on the World Wide Web!"</i>
-            <img src="https://anlucas.neocities.org/Animated-pink-flickering-stars.gif">
-        </marquee>
-    </div>
-
-    <div class="footer-badges">
-        <p style="color: yellow; font-size: 0.9em;">Proud to be part of the World Wide Web</p>
-        <img src="https://anlucas.neocities.org/worldwideweb_badge.gif">
-        <br>
-        <img src="https://anlucas.neocities.org/neocities_button.gif">
-        <img src="https://anlucas.neocities.org/anlucasbutton.gif">
-        <img src="https://anlucas.neocities.org/bookmark_this_page.gif">
-        <img src="https://anlucas.neocities.org/freespeechforever.gif">
-        <img src="https://anlucas.neocities.org/built_with_microsoft_notepad.gif">
-    </div>
-
-    <hr class="hr-blue">
-    <hr class="hr-light-blue">
-    <hr class="hr-cyan">
-    <hr class="hr-magenta">
-
-    <div class="copyright-row">
-        <span>All text and site design &copy; Sebastian Fisher, 2026-forever</span>
-        <span>est. May 14, 2026</span>
-    </div>
-
-    <!-- Music Element -->
-    <audio id="bg-music" loop>
-        <source src="media/audio/music/gif-gallery-theme.mp3" type="audio/mpeg">
-    </audio>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/smore-inc/clippy.js@master/build/clippy.min.js"></script>
-    <script src="retro.js"></script>
-    <script>
-        // Loading Screen Script
-        let progress = 0;
-        const progressBar = document.getElementById('progress');
-        const percentText = document.getElementById('percent');
-        const loadingScreen = document.getElementById('loading-screen');
-
-        const interval = setInterval(() => {
-            progress += Math.random() * 15;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(interval);
+        const iv = setInterval(() => {
+            step++;
+            bar.style.width = Math.round((step / STEPS.length) * 100) + '%';
+            status.textContent = STEPS[Math.min(step, STEPS.length - 1)];
+            if (step >= STEPS.length) {
+                clearInterval(iv);
                 setTimeout(() => {
-                    loadingScreen.style.opacity = '0';
-                    loadingScreen.style.transition = 'opacity 0.5s ease';
+                    screen.classList.add('fade-out');
                     setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                        // Initialize Clippy after loading
-                        initClippy();
-                    }, 500);
-                }, 500);
+                        screen.remove();
+                        if (!done) { done = true; onDone(); }
+                    }, 600);
+                }, 300);
             }
-            progressBar.style.width = progress + '%';
-            percentText.textContent = Math.floor(progress) + '%';
-        }, 200);
+        }, 260);
+    }
 
-        function initClippy() {
-            clippy.load('Clippy', function(agent) {
-                agent.show();
-                agent.speak("Welcome! Kick back and enjoy the fireplace.");
-                setInterval(() => {
-                    agent.animate();
-                }, 15000);
-            });
-        }
+    runLoadingScreen(() => {});
+})();
+</script>
 
-        // Music Start on first interaction
-        document.addEventListener('click', () => {
-            const music = document.getElementById('bg-music');
-            if (music.paused) {
-                music.volume = 0.3;
-                music.play().catch(() => {});
-            }
-        }, { once: true });
-    </script>
 </body>
 </html>

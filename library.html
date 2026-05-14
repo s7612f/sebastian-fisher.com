@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebastian Fisher // Library</title>
+    <link rel="stylesheet" href="retro.css">
+    <style>
+        body { background-image: url("media/backgrounds/SC068.JPG"); }
+        
+        .book-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .book-item {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #000;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 5px 5px 0px #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .download-btn {
+            background: #ff00aa;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px outset #c2185b;
+            white-space: nowrap;
+        }
+
+        .download-btn:hover {
+            background: #e91e63;
+        }
+    </style>
+</head>
+<body>
+    <div class="shade"></div>
+    
+    <div class="logo-row" style="margin-top: 20px;">
+        <img src="media/anlucas/fireworks.gif">
+        <h1>SEBASTIAN FISHER.COM</h1>
+        <img src="media/anlucas/fireworks.gif">
+    </div>
+
+    <hr class="hr-blue">
+    <div class="nav-center">
+        <a href="home.html">Home</a>
+        <a href="links.html">Links</a>
+        <a href="projects.html">Projects</a>
+        <a href="homelab.html">NetSec</a>
+        <a href="library.html">Library</a>
+        <a href="giphy-gallery.html">Giphy</a>
+    </div>
+    <hr class="hr-light-blue">
+
+    <div class="main-card">
+        <div class="inner-content">
+            <h2>Digital Library</h2>
+            <p>Direct download links for books and workbooks.</p>
+            
+            <ul class="book-list">
+                <li class="book-item">
+                    <span>Basic Principles of Design</span>
+                    <a href="basic-principles-of-design.pdf" class="download-btn" download>Download PDF</a>
+                </li>
+                <li class="book-item">
+                    <span>King, Warrior, Magician, Lover</span>
+                    <a href="pdfcoffee.com-king-warrior-magician-lover-by-robert-moore.pdf" class="download-btn" download>Download PDF</a>
+                </li>
+                <li class="book-item">
+                    <span>WHAT IT TAKES TO DISAPPEAR: FIFTH EDITION (PERSONAL DATA REMOVAL WORKBOOK)</span>
+                    <a href="personal-data-removal-workbook.pdf" class="download-btn" download>Download PDF</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="retro.js"></script>
+</body>
+</html>

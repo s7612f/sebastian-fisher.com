@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/favicon.png" type="image/png">
     <title>Sebastian Fisher // Portfolio</title>
     <link rel="stylesheet" href="retro.css">
     <style>
         body { 
             background-image: url("media/backgrounds/023C.png"); 
-            background-size: 150px; /* Scaling down the pattern */
+            background-size: 150px; 
         }
         
         .project-item {
@@ -19,42 +18,33 @@
             background: rgba(255,255,255,0.5);
         }
         
-        .project-item h3 {
-            margin-top: 0;
-            color: #d32f2f;
-        }
-
-        .status-badge {
-            background: #2196f3;
-            color: white;
-            padding: 2px 8px;
-            font-size: 0.8em;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+        .project-item h3 { margin-top: 0; color: #d32f2f; }
+        .status-badge { background: #2196f3; color: white; padding: 2px 8px; font-size: 0.8em; font-weight: bold; text-transform: uppercase; }
     </style>
 </head>
 <body>
     <div class="shade"></div>
     
-    <div class="retro-container">
-        <header class="retro-header">
-            <h1>My Portfolio</h1>
-            <span>Working on stuff...</span>
-        </header>
+    <div class="logo-row">
+        <img src="media/anlucas/fireworks.gif">
+        <h1>SEBASTIAN FISHER.COM</h1>
+        <img src="media/anlucas/fireworks.gif">
+    </div>
 
-        <nav class="retro-nav">
-            <a href="index.html">Index</a>
-            <a href="links.html">Links</a>
-            <a href="projects.html">Projects</a>
-            <a href="homelab.html">NetSec</a>
-            <a href="giphy-gallery.html">Giphy</a>
-        </nav>
+    <hr class="hr-blue">
+    <div class="nav-center">
+        <a href="home.html">Home</a>
+        <a href="links.html">Links</a>
+        <a href="projects.html">Projects</a>
+        <a href="homelab.html">NetSec</a>
+        <a href="library.html">Library</a>
+    </div>
+    <hr class="hr-light-blue">
 
-        <main class="retro-body">
-            <h2>Current Works</h2>
+    <div class="main-card">
+        <div class="inner-content">
+            <h2 style="margin-top: 0;">Current Works</h2>
             
-            <!-- Template Item -->
             <div class="project-item">
                 <span class="status-badge">In Progress</span>
                 <h3>Project Title Template</h3>
@@ -75,11 +65,7 @@
                 <li>Old Experiment 1</li>
                 <li>Old Experiment 2</li>
             </ul>
-        </main>
-
-        <footer>
-            &copy; 2026 Sebastian Fisher — Built with local assets
-        </footer>
+        </div>
     </div>
 
     <script src="retro.js"></script>

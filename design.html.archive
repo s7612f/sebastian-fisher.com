@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebastian Fisher // Design</title>
+    <link rel="stylesheet" href="retro.css">
+    <style>
+        body { background-image: url("media/backgrounds/honeycomb195.jpg"); }
+        
+        .design-section {
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #000;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 10px 10px 0px #444;
+        }
+
+        .braun-list {
+            list-style-type: decimal;
+            padding-left: 40px;
+        }
+
+        .braun-list li {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .braun-list li span {
+            font-weight: normal;
+            display: block;
+            color: #444;
+            margin-top: 5px;
+        }
+
+        .links-list {
+            list-style-type: '→ ';
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="shade"></div>
+    
+    <div class="logo-row" style="margin-top: 20px;">
+        <img src="media/anlucas/fireworks.gif">
+        <h1>SEBASTIAN FISHER.COM</h1>
+        <img src="media/anlucas/fireworks.gif">
+    </div>
+
+    <hr class="hr-blue">
+    <div class="nav-center">
+        <a href="home.html">Home</a>
+        <a href="links.html">Links</a>
+        <a href="projects.html">Projects</a>
+        <a href="homelab.html">NetSec</a>
+        <a href="design.html">Design</a>
+        <a href="library.html">Library</a>
+        <a href="giphy-gallery.html">Giphy</a>
+    </div>
+    <hr class="hr-light-blue">
+
+    <div class="main-card">
+        <div class="inner-content">
+            <h2>Dieter Rams: 10 Principles for Good Design (Braun)</h2>
+            <div class="design-section">
+                <ul class="braun-list">
+                    <li>Good design is innovative. <span>The possibilities for innovation are not, by any means, exhausted. Technological development is always offering new opportunities for innovative design.</span></li>
+                    <li>Good design makes a product useful. <span>A product is bought to be used. It has to satisfy certain criteria, not only functional, but also psychological and aesthetic.</span></li>
+                    <li>Good design is aesthetic. <span>The aesthetic quality of a product is integral to its usefulness because products we use every day affect our person and our well-being.</span></li>
+                    <li>Good design makes a product understandable. <span>It clarifies the product’s structure. Better still, it can make the product talk. At best, it is self-explanatory.</span></li>
+                    <li>Good design is unobtrusive. <span>Products fulfilling a purpose are like tools. They are neither decorative objects nor works of art. Their design should therefore be both neutral and restrained, to leave room for the user’s self-expression.</span></li>
+                    <li>Good design is honest. <span>It does not make a product more innovative, powerful or valuable than it really is. It does not attempt to manipulate the consumer with promises that cannot be kept.</span></li>
+                    <li>Good design is long-lasting. <span>It avoids being fashionable and therefore never appears antiquated. Unlike fashionable design, it lasts many years – even in today’s throwaway society.</span></li>
+                    <li>Good design is thorough down to the last detail. <span>Nothing must be arbitrary or left to chance. Care and accuracy in the design process show respect towards the user.</span></li>
+                    <li>Good design is environmentally-friendly. <span>Design makes an important contribution to the preservation of the environment. It conserves resources and minimizes physical and visual pollution throughout the lifecycle of the product.</span></li>
+                    <li>Good design is little design as possible. <span>Less, but better – because it concentrates on the essential aspects, and the products are not burdened with non-essentials. Back to purity, back to simplicity.</span></li>
+                </ul>
+            </div>
+
+            <h2>Creative Tools</h2>
+            <div class="design-section">
+                <ul class="links-list">
+                    <li><a href="https://www.apple.com/final-cut-pro/" target="_blank">Final Cut Pro</a></li>
+                    <li><a href="https://www.adobe.com/products/premiere.html" target="_blank">Adobe Premiere Pro</a></li>
+                    <li><a href="https://www.adobe.com/products/photoshop.html" target="_blank">Adobe Photoshop</a></li>
+                    <li><a href="https://www.adobe.com/products/photoshop-lightroom.html" target="_blank">Adobe Lightroom</a></li>
+                    <li><a href="https://www.blender.org/" target="_blank">Blender 3D</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="retro.js"></script>
+</body>
+</html>

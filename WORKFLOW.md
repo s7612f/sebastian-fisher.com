@@ -4,40 +4,54 @@
 
 The site lives in this git repo: `s7612f/sebastian-fisher.com`
 
-Files are plain HTML — no build step, no framework. Edit a file, push to git, it's live.
+Files are plain HTML — no build step, no framework. Edit a file, push to git, then run the deploy command.
 
-Hosting is on **Cloudflare Pages** (project: `personalwebsite`). Every push to `main` auto-deploys.
-
-DNS is managed through Cloudflare — `sebastian-fisher.com` points to the Pages project.
+Hosting is on **Cloudflare Pages** (project: `sebastian-fisher`). The site URL is `sebastian-fisher.pages.dev`, custom domain is `sebastian-fisher.com`.
 
 ---
 
 ## Day-to-day workflow
 
 ```bash
-# 1. Edit a file in VS Code
-# 2. Save it
-# 3. Push to git
-
 cd ~/Projects/sebastian-fisher.com
 
+# 1. Edit files in VS Code
+# 2. Push to git
 git add .
 git commit -m "what you changed"
 git push
+
+# 3. Deploy to Cloudflare Pages
+npx wrangler pages deploy . --project-name sebastian-fisher
 ```
 
-That's it. Cloudflare picks it up and the site updates within ~30 seconds.
+The deploy takes ~10 seconds and uploads only changed files.
 
 ---
 
-## Manual deploy (if you need to force it)
+## One-liner deploy alias (optional)
+
+Add this to `~/.zshrc` for a quick `deploy` command:
 
 ```bash
-cd ~/Projects/sebastian-fisher.com
-npx wrangler pages deploy . --project-name personalwebsite
+alias deploy-sf="cd ~/Projects/sebastian-fisher.com && git add . && git commit -m 'update' && git push && npx wrangler pages deploy . --project-name sebastian-fisher"
 ```
 
-Requires `CLOUDFLARE_API_TOKEN` to be set in your environment (see `.zshrc`).
+---
+
+## Environment variables (in ~/.zshrc)
+
+```bash
+export CLOUDFLARE_API_TOKEN="..."       # Cloudflare API token with Pages:Edit
+export CLOUDFLARE_ACCOUNT_ID="6959e11203b445fb9856aad90c792c08"
+```
+
+If the token expires, generate a new one at:
+`dash.cloudflare.com/profile/api-tokens` → **Create Custom Token**
+- Permissions: `Cloudflare Pages: Edit`
+- Account: your account
+
+After updating `.zshrc` run `source ~/.zshrc`.
 
 ---
 
@@ -49,30 +63,25 @@ Requires `CLOUDFLARE_API_TOKEN` to be set in your environment (see `.zshrc`).
 | `links.html` | sebastian-fisher.com/links.html |
 | `projects.html` | sebastian-fisher.com/projects.html |
 | `homelab.html` | sebastian-fisher.com/homelab.html |
+| `giphy-gallery.html` | sebastian-fisher.com/giphy-gallery.html |
+| `retro.css` | shared stylesheet |
+| `retro.js` | shared scripts |
 | `favicon.png` | site favicon |
 | `gifs/buttons/` | 88x31 pixel badges |
-| `023C.png` | tiled background used on projects page |
+| `media/` | audio, backgrounds, images |
+| `assets/` | giphy assets |
 
 ---
 
 ## Adding a new page
 
-1. Create `pagename.html` — copy the structure from `index.html`
-2. Add a link to it in the `<nav>` on every other page
-3. `git add . && git commit -m "add pagename" && git push`
+1. Create `pagename.html` — copy the `<head>` and nav from an existing page
+2. Add a link in the `<nav>` on every other page
+3. Push and deploy
 
 ---
 
 ## Cloudflare dashboard
 
-- Pages project: dash.cloudflare.com → Workers & Pages → personalwebsite
-- DNS: dash.cloudflare.com → sebastian-fisher.com → DNS
-
----
-
-## API token
-
-Stored in `~/.zshrc` as `CLOUDFLARE_API_TOKEN`. If it expires, generate a new one at:
-`dash.cloudflare.com/profile/api-tokens` → Edit Cloudflare Workers template.
-
-After updating `.zshrc` run `source ~/.zshrc` to reload it in the current terminal.
+- Pages project: dash.cloudflare.com → Workers & Pages → `sebastian-fisher`
+- DNS: dash.cloudflare.com → `sebastian-fisher.com` → DNS

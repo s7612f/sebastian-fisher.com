@@ -15,34 +15,35 @@ body {
     margin: 0 auto;
 }
 
-a {
-    color: blue;
-    font-weight: bold;
+a { color: blue; font-weight: bold; }
+a:visited { color: purple; }
+a:hover { text-decoration: underline; }
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid black;
 }
 
-a:visited {
-    color: purple;
-}
-
-h1 { font-size: 1.6em; }
 h2 { font-size: 1.2em; margin-top: 1.8em; }
 h3 { font-size: 1em; margin-top: 1.4em; }
 
 nav {
-    border-top: 2px solid black;
     border-bottom: 2px solid black;
-    padding: 6px 0;
-    margin-bottom: 20px;
+    padding: 5px 0;
+    margin-bottom: 22px;
 }
 
 nav a {
     margin-right: 20px;
     text-decoration: none;
+    font-weight: normal;
+    color: black;
 }
 
-nav a:hover {
-    text-decoration: underline;
-}
+nav a:visited { color: black; }
+nav a:hover { text-decoration: underline; }
 
 .page-nav {
     font-size: smaller;

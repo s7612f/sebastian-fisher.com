@@ -1,218 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sebastian Fisher // Links</title>
-<style>
-
-body {
-    font-family: 'Times New Roman', serif;
-    color: black;
-    background-color: #c0c0c0;
-    padding: 10px 30px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-a { color: blue; font-weight: bold; }
-a:visited { color: purple; }
-a:hover { text-decoration: underline; }
-
-h1 {
-    font-size: 2em;
-    margin-bottom: 0;
-    padding-bottom: 6px;
-    border-bottom: 2px solid black;
-}
-
-h2 { font-size: 1.2em; margin-top: 1.8em; }
-h3 { font-size: 1em; margin-top: 1.4em; }
-
-nav {
-    border-bottom: 2px solid black;
-    padding: 5px 0;
-    margin-bottom: 22px;
-}
-
-nav a {
-    margin-right: 20px;
-    text-decoration: none;
-    font-weight: normal;
-    color: black;
-}
-
-nav a:visited { color: black; }
-nav a:hover { text-decoration: underline; }
-
-.page-nav {
-    font-size: smaller;
-    margin-bottom: 20px;
-}
-
-.page-nav a {
-    margin-right: 12px;
-    font-weight: normal;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-li {
-    margin-bottom: 6px;
-}
-
-.desc {
-    font-weight: normal;
-    color: #444;
-}
-
-footer {
-    border-top: 1px solid black;
-    margin-top: 30px;
-    padding-top: 10px;
-    text-align: center;
-    font-size: smaller;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>Sebastian Fisher // Links</title>
+    <link rel="stylesheet" href="retro.css">
+    <style>
+        body { background-image: url("media/backgrounds/017C.png"); }
+        .page-nav { background: #eee; padding: 10px; border: 1px inset #ccc; font-size: 0.9em; margin-bottom: 20px; }
+        .page-nav a { margin-right: 15px; }
+        ul { list-style-type: '→ '; }
+        li { margin-bottom: 8px; }
+    </style>
 </head>
 <body>
+    <div class="shade"></div>
+    
+    <div class="retro-container">
+        <header class="retro-header">
+            <h1>Fav Hyperlinks</h1>
+            <span>Exploring the web...</span>
+        </header>
 
-<h1>Sebastian Fisher</h1>
+        <nav class="retro-nav">
+            <a href="index.html">Index</a>
+            <a href="links.html">Links</a>
+            <a href="projects.html">Projects</a>
+            <a href="homelab.html">NetSec</a>
+            <a href="giphy-gallery.html">Giphy</a>
+        </nav>
 
-<nav>
-    <a href="index.html">index</a>
-    <a href="links.html">links</a>
-    <a href="projects.html">projects</a>
-</nav>
+        <main class="retro-body">
+            <h2 id="access">Access the Web</h2>
+            <ul>
+                <li><a href="https://12ft.io" target="_blank">12ft Ladder</a> — bypass paywalls</li>
+                <li><a href="https://www.readbionic.com" target="_blank">Bionic Reading</a> — reading assistance</li>
+                <li><a href="https://ublockorigin.com" target="_blank">uBlock Origin</a> — ad blocker</li>
+            </ul>
 
-<div class="page-nav">
-    Jump to:
-    <a href="#access">Access the Web</a>
-    <a href="#privacy">Privacy</a>
-    <a href="#scholarly">Scholarly</a>
-    <a href="#personalweb">Personal Web</a>
-    <a href="#fun">Fun Stuff</a>
-    <a href="#sites">Sites I Like</a>
-</div>
+            <h2 id="privacy">Privacy</h2>
+            <ul>
+                <li><a href="https://privacyguides.org" target="_blank">Privacy Guides</a> — community guide</li>
+                <li><a href="https://haveibeenpwned.com" target="_blank">Have I Been Pwned</a> — breach check</li>
+                <li><a href="https://tosdr.org" target="_blank">ToS;DR</a> — Terms of Service summaries</li>
+            </ul>
 
-<h2 id="access">Access the Web</h2>
+            <h2 id="personalweb">Personal Web</h2>
+            <ul>
+                <li><a href="https://32bit.cafe" target="_blank">32-Bit Cafe</a> — web community</li>
+                <li><a href="https://melonland.net" target="_blank">Melonland</a> — forum and directory</li>
+                <li><a href="https://gifcities.org" target="_blank">GifCities</a> — GIF search</li>
+            </ul>
 
-<ul>
-    <li><a href="https://12ft.io" target="_blank">12ft Ladder</a> — bypass paywalls on most news sites</li>
-    <li><a href="https://www.readbionic.com" target="_blank">Bionic Reading</a> — makes text easier to skim by bolding key parts</li>
-    <li><a href="https://not-br.neocities.org" target="_blank">Not Bionic Reading</a> — open-source alternative to the above</li>
-    <li><a href="https://sadgrl.online/cyberspace/" target="_blank">Cyberspace</a> — big list of internet links curated by sadgrl.online</li>
-    <li><a href="https://doaj.org" target="_blank">Directory of Open Access Journals</a> — free peer-reviewed academic journals</li>
-    <li><a href="https://opendyslexic.org" target="_blank">OpenDyslexic</a> — free dyslexia-friendly typeface</li>
-    <li><a href="https://openlibrary.org" target="_blank">Open Library</a> — borrow and read millions of books for free</li>
-    <li><a href="https://ublockorigin.com" target="_blank">uBlock Origin</a> — the best ad blocker. Just use it.</li>
-    <li><a href="https://unpaywall.org" target="_blank">Unpaywall</a> — browser extension that finds free versions of 47M+ scholarly articles</li>
-</ul>
+            <!-- More links can be added back here -->
+        </main>
 
-<h2 id="privacy">Privacy</h2>
+        <footer>
+            &copy; 2026 Sebastian Fisher
+        </footer>
+    </div>
 
-<ul>
-    <li><a href="https://one.one.one.one" target="_blank">Cloudflare 1.1.1.1 with WARP</a> — fast, private DNS + optional VPN</li>
-    <li><a href="https://www.crashoverridenetwork.com" target="_blank">Crash Override</a> — online abuse crisis helpline</li>
-    <li><a href="https://inteltechniques.com/book1.html" target="_blank">Extreme Privacy (Michael Bazzell)</a> — comprehensive workbook for locking down your digital life</li>
-    <li><a href="https://haveibeenpwned.com" target="_blank">Have I Been Pwned</a> — check if your email or passwords have been in a data breach</li>
-    <li><a href="https://www.security.org/how-secure-is-my-password/" target="_blank">Password Strength Checker</a></li>
-    <li><a href="https://justdeleteme.xyz" target="_blank">JustDeleteMe</a> — direct links to delete your account on any web service</li>
-    <li><a href="https://www.mozilla.org/en-GB/products/" target="_blank">Mozilla Products</a> — Firefox, Thunderbird, and other privacy-respecting tools</li>
-    <li><a href="https://onlineharassmentfieldmanual.pen.org" target="_blank">Online Harassment Field Manual</a> — PEN America guide for writers and journalists</li>
-    <li><a href="https://www.spyware.watch" target="_blank">Online Spyware Watchdog</a> — reviews software for spyware and privacy violations</li>
-    <li><a href="https://www.privacyguides.org" target="_blank">Privacy Guides</a> — community-maintained guide to private tools and services</li>
-    <li><a href="https://www.privacytools.io" target="_blank">Privacy Tools</a> — another solid resource list</li>
-    <li><a href="https://ssd.eff.org" target="_blank">Surveillance Self-Defense</a> — EFF's guide to protecting yourself from surveillance</li>
-    <li><a href="https://tacticaltech.org" target="_blank">Tactical Technology Collective</a> — explores the social and political impact of technology</li>
-    <li><a href="https://www.eff.org/pages/tools" target="_blank">EFF's Tech Tools</a> — privacy tools from the Electronic Frontier Foundation</li>
-    <li><a href="https://tosdr.org" target="_blank">ToS;DR</a> — Terms of Service summaries so you don't have to read them</li>
-</ul>
-
-<h2 id="scholarly">Scholarly Resources</h2>
-
-<ul>
-    <li><a href="https://www.doabooks.org" target="_blank">Directory of Open Access Books (DOAB)</a></li>
-    <li><a href="https://doaj.org" target="_blank">Directory of Open Access Journals (DOAJ)</a></li>
-    <li><a href="https://opendissertations.ebsco.com" target="_blank">EBSCO Open Dissertations</a></li>
-    <li><a href="https://eric.ed.gov" target="_blank">ERIC</a> — education research database</li>
-    <li><a href="https://www.ebsco.com/products/research-databases/greenfile" target="_blank">GreenFILE</a> — environmental research</li>
-    <li><a href="https://www.oapen.org" target="_blank">OAPEN</a> — open access academic books</li>
-    <li><a href="http://oad.simmons.edu/oadwiki/Main_Page" target="_blank">Open Access Directory</a></li>
-    <li><a href="https://v2.sherpa.ac.uk/opendoar/" target="_blank">OpenDOAR</a> — directory of open access repositories</li>
-    <li><a href="https://openlibrary.org" target="_blank">Open Library</a></li>
-    <li><a href="https://oatd.org" target="_blank">Open Theses &amp; Dissertations</a> — 1.6M+ graduate theses</li>
-    <li><a href="https://plos.org" target="_blank">Public Library of Science (PLoS)</a></li>
-    <li><a href="https://road.issn.org" target="_blank">ROAD</a> — directory of open access scholarly resources</li>
-</ul>
-
-<h2 id="personalweb">Personal Web</h2>
-
-<h3>Build Your Website</h3>
-<ul>
-    <li><a href="https://32bit.cafe" target="_blank">32-Bit Cafe</a> — community for personal website creators</li>
-    <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility" target="_blank">Accessibility Guide</a> — Mozilla</li>
-    <li><a href="https://pages.github.com" target="_blank">GitHub Pages</a> — free static site hosting</li>
-    <li><a href="https://glitch.com" target="_blank">Glitch.com</a> — build and host web apps for free, in the browser</li>
-    <li><a href="https://www.goatcounter.com" target="_blank">GoatCounter</a> — privacy-respecting analytics</li>
-    <li><a href="https://groundfloor.neocities.org" target="_blank">Ground Floor</a> — HTML/CSS basics for beginners</li>
-    <li><a href="https://htmlforpeople.com" target="_blank">HTML for the People</a> — friendly intro to HTML</li>
-    <li><a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/" target="_blank">Introduction to Web Accessibility (W3C)</a></li>
-    <li><a href="https://www.nearlyfreespeech.net" target="_blank">NearlyFreeSpeech.net</a> — cheap, no-frills web hosting</li>
-    <li><a href="https://smartgb.com" target="_blank">Smart Guestbook</a> — free embeddable guestbook</li>
-    <li><a href="https://www.w3schools.com" target="_blank">W3Schools</a> — HTML, CSS, JS tutorials</li>
-</ul>
-
-<h3>Decorate Your Website</h3>
-<ul>
-    <li><a href="https://88x31.neocities.org/maker" target="_blank">88x31 Button Maker</a> — make your own pixel badge</li>
-    <li><a href="https://cyber.dabamos.de/88x31/" target="_blank">88x31 GIF Collection</a> — archive of classic web badges</li>
-    <li><a href="https://blinkies.cafe" target="_blank">blinkies.cafe</a> — blinkie maker and collection</li>
-    <li><a href="https://ditherit.com" target="_blank">Dither Me This</a> — convert images to dithered pixel art</li>
-    <li><a href="https://flamingtext.com" target="_blank">Flaming Text</a> — retro 3D text generator</li>
-    <li><a href="https://gifcities.org" target="_blank">GifCities</a> — Internet Archive's animated GIF search engine</li>
-    <li><a href="https://makewordart.com" target="_blank">Make WordArt</a> — classic Microsoft WordArt in the browser</li>
-    <li><a href="https://www.clipart.email" target="_blank">MS Clipart Search</a> — classic clipart in SVG format</li>
-    <li><a href="https://pixelsafari.neocities.org" target="_blank">Pixel Safari</a> — dividers, favicons, buttons, pixel decorations</li>
-    <li><a href="https://www.seamlessrepeater.com" target="_blank">Repeater</a> — turn any image into a tiling background pattern</li>
-    <li><a href="https://www.transparenttextures.com" target="_blank">Transparent Textures</a> — background textures</li>
-    <li><a href="https://www.totallyfreecursors.com" target="_blank">Totally Free Cursors</a> — custom cursor images</li>
-    <li><a href="https://win98icons.alexmeub.com" target="_blank">Windows 98 Icon Viewer</a> — classic Windows 98 icons</li>
-</ul>
-
-<h2 id="fun">Fun Stuff</h2>
-
-<ul>
-    <li><a href="https://the90sbutton.com" target="_blank">The 90s Button</a></li>
-    <li><a href="https://birdiegame.net" target="_blank">birdie</a> — guess the North American bird from its photo. Daily puzzle.</li>
-    <li><a href="https://www.dosgamesclub.com" target="_blank">MS DOS Games</a> — 1,800+ free DOS games in the browser</li>
-    <li><a href="https://archive.org/details/softwarelibrary_msdos_games" target="_blank">MS DOS Games (Internet Archive)</a></li>
-    <li><a href="https://earth.fm" target="_blank">earth.fm</a> — nature sounds from around the world</li>
-    <li><a href="https://www.kidpix.app" target="_blank">KidPix</a> — classic KidPix in the browser</li>
-    <li><a href="https://metazooa.com" target="_blank">Metazooa</a> — guess the animal from its evolutionary tree. Daily puzzle.</li>
-    <li><a href="https://mynoise.net" target="_blank">myNoise.net</a> — customisable background noise and audio environments</li>
-    <li><a href="https://www.myretrotvs.com" target="_blank">MyRetroTVs</a> — old TV channels streaming continuously</li>
-    <li><a href="https://ooh.directory" target="_blank">ooh!directory</a> — directory of 1,981 blogs</li>
-    <li><a href="https://radio.garden" target="_blank">Radio Garden</a> — live radio stations from anywhere on Earth</li>
-    <li><a href="https://radiooooo.com" target="_blank">Radiooooo</a> — musical time machine, pick a country and decade</li>
-    <li><a href="https://www.windowswap.com" target="_blank">Windowswap</a> — watch out of windows in other people's homes</li>
-</ul>
-
-<h2 id="sites">Sites I Like</h2>
-
-<ul>
-    <li><a href="https://terriblelizard.info" target="_blank">Terrible Lizard</a> — librarian and PhD student. Great links collection.</li>
-    <li><a href="https://sadgrl.online" target="_blank">sadgrl.online</a> — personal site, art, and internet resources</li>
-    <li><a href="https://melonland.net" target="_blank">Melonland</a> — personal web community and directory</li>
-    <li><a href="https://theoldnet.com" target="_blank">The Old Net</a> — browse the internet as it looked in the 90s</li>
-</ul>
-
-<footer>
-    &copy; 2026 Sebastian Fisher &mdash; <a href="index.html">back home</a>
-</footer>
-
+    <script src="retro.js"></script>
 </body>
 </html>

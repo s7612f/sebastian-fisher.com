@@ -1,138 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sebastian Fisher // Home NetSec</title>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>Sebastian Fisher // Home NetSec</title>
+    <link rel="stylesheet" href="retro.css">
+    <style>
+        body { background-image: url("media/backgrounds/025C.png"); }
+        
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-body {
-    font-family: 'Times New Roman', serif;
-    color: black;
-    background-color: #c0c0c0;
-    padding: 10px 30px;
-    max-width: 900px;
-    margin: 0 auto;
-}
+        .security-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid #333;
+            padding: 15px;
+            box-shadow: 5px 5px 0px #888;
+        }
 
-a { color: blue; font-weight: bold; }
-a:visited { color: purple; }
-a:hover { text-decoration: underline; }
+        .security-card h3 {
+            margin-top: 0;
+            background: #333;
+            color: #ffee00;
+            padding: 5px 10px;
+            font-size: 1em;
+            text-transform: uppercase;
+        }
 
-h1 {
-    font-size: 2em;
-    margin-bottom: 0;
-    padding-bottom: 6px;
-    border-bottom: 2px solid black;
-}
+        .security-card ul {
+            padding-left: 20px;
+            font-size: 0.9em;
+        }
 
-h2 { font-size: 1.2em; margin-top: 1.6em; }
-h3 { font-size: 1em; margin-top: 1.2em; }
+        .intro-text {
+            background: #fff;
+            border-left: 5px solid #d32f2f;
+            padding: 15px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
 
-nav {
-    border-bottom: 2px solid black;
-    padding: 5px 0;
-    margin-bottom: 22px;
-}
+        .resource-list {
+            background: #eee;
+            padding: 20px;
+            border: 1px dashed #444;
+            margin-top: 40px;
+        }
 
-nav a {
-    margin-right: 20px;
-    text-decoration: none;
-    font-weight: normal;
-    color: black;
-}
-
-nav a:visited { color: black; }
-nav a:hover { text-decoration: underline; }
-
-table { border-collapse: collapse; width: 100%; font-size: smaller; margin: 10px 0; }
-th, td { border: 1px solid black; padding: 5px 8px; text-align: left; }
-th { background-color: #aaaaaa; }
-
-footer {
-    border-top: 1px solid black;
-    margin-top: 30px;
-    padding-top: 10px;
-    text-align: center;
-    font-size: smaller;
-}
-
-</style>
+        table { border-collapse: collapse; width: 100%; font-size: 0.85em; margin: 20px 0; background: white; }
+        th, td { border: 1px solid black; padding: 6px; text-align: left; }
+        th { background-color: #333; color: white; }
+    </style>
 </head>
 <body>
+    <div class="shade"></div>
+    
+    <div class="retro-container">
+        <header class="retro-header">
+            <h1>NetSec Lab</h1>
+            <span>Defensive Security Setup</span>
+        </header>
 
-<h1>Sebastian Fisher</h1>
+        <nav class="retro-nav">
+            <a href="index.html">Index</a>
+            <a href="links.html">Links</a>
+            <a href="projects.html">Projects</a>
+            <a href="homelab.html">NetSec</a>
+            <a href="giphy-gallery.html">Giphy</a>
+        </nav>
 
-<nav>
-    <a href="index.html">index</a>
-    <a href="links.html">links</a>
-    <a href="projects.html">projects</a>
-    <a href="homelab.html">home netsec</a>
-</nav>
+        <main class="retro-body">
+            <div class="intro-text">
+                "A homelab isn't just about hosting apps; it's about building a fortress. This page documents my complete security stack, from hardening the OS to monitoring the perimeter. If it's worth running, it's worth securing."
+            </div>
 
-<h2>What is it</h2>
+            <h2>Homelab Full Security Setup</h2>
+            <p>The following categories outline my multi-layered defense strategy. Every service is gated, every log is tracked, and every container is restricted.</p>
 
-<p>
-    A desktop PC at home running Linux. It does several things at once:
-</p>
+            <div class="security-grid">
+                <!-- SSH -->
+                <div class="security-card">
+                    <h3>SSH Hardening</h3>
+                    <ul>
+                        <li>Key-only auth (passwords disabled)</li>
+                        <li>Non-standard port (e.g., 2222)</li>
+                        <li>AllowUsers whitelist</li>
+                        <li>Fail2ban protection (Active)</li>
+                    </ul>
+                </div>
 
-<ul>
-    <li><b>NAS</b> — files, photos, and backups on USB drives</li>
-    <li><b>App server</b> — ~25 self-hosted web apps running in Docker</li>
-    <li><b>VPN</b> — all phone and laptop traffic routes through it, encrypted</li>
-    <li><b>DNS filter</b> — Pi-hole blocks ads and trackers at the DNS level</li>
-</ul>
+                <!-- Firewall -->
+                <div class="security-card">
+                    <h3>Firewall (UFW)</h3>
+                    <ul>
+                        <li>Default DENY incoming</li>
+                        <li>Whitelist-only egress</li>
+                        <li>Docker-UFW bypass fix (iptables=false)</li>
+                        <li>VLAN isolation (IoT / Personal / Server)</li>
+                    </ul>
+                </div>
 
-<h2>Stack</h2>
+                <!-- Intrusion Detection -->
+                <div class="security-card">
+                    <h3>Intrusion Detection</h3>
+                    <ul>
+                        <li><b>CrowdSec:</b> Collaborative IPS</li>
+                        <li><b>Suricata:</b> Deep Packet Inspection</li>
+                        <li>Nginx integration for real-time blocking</li>
+                    </ul>
+                </div>
 
-<table>
-    <tr><th>Service</th><th>What it does</th></tr>
-    <tr><td>Nextcloud</td><td>Cloud drive and file sync</td></tr>
-    <tr><td>Immich</td><td>Self-hosted photo library</td></tr>
-    <tr><td>Joplin</td><td>Notes sync</td></tr>
-    <tr><td>Ghost</td><td>Blog</td></tr>
-    <tr><td>Flarum</td><td>Forum</td></tr>
-    <tr><td>Grafana</td><td>Server metrics and graphs</td></tr>
-    <tr><td>Umami</td><td>Privacy-respecting analytics</td></tr>
-    <tr><td>Listmonk</td><td>Newsletter / mailing list</td></tr>
-    <tr><td>WireGuard</td><td>VPN server</td></tr>
-    <tr><td>ShadowSocks</td><td>VPN traffic obfuscation — makes WireGuard look like noise</td></tr>
-    <tr><td>Pi-hole</td><td>DNS ad and tracker blocker</td></tr>
-    <tr><td>Nginx Proxy Manager</td><td>Reverse proxy and SSL</td></tr>
-    <tr><td>Cloudflare Tunnel</td><td>Exposes apps to the internet without opening router ports</td></tr>
-    <tr><td>Tailscale</td><td>Remote access from anywhere</td></tr>
-    <tr><td>go2rtc</td><td>CCTV camera streams</td></tr>
-    <tr><td>Ollama</td><td>Local AI models</td></tr>
-    <tr><td>Fail2ban</td><td>Blocks brute-force SSH attempts</td></tr>
-    <tr><td>Samba</td><td>File sharing on the local network</td></tr>
-</table>
+                <!-- Monitoring -->
+                <div class="security-card">
+                    <h3>Monitoring & Alerting</h3>
+                    <ul>
+                        <li><b>Grafana + Loki:</b> Log aggregation</li>
+                        <li><b>Uptime Kuma:</b> Service health checks</li>
+                        <li><b>Netdata:</b> Real-time process monitoring</li>
+                        <li>Telegram/Email critical alerts</li>
+                    </ul>
+                </div>
 
-<h2>Drives</h2>
+                <!-- Container Security -->
+                <div class="security-card">
+                    <h3>Container Security</h3>
+                    <ul>
+                        <li>Non-root user execution</li>
+                        <li>Read-only filesystems</li>
+                        <li><b>Trivy:</b> CVE image scanning</li>
+                        <li><b>Watchtower:</b> Automated updates</li>
+                    </ul>
+                </div>
 
-<table>
-    <tr><th>Drive</th><th>Size</th><th>What it's for</th></tr>
-    <tr><td>Internal</td><td>1 TB</td><td>OS</td></tr>
-    <tr><td>LaCie Rugged</td><td>2 TB</td><td>Personal files</td></tr>
-    <tr><td>Seagate One Touch</td><td>1 TB</td><td>Docker apps, databases, AI models</td></tr>
-    <tr><td>Samsung</td><td>1 TB</td><td>Backups and CCTV footage</td></tr>
-</table>
+                <!-- SSL / Access -->
+                <div class="security-card">
+                    <h3>SSL & Access Control</h3>
+                    <ul>
+                        <li>Nginx Proxy Manager + Let's Encrypt</li>
+                        <li>Force HTTPS & HSTS Headers</li>
+                        <li><b>Authelia:</b> 2FA for all services</li>
+                        <li>Cloudflare Zero Trust OTP Gate</li>
+                    </ul>
+                </div>
 
-<h2>VPN Stack — how it works</h2>
+                <!-- Vulnerability & Audit -->
+                <div class="security-card">
+                    <h3>Audit & Scanning</h3>
+                    <ul>
+                        <li><b>OpenVAS:</b> Scheduled subnet scans</li>
+                        <li><b>auditd:</b> File & process audit logs</li>
+                        <li>Forwarding all logs to Loki</li>
+                    </ul>
+                </div>
 
-<p>
-    Three layers: <b>WireGuard</b> encrypts everything. <b>ShadowSocks</b> wraps it so ISPs
-    can't identify it as VPN traffic via deep packet inspection — it looks like random noise.
-    <b>Pi-hole</b> filters DNS so ads and trackers never even get a response.
-</p>
+                <!-- Backups & Privacy -->
+                <div class="security-card">
+                    <h3>Backups & VPN</h3>
+                    <ul>
+                        <li><b>Restic:</b> Encrypted offsite (3-2-1 rule)</li>
+                        <li>WireGuard Kill Switch</li>
+                        <li>Pi-hole DNSSEC enabled</li>
+                        <li>Leak testing via ipleak.net</li>
+                    </ul>
+                </div>
+            </div>
 
-<p>
-    On hostile networks (public WiFi, travel) — connect ShadowSocks first, then WireGuard on top.
-    This way the VPN is undetectable even under active inspection.
-</p>
+            <div class="resource-list">
+                <h2>Resources & Tools</h2>
+                <ul>
+                    <li><a href="https://www.crowdsec.net/" target="_blank">CrowdSec</a> — Collaborative security engine.</li>
+                    <li><a href="https://suricata.io/" target="_blank">Suricata</a> — Open source IDS/IPS.</li>
+                    <li><a href="https://github.com/chainguard-dev/trivy" target="_blank">Trivy</a> — Container vulnerability scanner.</li>
+                    <li><a href="https://www.authelia.com/" target="_blank">Authelia</a> — Single Sign-On & 2FA.</li>
+                    <li><a href="https://restic.net/" target="_blank">Restic</a> — Fast, secure, efficient backup.</li>
+                    <li><a href="https://github.com/louislam/uptime-kuma" target="_blank">Uptime Kuma</a> — Self-hosted monitoring tool.</li>
+                    <li><a href="https://www.netdata.cloud/" target="_blank">Netdata</a> — Real-time performance monitoring.</li>
+                    <li><a href="https://github.com/chainguard-dev/trivy" target="_blank">Trivy</a> — Scan your containers for CVEs.</li>
+                </ul>
+            </div>
+        </main>
 
-<footer>
-    &copy; 2026 Sebastian Fisher &mdash; <a href="index.html">back home</a>
-</footer>
+        <footer>
+            &copy; 2026 Sebastian Fisher — Secure by Design
+        </footer>
+    </div>
 
+    <script src="retro.js"></script>
 </body>
 </html>

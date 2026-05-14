@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.35">
+    <link rel="icon" href="/favicon.png" type="image/png">
     <title>Giphy Gallery - Sebastian Fisher</title>
     <style>
         body, html {
@@ -135,85 +136,30 @@
     </div>
 
     <!-- Audio Elements -->
-    <audio id="click-audio">
-        <source src="assets/giphy/audio/ui/click.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="interact-audio">
-        <source src="assets/giphy/audio/ui/drip.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="background-audio" loop>
-        <source src="assets/giphy/audio/background.mp3" type="audio/mpeg">
-    </audio>
     <audio id="door-audio">
         <source src="assets/giphy/audio/ui/door.mp3" type="audio/mpeg">
-    </audio>
-
-    <audio id="squeek-audio">
-        <source src="assets/giphy/audio/ui/squeek.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         // Audio System
         const audio = {
-            click: document.getElementById('click-audio'),
-            interact: document.getElementById('interact-audio'),
-            background: document.getElementById('background-audio'),
-            door: document.getElementById('door-audio'),
-            squeek: document.getElementById('squeek-audio')
+            door: document.getElementById('door-audio')
         };
 
-        // Initialize background audio on first interaction (browser requirement)
-        let audioInitialized = false;
-        function initAudio() {
-            if (!audioInitialized) {
-                audio.background.volume = 0.4;
-                audio.background.play().catch(e => console.log("Audio play blocked", e));
-                audioInitialized = true;
-            }
-        }
-
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.tagName === 'A' || e.target.classList.contains('ui-element') || e.target.closest('.ui-element')) {
-                audio.interact.currentTime = 0;
-                audio.interact.play().catch(() => {});
-            }
-        });
-
         document.addEventListener('click', (e) => {
-            initAudio();
             if (e.target.tagName === 'A' || e.target.closest('a') || e.target.classList.contains('ui-element')) {
-                audio.click.currentTime = 0;
-                audio.click.play().catch(() => {});
+                audio.door.currentTime = 0;
+                audio.door.play().catch(() => {});
             }
         });
 
-        // Draggable Logo with Squeek
-        const logo = document.getElementById('logo');
-        let isDragging = false;
-        let offset = { x: 0, y: 0 };
-
-        logo.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            offset.x = e.clientX - logo.offsetLeft;
-            offset.y = e.clientY - logo.offsetTop;
-            audio.squeek.loop = true;
-            audio.squeek.play().catch(() => {});
+        window.addEventListener('load', () => {
+            // Add a slight delay for the door sound effect
+            setTimeout(() => {
+                audio.door.play().catch(() => {});
+            }, 500);
         });
-
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                logo.style.left = (e.clientX - offset.x) + 'px';
-                logo.style.top = (e.clientY - offset.y) + 'px';
-            }
-        });
-
-        document.addEventListener('mouseup', () => {
-            if (isDragging) {
-                isDragging = false;
-                audio.squeek.pause();
-                audio.squeek.currentTime = 0;
-            }
-        });
+    </script>
 
         // Background rotation (optional fun feature)
         const backgrounds = [

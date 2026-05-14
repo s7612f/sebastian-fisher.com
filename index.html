@@ -1,119 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sebastian Fisher</title>
-<link rel="icon" href="favicon.png" type="image/png">
-<style>
-
-body {
-    font-family: 'Times New Roman', serif;
-    color: black;
-    background-color: #c0c0c0;
-    padding: 10px 30px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-a { color: blue; font-weight: bold; }
-a:visited { color: purple; }
-a:hover { text-decoration: underline; }
-
-h1 {
-    font-size: 2em;
-    margin-bottom: 0;
-    padding-bottom: 6px;
-    border-bottom: 2px solid black;
-}
-
-h2 { font-size: 1.2em; }
-
-nav {
-    border-bottom: 2px solid black;
-    padding: 5px 0;
-    margin-bottom: 22px;
-}
-
-nav a {
-    margin-right: 20px;
-    text-decoration: none;
-    font-weight: normal;
-    color: black;
-}
-
-nav a:visited { color: black; }
-nav a:hover { text-decoration: underline; }
-
-.box {
-    background-color: #c0c0c0;
-    border: 1px solid black;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: smaller;
-}
-
-footer {
-    border-top: 1px solid black;
-    margin-top: 30px;
-    padding-top: 10px;
-    text-align: center;
-    font-size: smaller;
-}
-
-</style>
-
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/clippyjs@latest/build/clippy.css">
-<script src="https://unpkg.com/clippyjs@latest/build/clippy.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>Sebastian Fisher // Welcome</title>
+    <link rel="stylesheet" href="retro.css">
+    <style>
+        body { background-image: url("media/backgrounds/STONE04.png"); }
+        .welcome-text { font-size: 1.1em; }
+        .currently-box { background: #fffde7; border: 2px inset #ffd600; padding: 15px; margin-top: 20px; }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/smore-inc/clippy.js@master/build/clippy.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/smore-inc/clippy.js@master/build/clippy.min.js"></script>
 </head>
 <body>
+    <div class="shade"></div>
+    
+    <!-- Music Element -->
+    <audio id="bg-music" loop>
+        <source src="media/audio/music/gif-gallery-theme.mp3" type="audio/mpeg">
+    </audio>
 
-<h1>Sebastian Fisher</h1>
+    <div class="retro-container">
+        <header class="retro-header">
+            <h1>Sebastian Fisher</h1>
+            <span>Welcome to my slice of the web!</span>
+        </header>
 
-<nav>
-    <a href="index.html">index</a>
-    <a href="links.html">links</a>
-    <a href="projects.html">projects</a>
-    <a href="homelab.html">home netsec</a>
-    <a href="giphy-gallery.html">giphy gallery</a>
-</nav>
+        <nav class="retro-nav">
+            <a href="index.html">Index</a>
+            <a href="links.html">Links</a>
+            <a href="projects.html">Projects</a>
+            <a href="homelab.html">NetSec</a>
+            <a href="giphy-gallery.html">Giphy</a>
+        </nav>
 
-<h2>Welcome!</h2>
+        <main class="retro-body">
+            <div class="welcome-text">
+                <p>Hi. I'm Seb. This is my website. You probably got here from noticing I have my own email domain. If that's you, welcome. This is where I keep the things I am currently up to. Feel free to look around!</p>
+                <p>Under the <a href="links.html">links</a> page you'll find tools for accessing the web, privacy resources, and a growing collection of personal sites and fun stuff.</p>
+                <p>Get in touch: <a href="mailto:contact@sebastian-fisher.com">contact@sebastian-fisher.com</a></p>
+            </div>
 
-<p>
-    Hi. I'm Seb. This is my website. You probably got here from noticing I have my own email domain. If thats you, welcome. This is where I keep the things I am currently up to. Feel free to look around!
-</p>
+            <div class="currently-box">
+                <h2>Currently</h2>
+                <ul>
+                    <li>Working on my homelab</li>
+                    <li>Studying basic principles of design</li>
+                    <li>Building websites (like this one!)</li>
+                </ul>
+            </div>
+        </main>
 
-<p>
-    Under the <a href="links.html">links</a> page you'll find tools for accessing the web, privacy resources,
-    and a growing collection of personal sites and fun stuff.
-</p>
+        <footer>
+            &copy; 2026 Sebastian Fisher
+        </footer>
+    </div>
 
-<p>
-    Get in touch: <a href="mailto:contact@sebastian-fisher.com">contact@sebastian-fisher.com</a>
-</p>
+    <script src="retro.js"></script>
+    <script>
+        // Clippy Loader
+        clippy.load('Clippy', function(agent) {
+            agent.show();
+            agent.speak("Welcome! I'm Clippy, your guide to Sebastian's world.");
+            setInterval(() => {
+                agent.animate();
+            }, 15000);
+        });
 
-<h2>Currently</h2>
-
-<div class="box">
-    <ul>
-        <li>working on my homelab</li>
-        <li>studying basic principles of design</li>
-        <li>working</li>
-        <li>building websites</li>
-    </ul>
-</div>
-
-<footer>
-    &copy; 2026 Sebastian Fisher
-</footer>
-
-<script>
-clippy.load('Clippy', function(agent) {
-    agent.show();
-});
-</script>
-
+        // Music Start on first interaction
+        document.addEventListener('click', () => {
+            const music = document.getElementById('bg-music');
+            if (music.paused) {
+                music.volume = 0.3;
+                music.play().catch(() => {});
+            }
+        }, { once: true });
+    </script>
 </body>
 </html>

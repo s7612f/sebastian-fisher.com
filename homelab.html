@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sebastian Fisher // Home Network Security</title>
+<style>
+
+body {
+    font-family: 'Times New Roman', serif;
+    color: black;
+    background-color: #c0c0c0;
+    padding: 10px 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+a { color: blue; font-weight: bold; }
+a:visited { color: purple; }
+h1 { font-size: 1.6em; }
+h2 { font-size: 1.2em; margin-top: 1.6em; border-bottom: 1px solid black; padding-bottom: 2px; }
+h3 { font-size: 1em; margin-top: 1.2em; }
+
+nav {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 6px 0;
+    margin-bottom: 20px;
+}
+
+nav a { margin-right: 20px; text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+
+table { border-collapse: collapse; width: 100%; font-size: smaller; margin: 10px 0; }
+th, td { border: 1px solid black; padding: 5px 8px; text-align: left; }
+th { background-color: #aaaaaa; }
+
+footer {
+    border-top: 1px solid black;
+    margin-top: 30px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: smaller;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Sebastian Fisher</h1>
+
+<nav>
+    <a href="index.html">index</a>
+    <a href="links.html">links</a>
+    <a href="homelab.html">homelab</a>
+    <a href="projects.html">projects</a>
+</nav>
+
+<h2>What is it</h2>
+
+<p>
+    A desktop PC at home running Linux. It does several things at once:
+</p>
+
+<ul>
+    <li><b>NAS</b> — files, photos, and backups on USB drives</li>
+    <li><b>App server</b> — ~25 self-hosted web apps running in Docker</li>
+    <li><b>VPN</b> — all phone and laptop traffic routes through it, encrypted</li>
+    <li><b>DNS filter</b> — Pi-hole blocks ads and trackers at the DNS level</li>
+</ul>
+
+<h2>Stack</h2>
+
+<table>
+    <tr><th>Service</th><th>What it does</th></tr>
+    <tr><td>Nextcloud</td><td>Cloud drive and file sync</td></tr>
+    <tr><td>Immich</td><td>Self-hosted photo library</td></tr>
+    <tr><td>Joplin</td><td>Notes sync</td></tr>
+    <tr><td>Ghost</td><td>Blog</td></tr>
+    <tr><td>Flarum</td><td>Forum</td></tr>
+    <tr><td>Grafana</td><td>Server metrics and graphs</td></tr>
+    <tr><td>Umami</td><td>Privacy-respecting analytics</td></tr>
+    <tr><td>Listmonk</td><td>Newsletter / mailing list</td></tr>
+    <tr><td>WireGuard</td><td>VPN server</td></tr>
+    <tr><td>ShadowSocks</td><td>VPN traffic obfuscation — makes WireGuard look like noise</td></tr>
+    <tr><td>Pi-hole</td><td>DNS ad and tracker blocker</td></tr>
+    <tr><td>Nginx Proxy Manager</td><td>Reverse proxy and SSL</td></tr>
+    <tr><td>Cloudflare Tunnel</td><td>Exposes apps to the internet without opening router ports</td></tr>
+    <tr><td>Tailscale</td><td>Remote access from anywhere</td></tr>
+    <tr><td>go2rtc</td><td>CCTV camera streams</td></tr>
+    <tr><td>Ollama</td><td>Local AI models</td></tr>
+    <tr><td>Fail2ban</td><td>Blocks brute-force SSH attempts</td></tr>
+    <tr><td>Samba</td><td>File sharing on the local network</td></tr>
+</table>
+
+<h2>Drives</h2>
+
+<table>
+    <tr><th>Drive</th><th>Size</th><th>What it's for</th></tr>
+    <tr><td>Internal</td><td>1 TB</td><td>OS</td></tr>
+    <tr><td>LaCie Rugged</td><td>2 TB</td><td>Personal files</td></tr>
+    <tr><td>Seagate One Touch</td><td>1 TB</td><td>Docker apps, databases, AI models</td></tr>
+    <tr><td>Samsung</td><td>1 TB</td><td>Backups and CCTV footage</td></tr>
+</table>
+
+<h2>VPN Stack — how it works</h2>
+
+<p>
+    Three layers: <b>WireGuard</b> encrypts everything. <b>ShadowSocks</b> wraps it so ISPs
+    can't identify it as VPN traffic via deep packet inspection — it looks like random noise.
+    <b>Pi-hole</b> filters DNS so ads and trackers never even get a response.
+</p>
+
+<p>
+    On hostile networks (public WiFi, travel) — connect ShadowSocks first, then WireGuard on top.
+    This way the VPN is undetectable even under active inspection.
+</p>
+
+<footer>
+    &copy; 2026 Sebastian Fisher &mdash; <a href="index.html">back home</a>
+</footer>
+
+</body>
+</html>
+
+<a target="_blank" href="https://melonking.net"><img alt="Visit Melonking.Net!" src="https://melonking.net/images/badges/MELON-BADGE-2.GIF" style="image-rendering: pixelated"></a>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>Sebastian Fisher // Blog</title>
+
+    <!-- retro.css gives us the nav bar, logo, shade, and coloured <hr> lines.
+         The <style> block below overrides retro.css for the blog-specific "Deep Blue" look. -->
+    <link rel="stylesheet" href="retro.css">
+
+    <style>
+    /*
+        DEEP BLUE THEME
+        This is the clean blog style — white container on grey background.
+        It overrides the retro.css colours for the blog content area.
+
+        KEY DIFFERENCES FROM RETRO STYLE:
+        - Grey background instead of dark blue
+        - White content box instead of blue texture
+        - Serif headings (Palatino) instead of Times New Roman
+        - Subtle ridge border instead of chunky gold outset
+    */
+
+        /* Override the retro dark background with plain grey */
+        body { background-color: #c0c0c0; }
+
+        /*
+            THE BLOG CONTAINER
+            max-width: 700px keeps text readable (wide lines are hard to read).
+            margin: 0 auto centres it — "auto" left and right margins = centred.
+            outline vs border: outline doesn't take up space in the layout.
+            "ridge" is a 3D border style (others: solid, dashed, dotted, groove, inset, outset).
+        */
+        .blog-container {
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            background-color: #fff;
+            color: #555;
+            outline: 4px ridge #ccc;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+
+        /*
+            BLOG HEADER BAR
+            The dark strip at the top with navigation links.
+            padding: 0.6em 5% means 0.6em top/bottom, 5% left/right.
+            The 5% padding matches the content area below so things line up.
+        */
+        .blog-header {
+            background-color: #3c445f;
+            padding: 0.6em 5%;
+            border-bottom: 4px ridge #ccc;
+        }
+
+        /* Remove default list bullets and spacing from the nav list */
+        .blog-header ul {
+            list-style: none;      /* removes bullet points */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* display: inline-block makes list items sit side by side instead of stacking */
+        .blog-header li {
+            display: inline-block;
+            margin-right: 1.5em;
+            font-size: 1.1em;
+        }
+
+        /* font-family lists fonts in order of preference.
+           The browser uses the first one it finds installed.
+           Always end with a generic family (serif, sans-serif, monospace). */
+        .blog-header li a {
+            color: #fff;
+            text-decoration: none;
+            font-family: "Palatino Linotype", Palatino, Baskerville, serif;
+        }
+        .blog-header li a:hover { text-decoration: underline; }
+
+        /* Blog content area — the white space where text lives */
+        .blog-content {
+            padding: 20px 5% 30px 5%;
+            /* padding shorthand: top right bottom left (clockwise from top) */
+        }
+
+        .blog-content h1 {
+            color: #3c445f;
+            font-family: "Palatino Linotype", Palatino, Baskerville, serif;
+            font-size: 1.8em;
+            margin: 0 0 0.3em 0;
+        }
+
+        /* The subtitle under the blog title — italic, lighter weight */
+        .blog-content h2 {
+            color: #3c445f;
+            font-family: "Palatino Linotype", Palatino, Baskerville, serif;
+            font-size: 1.2em;
+            margin: 0 0 1.2em 0;
+            font-weight: normal;   /* h2 is bold by default — this makes it normal weight */
+            font-style: italic;
+        }
+
+        .blog-content p {
+            line-height: 1.6em;
+            margin-bottom: 1em;
+        }
+        .blog-content a { color: #0245d7; }
+        .blog-content a:hover { background-color: #c9f1fe; }
+
+        /*
+            POST LIST
+            Each blog post is a list item with a date, title link, and tag.
+
+            TO ADD A NEW BLOG POST:
+            1. Create the post HTML file in the posts/ folder (copy an existing one)
+            2. Add a new <li> to the list below with the date, link, and tag
+
+            display: flex on the <li> makes its children sit in a row.
+            gap: 16px adds spacing between the date, title, and tag.
+            align-items: baseline lines them up by their text baseline.
+        */
+        .post-list {
+            list-style: none;
+            padding: 0;
+            font-size: 1.1em;
+        }
+        .post-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 16px;
+            align-items: baseline;
+        }
+        .post-list li:last-child { border-bottom: none; }
+        /* :last-child targets the final <li> — removes its bottom border */
+
+        /* flex: 0 0 100px means: don't grow, don't shrink, stay at 100px wide.
+           This keeps all dates aligned in a neat column. */
+        .post-list-date {
+            flex: 0 0 100px;
+            color: #999;
+            font-size: 0.8em;
+            white-space: nowrap;   /* prevents the date from wrapping to two lines */
+        }
+
+        /* Small coloured tag badge */
+        .post-list-tag {
+            flex: 0 0 auto;
+            font-size: 0.65em;
+            color: #3c445f;
+            background: #e8ecf2;
+            padding: 2px 8px;
+            border-radius: 3px;    /* rounds the corners */
+            text-transform: uppercase;
+            letter-spacing: 1px;   /* adds space between letters */
+        }
+
+        .post-list a {
+            color: #3c445f;
+            font-family: "Palatino Linotype", Palatino, Baskerville, serif;
+        }
+        .post-list a:hover { color: #0245d7; background: #c9f1fe; }
+
+        .blog-footer {
+            padding: 0 5% 16px 5%;
+            font-size: 0.8em;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shade"></div>
+
+    <div class="logo-row" style="margin-top: 20px;">
+        <h1>SEBASTIAN FISHER.COM</h1>
+    </div>
+
+    <!-- RETRO NAV — these come from retro.css -->
+    <hr class="hr-blue">
+    <div class="nav-center">
+        <a href="home.html">Home</a>
+        <a href="links.html">Links</a>
+        <a href="projects.html">Projects</a>
+        <a href="homelab.html">NetSec</a>
+        <a href="library.html">Library</a>
+        <a href="blog.html">Blog</a>
+    </div>
+    <hr class="hr-light-blue">
+
+    <!-- BLOG CONTAINER — the white box with the Deep Blue theme -->
+    <div class="blog-container">
+
+        <!-- Inner nav bar (different from the retro nav above).
+             Uses <ul> and <li> to make a horizontal link list. -->
+        <div class="blog-header">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="blog.html">Archive</a></li>
+                <li><a href="homelab.html">NetSec</a></li>
+            </ul>
+        </div>
+
+        <div class="blog-content">
+            <h1>Blog</h1>
+            <h2>Writing on privacy, the internet, and whatever else.</h2>
+
+            <!--
+                POST LIST
+                To add a new post, copy one of the <li> blocks below and change:
+                  1. The date in .post-list-date
+                  2. The href and text in the <a> link
+                  3. The tag text in .post-list-tag
+
+                Posts are listed newest first.
+            -->
+            <ul class="post-list">
+                <li>
+                    <span class="post-list-date">2026.05.15</span>
+                    <a href="posts/self-hosting.html">Getting Started with Self-Hosting</a>
+                    <span class="post-list-tag">self-hosting</span>
+                </li>
+                <li>
+                    <span class="post-list-date">2026.05.15</span>
+                    <a href="posts/privacy-nothing-to-hide.html">"I Have Nothing to Hide" — and Why That's the Wrong Question</a>
+                    <span class="post-list-tag">privacy</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="blog-footer">
+            Hand-coded HTML. No cookies. No trackers.
+        </div>
+    </div>
+
+    <script src="retro.js"></script>
+</body>
+</html>

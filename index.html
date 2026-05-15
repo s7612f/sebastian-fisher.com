@@ -5,131 +5,219 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEBASTIAN FISHER</title>
     <link rel="icon" href="/favicon.png" type="image/png">
+
+    <!--
+        This page does NOT use retro.css — it has its own self-contained styles.
+        That's because it's the landing/splash page with a completely different look
+        (black background, pink neon, loading screen).
+
+        When a page has unique styles that aren't shared with other pages,
+        it's fine to put everything in a <style> block instead of a separate CSS file.
+    -->
     <style>
 
-@font-face {
-    font-family: 'pixel basiic';
-    src: url('/fonts/basiic.ttf') format('truetype');
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Chicago';
-    src: url('/fonts/Chicago-Normal.ttf') format('truetype');
-    font-display: swap;
-}
+    /*
+        @font-face — CUSTOM FONTS
+        This loads font files from your server so visitors see your chosen font
+        even if they don't have it installed.
 
-#loading-screen {
-    position: fixed; inset: 0; z-index: 9999;
-    background: #000;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    transition: opacity .5s ease;
-}
-#loading-screen.fade-out { opacity: 0; pointer-events: none; }
-#loading-screen .ld-logo {
-    font-family: 'pixel basiic', 'Chicago', monospace;
-    font-size: 36px; color: #7ec8e3; letter-spacing: 4px;
-    text-shadow: 0 0 20px #7ec8e3, 0 0 40px #3a90c8;
-    margin-bottom: 16px;
-}
-#loading-screen .ld-sub {
-    font-family: 'pixel basiic', 'Chicago', monospace;
-    font-size: 13px; color: #5599bb; letter-spacing: 2px;
-    margin-bottom: 32px;
-}
-#loading-screen img.ld-gif {
-    width: 80px; height: auto; image-rendering: pixelated;
-    margin-bottom: 28px;
-}
-#loading-screen .ld-bar-wrap {
-    width: 240px; height: 16px;
-    border: 1px solid #3a6688;
-    background: #0a1a2a;
-    position: relative; overflow: hidden;
-}
-#loading-screen .ld-bar {
-    height: 100%; width: 0%;
-    background: linear-gradient(90deg, #1a6aaa, #7ec8e3);
-    transition: width .3s linear;
-}
-#loading-screen .ld-status {
-    font-size: 10px; color: #5599bb; margin-top: 8px;
-    font-family: 'Courier New', monospace; letter-spacing: 1px;
-}
-        body {
-            color: #008cff;
-            font-family: "Courier New", Courier, monospace;
-            background-color: black;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-        }
+        font-family: 'pixel basiic' — the name you'll use in CSS to reference this font
+        src: url('/fonts/basiic.ttf') — path to the font file
+        format('truetype') — tells the browser what format the font is in
+        font-display: swap — shows fallback text immediately, swaps in the custom font
+        when it loads (avoids invisible text while fonts download)
+    */
+    @font-face {
+        font-family: 'pixel basiic';
+        src: url('/fonts/basiic.ttf') format('truetype');
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Chicago';
+        src: url('/fonts/Chicago-Normal.ttf') format('truetype');
+        font-display: swap;
+    }
 
-        .starbg {
-            width: 100%; height: 100%;
-            background-repeat: repeat;
-            position: fixed; top: 0; left: 0;
-            background-image: url("media/backgrounds/stripes.png");
-            animation: backgroundScroll 5s linear infinite;
-            mix-blend-mode: screen;
-            z-index: -1;
-        }
+    /*
+        LOADING SCREEN STYLES
+        The loading screen is built by JavaScript (see bottom of page).
+        position: fixed pins it to the viewport so it covers the whole screen.
+        inset: 0 is shorthand for top:0 right:0 bottom:0 left:0.
+        z-index: 9999 puts it above everything else.
+        transition: opacity .5s ease animates the fade-out over 0.5 seconds.
+    */
+    #loading-screen {
+        position: fixed; inset: 0; z-index: 9999;
+        background: #000;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        transition: opacity .5s ease;
+    }
+    /* This class is added by JS to trigger the fade-out.
+       pointer-events: none stops it from blocking clicks while fading. */
+    #loading-screen.fade-out { opacity: 0; pointer-events: none; }
 
-        @keyframes backgroundScroll {
-            0%   { background-position: 0px 0px; }
-            100% { background-position: 100px 100px; }
-        }
+    #loading-screen .ld-logo {
+        font-family: 'pixel basiic', 'Chicago', monospace;
+        font-size: 36px; color: #7ec8e3; letter-spacing: 4px;
+        text-shadow: 0 0 20px #7ec8e3, 0 0 40px #3a90c8;
+        /* Multiple text-shadows create a glow effect */
+        margin-bottom: 16px;
+    }
+    #loading-screen .ld-sub {
+        font-family: 'pixel basiic', 'Chicago', monospace;
+        font-size: 13px; color: #5599bb; letter-spacing: 2px;
+        margin-bottom: 32px;
+    }
+    #loading-screen img.ld-gif {
+        width: 80px; height: auto; image-rendering: pixelated;
+        margin-bottom: 28px;
+    }
+    /* The progress bar container — a dark box with a light border */
+    #loading-screen .ld-bar-wrap {
+        width: 240px; height: 16px;
+        border: 1px solid #3a6688;
+        background: #0a1a2a;
+        position: relative; overflow: hidden;
+    }
+    /* The progress bar fill — starts at 0% width, JS animates it to 100%.
+       linear-gradient creates a left-to-right colour fade. */
+    #loading-screen .ld-bar {
+        height: 100%; width: 0%;
+        background: linear-gradient(90deg, #1a6aaa, #7ec8e3);
+        transition: width .3s linear;
+    }
+    #loading-screen .ld-status {
+        font-size: 10px; color: #5599bb; margin-top: 8px;
+        font-family: 'Courier New', monospace; letter-spacing: 1px;
+    }
 
-        .characterbg {
-            width: 100%; height: 100%;
-            position: fixed; top: 0; left: 0;
-            background-image: url("media/backgrounds/landing.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            mix-blend-mode: screen;
-            z-index: -2;
-        }
+    /*
+        MAIN PAGE STYLES (visible after loading screen fades)
+    */
 
-        .center-screen {
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            text-align: center; min-height: 100vh;
-        }
+    /* overflow: hidden prevents scrollbars on this page */
+    body {
+        color: #008cff;
+        font-family: "Courier New", Courier, monospace;
+        background-color: black;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
 
-        .card {
-            background-color: rgba(0, 0, 0, 0.9);
-            border: 1px solid #ff00aa;
-            padding: 50px;
-            box-shadow: 0px 0px 30px 1px #ff00aa;
-            width: 510px;
-        }
+    /*
+        ANIMATED BACKGROUNDS
+        Two layers stacked with position: fixed (they don't scroll).
+        z-index controls which is in front: -1 is above -2.
+        mix-blend-mode: screen blends the layer with what's behind it
+        (bright areas add together, like projecting two images on a wall).
 
-        .logo { margin-bottom: 25px; }
+        @keyframes defines an animation. background-position shifts the
+        tiled image over time, creating a scrolling effect.
+    */
+    .starbg {
+        width: 100%; height: 100%;
+        background-repeat: repeat;
+        position: fixed; top: 0; left: 0;
+        background-image: url("media/backgrounds/stripes.png");
+        animation: backgroundScroll 5s linear infinite;
+        /* animation: name duration timing-function iteration-count
+           linear = constant speed, infinite = loops forever */
+        mix-blend-mode: screen;
+        z-index: -1;
+    }
 
-        h2 a {
-            color: #ff00aa;
-            text-decoration: none;
-            font-weight: normal;
-        }
+    @keyframes backgroundScroll {
+        0%   { background-position: 0px 0px; }
+        100% { background-position: 100px 100px; }
+    }
 
-        h2 a:hover { color: white; }
+    .characterbg {
+        width: 100%; height: 100%;
+        position: fixed; top: 0; left: 0;
+        background-image: url("media/backgrounds/landing.png");
+        background-size: cover;        /* scales image to fill the whole area */
+        background-position: center;   /* centres the image */
+        background-repeat: no-repeat;
+        mix-blend-mode: screen;
+        z-index: -2;
+    }
+
+    /*
+        CENTRE THE CARD ON SCREEN
+        Flexbox with justify-content + align-items: center centres
+        both horizontally and vertically.
+        min-height: 100vh makes it at least as tall as the screen.
+    */
+    .center-screen {
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        text-align: center; min-height: 100vh;
+    }
+
+    /*
+        THE LANDING CARD
+        rgba(0, 0, 0, 0.9) is near-opaque black.
+        box-shadow with a colour creates a glow effect (the pink neon).
+        Format: x-offset y-offset blur-radius spread-radius colour
+    */
+    .card {
+        background-color: rgba(0, 0, 0, 0.9);
+        border: 1px solid #ff00aa;
+        padding: 50px;
+        box-shadow: 0px 0px 30px 1px #ff00aa;
+        width: 510px;
+    }
+
+    .logo { margin-bottom: 25px; }
+
+    h2 a {
+        color: #ff00aa;
+        text-decoration: none;
+        font-weight: normal;
+    }
+
+    h2 a:hover { color: white; }
     </style>
 </head>
 <body>
+    <!-- Background layers — the image and the scrolling stripes -->
     <div class="characterbg"></div>
     <div class="starbg"></div>
 
     <div class="center-screen">
         <div class="card">
+            <!-- max-width: 100% prevents the image from overflowing the card.
+                 display: block removes the inline gap under images.
+                 margin: 0 auto centres a block element. -->
             <img src="Welcometo-Welcometo.png" style="max-width: 100%; display: block; margin: 0 auto 10px;">
+
             <h1 style="color: #ff00aa; font-family: 'Courier New', monospace; font-size: 1.6em; margin: 0 0 30px; text-shadow: 0 0 10px #ff00aa;">SEBASTIAN-FISHER.COM</h1>
+
+            <!-- &#10038; &#10097; etc. are Unicode symbols (decorative stars/brackets).
+                 You can find more at https://unicode-table.com -->
             <h2 style="margin: 0;"><a id="enter-btn" href="home.html" style="text-decoration: none;">&#10038;&#10097;&#10097; ENTER &#10096;&#10096;&#10038;</a></h2>
         </div>
     </div>
 
+<!--
+    JAVASCRIPT — MUSIC + HONK SOUND
+
+    This script plays background music when the user first clicks anywhere,
+    and plays a honk sound when they click the ENTER button.
+
+    WHY THE CLICK LISTENER:
+    Browsers block audio from auto-playing — you need a user interaction first.
+    So we listen for the first click, then start the music.
+
+    {once: true} on addEventListener means the listener removes itself after
+    firing once (so it doesn't restart the music on every click).
+
+    Audio() creates a new audio player. .play() starts it.
+    .catch(function(){}) silently handles errors (e.g. if the file doesn't exist).
+-->
 <script>
-// music + honk on index
 (function(){
     var ROOT = '/media/audio/music/';
     var bg = null, started = false;
@@ -138,8 +226,8 @@
         if (started) return;
         started = true;
         bg = new Audio(ROOT + 'your-song-melon.mp3');
-        bg.volume = 0.3;
-        bg.loop = true;
+        bg.volume = 0.3;    // volume from 0 (mute) to 1 (full)
+        bg.loop = true;      // loops the audio forever
         bg.play().catch(function(){});
     }
 
@@ -156,6 +244,26 @@
 })();
 </script>
 
+<!--
+    LOADING SCREEN SCRIPT
+
+    This builds a fake "loading" screen with a progress bar and status messages.
+    It's purely cosmetic — the page is already loaded. It just looks cool.
+
+    HOW IT WORKS:
+    1. buildLoadingScreen() creates the HTML elements and prepends them to <body>
+    2. runLoadingScreen() uses setInterval to advance the progress bar
+    3. setInterval runs a function every X milliseconds (260ms here)
+    4. Each tick advances the bar and updates the status text
+    5. When all steps are done, it fades out and removes itself
+
+    Template literals (backticks ` `) let you write multi-line HTML strings
+    and embed variables with ${variable}.
+
+    setTimeout(fn, ms) runs a function once after a delay.
+    setInterval(fn, ms) runs a function repeatedly every ms.
+    clearInterval(id) stops a setInterval.
+-->
 <script>
 (function () {
     'use strict';
@@ -180,7 +288,7 @@
             <div class="ld-bar-wrap"><div class="ld-bar" id="ld-bar"></div></div>
             <div class="ld-status" id="ld-status">${STEPS[0]}</div>
         `;
-        document.body.prepend(div);
+        document.body.prepend(div);  // prepend = add as first child
         return div;
     }
 
@@ -191,16 +299,17 @@
         let step = 0;
         let done = false;
 
+        // Every 260ms, advance one step
         const iv = setInterval(() => {
             step++;
             bar.style.width = Math.round((step / STEPS.length) * 100) + '%';
             status.textContent = STEPS[Math.min(step, STEPS.length - 1)];
             if (step >= STEPS.length) {
-                clearInterval(iv);
+                clearInterval(iv);  // stop the interval
                 setTimeout(() => {
-                    screen.classList.add('fade-out');
+                    screen.classList.add('fade-out');  // trigger CSS transition
                     setTimeout(() => {
-                        screen.remove();
+                        screen.remove();  // remove from the page entirely
                         if (!done) { done = true; onDone(); }
                     }, 600);
                 }, 300);

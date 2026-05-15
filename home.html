@@ -1,20 +1,65 @@
 <!DOCTYPE html>
+<!--
+    DOCTYPE tells the browser this is an HTML5 document.
+    Always put this as the very first line of every HTML file.
+-->
+
 <html lang="en">
+<!--
+    <html> is the root element — everything goes inside it.
+    lang="en" tells browsers and screen readers the page is in English.
+-->
+
 <head>
+<!--
+    <head> contains metadata — stuff the browser needs but doesn't display.
+    Things like the page title, character encoding, stylesheets, and favicon.
+-->
     <meta charset="UTF-8">
+    <!-- charset="UTF-8" means the page can display any character (emojis, accents, etc.) -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- This makes the page scale properly on mobile devices. Without it, phones
+         would show the desktop version zoomed out tiny. Always include this. -->
+
     <link rel="icon" href="/favicon.png" type="image/png">
+    <!-- The favicon — the small icon that appears in the browser tab.
+         href="/favicon.png" points to your image file. The / means "from the root of the site". -->
+
     <title>Sebastian Fisher's Web Lounge</title>
+    <!-- <title> is what shows in the browser tab and in search results.
+         It does NOT appear on the page itself. -->
+
     <link rel="stylesheet" href="retro.css">
+    <!-- This loads the shared CSS file. All the retro styling (nav buttons, colours,
+         main-card layout) comes from retro.css. See that file for detailed comments.
+
+         You can link multiple CSS files. Styles from later files override earlier ones.
+         You can also add page-specific styles in a <style> block below (like this page does). -->
+
     <style>
+    /*
+        PAGE-SPECIFIC STYLES
+        These only apply to this page. They override retro.css if there's a conflict
+        because styles defined later (or more specifically) win.
+    */
+
+        /* Centre-aligns the badge images and adds vertical spacing */
         .footer-badges {
             text-align: center;
             margin: 20px 0;
         }
+
+        /* image-rendering: pixelated keeps small GIFs sharp instead of blurry
+           when the browser scales them up */
         .footer-badges img {
             margin: 3px;
             image-rendering: pixelated;
         }
+
+        /* Flexbox row for the copyright text.
+           justify-content: space-between pushes the two <span> children
+           to opposite ends of the row. */
         .copyright-row {
             text-align: center;
             color: #aaa;
@@ -23,19 +68,35 @@
             display: flex;
             justify-content: space-between;
             max-width: 900px;
-            margin: 0 auto;
+            margin: 0 auto;       /* centres the row */
         }
     </style>
 </head>
+
 <body>
+<!--
+    <body> contains everything visible on the page.
+    The browser renders elements top-to-bottom in the order you write them.
+-->
+
+    <!-- Faint green screen overlay — see retro.css for how it works -->
     <div class="shade"></div>
 
+    <!-- SITE LOGO / HEADER
+         style="margin-top: 20px" is an inline style — it overrides CSS for just this element.
+         Inline styles are handy for one-off tweaks but don't overuse them.
+         Prefer classes in CSS for anything you'll reuse. -->
     <div class="logo-row" style="margin-top: 20px;">
-        <img src="media/anlucas/fireworks.gif">
         <h1>SEBASTIAN FISHER.COM</h1>
-        <img src="media/anlucas/fireworks.gif">
     </div>
 
+    <!-- NAVIGATION
+         The <hr> tags are coloured horizontal lines (styled in retro.css).
+         The nav-center div holds the button-style links.
+
+         TO ADD A NEW NAV LINK:
+         Just add another <a href="yourpage.html">Label</a> inside the nav-center div.
+    -->
     <hr class="hr-blue">
 
     <div class="nav-center">
@@ -44,13 +105,25 @@
         <a href="projects.html">Projects</a>
         <a href="homelab.html">NetSec</a>
         <a href="library.html">Library</a>
+        <a href="blog.html">Blog</a>
     </div>
 
     <hr class="hr-light-blue">
 
+    <!-- MAIN CONTENT
+         .main-card and .inner-content are defined in retro.css.
+         This is the big blue box with the gold border.
+    -->
     <div class="main-card">
         <div class="inner-content">
+            <!-- style="margin-top: 0;" removes the default top margin from the first heading
+                 so it sits flush at the top of the box -->
+            <img src="media/groyper.png" alt="pfp" style="width: 100px; border-radius: 50%; float: right; margin: 0 0 10px 15px;">
             <h2 style="margin-top: 0;">Welcome!</h2>
+
+            <!-- <p> is a paragraph. Each <p> gets automatic spacing above and below.
+                 <a href="..."> creates a clickable link.
+                 <a href="mailto:..."> opens the user's email client. -->
             <p>
                 Hi. I'm Seb. This is my website. You probably got here from noticing I have my own email domain. If that's you, welcome. This is where I keep the things I am currently up to. Feel free to look around!
             </p>
@@ -65,6 +138,8 @@
             </p>
 
             <h2>Currently</h2>
+            <!-- <ul> is an unordered (bulleted) list. Each <li> is one item.
+                 Use <ol> instead for numbered lists. -->
             <ul>
                 <li>working on my homelab</li>
                 <li>studying basic principles of design</li>
@@ -73,6 +148,9 @@
             </ul>
         </div>
 
+        <!-- <marquee> scrolls text horizontally. It's an old HTML tag — deprecated
+             but still works in browsers. Classic retro web element.
+             <i> makes text italic. -->
         <marquee style="margin-top: 15px;">
             <img src="https://anlucas.neocities.org/Animated-pink-flickering-stars.gif">
             <i style="color: white;">"Celebrating 2026 on the World Wide Web!"</i>
@@ -80,26 +158,36 @@
         </marquee>
     </div>
 
-    <div class="footer-badges">
-        <p style="color: yellow; font-size: 0.9em;">Proud to be part of the World Wide Web</p>
-        <img src="https://anlucas.neocities.org/worldwideweb_badge.gif"><br>
-        <img src="https://anlucas.neocities.org/neocities_button.gif">
-        <img src="https://anlucas.neocities.org/anlucasbutton.gif">
-        <img src="https://anlucas.neocities.org/bookmark_this_page.gif">
-        <img src="https://anlucas.neocities.org/freespeechforever.gif">
-        <img src="https://anlucas.neocities.org/built_with_microsoft_notepad.gif">
+    <!-- BIN ICON — links to the pastebin page.
+         title="the bin" shows tooltip text on hover.
+         image-rendering: pixelated keeps the small GIF crisp.
+         cursor: pointer shows a hand cursor on hover. -->
+    <div style="text-align:center; margin: 10px 0;">
+        <a href="pastebin.html" title="the bin"><img src="gifs/buttons/bin.gif" style="image-rendering:pixelated; cursor:pointer;"></a>
     </div>
 
+    <!-- FOOTER BADGES -->
+    <div class="footer-badges">
+        <p style="color: yellow; font-size: 0.9em;">Proud to be part of the World Wide Web</p>
+        <img src="https://anlucas.neocities.org/worldwideweb_badge.gif">
+    </div>
+
+    <!-- DECORATIVE LINES — stacked coloured <hr> tags for a rainbow effect -->
     <hr class="hr-blue">
     <hr class="hr-light-blue">
     <hr class="hr-cyan">
     <hr class="hr-magenta">
 
+    <!-- COPYRIGHT ROW — uses flexbox to push text to opposite sides -->
     <div class="copyright-row">
+        <!-- &copy; is an HTML entity — it displays the © symbol.
+             Other useful entities: &amp; = &, &mdash; = —, &rarr; = →, &larr; = ← -->
         <span>All text and site design &copy; Sebastian Fisher, 2026-forever</span>
         <span>est. May 14, 2026</span>
     </div>
 
+    <!-- Load the shared JavaScript file. Always put <script> tags at the end of <body>
+         so the HTML loads first. If the script is in <head>, it runs before the page exists. -->
     <script src="retro.js"></script>
 </body>
 </html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>Sebastian Fisher // "I Have Nothing to Hide"</title>
+    <link rel="stylesheet" href="../retro.css">
+    <style>
+        /* Same Deep Blue blog post theme — see posts/self-hosting.html for
+           detailed comments on every property. This file just has the same
+           styles with less repetitive commenting. */
+
+        body { background-color: #c0c0c0; }
+
+        .blog-container {
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            background-color: #fff;
+            color: #555;
+            outline: 4px ridge #ccc;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+        .blog-header {
+            background-color: #3c445f;
+            padding: 0.6em 5%;
+            border-bottom: 4px ridge #ccc;
+        }
+        .blog-header ul { list-style: none; margin: 0; padding: 0; }
+        .blog-header li { display: inline-block; margin-right: 1.5em; font-size: 1.1em; }
+        .blog-header li a { color: #fff; text-decoration: none; font-family: "Palatino Linotype", Palatino, Baskerville, serif; }
+        .blog-header li a:hover { text-decoration: underline; }
+
+        .blog-content { padding: 20px 5% 30px 5%; }
+        .blog-content h1 { color: #3c445f; font-family: "Palatino Linotype", Palatino, Baskerville, serif; font-size: 1.8em; margin: 0 0 0.3em 0; }
+        .blog-content .post-meta { color: #999; font-size: 0.8em; margin-bottom: 1.5em; padding-bottom: 1em; border-bottom: 1px solid #eee; }
+        .blog-content .post-meta span { margin-right: 16px; }
+        .blog-content .post-tag { font-size: 0.85em; color: #3c445f; background: #e8ecf2; padding: 2px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 1px; }
+        .blog-content p { line-height: 1.6em; margin-bottom: 1em; }
+        .blog-content h2 { color: #3c445f; font-family: "Palatino Linotype", Palatino, Baskerville, serif; font-size: 1.2em; margin: 1.8em 0 0.6em 0; }
+        .blog-content a { color: #0245d7; }
+        .blog-content a:hover { background-color: #c9f1fe; }
+
+        /*
+            BLOCKQUOTE — for quoting someone.
+            border-left draws a thick left border (the vertical line next to the quote).
+            font-style: italic makes the text slanted.
+            USE: <blockquote>Quote text here</blockquote>
+        */
+        .blog-content blockquote { border-left: 3px solid #3c445f; margin: 1.2em 0; padding: 0.5em 1em; color: #777; font-style: italic; font-size: 0.95em; }
+
+        .blog-content strong { color: #333; }
+
+        .blog-footer { padding: 0 5% 16px 5%; font-size: 0.8em; color: #999; border-top: 1px solid #eee; padding-top: 12px; }
+        .blog-footer a { color: #999; text-decoration: none; }
+        .blog-footer a:hover { color: #0245d7; }
+    </style>
+</head>
+<body>
+    <div class="shade"></div>
+
+    <div class="logo-row" style="margin-top: 20px;">
+        <h1>SEBASTIAN FISHER.COM</h1>
+    </div>
+
+    <hr class="hr-blue">
+    <div class="nav-center">
+        <a href="../home.html">Home</a>
+        <a href="../links.html">Links</a>
+        <a href="../projects.html">Projects</a>
+        <a href="../homelab.html">NetSec</a>
+        <a href="../library.html">Library</a>
+        <a href="../blog.html">Blog</a>
+    </div>
+    <hr class="hr-light-blue">
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <ul>
+                <li><a href="../home.html">Home</a></li>
+                <li><a href="../blog.html">Archive</a></li>
+                <li><a href="../homelab.html">NetSec</a></li>
+            </ul>
+        </div>
+        <div class="blog-content">
+            <h1>"I Have Nothing to Hide" — and Why That's the Wrong Question</h1>
+            <div class="post-meta">
+                <span>2026.05.15</span>
+                <span class="post-tag">privacy</span>
+            </div>
+
+            <!-- <em> is emphasis (italic). Similar to <i> but more semantic —
+                 screen readers may pronounce it differently. -->
+            <p>You have probably heard it before — maybe you have even said it yourself. Someone mentions a VPN, or browser fingerprinting, or the fact that their ISP logs everything they do online, and the response comes back: <em>"I don't really care, I have nothing to hide."</em></p>
+
+            <p>It sounds reasonable. It sounds like common sense. It is neither.</p>
+
+            <h2>Privacy Is Not About Guilt</h2>
+
+            <p>The "nothing to hide" argument assumes that privacy is only something criminals need. But think about what you actually do online: you search for medical symptoms, you read about political ideas you are not sure you agree with yet, you look up your finances, you message people you love. None of that is illegal. All of it is private.</p>
+
+            <p>You close the bathroom door. You don't hand your diary to strangers. You lower your voice in a restaurant. None of those things mean you are hiding something criminal — they mean you are a human being with an interior life, and you understand that not everything belongs to everyone.</p>
+
+            <!-- <blockquote> is for quotes. Styled with a left border in the CSS above. -->
+            <blockquote>"Arguing that you don't care about the right to privacy because you have nothing to hide is no different than saying you don't care about free speech because you have nothing to say." — Edward Snowden</blockquote>
+
+            <h2>Surveillance Creep Is Real</h2>
+
+            <p>Even if you trust the current government, the current ISP, the current platform — the infrastructure you accept today does not disappear when circumstances change. Systems built to catch criminals get used to monitor protesters. Tools designed for national security get turned on journalists and lawyers. Data collected for advertising gets subpoenaed in court cases.</p>
+
+            <p>The "nothing to hide" argument asks you to make a bet: that everyone who will ever have access to your data, in every context, forever, will always use it fairly. That is not a bet anyone should be comfortable making.</p>
+
+            <h2>Your Data Is a Product</h2>
+
+            <p>Even in the most boring, everyday case — no government, no court, no controversy — your ISP is selling a profile of your browsing habits. Advertisers are buying it. Data brokers are packaging it. The argument "I have nothing to hide" only applies if you think it is fine for a company you have never heard of to know more about your habits than your closest friends.</p>
+
+            <p>It is not about doing something wrong. It is about who profits from your attention, your patterns, and your life.</p>
+
+            <h2>VPNs Are Legal. Using One Is Not Suspicious.</h2>
+
+            <p>There is a persistent idea that if you use a VPN, you must be doing something shady. This is false. VPNs are legal in most countries and are used every day by remote workers, journalists, travellers, and ordinary people who simply value their privacy. The association between privacy tools and wrongdoing is a narrative that benefits the people who profit from open access to your data.</p>
+
+            <p>In some countries there is active pressure on ISPs to flag or throttle VPN traffic. If you are in one of those regions, a VPN with <strong>obfuscation features</strong> — which disguise VPN traffic as ordinary HTTPS — becomes particularly important.</p>
+
+            <h2>The Right Question</h2>
+
+            <p>The question was never "do I have something to hide?" The real questions are: who has access to your data, what can they do with it, and did you ever actually agree to that? Most people, if they thought about it honestly, would answer: I don't know, a lot, and not really.</p>
+
+            <p>That is worth caring about — even if you have nothing to hide.</p>
+        </div>
+        <div class="blog-footer">
+            <a href="../blog.html">&larr; Back to Blog</a>
+            &nbsp;&nbsp;
+            <a href="../homelab.html">NetSec Guide &rarr;</a>
+        </div>
+    </div>
+
+    <script src="../retro.js"></script>
+</body>
+</html>

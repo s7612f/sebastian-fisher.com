@@ -5,88 +5,377 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon.png" type="image/png">
     <title>Sebastian Fisher // NetSec</title>
-    <link rel="stylesheet" href="retro.css">
     <style>
-        body { background-image: url("media/backgrounds/025C.png"); }
-        
-        .netsec-list {
-            padding-left: 20px;
-            margin-bottom: 20px;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #c0c0c0;
+            color: #000;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+            min-height: 100vh;
         }
-        .netsec-list li {
-            margin-bottom: 5px;
-            color: white;
+
+        a { color: #0275d8; text-decoration: underline; }
+        a:visited { color: #7b2d8b; }
+        a:hover { text-decoration: underline; }
+
+        .page-wrap {
+            padding: 16px 24px 60px;
+        }
+
+        .site-header {
+            padding: 20px 0 10px;
+        }
+        .site-header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .site-header .tagline {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .site-nav {
+            border-top: 1px solid #888;
+            border-bottom: 1px solid #888;
+            padding: 6px 0;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        .site-nav a {
+            color: #000;
+            text-decoration: none;
+            margin-right: 24px;
+        }
+        .site-nav a:hover { text-decoration: underline; }
+
+        .breadcrumb {
+            font-size: 13px;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .breadcrumb a { color: #0275d8; font-size: 13px; }
+
+        h1.page-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .jump-nav {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 16px 0;
+        }
+        .jump-nav a { color: #000; font-weight: bold; }
+        .jump-nav .sep { color: #888; margin: 0 4px; }
+
+        .glowbar {
+            display: block;
+            margin: 18px 0;
+            height: 6px;
+            width: 100%;
+            background: linear-gradient(90deg, #c0c0c0, #ff00ff, #00ffff, #ffff00, #00ff00, #ff00ff, #c0c0c0);
+            border: none;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 24px 0 10px 0;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        ul {
+            margin: 0 0 14px 28px;
+        }
+        li {
+            line-height: 1.7;
+            margin-bottom: 4px;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            background: #b0b0b0;
+            padding: 1px 4px;
+        }
+
+        .level-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 1px 6px;
+            margin-left: 8px;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Courier New', monospace;
+        }
+        .badge-beginner { background: #004400; color: #00ff41; border: 1px solid #00ff41; }
+        .badge-intermediate { background: #003366; color: #00aaff; border: 1px solid #00aaff; }
+        .badge-advanced { background: #440000; color: #ff4444; border: 1px solid #ff4444; }
+
+        .tool-link {
+            font-size: 13px;
+            color: #0275d8;
+            margin-left: 6px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .site-footer {
+            margin-top: 40px;
+            padding-top: 10px;
+            border-top: 1px solid #999;
+            font-size: 12px;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <div class="shade"></div>
-    
-    <div class="logo-row" style="margin-top: 20px;">
-        <img src="media/anlucas/fireworks.gif">
-        <h1>SEBASTIAN FISHER.COM</h1>
-        <img src="media/anlucas/fireworks.gif">
+
+<div class="page-wrap">
+
+    <div class="site-header">
+        <h1>Sebastian Fisher</h1>
+        <div class="tagline">Privacy, Security & the Personal Web</div>
     </div>
 
-    <hr class="hr-blue">
-    <div class="nav-center">
+    <nav class="site-nav">
         <a href="home.html">Home</a>
         <a href="links.html">Links</a>
         <a href="projects.html">Projects</a>
         <a href="homelab.html">NetSec</a>
         <a href="library.html">Library</a>
-    </div>
-    <hr class="hr-light-blue">
+        <a href="blog.html">Blog</a>
+    </nav>
 
-    <div class="main-card">
-        <div class="inner-content">
-            <h2>Home NetSec Setup</h2>
-            <p>Here is a plain list of the security practices and tools I use to keep my homelab safe.</p>
-
-            <h3>SSH Hardening</h3>
-            <ul class="netsec-list">
-                <li>Use key-only authentication; disable password logins in sshd_config.</li>
-                <li>Change the default SSH port to something non-standard (e.g., 2222).</li>
-                <li>Implement an AllowUsers whitelist.</li>
-                <li>Run Fail2ban to block brute-force attempts.</li>
-            </ul>
-
-            <h3>Firewall & Networking</h3>
-            <ul class="netsec-list">
-                <li>UFW: Default deny incoming, allow outgoing (whitelist only what you need).</li>
-                <li>Restrict Docker to localhost-only bindings to prevent UFW bypass.</li>
-                <li>Use VLANs to separate IoT devices, servers, and personal devices.</li>
-                <li>Use Pi-hole for network-wide DNS filtering with DNSSEC enabled.</li>
-            </ul>
-
-            <h3>Intrusion Detection & Monitoring</h3>
-            <ul class="netsec-list">
-                <li><a href="https://www.crowdsec.net/" target="_blank">CrowdSec</a>: Collaborative IPS to block known bad actors.</li>
-                <li><a href="https://suricata.io/" target="_blank">Suricata</a>: For deep packet inspection.</li>
-                <li><a href="https://grafana.com/oss/loki/" target="_blank">Loki</a> + <a href="https://grafana.com/" target="_blank">Grafana</a>: For log aggregation and metrics.</li>
-                <li><a href="https://github.com/louislam/uptime-kuma" target="_blank">Uptime Kuma</a>: Service health checks and alerting.</li>
-                <li><a href="https://www.netdata.cloud/" target="_blank">Netdata</a>: Real-time system monitoring.</li>
-            </ul>
-
-            <h3>Container & App Security</h3>
-            <ul class="netsec-list">
-                <li>Run all Docker containers as non-root users.</li>
-                <li>Use read-only filesystems where possible.</li>
-                <li><a href="https://github.com/chainguard-dev/trivy" target="_blank">Trivy</a>: Scan container images for vulnerabilities.</li>
-                <li>Use <a href="https://containrrr.dev/watchtower/" target="_blank">Watchtower</a> for keeping images updated.</li>
-            </ul>
-
-            <h3>SSL, Access & Backups</h3>
-            <ul class="netsec-list">
-                <li>Use Nginx Proxy Manager for SSL termination with Let's Encrypt.</li>
-                <li>Force HTTPS and enable HSTS headers.</li>
-                <li><a href="https://www.authelia.com/" target="_blank">Authelia</a>: Add 2FA to services that lack native login.</li>
-                <li><a href="https://restic.net/" target="_blank">Restic</a>: Encrypted offsite backups using the 3-2-1 rule.</li>
-                <li><a href="https://www.wireguard.com/" target="_blank">WireGuard</a> + ShadowSocks for encrypted, obfuscated VPN traffic.</li>
-            </ul>
-        </div>
+    <div class="breadcrumb">
+        <a href="home.html">index</a> / netsec
     </div>
 
-    <script src="retro.js"></script>
+    <h1 class="page-title">NetSec</h1>
+
+    <div class="jump-nav">
+        [ <a href="#basic">Basic Safety</a> <span class="sep">|</span>
+        <a href="#counter">Counter-Surveillance</a> <span class="sep">|</span>
+        <a href="#browser">Browser</a> <span class="sep">|</span>
+        <a href="#vpn">VPN</a> <span class="sep">|</span>
+        <a href="#dns">DNS</a> <span class="sep">|</span>
+        <a href="#firewall">Firewall</a> <span class="sep">|</span>
+        <a href="#ssh">SSH</a> <span class="sep">|</span>
+        <a href="#wireguard">WireGuard</a> <span class="sep">|</span>
+        <a href="#cloak">Cloak</a> <span class="sep">|</span>
+        <a href="#crowdsec">CrowdSec</a> <span class="sep">|</span>
+        <a href="#monitoring">Monitoring</a> <span class="sep">|</span>
+        <a href="#wireshark">Wireshark</a> ]
+    </div>
+
+    <hr class="glowbar">
+
+    <p>This is a guide to the tools and practices I actually use, ordered from things anyone can set up in an afternoon through to running your own server infrastructure. Each section builds on the last. Start wherever makes sense for where you are — but don't skip the basics because they seem simple. The basics are where most people leak the most data.</p>
+
+    <p>There is a common idea that if you have nothing to hide, you have nothing to worry about. That idea is wrong — and it is worth understanding why before you read the rest of this page. <a href="posts/privacy-nothing-to-hide.html">Read the full argument here.</a></p>
+
+    <hr class="glowbar">
+
+    <!-- BASIC SAFETY -->
+    <h2 id="basic">Basic Safety <span class="level-badge badge-beginner">Beginner</span></h2>
+
+    <p>Before any tools or software, the most important thing is understanding what you are protecting and from whom. Most people do not need to defend against nation-state actors. What they need is to stop leaking data to corporations, advertisers, and opportunistic attackers who profit from carelessness.</p>
+
+    <ul>
+        <li><strong>Use a password manager</strong> — every account should have a unique, generated password. If you reuse passwords, a single breach compromises everything.</li>
+        <li><strong>Enable two-factor authentication</strong> — on email, banking, and anything that matters. Use an authenticator app, not SMS.</li>
+        <li><strong>Check your exposure</strong> — <a href="https://haveibeenpwned.com" target="_blank">Have I Been Pwned</a> will tell you which of your accounts have already been leaked.</li>
+        <li><strong>Review app permissions</strong> — your phone apps do not need access to your contacts, microphone, and location to show you the weather.</li>
+        <li><strong>Opt out of data brokers</strong> — services like <a href="https://justdeleteme.xyz" target="_blank">JustDeleteMe</a> help you remove yourself from sites that sell your data.</li>
+    </ul>
+
+    <p>This is not paranoia. This is the digital equivalent of locking your front door.</p>
+
+    <hr class="glowbar">
+
+    <!-- COUNTER-SURVEILLANCE -->
+    <h2 id="counter">Counter-Surveillance <span class="level-badge badge-beginner">Beginner</span></h2>
+
+    <p>Counter-surveillance is not about hiding — it is about understanding who is watching, what they can see, and how to reduce what you give away without thinking about it.</p>
+
+    <ul>
+        <li><strong>Your ISP sees everything</strong> — every domain you visit, when, and how often. A VPN stops this. Without one, your entire browsing history is logged and in many countries sold.</li>
+        <li><strong>Your phone is a tracking device</strong> — it broadcasts your location constantly via cell towers, Wi-Fi probes, and GPS. Turn off location services for apps that do not need it. Use aeroplane mode when you do not need to be connected.</li>
+        <li><strong>Social media is surveillance by consent</strong> — every like, share, scroll, and pause is tracked and profiled. The platform is free because you are the product.</li>
+        <li><strong>Metadata matters more than content</strong> — who you called, when, for how long, and from where tells more about you than what you said. Encrypted messaging protects content but metadata often leaks.</li>
+        <li><strong>Smart devices are microphones you pay for</strong> — Alexa, Google Home, smart TVs with voice control. These record ambient audio and send it to servers you do not control.</li>
+    </ul>
+
+    <p>The goal is not to disappear. The goal is to make surveillance expensive, incomplete, and not worth the effort for anyone who is not specifically targeting you.</p>
+
+    <hr class="glowbar">
+
+    <!-- BROWSER -->
+    <h2 id="browser">Your Browser <span class="level-badge badge-beginner">Beginner</span></h2>
+
+    <p>The browser is where almost all of your data leaks. Every site you visit can fingerprint your browser — a combination of your screen resolution, installed fonts, GPU, timezone, and dozens of other signals that together uniquely identify you even without cookies. A VPN does not stop this.</p>
+
+    <ul>
+        <li><a href="https://brave.com" target="_blank">Brave</a>: Blocks ads and trackers by default, spoofs your fingerprint, ships with a built-in VPN and Tor option.</li>
+        <li>If you prefer Firefox, pair it with the <a href="https://github.com/arkenfox/user.js" target="_blank">arkenfox user.js</a> hardening config.</li>
+        <li><a href="https://ublockorigin.com" target="_blank">uBlock Origin</a>: Free, open-source ad content blocker. Install it and set it to hard mode.</li>
+    </ul>
+
+    <p>Enable HTTPS-only mode in your browser settings. There is no good reason to send unencrypted traffic in 2026.</p>
+
+    <hr class="glowbar">
+
+    <!-- VPN -->
+    <h2 id="vpn">A VPN <span class="level-badge badge-beginner">Beginner</span></h2>
+
+    <p>A consumer VPN encrypts the traffic between your device and the VPN server, hiding it from your ISP. Your ISP can see that you are connected to a VPN, but not what you are doing inside it. This shifts trust from your ISP to the VPN provider. Choose one that has been independently audited and does not log traffic:</p>
+
+    <ul>
+        <li><a href="https://mullvad.net" target="_blank">Mullvad</a>: Accepts cash, does not require an email address.</li>
+        <li><a href="https://protonvpn.com" target="_blank">ProtonVPN</a>: Solid and open source.</li>
+    </ul>
+
+    <p>Consumer VPNs have one weakness: your ISP can see that you are using a VPN. In most countries this is not a problem. In some it is. The solution to that is further down this page.</p>
+
+    <hr class="glowbar">
+
+    <!-- DNS -->
+    <h2 id="dns">DNS Filtering with Pi-hole + Unbound <span class="level-badge badge-intermediate">Intermediate</span> <a class="tool-link" href="https://pi-hole.net" target="_blank">[pi-hole.net]</a></h2>
+
+    <p>Every time you visit a website, your device asks a DNS server to translate the domain name into an IP address. By default, that request goes to your ISP's DNS server — which means your ISP has a complete log of every domain you visit, even if you use HTTPS.</p>
+
+    <ul>
+        <li><a href="https://pi-hole.net" target="_blank">Pi-hole</a>: A DNS server you run yourself. Blocks ad and tracker domains at the DNS level. Every device on your network gets the filtering automatically.</li>
+        <li><a href="https://nlnetlabs.nl/projects/unbound/about/" target="_blank">Unbound</a>: A recursive DNS resolver that talks directly to root DNS servers instead of forwarding queries to Google or Quad9. Validates responses using DNSSEC.</li>
+    </ul>
+
+    <p>I run Pi-hole in Docker, backed by Unbound. Combined, Pi-hole handles the filtering and Unbound handles the resolution. No third party sees your queries.</p>
+
+    <hr class="glowbar">
+
+    <!-- UFW -->
+    <h2 id="firewall">Firewall (UFW) <span class="level-badge badge-intermediate">Intermediate</span> <a class="tool-link" href="https://wiki.ubuntu.com/UncomplicatedFirewall" target="_blank">[docs]</a></h2>
+
+    <p><a href="https://wiki.ubuntu.com/UncomplicatedFirewall" target="_blank">UFW</a> (Uncomplicated Firewall) controls what traffic can reach your server. The correct default is: deny all incoming, allow all outgoing, then explicitly open only what you need.</p>
+
+    <ul>
+        <li>SSH — open only from LAN and Tailscale VPN subnet.</li>
+        <li>DNS on port 53 — from LAN only.</li>
+        <li>WireGuard on 51820.</li>
+        <li>Docker container port range — nothing else.</li>
+    </ul>
+
+    <p>Every rule is a conscious decision about what is allowed in.</p>
+
+    <hr class="glowbar">
+
+    <!-- SSH -->
+    <h2 id="ssh">SSH Hardening + fail2ban <span class="level-badge badge-intermediate">Intermediate</span> <a class="tool-link" href="https://www.fail2ban.org" target="_blank">[fail2ban.org]</a></h2>
+
+    <p>If your server is reachable from the internet, it is being scanned constantly. Automated bots probe SSH ports 24 hours a day looking for weak passwords.</p>
+
+    <ul>
+        <li>Use key-based authentication only — disable password logins in <code>/etc/ssh/sshd_config</code> with <code>PasswordAuthentication no</code>.</li>
+        <li><a href="https://www.fail2ban.org" target="_blank">fail2ban</a>: Watches auth logs and bans any IP that fails authentication more than five times in an hour.</li>
+        <li>Whitelist your LAN subnet so you cannot lock yourself out.</li>
+    </ul>
+
+    <p>Between key-only auth and fail2ban, SSH becomes a very dull target.</p>
+
+    <hr class="glowbar">
+
+    <!-- WIREGUARD -->
+    <h2 id="wireguard">Self-hosted VPN with WireGuard <span class="level-badge badge-advanced">Advanced</span> <a class="tool-link" href="https://www.wireguard.com" target="_blank">[wireguard.com]</a></h2>
+
+    <p>A self-hosted VPN means you control the server that your traffic exits from, rather than trusting a commercial provider. <a href="https://www.wireguard.com" target="_blank">WireGuard</a> is the protocol — fast, modern cryptography (Curve25519 keys), and a much smaller codebase than OpenVPN.</p>
+
+    <ul>
+        <li>Server runs at <code>10.0.0.1</code>, listening on port 51820/UDP.</li>
+        <li>Each client gets a unique keypair and an IP in the <code>10.0.0.0/24</code> subnet.</li>
+        <li>All traffic routes through the tunnel to the home network — then out through Pi-hole and Unbound.</li>
+    </ul>
+
+    <p>All filtering and DNS security follows you when you are away from home.</p>
+
+    <hr class="glowbar">
+
+    <!-- CLOAK -->
+    <h2 id="cloak">DPI Obfuscation with Cloak <span class="level-badge badge-advanced">Advanced</span> <a class="tool-link" href="https://github.com/cbeuw/Cloak" target="_blank">[github]</a></h2>
+
+    <p>A standard WireGuard connection is identifiable by deep packet inspection — ISPs and network operators can see that you are running a VPN even if they cannot see inside it.</p>
+
+    <ul>
+        <li><a href="https://github.com/cbeuw/Cloak" target="_blank">Cloak</a>: Wraps WireGuard traffic inside what looks like ordinary HTTPS.</li>
+        <li>From the outside, your VPN traffic appears to be a regular encrypted web session to a legitimate domain.</li>
+        <li>Legitimate requests to that domain are proxied transparently. Only authenticated Cloak clients are routed to the WireGuard tunnel.</li>
+    </ul>
+
+    <p>Deep packet inspection sees HTTPS and moves on.</p>
+
+    <hr class="glowbar">
+
+    <!-- CROWDSEC -->
+    <h2 id="crowdsec">Threat Intelligence with CrowdSec <span class="level-badge badge-advanced">Advanced</span> <a class="tool-link" href="https://www.crowdsec.net" target="_blank">[crowdsec.net]</a></h2>
+
+    <p><a href="https://www.crowdsec.net" target="_blank">CrowdSec</a> is an open-source intrusion detection system that watches your logs and detects attack patterns. Unlike fail2ban, CrowdSec participates in a shared intelligence network.</p>
+
+    <ul>
+        <li>When it bans an IP, that ban is shared with the community. Bans from other servers flow back to you.</li>
+        <li>The bouncer integrates directly with UFW — detections become firewall rules immediately.</li>
+        <li>Collections enabled for SSH brute-force, web CVE exploitation, SQL injection, and Linux system anomalies.</li>
+    </ul>
+
+    <p>CrowdSec sits upstream of fail2ban — one provides rate limiting, the other provides community threat intelligence. Together they cover both reactive and proactive protection.</p>
+
+    <hr class="glowbar">
+
+    <!-- MONITORING -->
+    <h2 id="monitoring">Monitoring with Prometheus + Grafana <span class="level-badge badge-advanced">Advanced</span></h2>
+
+    <ul>
+        <li><a href="https://prometheus.io" target="_blank">Prometheus</a>: Scrapes metrics from your services every 15 seconds — CPU, memory, disk, DNS query rates, WireGuard tunnel throughput, CrowdSec alert counts.</li>
+        <li><a href="https://grafana.com" target="_blank">Grafana</a>: Turns those metrics into dashboards you can read.</li>
+        <li>Alertmanager: If a service goes down, disk fills up, or SSH failures spike, you get a notification.</li>
+    </ul>
+
+    <p>The point of monitoring is not to watch numbers all day — it is to know immediately when something changes. A sudden spike in SSH failures means someone is probing. An unusual DNS query pattern can mean something on your network has been compromised.</p>
+
+    <hr class="glowbar">
+
+    <!-- WIRESHARK -->
+    <h2 id="wireshark">Packet Analysis with Wireshark <span class="level-badge badge-advanced">Advanced</span> <a class="tool-link" href="https://www.wireshark.org" target="_blank">[wireshark.org]</a></h2>
+
+    <ul>
+        <li><a href="https://www.wireshark.org" target="_blank">Wireshark</a>: Captures raw network traffic and lets you inspect it at every level of the stack.</li>
+        <li>Filter by protocol, follow TCP streams, see exactly what a device on your network is sending and to whom.</li>
+        <li>Use it to verify your VPN is encrypting traffic, confirm Pi-hole is blocking what you expect, investigate suspicious activity.</li>
+        <li>Command-line version: <code>tshark -i eth0 -f "tcp port 443"</code> for scripting captures on a headless server.</li>
+    </ul>
+
+    <hr class="glowbar">
+
+    <!-- SELF HOSTING -->
+    <h2>Self-Hosting</h2>
+
+    <p>All of the tools above except the browser and commercial VPN run on a server — in my case a home server running Ubuntu. Running your own server means you own your data, you control your services, and you are not depending on a third party to keep them private or online.</p>
+
+    <p>A full write-up on setting up a home server from scratch — hardware, OS, Docker, and the infrastructure above — is on the blog. <a href="posts/self-hosting.html">Read: Getting Started with Self-Hosting &rarr;</a></p>
+
+    <div class="site-footer">
+        Hand-coded HTML. No cookies. No trackers.
+    </div>
+
+</div>
+
 </body>
 </html>

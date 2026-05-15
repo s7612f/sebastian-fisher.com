@@ -1,4 +1,41 @@
-/* Retro Theme Shared Styles - A.N. Lucas Edition */
+/*
+ * =============================================
+ *  retro.css — Shared Stylesheet
+ * =============================================
+ *
+ *  HOW CSS WORKS:
+ *  CSS (Cascading Style Sheets) controls how HTML looks.
+ *  You write "selectors" that target HTML elements, then set
+ *  "properties" inside curly braces {}.
+ *
+ *  SELECTORS:
+ *    body          → targets the <body> tag directly
+ *    .classname    → targets any element with class="classname"
+ *    #idname       → targets the element with id="idname"
+ *    a:hover       → targets <a> links when the mouse hovers over them
+ *    h2, h3        → targets both <h2> AND <h3> elements
+ *
+ *  This file is linked from multiple pages using:
+ *    <link rel="stylesheet" href="retro.css">
+ *  Any page that links this file gets all these styles automatically.
+ *  Pages can override these styles with their own <style> block.
+ *
+ *  UNITS:
+ *    px   = pixels (fixed size)
+ *    em   = relative to the element's font size (1.5em = 1.5x the font)
+ *    %    = percentage of the parent element
+ *    vh   = percentage of the viewport (screen) height
+ *    auto = let the browser calculate it
+ * =============================================
+ */
+
+
+/* ---- RESET / BASE ----
+   These apply to the entire page.
+   margin: 0 and padding: 0 remove the default spacing browsers add.
+   min-height: 100vh makes the page at least as tall as the screen.
+   cursor: crosshair changes the mouse pointer to a + symbol (retro touch).
+*/
 body, html {
     margin: 0;
     padding: 0;
@@ -7,16 +44,27 @@ body, html {
     cursor: crosshair;
 }
 
+/* background-color sets the page colour.
+   background-repeat: repeat tiles a background image if one is set.
+   The dark blue (#000010) is nearly black — the retro base colour.
+*/
 body {
     background-color: #000010;
     background-repeat: repeat;
 }
 
-/* Header & Logo Styles */
+
+/* ---- HEADER & LOGO ----
+   .logo-row uses flexbox to centre the site title horizontally.
+   display: flex turns the element into a flex container.
+   justify-content: center centres children horizontally.
+   align-items: center centres children vertically.
+   gap: 10px adds 10px spacing between flex children.
+*/
 .welcome-header {
     text-align: center;
     font-size: 24px;
-    font-style: italic;
+    font-style: italic;       /* makes the text italic */
     margin-bottom: 10px;
     color: magenta;
 }
@@ -30,21 +78,33 @@ body {
 }
 
 .logo-row img {
-    height: 60px;
+    height: 60px;              /* fixed height, width scales proportionally */
 }
 
+/* text-shadow creates a coloured shadow behind text.
+   Format: horizontal-offset vertical-offset colour
+   Here it's 2px right, 2px down, in magenta (#ff00ff).
+   This gives the retro "3D" text effect.
+*/
 .logo-row h1 {
-    color: #00ffff; 
-    text-shadow: 2px 2px #ff00ff; 
-    font-size: 2.5em; 
+    color: #00ffff;            /* cyan text */
+    text-shadow: 2px 2px #ff00ff;  /* magenta shadow */
+    font-size: 2.5em;
     margin: 0;
 }
 
-/* Horizontal Rules */
+
+/* ---- HORIZONTAL RULES ----
+   <hr> is a horizontal line. Browsers give it a default border.
+   border: 0 removes that, then we set height and background-color
+   to make clean coloured lines.
+
+   USE: <hr class="hr-blue"> in your HTML
+*/
 hr {
     border: 0;
     height: 2px;
-    margin: 10px 0;
+    margin: 10px 0;           /* 10px top and bottom, 0 left and right */
 }
 
 .hr-blue { background-color: #0000FF; }
@@ -52,46 +112,84 @@ hr {
 .hr-cyan { background-color: #00FFFF; }
 .hr-magenta { background-color: #FF00FF; }
 
-/* Navigation Styles (The Selection Bar) */
+
+/* ---- NAVIGATION BAR ----
+   The nav bar is a row of links styled as buttons.
+   flex-wrap: wrap means if the buttons don't fit on one line,
+   they wrap to the next line instead of overflowing.
+
+   USE IN HTML:
+   <div class="nav-center">
+       <a href="page.html">Page Name</a>
+       <a href="other.html">Other Page</a>
+   </div>
+*/
 .nav-center {
     text-align: center;
     margin: 25px 0;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 10px;                 /* space between buttons */
     flex-wrap: wrap;
 }
 
+/* Each nav link is styled as a button.
+   border: 2px outset gold creates a raised 3D border.
+   background uses both a colour (blue) and a tiled texture image.
+   min-width: 100px ensures buttons aren't too narrow.
+   display: inline-block lets you set width/padding on a link.
+*/
 .nav-center a {
-    color: #ffee00; /* Bright Yellow */
-    text-decoration: none;
+    color: #ffee00;            /* bright yellow text */
+    text-decoration: none;     /* removes the underline from links */
     font-weight: bold;
     font-size: 1.2em;
-    text-shadow: 2px 2px #000;
-    border: 2px outset gold;
-    padding: 5px 15px;
-    background: blue url("media/anlucas/bluetexture.gif");
+    text-shadow: 2px 2px #000; /* black shadow for readability */
+    border: 2px outset gold;   /* raised 3D border */
+    padding: 5px 15px;         /* inner spacing: 5px top/bottom, 15px sides */
+    background: blue url("media/anlucas/bluetexture.gif");  /* colour + texture */
     min-width: 100px;
     display: inline-block;
 }
 
+/* :hover styles apply when the mouse is over the element.
+   border-style: inset flips the 3D border to look "pressed".
+*/
 .nav-center a:hover {
-    background: #ffee00;
+    background: #ffee00;       /* yellow background on hover */
     color: blue;
-    border-style: inset;
+    border-style: inset;       /* pressed button effect */
 }
 
-/* Main Content Containers */
+
+/* ---- MAIN CONTENT CARD ----
+   The big container that holds page content.
+   max-width: 900px stops it from stretching too wide on big screens.
+   margin: 0 auto centres it horizontally (auto left/right margins).
+   box-shadow creates a drop shadow — offset 10px right, 10px down.
+
+   USE IN HTML:
+   <div class="main-card">
+       <div class="inner-content">
+           <h2>Title</h2>
+           <p>Your content here.</p>
+       </div>
+   </div>
+*/
 .main-card {
     max-width: 900px;
-    margin: 0 auto 40px auto;
+    margin: 0 auto 40px auto;         /* centred with 40px bottom margin */
     border: 5px outset gold;
     background: blue url("media/anlucas/bluetexture.gif") repeat;
     padding: 20px;
     color: yellow;
-    box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.5);  /* rgba = colour with transparency */
 }
 
+/* Inner content box sits inside .main-card.
+   border: 1px inset gold gives it a sunken border inside the raised outer one.
+   background: rgba(0,0,255,0.3) is semi-transparent blue (0.3 = 30% opacity).
+*/
 .inner-content {
     border: 1px inset gold;
     padding: 20px;
@@ -100,9 +198,12 @@ hr {
 
 .inner-content p, .inner-content li {
     color: white;
-    line-height: 1.6;
+    line-height: 1.6;         /* space between lines of text (1.6x font size) */
 }
 
+/* border-bottom draws a line under the heading.
+   padding-bottom adds space between the text and the line.
+*/
 .inner-content h2 {
     color: yellow;
     font-size: 1.4em;
@@ -111,27 +212,54 @@ hr {
     margin-top: 1.5em;
 }
 
+
+/* ---- LINK COLOURS ----
+   These set colours for links across the whole page.
+   a:visited is for links you've already clicked.
+   These can be overridden by more specific selectors
+   (e.g. .blog-content a in a page's own <style> block).
+*/
 a { color: #00ffff; font-weight: bold; }
 a:visited { color: #ff00ff; }
 a:hover { text-decoration: underline; }
 
+
+/* ---- FOOTER ----
+   USE IN HTML:
+   <footer>
+       <div class="footer-content">
+           <p>Your footer text</p>
+       </div>
+   </footer>
+*/
 footer {
     border-top: 1px solid gold;
     margin-top: 40px;
     padding: 20px;
     text-align: center;
-    font-size: 0.8em;
+    font-size: 0.8em;          /* 80% of normal font size */
     color: aqua;
 }
 
 .footer-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    /* stack children vertically */
     align-items: center;
     gap: 10px;
 }
 
-/* Shade effect */
+
+/* ---- SHADE EFFECT ----
+   This creates a very faint green overlay across the entire page.
+   position: fixed pins it to the screen (doesn't scroll).
+   inset: 0 is shorthand for top:0 left:0 right:0 bottom:0.
+   opacity: 0.1 makes it nearly invisible (10% visible).
+   pointer-events: none means you can click through it.
+   z-index: -5 puts it behind all other content.
+
+   USE IN HTML (put at the very start of <body>):
+   <div class="shade"></div>
+*/
 .shade {
     background-color: #12bb84;
     opacity: 0.1;

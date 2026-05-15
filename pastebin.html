@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>Sebastian Fisher // The Bin</title>
+    <link rel="stylesheet" href="retro.css">
+    <style>
+        body { background-color: #c0c0c0; }
+
+        .blog-container {
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            background-color: #fff;
+            color: #555;
+            outline: 4px ridge #ccc;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+        .blog-header {
+            background-color: #3c445f;
+            padding: 0.6em 5%;
+            border-bottom: 4px ridge #ccc;
+        }
+        .blog-header ul { list-style: none; margin: 0; padding: 0; }
+        .blog-header li { display: inline-block; margin-right: 1.5em; font-size: 1.1em; }
+        .blog-header li a { color: #fff; text-decoration: none; font-family: "Palatino Linotype", Palatino, Baskerville, serif; }
+        .blog-header li a:hover { text-decoration: underline; }
+
+        .blog-content { padding: 20px 5% 30px 5%; }
+        .blog-content h1 {
+            color: #3c445f;
+            font-family: "Palatino Linotype", Palatino, Baskerville, serif;
+            font-size: 1.8em;
+            margin: 0 0 0.3em 0;
+        }
+        .blog-content p { line-height: 1.6em; margin-bottom: 1em; }
+        .blog-content a { color: #0245d7; }
+        .blog-content a:hover { background-color: #c9f1fe; }
+
+        /* image-rendering: pixelated keeps the small bin GIF sharp.
+           vertical-align: middle lines it up with the text next to it. */
+        .bin-icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+            image-rendering: pixelated;
+        }
+
+        /*
+            PASTE POSTS — each paste from Pastebin is rendered as one of these.
+            These are created by JavaScript (see the <script> at the bottom).
+            border-bottom adds a thin line between posts.
+            :last-child removes the line from the final post.
+        */
+        .paste-post {
+            margin-bottom: 2em;
+            padding-bottom: 1.5em;
+            border-bottom: 1px solid #eee;
+        }
+        .paste-post:last-child { border-bottom: none; }
+
+        .paste-post-title {
+            color: #3c445f;
+            font-family: "Palatino Linotype", Palatino, Baskerville, serif;
+            font-size: 1.3em;
+            margin: 0 0 0.3em 0;
+        }
+
+        .paste-post-meta {
+            font-size: 0.75em;
+            color: #999;
+            margin-bottom: 0.8em;
+        }
+        .paste-post-meta span { margin-right: 12px; }
+
+        .paste-post-lang {
+            font-size: 0.85em;
+            color: #3c445f;
+            background: #e8ecf2;
+            padding: 2px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /*
+            CODE/PASTE DISPLAY BOX
+            font-family: monospace gives it that code look.
+            white-space: pre-wrap preserves line breaks and spaces from the paste
+            but still wraps long lines (unlike "pre" which would overflow).
+            max-height + overflow-y: auto adds a scrollbar if the paste is very long.
+        */
+        .paste-post-body {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8em;
+            line-height: 1.5;
+            background: #f7f8fa;
+            border: 1px solid #eee;
+            padding: 12px 14px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #333;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        #paste-status {
+            color: #999;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        .blog-footer { padding: 0 5% 16px 5%; font-size: 0.8em; color: #999; }
+    </style>
+</head>
+<body>
+    <div class="shade"></div>
+
+    <div class="logo-row" style="margin-top: 20px;">
+        <h1>SEBASTIAN FISHER.COM</h1>
+    </div>
+
+    <hr class="hr-blue">
+    <div class="nav-center">
+        <a href="home.html">Home</a>
+        <a href="links.html">Links</a>
+        <a href="projects.html">Projects</a>
+        <a href="homelab.html">NetSec</a>
+        <a href="library.html">Library</a>
+        <a href="blog.html">Blog</a>
+    </div>
+    <hr class="hr-light-blue">
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="homelab.html">NetSec</a></li>
+            </ul>
+        </div>
+        <div class="blog-content">
+            <h1><img src="gifs/buttons/bin.gif" class="bin-icon" alt="bin">The Bin</h1>
+
+            <!-- This paragraph shows while pastes are loading.
+                 JavaScript hides it once pastes appear. -->
+            <p id="paste-status">Loading pastes...</p>
+
+            <!-- JavaScript fills this div with paste-post elements.
+                 getElementById('paste-feed') targets this by its id. -->
+            <div id="paste-feed"></div>
+
+            <!-- <noscript> only shows if the visitor has JavaScript disabled.
+                 Good practice to provide a fallback. -->
+            <noscript>
+                <p>JavaScript is required to load pastes. You can also view them directly on <a href="https://pastebin.com/u/tritemonarch" target="_blank">Pastebin</a>.</p>
+            </noscript>
+        </div>
+        <div class="blog-footer">
+            Hand-coded HTML. No cookies. No trackers.
+        </div>
+    </div>
+
+    <!--
+        JAVASCRIPT — HOW THIS WORKS:
+
+        This script fetches your Pastebin pastes via a Cloudflare Worker (a small
+        server-side script that acts as a middleman). We need the worker because
+        Pastebin's API doesn't allow direct requests from websites (CORS).
+
+        The flow:
+        1. fetch(WORKER_URL) sends a request to our Cloudflare Worker
+        2. The worker fetches your Pastebin profile, scrapes the paste data
+        3. The worker returns JSON (structured data) back to this page
+        4. We loop through the pastes and create HTML elements for each one
+        5. Each paste is rendered as a "blog post" with title and code block
+
+        KEY JAVASCRIPT CONCEPTS USED:
+        - fetch() — makes HTTP requests (like visiting a URL in code)
+        - .then() — runs code after the fetch finishes (it's asynchronous)
+        - .catch() — runs if something goes wrong
+        - document.getElementById() — finds an element by its id attribute
+        - document.createElement() — creates a new HTML element in code
+        - element.innerHTML — sets the HTML content inside an element
+        - element.appendChild() — adds a child element inside a parent
+
+        (function() { ... })() is an IIFE (Immediately Invoked Function Expression).
+        It runs the code immediately but keeps variables private so they don't
+        leak into the global scope and conflict with other scripts.
+    -->
+    <script>
+        (function() {
+            // The URL of the Cloudflare Worker that fetches pastes
+            var WORKER_URL = 'https://pastebin-proxy.contact-695.workers.dev';
+            var feed = document.getElementById('paste-feed');
+            var status = document.getElementById('paste-status');
+
+            // fetch() returns a Promise — .then() runs when it resolves
+            fetch(WORKER_URL)
+                .then(function(r) { return r.json(); })  // parse the response as JSON
+                .then(function(data) {
+                    if (!data.pastes || data.pastes.length === 0) {
+                        status.textContent = 'No pastes found. Check back later.';
+                        return;
+                    }
+                    status.style.display = 'none';  // hide "Loading..." text
+
+                    // Loop through each paste and render it
+                    data.pastes.forEach(function(p) {
+                        var div = document.createElement('div');
+                        div.className = 'paste-post';
+
+                        // Build the HTML string for this paste
+                        var html = '<h2 class="paste-post-title"><a href="' + escapeHtml(p.url) + '" target="_blank">' + escapeHtml(p.title) + '</a></h2>';
+                        html += '<div class="paste-post-body">' + escapeHtml(p.content) + '</div>';
+
+                        div.innerHTML = html;
+                        feed.appendChild(div);  // add the paste to the page
+                    });
+                })
+                .catch(function() {
+                    // This runs if the fetch fails (network error, worker down, etc.)
+                    status.textContent = 'Could not load pastes. Visit pastebin.com/u/tritemonarch directly.';
+                });
+
+            // Security function: converts special characters to HTML entities
+            // so paste content can't accidentally be interpreted as HTML/code.
+            // e.g. < becomes &lt;, > becomes &gt;
+            // This prevents XSS (cross-site scripting) attacks.
+            function escapeHtml(s) {
+                var d = document.createElement('div');
+                d.textContent = s;   // textContent is safe — treats everything as text
+                return d.innerHTML;   // innerHTML gives us the escaped version
+            }
+        })();
+    </script>
+
+    <script src="retro.js"></script>
+</body>
+</html>

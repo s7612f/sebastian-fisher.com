@@ -5,13 +5,32 @@
     <link rel="icon" href="/favicon.png" type="image/png">
     <title>LOADING...</title>
     <style>
+        /*
+            REDIRECT PAGE
+            This is a simple page that immediately redirects to home.html.
+            The CSS just shows "Loading system..." centred on a black screen
+            in case the redirect takes a moment.
+
+            display: flex + align-items/justify-content: center on the body
+            centres the text both horizontally and vertically.
+            height: 100vh makes the body fill the full screen height.
+        */
         body { background: black; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
     </style>
 </head>
 <body>
     <div>Loading system...</div>
+
+    <!--
+        window.location.href = "url" navigates the browser to that URL.
+        This is a JavaScript redirect — the browser loads this page,
+        runs the script, and immediately goes to home.html.
+
+        Alternative: you could use a <meta> redirect in <head> instead:
+        <meta http-equiv="refresh" content="0; url=home.html">
+        That works without JavaScript.
+    -->
     <script>
-        // Direct redirect without the green hacking screen
         window.location.href = "home.html";
     </script>
 </body>

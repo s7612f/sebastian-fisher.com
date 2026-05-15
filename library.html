@@ -6,14 +6,14 @@
     <title>Library // Sebastian Fisher</title>
     <link rel="icon" href="/favicon.png" type="image/png">
     <link rel="stylesheet" href="retro.css">
+    <!-- No extra <style> block here — this page uses retro.css as-is.
+         The dark blue background and gold borders all come from that file. -->
 </head>
 <body>
     <div class="shade"></div>
 
     <div class="logo-row" style="margin-top: 20px;">
-        <img src="media/anlucas/fireworks.gif">
         <h1>SEBASTIAN FISHER.COM</h1>
-        <img src="media/anlucas/fireworks.gif">
     </div>
 
     <hr class="hr-blue">
@@ -23,6 +23,7 @@
         <a href="projects.html">Projects</a>
         <a href="homelab.html">NetSec</a>
         <a href="library.html">Library</a>
+        <a href="blog.html">Blog</a>
     </div>
     <hr class="hr-light-blue">
 
@@ -31,6 +32,24 @@
             <h2>Digital Library</h2>
             <p>Books and documents available for download.</p>
 
+            <!--
+                DOWNLOAD LINKS
+                The "download" attribute on an <a> tag tells the browser to
+                download the file instead of navigating to it.
+
+                Without "download": clicking opens the PDF in the browser.
+                With "download": clicking saves the file to the user's computer.
+
+                TO ADD A NEW DOWNLOAD:
+                <li><a href="filename.pdf" download>Display Name</a></li>
+
+                The file (e.g. filename.pdf) must be in the same folder as this HTML file,
+                or you need to include the path (e.g. href="docs/filename.pdf").
+
+                INLINE STYLES:
+                style="..." on an element overrides CSS for just that element.
+                Here we remove bullet points and set line-height for spacing.
+            -->
             <ul style="list-style: none; padding: 0; margin: 20px 0; line-height: 2.2;">
                 <li><a href="basic-principles-of-design.pdf" download>Basic Principles of Design</a></li>
                 <li><a href="pdfcoffee.com-king-warrior-magician-lover-by-robert-moore.pdf" download>King, Warrior, Magician, Lover — Robert Moore</a></li>

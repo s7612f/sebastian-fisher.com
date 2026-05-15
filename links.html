@@ -7,18 +7,24 @@
     <title>Sebastian Fisher // Links</title>
     <link rel="stylesheet" href="retro.css">
     <style>
+        /* Override the default background with a tiled image.
+           url("...") loads an image. The browser tiles it automatically
+           because retro.css sets background-repeat: repeat on body. */
         body { background-image: url("media/backgrounds/017C.png"); }
+
+        /* list-style-type changes the bullet character.
+           You can use: disc (default), circle, square, none,
+           or any string in quotes like '→ ' here. */
         ul { list-style-type: '→ '; }
+
         li { margin-bottom: 8px; }
     </style>
 </head>
 <body>
     <div class="shade"></div>
-    
+
     <div class="logo-row">
-        <img src="media/anlucas/fireworks.gif">
         <h1>SEBASTIAN FISHER.COM</h1>
-        <img src="media/anlucas/fireworks.gif">
     </div>
 
     <hr class="hr-blue">
@@ -28,11 +34,30 @@
         <a href="projects.html">Projects</a>
         <a href="homelab.html">NetSec</a>
         <a href="library.html">Library</a>
+        <a href="blog.html">Blog</a>
     </div>
     <hr class="hr-light-blue">
 
     <div class="main-card">
         <div class="inner-content">
+            <!--
+                LINK SECTIONS
+                Each section has an <h2> heading and a <ul> list of links.
+                target="_blank" opens the link in a new tab.
+
+                TO ADD A NEW SECTION:
+                <h2>Section Name</h2>
+                <ul>
+                    <li><a href="https://example.com" target="_blank">Site Name</a> — description</li>
+                </ul>
+
+                TO ADD A LINK TO AN EXISTING SECTION:
+                Just add a new <li> inside the <ul>.
+
+                id="privacy" on an <h2> lets you link directly to that section:
+                links.html#privacy will scroll straight to it.
+            -->
+
             <h2 style="margin-top: 0;">Design</h2>
             <h3>Principles</h3>
             <ul>
@@ -54,6 +79,7 @@
                 <li><a href="https://ublockorigin.com" target="_blank">uBlock Origin</a> — ad blocker</li>
             </ul>
 
+            <!-- id="privacy" makes this an anchor — you can link to links.html#privacy -->
             <h2 id="privacy">Privacy</h2>
             <ul>
                 <li><a href="https://privacyguides.org" target="_blank">Privacy Guides</a> — community guide</li>

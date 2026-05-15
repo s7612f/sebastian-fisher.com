@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>Sebastian Fisher // Videos</title>
+    <link rel="stylesheet" href="retro.css">
+    <style>
+        body { background-color: #c0c0c0; }
+
+        /* Wider container than the blog (900px vs 700px) to fit the video grid */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            background-color: #fff;
+            color: #555;
+            outline: 4px ridge #ccc;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+        .blog-header {
+            background-color: #3c445f;
+            padding: 0.6em 5%;
+            border-bottom: 4px ridge #ccc;
+        }
+        .blog-header ul { list-style: none; margin: 0; padding: 0; }
+        .blog-header li { display: inline-block; margin-right: 1.5em; font-size: 1.1em; }
+        .blog-header li a { color: #fff; text-decoration: none; font-family: "Palatino Linotype", Palatino, Baskerville, serif; }
+        .blog-header li a:hover { text-decoration: underline; }
+
+        .blog-content { padding: 20px 5% 30px 5%; }
+        .blog-content h1 {
+            color: #3c445f;
+            font-family: "Palatino Linotype", Palatino, Baskerville, serif;
+            font-size: 1.8em;
+            margin: 0 0 0.3em 0;
+        }
+        .blog-content p { line-height: 1.6em; margin-bottom: 1em; color: #999; }
+        .blog-content a { color: #0245d7; }
+        .blog-content a:hover { background-color: #c9f1fe; }
+
+        /*
+            CSS GRID — the video layout.
+
+            display: grid turns this into a grid container.
+            grid-template-columns defines how many columns and how wide.
+
+            repeat(auto-fill, minmax(270px, 1fr)) means:
+              - auto-fill: create as many columns as will fit
+              - minmax(270px, 1fr): each column is at least 270px wide,
+                but can stretch equally to fill remaining space
+              - This gives you 3 columns on wide screens, 2 on medium, 1 on mobile
+              - No media queries needed — the grid is responsive by itself
+
+            gap: 16px adds spacing between grid items.
+        */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 16px;
+            margin-top: 1.2em;
+        }
+
+        .video-card {
+            background: #f7f8fa;
+            border: 1px solid #eee;
+            overflow: hidden;      /* clips anything that sticks out of the card */
+        }
+
+        /*
+            aspect-ratio: 16 / 9 keeps the iframe in widescreen proportions
+            no matter the width. This replaces the old padding-bottom hack.
+            width: 100% makes it fill the card.
+            border: none removes the default iframe border.
+        */
+        .video-card iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: block;
+            border: none;
+        }
+
+        .video-card .video-title {
+            padding: 8px 10px;
+            font-size: 0.8em;
+            color: #555;
+            line-height: 1.3;
+        }
+
+        .blog-footer { padding: 0 5% 16px 5%; font-size: 0.8em; color: #999; }
+    </style>
+</head>
+<body>
+    <div class="shade"></div>
+
+    <div class="logo-row" style="margin-top: 20px;">
+        <h1>SEBASTIAN FISHER.COM</h1>
+    </div>
+
+    <hr class="hr-blue">
+    <div class="nav-center">
+        <a href="home.html">Home</a>
+        <a href="links.html">Links</a>
+        <a href="projects.html">Projects</a>
+        <a href="homelab.html">NetSec</a>
+        <a href="library.html">Library</a>
+        <a href="blog.html">Blog</a>
+    </div>
+    <hr class="hr-light-blue">
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="homelab.html">NetSec</a></li>
+            </ul>
+        </div>
+        <div class="blog-content">
+            <h1>Videos</h1>
+            <p>Worth watching.</p>
+
+            <div class="video-grid">
+
+                <!--
+                    HOW TO ADD A VIDEO:
+
+                    1. Go to the YouTube video you want
+                    2. The URL looks like: https://www.youtube.com/watch?v=dQw4w9WcXgQ
+                       The VIDEO ID is the bit after v= (in this case: dQw4w9WcXgQ)
+                    3. Copy the block below and replace VIDEO_ID_HERE with your ID
+                    4. Change "Title here" to whatever you want to call it
+
+                    youtube-nocookie.com is YouTube's privacy-enhanced mode —
+                    it doesn't set tracking cookies on your visitors.
+
+                    allowfullscreen lets the viewer go fullscreen.
+                    loading="lazy" means the browser only loads the video when
+                    the user scrolls near it — saves bandwidth on pages with many videos.
+
+                    TEMPLATE — copy this:
+                    <div class="video-card">
+                        <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_HERE" allowfullscreen loading="lazy"></iframe>
+                        <div class="video-title">Title here</div>
+                    </div>
+                -->
+
+                <!-- example — delete or replace with your first real video -->
+                <div class="video-card">
+                    <iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WcXgQ" allowfullscreen loading="lazy"></iframe>
+                    <div class="video-title">Placeholder — replace with your first video</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="blog-footer">
+            Hand-coded HTML. No cookies. No trackers.
+        </div>
+    </div>
+
+    <script src="retro.js"></script>
+</body>
+</html>

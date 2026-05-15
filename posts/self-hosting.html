@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>Sebastian Fisher // Getting Started with Self-Hosting</title>
+
+    <!-- Because this file is in the posts/ subfolder, we go up one level with ../
+         to reach retro.css in the parent folder.
+         ../  means "go up one directory"
+         ./  means "current directory"
+         /   means "root of the site" -->
+    <link rel="stylesheet" href="../retro.css">
+
+    <style>
+    /*
+        BLOG POST TEMPLATE
+        This is the Deep Blue theme — same as blog.html but for a single post.
+
+        TO CREATE A NEW BLOG POST:
+        1. Copy this entire file
+        2. Save it in the posts/ folder with a descriptive filename (e.g. posts/my-new-post.html)
+        3. Change the <title> tag
+        4. Change the <h1> heading
+        5. Update the date and tag in .post-meta
+        6. Write your content using <p>, <h2>, <a>, <strong>, <code>, <blockquote>
+        7. Add a link to the post in blog.html's post-list
+
+        USEFUL HTML TAGS FOR WRITING:
+        <p>Paragraph text</p>
+        <h2>Section Heading</h2>
+        <strong>Bold text</strong>
+        <em>Italic text</em>
+        <a href="https://example.com" target="_blank">Link text</a>
+        <code>inline code</code>
+        <blockquote>A quote from someone</blockquote>
+        <br> — line break (no closing tag needed)
+        &mdash; — em dash (—)
+    */
+
+        body { background-color: #c0c0c0; }
+
+        .blog-container {
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            background-color: #fff;
+            color: #555;
+            outline: 4px ridge #ccc;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+        .blog-header {
+            background-color: #3c445f;
+            padding: 0.6em 5%;
+            border-bottom: 4px ridge #ccc;
+        }
+        .blog-header ul { list-style: none; margin: 0; padding: 0; }
+        .blog-header li { display: inline-block; margin-right: 1.5em; font-size: 1.1em; }
+        .blog-header li a { color: #fff; text-decoration: none; font-family: "Palatino Linotype", Palatino, Baskerville, serif; }
+        .blog-header li a:hover { text-decoration: underline; }
+
+        .blog-content { padding: 20px 5% 30px 5%; }
+        .blog-content h1 { color: #3c445f; font-family: "Palatino Linotype", Palatino, Baskerville, serif; font-size: 1.8em; margin: 0 0 0.3em 0; }
+
+        /* Post metadata line — shows date and tags.
+           border-bottom draws a line separating the meta from the content. */
+        .blog-content .post-meta { color: #999; font-size: 0.8em; margin-bottom: 1.5em; padding-bottom: 1em; border-bottom: 1px solid #eee; }
+        .blog-content .post-meta span { margin-right: 16px; }
+        .blog-content .post-tag { font-size: 0.85em; color: #3c445f; background: #e8ecf2; padding: 2px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .blog-content p { line-height: 1.6em; margin-bottom: 1em; }
+        .blog-content h2 { color: #3c445f; font-family: "Palatino Linotype", Palatino, Baskerville, serif; font-size: 1.2em; margin: 1.8em 0 0.6em 0; }
+        .blog-content a { color: #0245d7; }
+        .blog-content a:hover { background-color: #c9f1fe; }
+        .blog-content strong { color: #333; }
+
+        /* Inline code styling — the <code> tag.
+           font-family: monospace gives it a typewriter look.
+           background + padding makes it stand out from surrounding text. */
+        .blog-content code { font-family: 'Courier New', monospace; font-size: 0.85em; color: #3c445f; background: #f0f2f5; padding: 1px 5px; border-radius: 2px; }
+
+        /* Footer with navigation links back to the blog and to netsec.
+           &larr; is ← and &rarr; is → (HTML entities for arrows). */
+        .blog-footer { padding: 0 5% 16px 5%; font-size: 0.8em; color: #999; border-top: 1px solid #eee; padding-top: 12px; }
+        .blog-footer a { color: #999; text-decoration: none; }
+        .blog-footer a:hover { color: #0245d7; }
+    </style>
+</head>
+<body>
+    <div class="shade"></div>
+
+    <div class="logo-row" style="margin-top: 20px;">
+        <h1>SEBASTIAN FISHER.COM</h1>
+    </div>
+
+    <!-- Nav links use ../ to go up from posts/ to the root folder -->
+    <hr class="hr-blue">
+    <div class="nav-center">
+        <a href="../home.html">Home</a>
+        <a href="../links.html">Links</a>
+        <a href="../projects.html">Projects</a>
+        <a href="../homelab.html">NetSec</a>
+        <a href="../library.html">Library</a>
+        <a href="../blog.html">Blog</a>
+    </div>
+    <hr class="hr-light-blue">
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <ul>
+                <li><a href="../home.html">Home</a></li>
+                <li><a href="../blog.html">Archive</a></li>
+                <li><a href="../homelab.html">NetSec</a></li>
+            </ul>
+        </div>
+        <div class="blog-content">
+            <!-- POST TITLE — change this for each new post -->
+            <h1>Getting Started with Self-Hosting</h1>
+
+            <!-- POST META — date and tag(s) -->
+            <div class="post-meta">
+                <span>2026.05.15</span>
+                <span class="post-tag">self-hosting</span>
+            </div>
+
+            <!-- POST BODY — your writing goes here.
+                 Use <p> for paragraphs, <h2> for section headings,
+                 <a> for links, <strong> for bold, <code> for code. -->
+
+            <p>Self-hosting means running your own server — a machine in your home (or a rented VPS) that you control entirely. Your files, your email, your photos, your VPN, your monitoring stack. No terms of service. No company scanning your data to train a model. No subscription that disappears when the startup shuts down.</p>
+
+            <p>It is not as hard as it sounds, and the learning curve pays off fast. This is the rough order I'd recommend.</p>
+
+            <h2>Hardware</h2>
+
+            <p>You do not need anything special to start. An old laptop, a Raspberry Pi 4 or 5, or any x86 machine with 4GB of RAM and a spare drive will run everything on this page comfortably. My home server is a small-form-factor PC running Ubuntu 24.04 LTS — quiet, low power, and always on.</p>
+
+            <p>If you want something cloud-based first, rent a small VPS from <a href="https://www.hetzner.com" target="_blank">Hetzner</a> (cheap, European, good privacy posture) or <a href="https://www.linode.com" target="_blank">Linode</a>. A 2-core, 4GB RAM instance is enough to start. You can always migrate later.</p>
+
+            <h2>Operating System</h2>
+
+            <p><strong>Ubuntu Server LTS</strong> is the easiest starting point — wide documentation, predictable support windows, and everything installs with <code>apt</code>. Debian is a reasonable alternative if you want something more minimal. Avoid anything that requires a GUI; a server running a desktop environment is just wasting RAM and attack surface.</p>
+
+            <p>Set up SSH key access immediately after install. Put your public key in <code>~/.ssh/authorized_keys</code> and disable password login. This is not optional — if your server has a public IP, it will be scanned within minutes of going online.</p>
+
+            <h2>Docker</h2>
+
+            <p><a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank">Docker</a> is how almost everything runs on my server. Each service lives in its own container — isolated, reproducible, easy to update or roll back. A <code>docker-compose.yml</code> file describes your entire stack: what images to run, what ports to expose, what volumes to mount. Spinning up Pi-hole, Grafana, or Immich is a matter of writing a compose file and running <code>docker compose up -d</code>.</p>
+
+            <p>Get comfortable with Docker before adding services. Learn what <code>docker ps</code>, <code>docker logs</code>, and <code>docker compose down</code> do. The rest follows naturally.</p>
+
+            <h2>What to Run</h2>
+
+            <p>Start with the things that give you the most back immediately. In rough order of impact:</p>
+
+            <p><strong>Pi-hole + Unbound</strong> — network-wide DNS blocking and recursive resolution. Every device on your network benefits the moment you point your router's DNS at it. Details in the <a href="../homelab.html">NetSec guide</a>.</p>
+
+            <p><strong><a href="https://immich.app" target="_blank">Immich</a></strong> — a self-hosted Google Photos replacement. Facial recognition, albums, shared libraries, a mobile app that auto-uploads in the background.</p>
+
+            <p><strong><a href="https://jellyfin.org" target="_blank">Jellyfin</a></strong> — self-hosted media server. Stream your film and music library to any device on your network or through a VPN from anywhere.</p>
+
+            <p><strong><a href="https://github.com/dani-garcia/vaultwarden" target="_blank">Vaultwarden</a></strong> — a lightweight, self-hosted Bitwarden-compatible password manager. Your passwords live on your server, not on someone else's cloud.</p>
+
+            <p><strong>WireGuard</strong> — your own VPN server. Once this is running, everything above is accessible from anywhere as if you were home. Details in the <a href="../homelab.html">NetSec guide</a>.</p>
+
+            <h2>Reverse Proxy and SSL</h2>
+
+            <p>Once you have more than one service running, you want a reverse proxy to sit in front of them — routing <code>pihole.yourdomain.com</code> to one container, <code>jellyfin.yourdomain.com</code> to another, all over HTTPS. <a href="https://nginxproxymanager.com" target="_blank">Nginx Proxy Manager</a> does this with a web UI and handles Let's Encrypt certificates automatically.</p>
+
+            <p>For external access without exposing your home IP, <a href="https://www.cloudflare.com/products/tunnel/" target="_blank">Cloudflare Tunnels</a> are a clean option — a persistent outbound connection from your server to Cloudflare's edge, no port forwarding required.</p>
+
+            <h2>Backups</h2>
+
+            <p>Everything on your server should be backed up somewhere off-site. <a href="https://restic.net" target="_blank">Restic</a> is excellent — encrypted, deduplicated, supports local and remote backends including Backblaze B2 and S3-compatible storage. Run it on a cron job. Test your restores occasionally. A backup you have never tested is a backup you cannot trust.</p>
+
+            <p>The 3-2-1 rule: three copies of the data, on two different media types, with one copy off-site. It is the right answer and it has not changed.</p>
+
+            <h2>Security</h2>
+
+            <p>A home server exposed to the internet is a real target. The full security stack I run is documented in the <a href="../homelab.html">NetSec guide</a> — UFW, fail2ban, CrowdSec, WireGuard with Cloak obfuscation, monitoring via Prometheus and Grafana. Do not skip this part. The tools are not complicated and the alternative is a compromised machine on your home network.</p>
+        </div>
+
+        <!-- Footer navigation — &larr; is ← and &rarr; is →
+             &nbsp; is a non-breaking space (for adding extra gaps) -->
+        <div class="blog-footer">
+            <a href="../blog.html">&larr; Back to Blog</a>
+            &nbsp;&nbsp;
+            <a href="../homelab.html">NetSec Guide &rarr;</a>
+        </div>
+    </div>
+
+    <script src="../retro.js"></script>
+</body>
+</html>

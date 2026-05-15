@@ -4,32 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon.png" type="image/png">
-    <title>Sebastian Fisher // Portfolio</title>
+    <title>Sebastian Fisher // Projects</title>
     <link rel="stylesheet" href="retro.css">
     <style>
-        body { 
-            background-image: url("media/backgrounds/023C.png"); 
-            background-size: 150px; 
-        }
-        
+        /* Tiled background image. background-size: 150px scales each tile to 150px wide. */
+        body { background-image: url("media/backgrounds/023C.png"); background-size: 150px; }
+
+        /*
+            PROJECT CARDS
+            Each project is a dashed-border box.
+            border: 2px dashed #888 draws a dashed grey border.
+            background: rgba(255,255,255,0.5) is white at 50% opacity (semi-transparent).
+
+            TO ADD A NEW PROJECT:
+            Copy one of the project-item divs below and edit the content.
+        */
         .project-item {
             border: 2px dashed #888;
             padding: 15px;
             margin-bottom: 20px;
             background: rgba(255,255,255,0.5);
         }
-        
         .project-item h3 { margin-top: 0; color: #d32f2f; }
+        .project-item p { color: white; }
+        .project-item ul { color: white; margin: 8px 0 8px 20px; }
+        .project-item li { margin-bottom: 4px; }
+
+        /*
+            STATUS BADGES
+            Small coloured labels. The base .status-badge sets the shape,
+            then .status-active and .status-ongoing change the colour.
+
+            USE: <span class="status-badge status-active">Active</span>
+            You can add your own: .status-paused { background: #9c27b0; }
+        */
         .status-badge { background: #2196f3; color: white; padding: 2px 8px; font-size: 0.8em; font-weight: bold; text-transform: uppercase; }
+        .status-active { background: #4caf50; }   /* green */
+        .status-ongoing { background: #ff9800; }   /* orange */
     </style>
 </head>
 <body>
     <div class="shade"></div>
-    
+
     <div class="logo-row">
-        <img src="media/anlucas/fireworks.gif">
         <h1>SEBASTIAN FISHER.COM</h1>
-        <img src="media/anlucas/fireworks.gif">
     </div>
 
     <hr class="hr-blue">
@@ -39,33 +57,90 @@
         <a href="projects.html">Projects</a>
         <a href="homelab.html">NetSec</a>
         <a href="library.html">Library</a>
+        <a href="blog.html">Blog</a>
     </div>
     <hr class="hr-light-blue">
 
     <div class="main-card">
         <div class="inner-content">
-            <h2 style="margin-top: 0;">Current Works</h2>
-            
+            <h2 style="margin-top: 0;">Projects</h2>
+
+            <!--
+                PROJECT TEMPLATE — copy this block to add a new project:
+
+                <div class="project-item">
+                    <span class="status-badge status-active">Active</span>
+                    <h3>Project Name</h3>
+                    <p>Description of what the project is.</p>
+                    <ul>
+                        <li><strong>Detail:</strong> Value</li>
+                    </ul>
+                </div>
+
+                <strong> makes text bold.
+            -->
+
+            <!-- VIDEO EDITING -->
             <div class="project-item">
-                <span class="status-badge">In Progress</span>
-                <h3>Project Title Template</h3>
-                <p>This is where I'll describe what I'm currently building. It could be a web app, a script, or a research project.</p>
-                <p><strong>Tools:</strong> HTML, CSS, JavaScript</p>
-                <a href="#">View Details →</a>
+                <span class="status-badge status-active">Active</span>
+                <h3>Video Editing</h3>
+                <p>Learning video editing and motion graphics. Working with DaVinci Resolve as my primary NLE — colour grading, cuts, transitions, and building up a workflow for short-form content.</p>
+                <ul>
+                    <li><strong>Software:</strong> DaVinci Resolve, After Effects, Handbrake</li>
+                    <li><strong>Current focus:</strong> Colour grading, pacing, and clean transitions</li>
+                    <li><strong>Goal:</strong> Build a portfolio of short edits and learn Fusion for motion graphics</li>
+                </ul>
             </div>
 
+            <!-- MUSIC PRODUCTION -->
             <div class="project-item">
-                <span class="status-badge">Concept</span>
-                <h3>Future Project Idea</h3>
-                <p>Placeholder for the next big thing. I use this space to track my ideas and progress.</p>
-                <a href="#">Coming Soon...</a>
+                <span class="status-badge status-active">Active</span>
+                <h3>Music Production</h3>
+                <p>Producing music in Logic Pro. Writing, recording, mixing, and learning sound design from scratch. Interested in synthesis, sampling, and getting better at arrangement and mixing.</p>
+                <ul>
+                    <li><strong>DAW:</strong> Logic Pro</li>
+                    <li><strong>Hardware:</strong> Focusrite interface, MIDI controller</li>
+                    <li><strong>Current focus:</strong> Sound design, mixing fundamentals, learning EQ and compression properly</li>
+                    <li><strong>Goal:</strong> Finish and release tracks, build a catalogue</li>
+                </ul>
             </div>
 
-            <h2>Archive</h2>
-            <ul>
-                <li>Old Experiment 1</li>
-                <li>Old Experiment 2</li>
-            </ul>
+            <!-- WORKING OUT -->
+            <div class="project-item">
+                <span class="status-badge status-ongoing">Ongoing</span>
+                <h3>Training</h3>
+                <p>Strength training and conditioning. Following a structured programme focused on progressive overload and consistency. Tracking lifts, nutrition, and recovery.</p>
+                <ul>
+                    <li><strong>Programme:</strong> Push/pull/legs split, 6 days a week</li>
+                    <li><strong>Tracking:</strong> Logging sets, reps, and weight progression</li>
+                    <li><strong>Current focus:</strong> Compound lifts — squat, bench, deadlift, overhead press</li>
+                    <li><strong>Goal:</strong> Consistent strength gains, stay injury-free, build long-term discipline</li>
+                </ul>
+            </div>
+
+            <!-- WEBSITES -->
+            <div class="project-item">
+                <span class="status-badge status-active">Active</span>
+                <h3>Web Projects</h3>
+                <p>Building and maintaining personal websites. Hand-coded HTML and CSS, no frameworks, no build tools. Currently running two sites:</p>
+                <ul>
+                    <li><strong>sebastian-fisher.com</strong> — this site. Retro Geocities aesthetic, hosted on Cloudflare.</li>
+                    <li><strong>lastlamp.co.uk</strong> — a blog on privacy, the web, and whatever else. Hosted on Neocities.</li>
+                </ul>
+            </div>
+
+            <!-- HOMELAB -->
+            <div class="project-item">
+                <span class="status-badge status-ongoing">Ongoing</span>
+                <h3>Home Server & NetSec</h3>
+                <p>Running a home server with a full security and self-hosting stack. Docker, Pi-hole, WireGuard, CrowdSec, Prometheus, Grafana — the whole thing documented in the <a href="homelab.html">NetSec guide</a>.</p>
+                <ul>
+                    <li><strong>OS:</strong> Ubuntu Server 24.04 LTS</li>
+                    <li><strong>Services:</strong> Pi-hole, Unbound, Immich, Jellyfin, Vaultwarden, WireGuard + Cloak</li>
+                    <li><strong>Monitoring:</strong> Prometheus + Grafana + Alertmanager</li>
+                </ul>
+            </div>
+
         </div>
     </div>
 

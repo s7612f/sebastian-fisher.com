@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon.png" type="image/png">
-    <title>Sebastian Fisher // "I Have Nothing to Hide"</title>
+    <title>Sebastian Fisher // I Have Nothing to Hide</title>
     <link rel="stylesheet" href="../retro.css">
     <style>
         /* Same Deep Blue blog post theme — see posts/self-hosting.html for
@@ -23,14 +23,13 @@
             font-size: 18px;
         }
         .blog-header {
-            background-color: #3c445f;
-            padding: 0.6em 5%;
-            border-bottom: 4px ridge #ccc;
+            padding: 8px 5%;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.8em;
+            color: #999;
         }
-        .blog-header ul { list-style: none; margin: 0; padding: 0; }
-        .blog-header li { display: inline-block; margin-right: 1.5em; font-size: 1.1em; }
-        .blog-header li a { color: #fff; text-decoration: none; font-family: "Palatino Linotype", Palatino, Baskerville, serif; }
-        .blog-header li a:hover { text-decoration: underline; }
+        .blog-header a { color: #3c445f; text-decoration: none; }
+        .blog-header a:hover { text-decoration: underline; }
 
         .blog-content { padding: 20px 5% 30px 5%; }
         .blog-content h1 { color: #3c445f; font-family: "Palatino Linotype", Palatino, Baskerville, serif; font-size: 1.8em; margin: 0 0 0.3em 0; }
@@ -76,58 +75,49 @@
     <hr class="hr-light-blue">
 
     <div class="blog-container">
-        <div class="blog-header">
-            <ul>
-                <li><a href="../home.html">Home</a></li>
-                <li><a href="../blog.html">Archive</a></li>
-                <li><a href="../homelab.html">NetSec</a></li>
-            </ul>
-        </div>
+        <div class="blog-header"><a href="../blog.html">&#8592; Blog</a></div>
         <div class="blog-content">
-            <h1>"I Have Nothing to Hide" — and Why That's the Wrong Question</h1>
+            <h1>"I Have Nothing to Hide": Why That's the Wrong Question</h1>
             <div class="post-meta">
                 <span>2026.05.15</span>
                 <span class="post-tag">privacy</span>
             </div>
 
-            <!-- <em> is emphasis (italic). Similar to <i> but more semantic —
-                 screen readers may pronounce it differently. -->
-            <p>You have probably heard it before — maybe you have even said it yourself. Someone mentions a VPN, or browser fingerprinting, or the fact that their ISP logs everything they do online, and the response comes back: <em>"I don't really care, I have nothing to hide."</em></p>
+            <p>You have probably heard it before, maybe said it yourself. Someone brings up a VPN or browser tracking and the response comes back: <em>"I don't really care, I have nothing to hide."</em></p>
 
-            <p>It sounds reasonable. It sounds like common sense. It is neither.</p>
+            <p>It sounds like common sense. It is not.</p>
 
             <h2>Privacy Is Not About Guilt</h2>
 
-            <p>The "nothing to hide" argument assumes that privacy is only something criminals need. But think about what you actually do online: you search for medical symptoms, you read about political ideas you are not sure you agree with yet, you look up your finances, you message people you love. None of that is illegal. All of it is private.</p>
+            <p>The argument assumes privacy is only something criminals need. Think about what you actually do online: search medical symptoms, read about ideas you are still forming opinions on, check your finances, message people. None of that is illegal. All of it is private.</p>
 
-            <p>You close the bathroom door. You don't hand your diary to strangers. You lower your voice in a restaurant. None of those things mean you are hiding something criminal — they mean you are a human being with an interior life, and you understand that not everything belongs to everyone.</p>
+            <p>You close the bathroom door. You do not hand your diary to strangers. You lower your voice in a restaurant. None of that means you are hiding something criminal. It means you understand that not everything is for everyone.</p>
 
-            <!-- <blockquote> is for quotes. Styled with a left border in the CSS above. -->
             <blockquote>"Arguing that you don't care about the right to privacy because you have nothing to hide is no different than saying you don't care about free speech because you have nothing to say." — Edward Snowden</blockquote>
 
-            <h2>Surveillance Creep Is Real</h2>
+            <h2>Surveillance Creep</h2>
 
-            <p>Even if you trust the current government, the current ISP, the current platform — the infrastructure you accept today does not disappear when circumstances change. Systems built to catch criminals get used to monitor protesters. Tools designed for national security get turned on journalists and lawyers. Data collected for advertising gets subpoenaed in court cases.</p>
+            <p>Even if you trust your current government, your current ISP, your current platform, the infrastructure you accept today does not go away when circumstances change. Systems built to catch criminals get used to monitor protesters. Tools built for national security get turned on journalists and lawyers. Data collected for advertising gets subpoenaed in court.</p>
 
-            <p>The "nothing to hide" argument asks you to make a bet: that everyone who will ever have access to your data, in every context, forever, will always use it fairly. That is not a bet anyone should be comfortable making.</p>
+            <p>The argument asks you to bet that everyone who will ever have access to your data, in every context, forever, will use it fairly. That is not a reasonable bet.</p>
 
             <h2>Your Data Is a Product</h2>
 
-            <p>Even in the most boring, everyday case — no government, no court, no controversy — your ISP is selling a profile of your browsing habits. Advertisers are buying it. Data brokers are packaging it. The argument "I have nothing to hide" only applies if you think it is fine for a company you have never heard of to know more about your habits than your closest friends.</p>
+            <p>In the most ordinary case, no government, no court, no controversy, your ISP is selling a profile of your browsing habits. Advertisers buy it. Data brokers package and resell it. "I have nothing to hide" only holds up if you are comfortable with companies you have never heard of knowing your habits in more detail than your friends do.</p>
 
-            <p>It is not about doing something wrong. It is about who profits from your attention, your patterns, and your life.</p>
+            <p>It is not about doing something wrong. It is about who profits from your patterns.</p>
 
-            <h2>VPNs Are Legal. Using One Is Not Suspicious.</h2>
+            <h2>VPNs Are Not Suspicious</h2>
 
-            <p>There is a persistent idea that if you use a VPN, you must be doing something shady. This is false. VPNs are legal in most countries and are used every day by remote workers, journalists, travellers, and ordinary people who simply value their privacy. The association between privacy tools and wrongdoing is a narrative that benefits the people who profit from open access to your data.</p>
+            <p>There is a persistent idea that using a VPN means you are doing something shady. VPNs are legal in most countries and are used daily by remote workers, journalists, and people who just want their traffic to stay private. The association between privacy tools and wrongdoing is pushed by the people who profit from your data being open.</p>
 
-            <p>In some countries there is active pressure on ISPs to flag or throttle VPN traffic. If you are in one of those regions, a VPN with <strong>obfuscation features</strong> — which disguise VPN traffic as ordinary HTTPS — becomes particularly important.</p>
+            <p>In some countries ISPs are pressured to flag or throttle VPN traffic. If you are in one of those places, a VPN with obfuscation, which makes VPN traffic look like ordinary HTTPS, is worth looking into. I cover how I do this with <a href="../homelab.html#cloak">WireGuard and Cloak</a> in the NetSec guide.</p>
 
             <h2>The Right Question</h2>
 
-            <p>The question was never "do I have something to hide?" The real questions are: who has access to your data, what can they do with it, and did you ever actually agree to that? Most people, if they thought about it honestly, would answer: I don't know, a lot, and not really.</p>
+            <p>The question was never whether you have something to hide. The real questions are: who has access to your data, what can they do with it, and did you ever agree to that? Most people, if honest, would say: not sure, quite a lot, and not really.</p>
 
-            <p>That is worth caring about — even if you have nothing to hide.</p>
+            <p>That is worth thinking about.</p>
         </div>
         <div class="blog-footer">
             <a href="../blog.html">&larr; Back to Blog</a>

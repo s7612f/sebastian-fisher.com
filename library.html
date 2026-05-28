@@ -10,6 +10,29 @@
         body { background-image: url("media/backgrounds/017C.png"); }
         ul { list-style-type: '→ '; }
         li { margin-bottom: 8px; }
+
+        /* Book download rows */
+        .book-list { list-style: none; padding: 0; margin: 20px 0; }
+        .book-list li {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        .book-list li:last-child { border-bottom: none; }
+        .book-title { flex: 1; color: white; font-weight: bold; }
+        .book-actions { display: flex; gap: 8px; flex-shrink: 0; }
+        .book-actions a {
+            font-size: 0.8em;
+            padding: 2px 10px;
+            border: 1px solid gold;
+            color: #ffee00;
+            text-decoration: none;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .book-actions a:hover { background: gold; color: #000; }
     </style>
 </head>
 <body>
@@ -33,41 +56,46 @@
     <div class="main-card">
         <div class="inner-content">
             <h2 style="margin-top: 0;">Library</h2>
+            <p>Downloads and archival scans. See also: <a href="references.html">References</a> for curated design finds and things worth printing.</p>
 
             <h2>Graphic Standards Manuals</h2>
-            <p>Identity systems and brand guidelines — original or archival scans.</p>
+            <p>Identity systems and brand guidelines: original or archival scans.</p>
             <ul>
-                <li><a href="https://archive.org/details/ATTGraphicStandardsManual" target="_blank">Bell System Graphic Standards Manual (1969)</a> — Saul Bass; the Bell logo identity system</li>
-                <li><a href="https://archive.org/details/nasa-graphics-standards-manual-1975" target="_blank">NASA Graphics Standards Manual (1975)</a> — the worm era; original PDF scan</li>
-                <li><a href="https://archive.org/details/NASA_Graphics_Standards_Manual_1976" target="_blank">NASA Graphics Standards Manual (1976)</a> — revised edition</li>
-                <li><a href="https://archive.org/details/nycta-graphics-standards-manual" target="_blank">NYC Transit Authority Graphics Standards Manual</a> — Vignelli / Unimark International</li>
-                <li><a href="https://archive.org/details/nj-transit-graphic-standards" target="_blank">NJ Transit Graphic Standards</a> — New Jersey Transit identity programme</li>
-                <li><a href="https://archive.org/details/ibm-logo-standards" target="_blank">IBM Logo Standards</a> — Paul Rand's 8-bar and 13-bar IBM identity</li>
-                <li><a href="https://archive.org/details/ibm-graphics-standards" target="_blank">IBM Corporate Design Programme</a> — 1990s–2000s IBM graphic standards</li>
-                <li><a href="https://archive.org/details/apple-identity-guidelines-1987" target="_blank">Apple Identity Guidelines (1987)</a> — pre-Jobs return; rainbow logo era</li>
-                <li><a href="https://archive.org/details/federal-design-improvement-program" target="_blank">Federal Design Improvement Program</a> — US government identity system, Danne &amp; Blackburn</li>
-                <li><a href="https://letterformarchive.org/letterform-archive-online/" target="_blank">Letterform Archive Online</a> — 3,500+ digitised design artefacts including identity manuals</li>
-            </ul>
-
-            <h2>Things to Print</h2>
-            <p>Databases and archives worth downloading and printing.</p>
-            <ul>
-                <li><a href="https://patents.google.com" target="_blank">Google Patents</a> — historical patent drawings; especially pre-1960 mechanical diagrams</li>
-                <li><a href="https://images.nasa.gov" target="_blank">NASA Image and Video Library</a> — high-res mission photography, schematics, technical diagrams</li>
-                <li><a href="https://skyvector.com" target="_blank">SkyVector</a> — sectional aeronautical charts; IFR en-route charts; beautiful cartography</li>
-                <li><a href="https://www.usgs.gov/products/maps/topo-maps" target="_blank">USGS Topographic Maps</a> — full-resolution US topo maps; printable PDFs</li>
-                <li><a href="https://www.cia.gov/readingroom/" target="_blank">CIA Reading Room</a> — declassified documents; Cold War cartography and technical intelligence</li>
-                <li><a href="https://www.biodiversitylibrary.org" target="_blank">Biodiversity Heritage Library</a> — natural history illustration; 19th-century botanical and zoological plates</li>
-                <li><a href="https://bitsavers.org" target="_blank">Bitsavers</a> — scanned manuals for vintage computers and electronics; schematics, engineering docs</li>
-                <li><a href="https://www.tuhs.org" target="_blank">TUHS — Unix Heritage Society</a> — Unix source code, documentation, and system diagrams</li>
-                <li><a href="https://archive.org/details/computermagazines" target="_blank">Archive.org — Computer Magazines</a> — scanned issues of Byte, Creative Computing, dr. dobb's, and others</li>
+                <li><a href="https://archive.org/details/ATTGraphicStandardsManual" target="_blank">Bell System Graphic Standards Manual (1969)</a>: Saul Bass; the Bell logo identity system</li>
+                <li><a href="https://archive.org/details/nasa-graphics-standards-manual-1975" target="_blank">NASA Graphics Standards Manual (1975)</a>: the worm era; original PDF scan</li>
+                <li><a href="https://archive.org/details/NASA_Graphics_Standards_Manual_1976" target="_blank">NASA Graphics Standards Manual (1976)</a>: revised edition</li>
+                <li><a href="https://archive.org/details/nycta-graphics-standards-manual" target="_blank">NYC Transit Authority Graphics Standards Manual</a>: Vignelli / Unimark International</li>
+                <li><a href="https://archive.org/details/nj-transit-graphic-standards" target="_blank">NJ Transit Graphic Standards</a>: New Jersey Transit identity programme</li>
+                <li><a href="https://archive.org/details/ibm-logo-standards" target="_blank">IBM Logo Standards</a>: Paul Rand's 8-bar and 13-bar IBM identity</li>
+                <li><a href="https://archive.org/details/ibm-graphics-standards" target="_blank">IBM Corporate Design Programme</a>: 1990s–2000s IBM graphic standards</li>
+                <li><a href="https://archive.org/details/apple-identity-guidelines-1987" target="_blank">Apple Identity Guidelines (1987)</a>: pre-Jobs return; rainbow logo era</li>
+                <li><a href="https://archive.org/details/federal-design-improvement-program" target="_blank">Federal Design Improvement Program</a>: US government identity system, Danne &amp; Blackburn</li>
+                <li><a href="https://oa.letterformarchive.org" target="_blank">Letterform Archive Online</a>: 3,500+ digitised design artefacts including identity manuals</li>
             </ul>
 
             <h2>Downloads</h2>
-            <ul style="list-style: none; padding: 0; margin: 20px 0; line-height: 2.2;">
-                <li><a href="basic-principles-of-design.pdf" download>Basic Principles of Design</a></li>
-                <li><a href="pdfcoffee.com-king-warrior-magician-lover-by-robert-moore.pdf" download>King, Warrior, Magician, Lover — Robert Moore</a></li>
-                <li><a href="personal-data-removal-workbook.pdf" download>Personal Data Removal Workbook (5th Ed.)</a></li>
+            <ul class="book-list">
+                <li>
+                    <span class="book-title">Basic Principles of Design</span>
+                    <span class="book-actions">
+                        <a href="basic-principles-of-design.pdf" target="_blank">Preview</a>
+                        <a href="basic-principles-of-design.pdf" download>Download</a>
+                    </span>
+                </li>
+                <li>
+                    <span class="book-title">King, Warrior, Magician, Lover — Robert Moore</span>
+                    <span class="book-actions">
+                        <a href="pdfcoffee.com-king-warrior-magician-lover-by-robert-moore.pdf" target="_blank">Preview</a>
+                        <a href="pdfcoffee.com-king-warrior-magician-lover-by-robert-moore.pdf" download>Download</a>
+                    </span>
+                </li>
+                <li>
+                    <span class="book-title">Personal Data Removal Workbook (5th Ed.)</span>
+                    <span class="book-actions">
+                        <a href="personal-data-removal-workbook.pdf" target="_blank">Preview</a>
+                        <a href="personal-data-removal-workbook.pdf" download>Download</a>
+                    </span>
+                </li>
             </ul>
         </div>
     </div>

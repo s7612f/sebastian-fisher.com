@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Sebastian Fisher — CV</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap');
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{background:#f2f2ef;color:#000;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+    .page{max-width:1100px;margin:0 auto;padding:48px 48px 80px;border-left:1px solid #000;border-right:1px solid #000;min-height:100vh;background:#f2f2ef}
+
+    /* TOP */
+    .top{display:grid;grid-template-columns:1fr auto;align-items:end;border-bottom:2px solid #000;padding-bottom:24px}
+    .top h1{font-size:clamp(48px,8vw,96px);font-weight:900;letter-spacing:-.04em;line-height:.9;text-transform:uppercase}
+    .top .meta{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;text-align:right;line-height:1.7}
+    .top .meta a{color:#000;border-bottom:1px solid #c0bdb6;text-decoration:none}
+    .top .meta a:hover{border-color:#e63b13;color:#e63b13}
+    .accent{color:#e63b13}
+
+    /* SPECS STRIP */
+    .specs{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:2px solid #000}
+    .specs .spec{padding:14px 0;border-right:1px solid #c0bdb6}
+    .specs .spec:not(:first-child){padding-left:16px}
+    .specs .spec:not(:last-child){padding-right:16px}
+    .specs .spec:last-child{border-right:none}
+    .specs .k{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#666;margin-bottom:4px}
+    .specs .v{font-size:14px;font-weight:600}
+    .specs .v .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#e63b13;margin-right:6px;vertical-align:1px}
+
+    /* SELECTED WORK */
+    .work-item{padding:12px 0;border-top:1px dashed #c0bdb6}
+    .work-item:first-child{border-top:none;padding-top:0}
+    .work-title a{font-size:14.5px;font-weight:600;color:#000;text-decoration:none;border-bottom:1px solid #e63b13}
+    .work-title a:hover{color:#e63b13}
+    .work-note{font-size:13px;color:#555;margin-top:4px;line-height:1.55;max-width:60ch}
+
+    /* CREDENTIALS BLOCK */
+    .credentials{display:grid;grid-template-columns:1fr 1fr 120px;border-bottom:2px solid #000;padding:20px 0}
+    .cred-col{padding-right:32px;border-right:1px solid #c0bdb6}
+    .cred-col:last-child{border-right:none;padding-right:0;padding-left:24px}
+    .cred-col:nth-child(2){padding-left:24px}
+    .cred-k{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#888;margin-bottom:10px}
+    .cred-list{list-style:none}
+    .cred-list li{font-size:13.5px;color:#1a1a1a;padding:3px 0;border-bottom:1px dotted #d8d6d0}
+    .cred-list li:last-child{border-bottom:none}
+    .cred-stats{display:flex;flex-direction:column;gap:16px;justify-content:center;height:100%}
+    .cred-stat .big-n{display:block;font-family:'Inter',sans-serif;font-size:42px;font-weight:900;letter-spacing:-.04em;line-height:1;color:#000}
+    .cred-stat .big-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:#666;margin-top:3px}
+
+    /* HOOK BLOCK */
+    .hook{padding:48px 0 32px;border-bottom:1px solid #000;display:grid;grid-template-columns:180px 1fr;gap:32px;align-items:start}
+    .hook .label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#000;padding-top:18px}
+    .hook .label .num{display:block;font-family:'Inter',sans-serif;font-size:32px;font-weight:900;color:#e63b13;line-height:1;margin-bottom:8px;letter-spacing:-.03em}
+    .hook .pull{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em;line-height:1.05;max-width:22ch}
+    .hook .pull .red{color:#e63b13}
+    .hook .pull .strike{display:block;width:60px;height:3px;background:#000;margin:18px 0 18px}
+    .hook .pull .sub{display:block;margin-top:20px;font-size:13px;color:#555;line-height:1.6;max-width:52ch}
+    .tldr-block{display:block;border-left:3px solid #e63b13;padding:10px 14px;background:rgba(0,0,0,.03)}
+    .tldr-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#e63b13;margin-bottom:8px}
+    .tldr-facts{display:flex;flex-wrap:wrap;gap:0;list-style:none;padding:0;margin:0}
+    .tldr-facts li{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#1a1a1a;letter-spacing:.04em;white-space:nowrap}
+    .tldr-facts li:not(:last-child)::after{content:" ·";color:#e63b13;margin:0 8px 0 0}
+
+    /* ROW */
+    .row{display:grid;grid-template-columns:180px 1fr;gap:32px;border-bottom:1px solid #000;padding:28px 0}
+    .row:last-of-type{border-bottom:none}
+    .label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;padding-top:4px;color:#000}
+    .label .num{display:block;font-family:'Inter',sans-serif;font-size:32px;font-weight:900;color:#e63b13;line-height:1;margin-bottom:8px;letter-spacing:-.03em}
+    .label small{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#888;letter-spacing:.14em;margin-top:6px;font-weight:400;text-transform:none}
+
+    /* STATEMENT */
+    .statement{font-size:16px;line-height:1.65;max-width:62ch;font-weight:400;color:#1a1a1a}
+    .statement p{margin-bottom:14px}
+    .statement p:last-child{margin-bottom:0}
+    .statement strong{font-weight:600}
+    .statement em{font-style:italic}
+    .statement a{color:#000;border-bottom:1px solid #e63b13;text-decoration:none}
+    .statement a:hover{color:#e63b13}
+
+    /* MATCH GRID */
+    .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .match-item{border:1px solid #000;padding:14px 16px;background:#fff}
+    .match-item .match-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:#e63b13;display:block;margin-bottom:6px}
+    .match-item .match-val{font-size:14px;line-height:1.55;color:#1a1a1a}
+
+    /* EXPERIENCE */
+    .exp{display:grid;grid-template-columns:1fr 140px;gap:24px;padding:18px 0;border-top:1px dashed #c0bdb6}
+    .exp:first-child{border-top:none;padding-top:0}
+    .exp h3{font-size:17px;font-weight:700;letter-spacing:-.005em}
+    .exp .co{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:#e63b13;margin-top:2px;margin-bottom:10px}
+    .exp ul{list-style:none;padding-left:0}
+    .exp li{padding-left:18px;position:relative;margin-bottom:4px;font-size:14px;color:#1a1a1a}
+    .exp li::before{content:"";position:absolute;left:0;top:11px;width:10px;height:1px;background:#000}
+    .exp .date{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;text-align:right;padding-top:4px;color:#666}
+
+    /* RECOMMEND box (distinct from existing placeholder) */
+    .recommend{border:1.5px solid #0a66c2;padding:14px 16px;margin:12px 0;background:rgba(10,102,194,.04);font-size:13.5px;line-height:1.6}
+    .recommend .rec-label{font-family:'IBM Plex Mono',monospace;color:#0a66c2;font-weight:700;text-transform:uppercase;letter-spacing:.14em;display:block;margin-bottom:6px;font-size:11px}
+    .recommend .rec-title{font-weight:600;color:#000;margin-bottom:4px;font-size:14px}
+    .recommend p{margin-bottom:6px;color:#1a1a1a}
+    .recommend p:last-child{margin-bottom:0}
+    .recommend ul{padding-left:18px;margin-top:4px;color:#1a1a1a}
+    .recommend li{margin-bottom:3px}
+    .recommend .why{font-size:12px;color:#0a66c2;font-style:italic;margin-top:6px;display:block;letter-spacing:.02em}
+
+    /* PLACEHOLDER (yours, still red) */
+    .placeholder{border:1.5px dashed #e63b13;padding:14px 16px;margin:10px 0;background:rgba(230,59,19,.03);font-size:13px;line-height:1.6}
+    .placeholder .ph-label{font-family:'IBM Plex Mono',monospace;color:#e63b13;font-weight:600;text-transform:uppercase;letter-spacing:.14em;display:block;margin-bottom:6px;font-size:11px}
+    .placeholder .ph-bullets{padding-left:18px;margin:6px 0 0;color:#333}
+    .placeholder .ph-bullets li{margin-bottom:5px;list-style:square}
+
+    /* SKILLS */
+    .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 32px}
+    .skills h4{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #000;color:#000}
+    .skills ul{list-style:none}
+    .skills li{font-size:13.5px;padding:3px 0;border-bottom:1px dotted #c8c5be;color:#1a1a1a}
+
+    /* EDUCATION */
+    .edu-row{display:grid;grid-template-columns:1.4fr 1fr 110px;gap:16px;padding:11px 0;border-top:1px dashed #c0bdb6;font-size:13.5px;align-items:baseline}
+    .edu-row:first-child{border-top:none}
+    .edu-row .inst{color:#666;font-size:12.5px;font-style:italic}
+    .edu-row .yr{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-align:right;color:#000}
+
+    /* ADDITIONAL */
+    .add-item{padding:10px 0;border-top:1px dashed #c0bdb6;font-size:14.5px;line-height:1.6;color:#1a1a1a;max-width:64ch}
+    .add-item:first-child{border-top:none;padding-top:0}
+    .add-item strong{font-weight:600;color:#000}
+    .add-item a{color:#000;border-bottom:1px solid #e63b13}
+    .add-item a:hover{color:#e63b13}
+    .ref-line{margin-top:16px;font-size:13px;color:#666;font-style:italic;max-width:64ch;line-height:1.6}
+
+    /* AVALON BRANDING BAR */
+    .avalon-bar{background:#000;padding:14px 0 12px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between}
+    .avalon-bar svg{height:36px;width:auto}
+    .avalon-bar .av-meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:#fff;text-align:right}
+    .avalon-bar .av-meta .av-role{color:#fff}
+    .avalon-bar .av-meta .av-loc{color:#888}
+
+    /* FOOTER */
+    .footer{margin-top:48px;padding-top:24px;border-top:4px solid #000;display:grid;grid-template-columns:1fr auto;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.14em}
+    .footer .accent{font-weight:700}
+
+    @media(max-width:780px){
+        .page{padding:24px}
+        .specs{grid-template-columns:1fr 1fr}
+        .specs .spec{border-right:none;border-bottom:1px solid #c0bdb6}
+        .specs .spec:nth-child(odd){border-right:1px solid #c0bdb6}
+        .hook,.row{grid-template-columns:1fr;gap:14px}
+        .exp{grid-template-columns:1fr}
+        .exp .date{text-align:left}
+        .skills,.match-grid{grid-template-columns:1fr}
+        .edu-row{grid-template-columns:1fr;gap:2px}
+        .edu-row .yr{text-align:left}
+    }
+    @media print{
+        *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+        body{background:#fff}
+        .page{border:none;padding:0;max-width:100%}
+        .top h1{font-size:52px}
+        .hook .pull{font-size:24px}
+        .hook,.row{grid-template-columns:130px 1fr;gap:20px;padding:16px 0}
+        .hook{padding:24px 0 16px}
+        .label .num{font-size:22px}
+        .credentials{grid-template-columns:1fr 1fr 100px}
+        .cred-stat .big-n{font-size:30px}
+        .match-grid{grid-template-columns:1fr 1fr;gap:10px}
+        .match-item{padding:10px 12px}
+        .exp{grid-template-columns:1fr 110px}
+        .row,.exp,.edu-row,.match-item{page-break-inside:avoid;break-inside:avoid}
+        .recommend,.placeholder,.avalon-bar{display:none}
+        .accent,.specs .v .dot,.exp .co,.label .num,.match-item .match-label,.hook .pull .red{color:#000!important}
+        .specs .v .dot{background:#000!important}
+    }
+</style>
+</head>
+<body>
+<div class="page">
+
+    <div class="avalon-bar">
+        <svg viewBox="0 0 162 44" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#ffffff" d=" M 17.41 0.00 L 17.51 0.00 C 19.26 1.40 21.11 2.70 22.67 4.33 C 25.94 17.25 29.00 30.22 32.28 43.14 C 29.45 43.16 26.61 43.27 23.79 43.07 C 21.56 42.05 19.76 40.30 17.84 38.81 C 20.84 38.77 23.84 38.79 26.83 38.78 C 23.58 25.88 20.64 12.91 17.41 0.00 Z" />
+            <path fill="#ffffff" d=" M 52.52 0.00 L 52.56 0.00 C 54.36 1.32 56.12 2.70 57.91 4.04 C 54.78 17.04 52.17 30.15 49.16 43.18 C 46.48 43.16 43.81 43.16 41.14 43.12 C 39.40 41.64 37.57 40.27 35.81 38.81 C 38.55 38.77 41.30 38.79 44.04 38.80 C 44.77 35.87 45.45 32.94 46.05 29.98 C 47.82 19.91 50.84 10.09 52.52 0.00 Z" />
+            <path fill="#ffffff" d=" M 70.93 0.00 L 71.07 0.00 C 72.81 1.46 74.98 2.57 76.24 4.51 C 77.84 10.01 79.11 15.61 80.48 21.18 C 81.43 27.06 83.93 32.71 83.37 38.77 C 89.19 38.79 95.02 38.79 100.84 38.77 C 100.83 37.02 100.81 35.28 100.79 33.53 C 102.65 34.92 104.41 36.45 106.21 37.93 C 106.20 39.67 106.19 41.41 106.19 43.15 C 100.79 43.12 95.39 43.23 89.99 43.14 C 87.93 43.33 86.71 41.36 85.22 40.30 C 85.30 41.26 85.40 42.21 85.50 43.17 C 82.63 43.17 79.77 43.14 76.90 43.17 C 75.07 41.84 73.42 40.31 71.73 38.81 C 74.64 38.75 77.55 38.79 80.46 38.79 C 77.01 25.92 74.21 12.91 70.93 0.00 Z" />
+            <path fill="#ffffff" d=" M 92.24 0.00 L 92.56 0.00 C 94.12 1.54 95.83 2.91 97.65 4.14 C 97.57 13.88 97.67 23.63 97.60 33.38 C 95.82 33.36 94.03 33.34 92.25 33.32 C 92.29 22.21 92.33 11.10 92.24 0.00 Z" />
+            <path fill="#ffffff" d=" M 140.21 0.00 L 140.70 0.00 C 145.29 3.02 147.14 8.22 149.63 12.84 C 149.74 15.20 149.75 17.57 149.57 19.93 C 146.36 13.33 143.16 6.72 140.21 0.00 Z" />
+            <path fill="#ffffff" d=" M 36.25 0.01 C 37.97 1.22 39.72 2.42 41.25 3.89 C 43.62 10.16 40.86 16.61 40.04 22.89 C 38.82 15.26 37.43 7.65 36.25 0.01 Z" />
+            <path fill="#ffffff" d=" M 156.81 0.01 C 158.47 1.26 160.11 2.54 161.74 3.83 L 162.00 2.78 L 162.00 43.17 C 160.05 43.10 158.06 43.36 156.15 42.94 C 154.11 41.94 152.44 40.39 150.85 38.80 C 152.84 38.78 154.83 38.77 156.81 38.78 C 156.78 25.86 156.79 12.93 156.81 0.01 Z" />
+            <path fill="#ffffff" d=" M 126.30 2.91 C 129.03 5.18 133.06 7.05 133.33 11.06 C 133.47 18.35 133.42 25.65 133.35 32.94 C 133.56 37.69 129.88 41.45 125.92 43.44 C 119.74 45.36 113.47 42.57 109.12 38.17 C 113.32 39.14 117.83 40.69 122.00 38.73 C 126.48 37.29 128.98 32.44 128.91 27.94 C 128.91 22.29 128.97 16.64 128.92 10.99 C 128.97 8.08 127.72 5.38 126.30 2.91 Z" />
+            <path fill="#ffffff" d=" M 112.24 8.99 C 112.08 6.40 114.62 4.65 117.05 5.32 C 119.20 5.19 119.75 7.51 120.37 9.06 C 119.17 10.14 117.24 11.09 117.55 13.04 C 117.41 19.91 117.58 26.79 117.48 33.67 C 115.47 33.65 112.63 33.22 112.39 30.73 C 111.99 23.50 112.27 16.23 112.24 8.99 Z" />
+            <path fill="#ffffff" d=" M 11.31 25.75 C 11.81 21.08 12.41 16.40 13.35 11.79 C 14.30 16.41 14.94 21.09 15.74 25.74 C 14.63 25.74 12.42 25.75 11.31 25.75 Z" />
+            <path fill="#ffffff" d=" M 64.63 25.68 C 65.57 21.14 65.99 16.50 67.04 11.99 C 67.99 16.52 68.47 21.13 69.34 25.68 C 67.77 25.68 66.20 25.68 64.63 25.68 Z" />
+            <path fill="#ffffff" d=" M 141.35 17.90 C 143.46 21.41 144.66 25.35 146.29 29.08 C 146.70 33.75 146.34 38.47 146.44 43.16 C 143.99 43.16 141.55 43.17 139.10 43.13 C 137.22 41.79 135.38 40.40 133.69 38.82 C 136.21 38.77 138.74 38.77 141.27 38.79 C 141.33 31.83 141.19 24.87 141.35 17.90 Z" />
+            <path fill="#ffffff" d=" M 10.65 30.52 C 12.54 30.52 14.43 30.53 16.31 30.54 C 16.65 31.75 16.98 32.96 17.32 34.17 C 14.12 35.63 15.34 40.27 14.18 43.13 C 11.35 43.14 8.53 43.16 5.70 43.21 C 3.72 41.87 1.88 40.33 0.04 38.80 C 3.04 38.77 6.04 38.80 9.04 38.75 C 9.54 36.00 10.10 33.26 10.65 30.52 Z" />
+            <path fill="#ffffff" d=" M 62.65 38.79 C 63.22 36.10 63.62 33.39 63.87 30.66 C 65.80 30.60 67.72 30.62 69.65 30.65 C 69.90 31.55 70.41 33.34 70.67 34.23 C 70.35 34.39 69.73 34.70 69.42 34.86 C 68.75 37.65 68.44 40.52 67.52 43.25 C 64.67 43.12 61.82 43.16 58.97 43.14 C 57.21 41.78 55.55 40.29 53.88 38.82 C 56.80 38.75 59.72 38.79 62.65 38.79 Z" />
+        </svg>
+        <div class="av-meta">
+            <span class="av-role">Digital Content Internship</span>
+            <span class="av-loc">London · 11 Sept 2026</span>
+        </div>
+    </div>
+
+    <header class="top">
+        <h1>Sebastian<br>Fisher<span class="accent">.</span></h1>
+        <div class="meta">
+            <a href="mailto:contact@sebastian-fisher.com">contact@sebastian-fisher.com</a><br>
+            07496 345 233<br>
+            <a href="https://sebastian-fisher.com">sebastian-fisher.com</a><br>
+            <a href="https://linkedin.com/in/sebastian-fisher-236920210">linkedin.com/in/sebastian-fisher</a>
+        </div>
+    </header>
+
+    <div class="specs">
+        <div class="spec"><div class="k">Available</div><div class="v"><span class="dot"></span>11 Sept 2026</div></div>
+        <div class="spec"><div class="k">Location</div><div class="v">London · 5 days</div></div>
+        <div class="spec"><div class="k">Based</div><div class="v">Saffron Walden</div></div>
+        <div class="spec"><div class="k">Right to work</div><div class="v">UK</div></div>
+    </div>
+
+    <div class="credentials">
+        <div class="cred-col">
+            <div class="cred-k">Software</div>
+            <ul class="cred-list">
+                <li>Final Cut Pro</li>
+                <li>DaVinci Resolve</li>
+                <li>Adobe Premiere Pro</li>
+                <li>Logic Pro X</li>
+                <li>After Effects</li>
+            </ul>
+        </div>
+        <div class="cred-col">
+            <div class="cred-k">Discipline</div>
+            <ul class="cred-list">
+                <li>Multicam Editing</li>
+                <li>Colour Grading</li>
+                <li>Audio Mastering</li>
+                <li>Subtitling &amp; Captions</li>
+                <li>End-to-end Pipeline</li>
+            </ul>
+        </div>
+        <div class="cred-col">
+            <div class="cred-k">Output</div>
+            <div class="cred-stats">
+                <div class="cred-stat">
+                    <span class="big-n">30<span style="color:#e63b13">+</span></span>
+                    <span class="big-label">Productions</span>
+                </div>
+                <div class="cred-stat">
+                    <span class="big-n">8</span>
+                    <span class="big-label">Yrs · Sole Editor</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOOK -->
+    <section class="hook">
+        <div class="label">
+            <span class="num">00</span>
+            Opening
+        </div>
+        <div class="pull">
+            I want to make content <span class="red">people watch twice</span>.
+            <span class="strike"></span>
+            <span class="sub">I've delivered 30+ productions, looking to get into more digital work. Currently in pre-production on a jazz documentary. Comedy fan. Right to work in the UK.</span>
+        </div>
+    </section>
+
+    <!-- STATEMENT (tightened) -->
+    <section class="row">
+        <div class="label">
+            <span class="num">01</span>
+            Statement
+        </div>
+        <div class="statement">
+            <p>From around ten years old I was watching YouTube, drawn to cameras and photography. There was a creator called <a href="https://www.youtube.com/channel/UCknMR7NOY6ZKcVbyzOxQPhw" target="_blank" rel="noopener">Kai W</a> who reviewed cameras and explained what each one could do, and I remember watching him and thinking: I want to understand all of this. I was also the kind of kid who took computers apart not to fix them but to understand them. When I got to university I found myself studying philosophy, and it felt like a continuation of school, the expected next step rather than something I had actually chosen. So a year ago I left. I came home and kept editing, because it was the one thing I had never stopped doing, and that instinct has never been just about the creative side: I am as excited about the archive and the pipeline as I am about the edit itself.</p>
+
+            <p><a href="https://robinphillips.co.uk/" target="_blank" rel="noopener">Robin Phillips</a> was my piano teacher. I played jazz trumpet. He introduced me to audio gear, and somewhere in those lessons the interest in making things sound right became an interest in making things look right too. Over eight years I cut 30+ productions for his channel, and when his archive kept failing I built him a NAS from scratch. I am now in pre-production on <em>Chasing Chet</em>, a documentary about Chet Baker.</p>
+
+            <p>I follow comedy the way some people follow sport. I have watched <em>It's Always Sunny in Philadelphia</em> more than twenty times; there are sixteen seasons. Part of what I am watching for is the craft underneath: the aspect ratios are chosen deliberately, each one controlling exactly what the viewer is given. I am also drawn to the writing, not to write it myself but to break plots apart, study structure, work out why a scene lands. Some of the people on Avalon's roster are ones I already follow. I have built everything I know by myself, and that is both the thing I am most proud of and the reason I want to work inside a proper team. I want to see how a professional operation does this at scale.</p>
+        </div>
+    </section>
+
+    <!-- WHY THIS ROLE -->
+    <section class="row">
+        <div class="label">
+            <span class="num">02</span>
+            Why this role
+        </div>
+        <div>
+            <div class="match-grid">
+                <div class="match-item">
+                    <span class="match-label">Content Creation</span>
+                    <span class="match-val">30+ productions cut and delivered for a live music channel, end to end, in an apprenticeship relationship.</span>
+                </div>
+                <div class="match-item">
+                    <span class="match-label">Video Editing</span>
+                    <span class="match-val">Active Final Cut Pro X user. Also DaVinci Resolve. Learning Premiere Pro.</span>
+                </div>
+                <div class="match-item">
+                    <span class="match-label">Asset Optimisation</span>
+                    <span class="match-val">Formatted and exported video across multiple platforms. Subtitling, sizing, delivery specs.</span>
+                </div>
+                <div class="match-item">
+                    <span class="match-label">Comedy &amp; Entertainment</span>
+                    <span class="match-val">Genuine interest in comedic performance specifically. Following a couple of comedy media companies in the US and absorbing what they teach.</span>
+                </div>
+                <div class="match-item">
+                    <span class="match-label">Live Content</span>
+                    <span class="match-val">Cutting live multicam performance footage for eight years.</span>
+                </div>
+                <div class="match-item">
+                    <span class="match-label">Audio</span>
+                    <span class="match-val">Logic Pro X, mastering and sync. Sound is part of the edit, not an afterthought.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SELECTED WORK (recommended new section) -->
+    <section class="row">
+        <div class="label">
+            <span class="num">03</span>
+            Selected Work
+        </div>
+        <div>
+            <div class="work-item">
+                <div class="work-title"><a href="https://www.youtube.com/watch?v=F8u86zp2SVY" target="_blank" rel="noopener">'I'm Coming Home' · Robin Phillips &amp; Soul Sanctuary Gospel Choir</a></div>
+                <div class="work-note">Official music video. Filmed, imported footage, and handled colour grading.</div>
+            </div>
+            <div class="work-item">
+                <div class="work-title"><a href="https://www.youtube.com/watch?v=XUfV-KecXTs" target="_blank" rel="noopener">Mic Shootout: Neumann U67(RI) vs TLM 67 vs Max Kircher 67 mod</a></div>
+                <div class="work-note">Technical audio comparison, cut and delivered the whole thing. Pacing matters as much as the content in shootout formats.</div>
+            </div>
+            <div class="work-item">
+                <div class="work-title"><a href="https://www.youtube.com/watch?v=8LngfFAk9lU" target="_blank" rel="noopener">Kick Drum Mic Shootout: SM52a vs D112 vs U47fet vs RE20 vs Ribbons</a></div>
+                <div class="work-note">Five-mic comparison. Filmed and cut. Kept levels consistent across five mics with very different sounds.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="row">
+        <div class="label">
+            <span class="num">04</span>
+            Experience
+        </div>
+        <div>
+            <div class="exp">
+                <div>
+                    <h3>Video Editor &amp; Content Producer</h3>
+                    <div class="co">Repmusic · Freelance</div>
+                    <ul>
+                        <li>Sole editor on a live music performance channel. Every production, raw footage to published cut, for eight years.</li>
+                        <li>30+ videos cut, colour graded, subtitled and exported to spec across YouTube and streaming platforms.</li>
+                        <li>Live multicam footage with real performances: timing edits to the music, keeping energy across longer cuts.</li>
+                        <li>Reformatted and resized archive content for multiple platforms. Subtitling and caption accuracy on every video.</li>
+                        <li>Built a RAID-configured NAS when the archive kept failing. Good content means nothing if the pipeline breaks.</li>
+                    </ul>
+                </div>
+                <div class="date">2022 — Now</div>
+            </div>
+
+            <div class="exp">
+                <div>
+                    <h3>Social Media Content &amp; Design</h3>
+                    <div class="co">De Luca · Cambridge</div>
+                    <ul>
+                        <li>Brought in to build the social media presence from the ground up. Created the assets, wrote the strategy, decided what went where.</li>
+                        <li>Ran the content calendar end to end: planned what to post, scheduled it, tracked how it performed.</li>
+                        <li>Introduced the Adobe suite to the team and built brand presets so every post looked consistent without starting from scratch each time.</li>
+                    </ul>
+                </div>
+                <div class="date">2026</div>
+            </div>
+
+            <div class="exp">
+                <div>
+                    <h3>Sales &amp; Customer Service</h3>
+                    <div class="co">Tesco / Sage &amp; Saffron · Saffron Walden</div>
+                    <ul>
+                        <li>High-volume, fast-paced roles across two businesses. Learned to move quickly, stay accurate and keep the team running during busy periods.</li>
+                        <li>Covered evening and weekend shifts regularly. Flexible hours are not a problem.</li>
+                        <li>Constant face-to-face work with a wide range of customers. You learn quickly what tone lands and what doesn't.</li>
+                    </ul>
+                </div>
+                <div class="date">2023 — 2024</div>
+            </div>
+
+            <div class="exp">
+                <div>
+                    <h3>Freelance · Campaigns, Content &amp; Operations</h3>
+                    <div class="co">Various · Saffron Walden</div>
+                    <ul>
+                        <li>Planned and ran digital ad campaigns for small local clients. Assets, copy, targeting, posting schedule, performance tracking.</li>
+                        <li>Set up all marketing for a friend's car detailing business from launch. Wrote the ads, created the graphics, monitored what was working.</li>
+                        <li>Built a newspaper delivery operation: door-to-door sales, route planning, subscription retention. First thing I ran fully independently.</li>
+                    </ul>
+                </div>
+                <div class="date">2021 — 2022</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="row">
+        <div class="label">
+            <span class="num">05</span>
+            Skills &amp; Tools
+        </div>
+        <div class="skills">
+            <div>
+                <h4>Video Editing</h4>
+                <ul>
+                    <li>Final Cut Pro</li>
+                    <li>DaVinci Resolve</li>
+                    <li>Adobe Premiere Pro</li>
+                    <li>Multicam editing (8 years)</li>
+                    <li>Colour grading</li>
+                    <li>Subtitling &amp; captioning</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Audio &amp; Production</h4>
+                <ul>
+                    <li>Logic Pro X</li>
+                    <li>Audio mastering &amp; sync</li>
+                    <li>Adobe Audition</li>
+                    <li>End-to-end production pipeline</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Digital &amp; Social</h4>
+                <ul>
+                    <li>Multi-platform video formatting</li>
+                    <li>Social content creation &amp; design</li>
+                    <li>Campaign asset creation</li>
+                    <li>Platform optimisation (aspect ratios, formats, specs)</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Design &amp; Visual</h4>
+                <ul>
+                    <li>Adobe Photoshop</li>
+                    <li>Strong visual design instinct</li>
+                    <li>Typography &amp; layout awareness</li>
+                    <li>Brand consistency</li>
+                    <li>Canva</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="row">
+        <div class="label">
+            <span class="num">06</span>
+            Education &amp; Training
+        </div>
+        <div>
+            <div class="edu-row">
+                <span><strong>BA Philosophy</strong> <span style="color:#888">(withdrew for industry transition)</span></span>
+                <span class="inst">University of the West of England</span>
+                <span class="yr">2024 — 25</span>
+            </div>
+            <div class="edu-row">
+                <span><strong>A-Levels</strong>, Music Technology, Religious Studies, Applied Science</span>
+                <span class="inst">Saffron Walden County High School</span>
+                <span class="yr">2022 — 24</span>
+            </div>
+            <div class="edu-row">
+                <span><strong>DaVinci Resolve Certification</strong></span>
+                <span class="inst">Blackmagic Design (in progress)</span>
+                <span class="yr">2026</span>
+            </div>
+            <div class="edu-row">
+                <span><strong>Audio Engineering &amp; Music Production</strong></span>
+                <span class="inst">Self-directed, 8 years</span>
+                <span class="yr">2018 — Now</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADDITIONAL -->
+    <section class="row">
+        <div class="label">
+            <span class="num">07</span>
+            Additional
+        </div>
+        <div>
+            <div class="add-item">
+                <strong>Currently</strong> reading <em>Ogilvy on Advertising</em> and studying the visual language of MDE.
+            </div>
+
+            <div class="add-item">
+                <strong>On comedy and form.</strong> <em>It's Always Sunny</em> shot the first four seasons in 4:3 on a MiniDV. Not because they couldn't afford better. Because it makes the characters feel watched, not performed. The visual restraint is part of the comedy. MDE takes the opposite approach: chaotic edits, noise, subliminal cuts used as deliberate tools. Both are doing the same thing. Most shows aren't doing either.
+            </div>
+
+            <p class="ref-line">Role found via Creative Access. Available to start 11 September 2026. Happy to attend evening shows and commute to London. UK right to work.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <span>© Sebastian Fisher · 2026</span>
+    </footer>
+
+</div>
+</body>
+</html>

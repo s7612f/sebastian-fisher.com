@@ -3,14 +3,33 @@
 const PACKAGES = [
   {
     id: "brand-video", name: "Brand Video Ad", from: 850, to: 1500,
-    desc: "60–90 second brand or product film. Full production: concept, shoot, edit, colour grade, sound mix.",
-    features: ["All formats — web, social & broadcast", "Concept & shot list included", "7 working day turnaround"],
+    desc: "60-90 second brand or product film. Full production: concept, shoot, edit, colour grade, sound mix.",
+    features: ["All formats: web, social and broadcast", "Concept & shot list included", "7 working day turnaround"],
     featured: true, tag: "Most popular"
   },
   {
+    id: "single-reel", name: "Single Reel", from: 150,
+    desc: "One 15-30 second vertical reel, shot in a two hour session and edited to platform standard. The easiest way to try us out.",
+    features: ["Two hour shoot", "Vertical, square and story exports", "48 hour delivery"],
+    tag: "Social"
+  },
+  {
     id: "social-pack", name: "Social Media Content Pack", from: 550, to: 900,
-    desc: "3–5 short-form videos (15–30s) optimised for Reels, TikTok and Facebook. A month of content in one shoot day.",
-    features: ["Shot in one day", "Vertical + square exports", "Delivered within 5 days"]
+    desc: "3-5 short-form videos (15-30s) optimised for Reels, TikTok and Facebook. A month of content in one shoot day.",
+    features: ["Shot in one day", "Vertical + square exports", "Delivered within 5 days"],
+    tag: "Social"
+  },
+  {
+    id: "content-day", name: "Social Content Day", from: 850, to: 1100,
+    desc: "A full day of shooting across your business, edited into 8-10 platform-ready reels. Six weeks of posting from one booking.",
+    features: ["8-10 edited reels", "Captions and cover frames included", "Delivered within 7 days"],
+    tag: "Social"
+  },
+  {
+    id: "social-retainer", name: "Social Retainer", from: 650, per: "/month",
+    desc: "A half-day shoot every month plus 4-6 edited reels, planned around your offers and events. Consistent presence without the admin.",
+    features: ["Monthly half-day shoot", "4-6 reels per month", "Content calendar included"],
+    tag: "Social"
   },
   {
     id: "event-video", name: "Event & Launch Video", from: 650, to: 1200,
@@ -19,7 +38,7 @@ const PACKAGES = [
   },
   {
     id: "testimonial", name: "Testimonial Package", from: 450, to: 700,
-    desc: "2–3 professionally shot customer testimonials — the highest-converting video content for most businesses.",
+    desc: "2-3 professionally shot customer testimonials. The highest-converting video content for most businesses.",
     features: ["Single session shoot", "Pro lighting & clean audio", "Colour graded"]
   },
   {
@@ -28,12 +47,12 @@ const PACKAGES = [
     features: ["2 shoot days every month", "Priority scheduling", "Rolling social content"]
   },
   {
-    id: "photo-half", name: "Event Photography — Half Day", from: 275,
+    id: "photo-half", name: "Event Photography (Half Day)", from: 275,
     desc: "Up to 4 hours coverage. Corporate events, launches, parties, competitions.",
     features: ["150+ edited photos", "Online gallery", "48 hour delivery"]
   },
   {
-    id: "photo-full", name: "Event Photography — Full Day", from: 475,
+    id: "photo-full", name: "Event Photography (Full Day)", from: 475,
     desc: "Up to 8 hours coverage, from setup to send-off.",
     features: ["300+ edited photos", "Online gallery", "48 hour delivery"]
   }
@@ -53,7 +72,7 @@ const SECTORS = [
 const ADDONS = [
   { id: "drone", name: "Drone footage", price: 150, desc: "Licensed aerial establishing shots." },
   { id: "rush", name: "Rush 72-hour delivery", price: 200, desc: "Jump the edit queue." },
-  { id: "cutdown", name: "Extra social cutdowns", price: 75, desc: "Additional 15–30s edits from your footage.", qty: true },
+  { id: "cutdown", name: "Extra social cutdowns", price: 75, desc: "Additional 15-30s edits from your footage.", qty: true },
   { id: "second-op", name: "Second camera operator", price: 250, desc: "Dual-angle coverage for events & interviews." },
   { id: "photos-addon", name: "Stills alongside video", price: 150, desc: "20+ edited photos captured on your video shoot day." },
   { id: "extra-location", name: "Additional location", price: 100, desc: "Second venue or outdoor location on the same day." },
@@ -71,7 +90,7 @@ pkgGrid.innerHTML = PACKAGES.map(p => `
   <article class="pkg ${p.featured ? "pkg--featured" : ""}">
     ${p.tag ? `<span class="pkg__tag">${p.tag}</span>` : ""}
     <h3>${p.name}</h3>
-    <div class="pkg__price">from ${gbp(p.from)}${p.per || ""} ${p.to ? `<small>typical range ${gbp(p.from)}–${gbp(p.to)}</small>` : ""}</div>
+    <div class="pkg__price">from ${gbp(p.from)}${p.per || ""} ${p.to ? `<small>typical range ${gbp(p.from)} to ${gbp(p.to)}</small>` : ""}</div>
     <p class="pkg__desc">${p.desc}</p>
     <ul>${p.features.map(f => `<li>${f}</li>`).join("")}</ul>
     <button class="btn btn--primary" data-add="${p.id}">Add to basket</button>
@@ -91,7 +110,7 @@ document.getElementById("sectorsGrid").innerHTML = SECTORS.map(s => `
 
 /* every addable item, unified */
 const CATALOGUE = {};
-PACKAGES.forEach(p => CATALOGUE[p.id] = { name: p.name, price: p.from, note: p.to ? `from ${gbp(p.from)}${p.per || ""}` : "fixed" });
+PACKAGES.forEach(p => CATALOGUE[p.id] = { name: p.name, price: p.from, note: p.per ? `${gbp(p.from)}${p.per}` : (p.to ? `from ${gbp(p.from)}` : "fixed price") });
 SECTORS.forEach(s => CATALOGUE[s.id] = { name: s.name, price: s.price, note: "launch rate" });
 
 /* ---------- basket ---------- */
@@ -107,7 +126,7 @@ const basketEnquire = document.getElementById("basketEnquire");
 function saveBasket() { localStorage.setItem(KEY, JSON.stringify(basket)); renderBasket(); }
 
 function basketSummaryText() {
-  const lines = basket.map(i => `• ${i.name}${i.detail ? " — " + i.detail : ""} (${gbp(i.price)})`);
+  const lines = basket.map(i => `• ${i.name}${i.detail ? ", " + i.detail : ""} (${gbp(i.price)})`);
   const total = basket.reduce((s, i) => s + i.price, 0);
   return `Hi Sebastian,\n\nI'd like to enquire about the following:\n\n${lines.join("\n")}\n\nEstimated total: ${gbp(total)}\n\nMy name:\nMy business:\nBest time to call:\n`;
 }
@@ -120,9 +139,9 @@ function renderBasket() {
     ? basket.map((i, idx) => `
         <li><div><strong>${i.name}</strong>${i.detail ? `<em>${i.detail}</em>` : ""}<em>${gbp(i.price)}</em></div>
         <button class="rm" data-rm="${idx}" aria-label="Remove">✕</button></li>`).join("")
-    : `<li style="border:none;background:none;color:var(--muted)">Your basket is empty — add a package or build a quote.</li>`;
+    : `<li style="border:none;background:none;color:var(--muted)">Your basket is empty. Add a package or build a quote.</li>`;
   basketEnquire.href = "mailto:contact@sebastian-fisher.com?subject=" +
-    encodeURIComponent("Booking enquiry — Hard Film Studios") +
+    encodeURIComponent("Booking enquiry: Hard Film Studios") +
     "&body=" + encodeURIComponent(basketSummaryText());
 }
 
@@ -152,7 +171,7 @@ document.getElementById("drawerBackdrop").addEventListener("click", closeDrawer)
 document.getElementById("basketClear").addEventListener("click", () => { basket = []; saveBasket(); });
 document.getElementById("basketCopy").addEventListener("click", async () => {
   await navigator.clipboard.writeText(basketSummaryText());
-  toast("Basket summary copied — paste it anywhere.");
+  toast("Basket summary copied. Paste it anywhere.");
 });
 
 /* ---------- toast ---------- */
@@ -216,7 +235,7 @@ function renderQuote() {
   const total = lines.reduce((s, l) => s + l.price, 0);
   quoteLines.innerHTML = lines.length
     ? lines.map(l => `<li><span>${l.name}</span><span>${gbp(l.price)}</span></li>`).join("")
-    : `<li class="quote__empty">Nothing selected yet — tick a package to start.</li>`;
+    : `<li class="quote__empty">Nothing selected yet. Tick a package to start.</li>`;
   quoteTotal.textContent = gbp(total);
   quoteToBasket.disabled = !lines.length;
 }

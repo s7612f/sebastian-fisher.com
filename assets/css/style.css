@@ -63,23 +63,114 @@ button { font-family: var(--body); cursor: pointer; }
 .hero__scroll { position: absolute; bottom: 1.2rem; left: 50%; transform: translateX(-50%); color: var(--muted); animation: bob 2s infinite; }
 @keyframes bob { 50% { transform: translate(-50%, 6px); } }
 
-/* ---- buttons / chips ---- */
+/* ---- buttons / chips ----
+   Button mechanics adapted from open-source (MIT) Uiverse elements:
+   - 3D key-press:            https://uiverse.io/njesenberger/thin-owl-11
+   - viewfinder grid hover:   https://uiverse.io/Smit-Prajapati/lazy-cow-47 */
 .btn {
-  display: inline-block; padding: 0.8rem 1.7rem; border-radius: 4px;
-  font-weight: 700; font-size: 0.95rem; text-decoration: none; border: none;
-  text-transform: uppercase; letter-spacing: 0.05em;
+  display: inline-block; padding: 0.85rem 1.8rem;
+  font-weight: 800; font-size: 0.92rem; text-decoration: none; border: none;
+  text-transform: uppercase; letter-spacing: 0.08em;
 }
-.btn--primary { background: var(--accent); color: #fff; }
-.btn--primary:hover { background: var(--accent-hover); }
-.btn--primary:disabled { background: var(--line); color: var(--muted); cursor: not-allowed; }
-.btn--ghost { background: transparent; color: var(--text); border: 1px solid var(--text); }
-.btn--ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* primary — physical shutter-press: raised face on a hard base edge,
+   lifts on hover, pushes down into the base on click */
+.btn--primary {
+  position: relative; border-radius: 6px; color: #fff;
+  background: linear-gradient(180deg, #f2513f 0%, #d32f24 55%, #b8241a 100%);
+  box-shadow:
+    0 6px 0 #6f1410,
+    0 9px 16px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  transform: translateY(0);
+  transition: transform 0.12s, box-shadow 0.12s, filter 0.12s;
+}
+.btn--primary::before { content: "● "; font-size: 0.7em; vertical-align: 0.12em; opacity: 0.85; }
+.btn--primary:hover {
+  transform: translateY(-2px); filter: brightness(1.06);
+  box-shadow:
+    0 8px 0 #6f1410,
+    0 12px 18px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+.btn--primary:hover::before { animation: rec-blink 1s steps(1) infinite; }
+.btn--primary:active {
+  transform: translateY(4px);
+  box-shadow:
+    0 2px 0 #6f1410,
+    0 3px 6px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+.btn--primary:disabled {
+  background: var(--line); color: var(--muted); text-shadow: none;
+  box-shadow: 0 4px 0 #101013; transform: none; cursor: not-allowed; filter: none;
+}
+.btn--primary:disabled::before { content: "○ "; animation: none; }
+@keyframes rec-blink { 50% { opacity: 0.15; } }
+
+/* ghost — camera viewfinder: corner brackets that tighten on hover,
+   with a faint focus-grid fading in behind the label */
+.btn--ghost {
+  position: relative; color: var(--text); background: transparent; border-radius: 0;
+  --bk: var(--text); --bs: 15px; --bt: 2px;
+  background-image:
+    linear-gradient(var(--bk), var(--bk)), linear-gradient(var(--bk), var(--bk)),
+    linear-gradient(var(--bk), var(--bk)), linear-gradient(var(--bk), var(--bk)),
+    linear-gradient(var(--bk), var(--bk)), linear-gradient(var(--bk), var(--bk)),
+    linear-gradient(var(--bk), var(--bk)), linear-gradient(var(--bk), var(--bk));
+  background-repeat: no-repeat;
+  background-size:
+    var(--bs) var(--bt), var(--bt) var(--bs),
+    var(--bs) var(--bt), var(--bt) var(--bs),
+    var(--bs) var(--bt), var(--bt) var(--bs),
+    var(--bs) var(--bt), var(--bt) var(--bs);
+  background-position:
+    top left, top left,
+    top right, top right,
+    bottom left, bottom left,
+    bottom right, bottom right;
+  transition: --bs 0.2s, color 0.2s, background-color 0.2s;
+}
+.btn--ghost:hover {
+  color: var(--accent-hover); --bk: var(--accent);
+  background-color: rgba(230, 57, 46, 0.05);
+  background-image:
+    linear-gradient(var(--bk), var(--bk)), linear-gradient(var(--bk), var(--bk)),
+    linear-gradient(var(--bk), var(--bk)), linear-gradient(var(--bk), var(--bk)),
+    linear-gradient(var(--bk), var(--bk)), linear-gradient(var(--bk), var(--bk)),
+    linear-gradient(var(--bk), var(--bk)), linear-gradient(var(--bk), var(--bk)),
+    linear-gradient(rgba(230, 57, 46, 0.12) 1px, transparent 1px),
+    linear-gradient(to right, rgba(230, 57, 46, 0.12) 1px, transparent 1px);
+  background-size:
+    var(--bs) var(--bt), var(--bt) var(--bs),
+    var(--bs) var(--bt), var(--bt) var(--bs),
+    var(--bs) var(--bt), var(--bt) var(--bs),
+    var(--bs) var(--bt), var(--bt) var(--bs),
+    11px 11px, 11px 11px;
+  background-position:
+    top left, top left,
+    top right, top right,
+    bottom left, bottom left,
+    bottom right, bottom right,
+    center center, center center;
+}
+.btn--ghost:active { transform: translateY(2px); }
+
 .btn--block { display: block; width: 100%; text-align: center; margin-top: 0.75rem; }
+
+/* chips — film-slate tags with a clapper notch cut into the corner */
 .chip {
   background: var(--panel); border: 1px solid var(--line); color: var(--muted);
-  border-radius: 999px; padding: 0.5rem 1.2rem; font-weight: 600; font-size: 0.85rem;
+  padding: 0.5rem 1.2rem 0.5rem 1rem; font-weight: 700; font-size: 0.82rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  transition: color 0.15s, background-color 0.15s;
 }
-.chip:hover { color: var(--text); }
+.chip:hover { color: var(--text); background: #1f1f25; }
 .chip--active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
 /* ---- ticker ---- */

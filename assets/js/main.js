@@ -9,7 +9,7 @@ const PACKAGES = [
   },
   {
     id: "single-reel", name: "Single Reel", from: 150,
-    desc: "One 15-30 second vertical reel, shot in a two hour session and edited to platform standard. The easiest way to try us out.",
+    desc: "One 15-30 second vertical reel, filmed in a two-hour session and cut to platform spec.",
     features: ["Two hour shoot", "Vertical, square and story exports", "48 hour delivery"],
     tag: "Social"
   },
@@ -38,7 +38,7 @@ const PACKAGES = [
   },
   {
     id: "testimonial", name: "Testimonial Package", from: 450, to: 700,
-    desc: "2-3 professionally shot customer testimonials. The highest-converting video content for most businesses.",
+    desc: "Two or three customer stories, filmed in a single session with clean lighting and sound.",
     features: ["Single session shoot", "Pro lighting & clean audio", "Colour graded"]
   },
   {
@@ -70,13 +70,13 @@ const SECTORS = [
 ];
 
 const ADDONS = [
-  { id: "drone", name: "Drone footage", price: 150, desc: "Licensed aerial establishing shots." },
+  { id: "drone", name: "Drone footage", price: 150, desc: "Aerial establishing shots from a certified drone pilot." },
   { id: "rush", name: "Rush 72-hour delivery", price: 200, desc: "Jump the edit queue." },
   { id: "cutdown", name: "Extra social cutdowns", price: 75, desc: "Additional 15-30s edits from your footage.", qty: true },
   { id: "second-op", name: "Second camera operator", price: 250, desc: "Dual-angle coverage for events & interviews." },
   { id: "photos-addon", name: "Stills alongside video", price: 150, desc: "20+ edited photos captured on your video shoot day." },
   { id: "extra-location", name: "Additional location", price: 100, desc: "Second venue or outdoor location on the same day." },
-  { id: "voiceover", name: "Professional voiceover", price: 120, desc: "Voice casting, direction and licensing." },
+  { id: "voiceover", name: "Professional voiceover", price: 120, desc: "Professional voice casting and direction." },
   { id: "script", name: "Scripting & storyboard", price: 150, desc: "Full pre-production written for you." },
   { id: "captions", name: "Subtitles & captions", price: 40, desc: "Burned-in or sidecar files for accessibility & sound-off viewing." },
   { id: "raw", name: "Raw footage delivery", price: 100, desc: "Every frame we shoot, handed over." }
@@ -102,7 +102,7 @@ document.getElementById("sectorsGrid").innerHTML = SECTORS.map(s => `
     <video muted loop playsinline autoplay preload="metadata" poster="${s.poster}"><source src="${s.video}" type="video/mp4"></video>
     <div class="sector__body">
       <h3>${s.name}</h3>
-      <div class="sector__price">${gbp(s.price)} <small style="font-size:.8rem;color:var(--muted)">one shoot day, launch rate</small></div>
+      <div class="sector__price">${gbp(s.price)} <small style="font-size:.8rem;color:var(--muted)">one shoot day</small></div>
       <p>${s.desc}</p>
       <button class="btn btn--primary" data-add="${s.id}">Add to basket</button>
     </div>
@@ -111,7 +111,7 @@ document.getElementById("sectorsGrid").innerHTML = SECTORS.map(s => `
 /* every addable item, unified */
 const CATALOGUE = {};
 PACKAGES.forEach(p => CATALOGUE[p.id] = { name: p.name, price: p.from, note: p.per ? `${gbp(p.from)}${p.per}` : (p.to ? `from ${gbp(p.from)}` : "fixed price") });
-SECTORS.forEach(s => CATALOGUE[s.id] = { name: s.name, price: s.price, note: "launch rate" });
+SECTORS.forEach(s => CATALOGUE[s.id] = { name: s.name, price: s.price, note: "one shoot day" });
 
 /* ---------- basket ---------- */
 const KEY = "hfs-basket";

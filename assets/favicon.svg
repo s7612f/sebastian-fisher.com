@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="12" fill="#0a0a0b"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="10.5" fill="none" stroke="#26262c" stroke-width="1"/>
+  <!-- red top edge, like a slate marker -->
+  <rect x="10" y="12" width="44" height="4" rx="2" fill="#e6392e"/>
+  <text x="32" y="46" text-anchor="middle" font-family="Arial Black, Arial, sans-serif"
+        font-weight="900" font-size="26" letter-spacing="-1.5" fill="#f2f0eb">HFS</text>
+</svg>

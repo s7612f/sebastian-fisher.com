@@ -5,4 +5,5 @@
 README.md
 node_modules
 wrangler.jsonc
+worker.js
 CNAME

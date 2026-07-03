@@ -128,7 +128,7 @@ function saveBasket() { localStorage.setItem(KEY, JSON.stringify(basket)); rende
 function basketSummaryText() {
   const lines = basket.map(i => `• ${i.name}${i.detail ? ", " + i.detail : ""} (${gbp(i.price)})`);
   const total = basket.reduce((s, i) => s + i.price, 0);
-  return `Hi Sebastian,\n\nI'd like to enquire about the following:\n\n${lines.join("\n")}\n\nEstimated total: ${gbp(total)}\n\nMy name:\nMy business:\nBest time to call:\n`;
+  return `Hi Hard Film Studios,\n\nI'd like to enquire about the following:\n\n${lines.join("\n")}\n\nEstimated total: ${gbp(total)}\n\nMy name:\nMy business:\nBest time to call:\n`;
 }
 
 function renderBasket() {
@@ -140,15 +140,21 @@ function renderBasket() {
         <li><div><strong>${i.name}</strong>${i.detail ? `<em>${i.detail}</em>` : ""}<em>${gbp(i.price)}</em></div>
         <button class="rm" data-rm="${idx}" aria-label="Remove">✕</button></li>`).join("")
     : `<li style="border:none;background:none;color:var(--muted)">Your basket is empty. Add a package or build a quote.</li>`;
-  basketEnquire.href = "mailto:contact@sebastian-fisher.com?subject=" +
+  basketEnquire.href = "mailto:info@hardfilmstudios.com?subject=" +
     encodeURIComponent("Booking enquiry: Hard Film Studios") +
     "&body=" + encodeURIComponent(basketSummaryText());
+}
+
+/* fire a Google Analytics / Google Ads event when it's configured (no-op until an ID is set) */
+function track(name, params) {
+  if (typeof window.gtag === "function") window.gtag("event", name, params || {});
 }
 
 function addToBasket(item) {
   basket.push(item);
   saveBasket();
   toast(`Added: ${item.name}`);
+  track("add_to_cart", { currency: "GBP", value: item.price, items: [{ item_name: item.name, price: item.price }] });
 }
 
 document.addEventListener("click", e => {
@@ -172,6 +178,11 @@ document.getElementById("basketClear").addEventListener("click", () => { basket 
 document.getElementById("basketCopy").addEventListener("click", async () => {
   await navigator.clipboard.writeText(basketSummaryText());
   toast("Basket summary copied. Paste it anywhere.");
+});
+/* enquiry = the conversion that matters; fire a lead event for GA4 / Google Ads */
+basketEnquire.addEventListener("click", () => {
+  const total = basket.reduce((s, i) => s + i.price, 0);
+  track("generate_lead", { currency: "GBP", value: total, items: basket.length });
 });
 
 /* ---------- toast ---------- */
@@ -277,6 +288,17 @@ document.querySelectorAll(".work__item").forEach(item => {
   item.addEventListener("mouseenter", () => { v.play().catch(() => {}); });
   item.addEventListener("mouseleave", () => { v.pause(); });
   item.addEventListener("click", () => { v.paused ? v.play().catch(() => {}) : v.pause(); });
+});
+
+/* ---------- spotlight cards ----------
+   Aceternity UI "Card Spotlight" pattern (MIT): track the cursor and feed its
+   position to the card's --mx/--my custom properties for the glow. */
+pkgGrid.addEventListener("pointermove", e => {
+  const card = e.target.closest(".pkg");
+  if (!card) return;
+  const r = card.getBoundingClientRect();
+  card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  card.style.setProperty("--my", `${e.clientY - r.top}px`);
 });
 
 /* ---------- mobile nav ---------- */

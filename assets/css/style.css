@@ -73,7 +73,7 @@ button { font-family: var(--body); cursor: pointer; }
   text-transform: uppercase; letter-spacing: 0.08em;
 }
 
-/* primary — physical shutter-press: raised face on a hard base edge,
+/* primary - physical shutter-press: raised face on a hard base edge,
    lifts on hover, pushes down into the base on click */
 .btn--primary {
   position: relative; border-radius: 6px; color: #fff;
@@ -112,7 +112,7 @@ button { font-family: var(--body); cursor: pointer; }
 .btn--primary:disabled::before { content: "○ "; animation: none; }
 @keyframes rec-blink { 50% { opacity: 0.15; } }
 
-/* ghost — camera viewfinder: corner brackets that tighten on hover,
+/* ghost - camera viewfinder: corner brackets that tighten on hover,
    with a faint focus-grid fading in behind the label */
 .btn--ghost {
   position: relative; color: var(--text); background: transparent; border-radius: 0;
@@ -162,7 +162,7 @@ button { font-family: var(--body); cursor: pointer; }
 
 .btn--block { display: block; width: 100%; text-align: center; margin-top: 0.75rem; }
 
-/* chips — film-slate tags with a clapper notch cut into the corner */
+/* chips - film-slate tags with a clapper notch cut into the corner */
 .chip {
   background: var(--panel); border: 1px solid var(--line); color: var(--muted);
   padding: 0.5rem 1.2rem 0.5rem 1rem; font-weight: 700; font-size: 0.82rem;
@@ -213,6 +213,17 @@ button { font-family: var(--body); cursor: pointer; }
   padding: 1.6rem; display: flex; flex-direction: column; gap: 0.9rem; position: relative;
 }
 .pkg--featured { border-color: var(--accent); }
+/* spotlight hover: a soft glow tracks the cursor across the card.
+   Pattern from Aceternity UI "Card Spotlight" (MIT), reimplemented in vanilla CSS/JS:
+   https://ui.aceternity.com/components/card-spotlight */
+.pkg::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 0;
+  background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(230, 57, 46, 0.18), transparent 60%);
+  opacity: 0; transition: opacity 0.35s; pointer-events: none;
+}
+.pkg:hover::before { opacity: 1; }
+.pkg > * { position: relative; z-index: 1; }
 .pkg__tag {
   position: absolute; top: -0.7rem; right: 1rem; background: var(--accent); color: #fff;
   font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
@@ -290,16 +301,34 @@ button { font-family: var(--body); cursor: pointer; }
 .about__stats span { font-size: 0.8rem; color: var(--muted); }
 .process { margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.92rem; color: #d8d5cd; }
 
-/* ---- contact ---- */
-.contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
-.contact__card {
-  background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
-  padding: 1.8rem; text-align: center; text-decoration: none; font-size: 1.6rem;
-  display: flex; flex-direction: column; gap: 0.4rem; color: var(--text);
+/* ---- areas served (local SEO block) ---- */
+.areas { max-width: 78rem; margin: 3.5rem auto 0; padding-top: 2.5rem; border-top: 1px solid var(--line); }
+.areas h3 { font-family: var(--display); font-size: clamp(1.2rem, 3vw, 1.7rem); margin-bottom: 0.8rem; }
+.areas p { color: var(--muted); max-width: 46rem; }
+.areas__list {
+  list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem 0.5rem; margin-top: 1.2rem;
 }
-.contact__card:hover { border-color: var(--accent); }
-.contact__card strong { font-size: 1.05rem; }
-.contact__card span { font-size: 0.8rem; color: var(--muted); }
+.areas__list li {
+  font-size: 0.8rem; color: var(--muted); border: 1px solid var(--line);
+  border-radius: 999px; padding: 0.3rem 0.85rem;
+}
+
+/* ---- contact: end-credits / call-sheet rows ---- */
+.contact { border-top: 1px solid var(--line); }
+.contact__row {
+  display: grid; grid-template-columns: 9rem 1fr auto; align-items: center; gap: 1.5rem;
+  width: 100%; padding: 1.4rem 0.5rem; background: none; border: none;
+  border-bottom: 1px solid var(--line); text-decoration: none; text-align: left;
+  color: var(--text); cursor: pointer; transition: background-color 0.15s, padding-left 0.15s;
+}
+.contact__row:hover { background: var(--panel); padding-left: 1rem; }
+.contact__label {
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.25em; color: var(--accent);
+}
+.contact__value { font-family: var(--display); font-size: clamp(1.2rem, 3vw, 1.9rem); letter-spacing: 0.02em; }
+.contact__row:hover .contact__value { color: var(--accent-hover); }
+.contact__meta { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
 
 /* ---- footer ---- */
 .footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; }
@@ -360,4 +389,6 @@ body.drawer-open .drawer-backdrop { opacity: 1; pointer-events: auto; }
   .quote__summary { position: static; }
   .about { grid-template-columns: 1fr; }
   .photo-strip__row { grid-template-columns: repeat(2, 1fr); }
+  .contact__row { grid-template-columns: 1fr; gap: 0.3rem; }
+  .contact__meta { white-space: normal; }
 }

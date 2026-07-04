@@ -6,11 +6,14 @@
     { "pattern": "hardfilmstudios.com", "custom_domain": true },
     { "pattern": "www.hardfilmstudios.com", "custom_domain": true }
   ],
+  "main": "worker.js",
   "observability": {
     "enabled": true
   },
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": ["/google6f1c92c182dec82b.html"]
   },
   "compatibility_flags": [
     "nodejs_compat"

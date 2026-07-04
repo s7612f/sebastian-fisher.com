@@ -10,26 +10,23 @@ const PACKAGES = [
   {
     id: "single-reel", name: "Single Reel", from: 150,
     desc: "One 15-30 second vertical reel, filmed in a two-hour session and cut to platform spec.",
-    features: ["Two hour shoot", "Vertical, square and story exports", "48 hour delivery"],
-    tag: "Social"
+    features: ["Two hour shoot", "Vertical, square and story exports", "48 hour delivery"]
   },
   {
     id: "social-pack", name: "Social Media Content Pack", from: 550, to: 900,
     desc: "3-5 short-form videos (15-30s) optimised for Reels, TikTok and Facebook. A month of content in one shoot day.",
-    features: ["Shot in one day", "Vertical + square exports", "Delivered within 5 days"],
-    tag: "Social"
+    features: ["Shot in one day", "Vertical + square exports", "Delivered within 5 days"]
   },
   {
     id: "content-day", name: "Social Content Day", from: 850, to: 1100,
     desc: "A full day of shooting across your business, edited into 8-10 platform-ready reels. Six weeks of posting from one booking.",
     features: ["8-10 edited reels", "Captions and cover frames included", "Delivered within 7 days"],
-    tag: "Social"
+    tag: "Best value"
   },
   {
     id: "social-retainer", name: "Social Retainer", from: 650, per: "/month",
     desc: "A half-day shoot every month plus 4-6 edited reels, planned around your offers and events. Consistent presence without the admin.",
-    features: ["Monthly half-day shoot", "4-6 reels per month", "Content calendar included"],
-    tag: "Social"
+    features: ["Monthly half-day shoot", "4-6 reels per month", "Content calendar included"]
   },
   {
     id: "event-video", name: "Event & Launch Video", from: 650, to: 1200,

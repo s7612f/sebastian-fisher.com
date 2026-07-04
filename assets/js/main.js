@@ -83,10 +83,18 @@ const ADDONS = [
 ];
 
 const gbp = n => "£" + n.toLocaleString("en-GB");
+const $ = id => document.getElementById(id);
+const on = (el, evt, fn) => { if (el) el.addEventListener(evt, fn); };
 
-/* ---------- render packages ---------- */
-const pkgGrid = document.getElementById("packagesGrid");
-pkgGrid.innerHTML = PACKAGES.map(p => `
+/* every addable item, unified (safe on any page) */
+const CATALOGUE = {};
+PACKAGES.forEach(p => CATALOGUE[p.id] = { name: p.name, price: p.from, note: p.per ? `${gbp(p.from)}${p.per}` : (p.to ? `from ${gbp(p.from)}` : "fixed price") });
+SECTORS.forEach(s => CATALOGUE[s.id] = { name: s.name, price: s.price, note: "one shoot day" });
+
+/* ---------- render packages (homepage / quote-builder) ---------- */
+const pkgGrid = $("packagesGrid");
+if (pkgGrid) {
+  pkgGrid.innerHTML = PACKAGES.map(p => `
   <article class="pkg ${p.featured ? "pkg--featured" : ""}">
     ${p.tag ? `<span class="pkg__tag">${p.tag}</span>` : ""}
     <h3>${p.name}</h3>
@@ -95,9 +103,20 @@ pkgGrid.innerHTML = PACKAGES.map(p => `
     <ul>${p.features.map(f => `<li>${f}</li>`).join("")}</ul>
     <button class="btn btn--primary" data-add="${p.id}">Add to basket</button>
   </article>`).join("");
+  /* spotlight: cursor-tracked glow (Aceternity Card Spotlight pattern, MIT) */
+  pkgGrid.addEventListener("pointermove", e => {
+    const card = e.target.closest(".pkg");
+    if (!card) return;
+    const r = card.getBoundingClientRect();
+    card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    card.style.setProperty("--my", `${e.clientY - r.top}px`);
+  });
+}
 
-/* ---------- render sectors ---------- */
-document.getElementById("sectorsGrid").innerHTML = SECTORS.map(s => `
+/* ---------- render sectors (homepage) ---------- */
+const sectorsGrid = $("sectorsGrid");
+if (sectorsGrid) {
+  sectorsGrid.innerHTML = SECTORS.map(s => `
   <article class="sector">
     <video muted loop playsinline autoplay preload="metadata" poster="${s.poster}"><source src="${s.video}" type="video/mp4"></video>
     <div class="sector__body">
@@ -107,21 +126,17 @@ document.getElementById("sectorsGrid").innerHTML = SECTORS.map(s => `
       <button class="btn btn--primary" data-add="${s.id}">Add to basket</button>
     </div>
   </article>`).join("");
+}
 
-/* every addable item, unified */
-const CATALOGUE = {};
-PACKAGES.forEach(p => CATALOGUE[p.id] = { name: p.name, price: p.from, note: p.per ? `${gbp(p.from)}${p.per}` : (p.to ? `from ${gbp(p.from)}` : "fixed price") });
-SECTORS.forEach(s => CATALOGUE[s.id] = { name: s.name, price: s.price, note: "one shoot day" });
-
-/* ---------- basket ---------- */
+/* ---------- basket (shared nav + drawer on every page) ---------- */
 const KEY = "hfs-basket";
 let basket = [];
 try { basket = JSON.parse(localStorage.getItem(KEY)) || []; } catch { basket = []; }
 
-const basketCount = document.getElementById("basketCount");
-const basketItems = document.getElementById("basketItems");
-const basketTotal = document.getElementById("basketTotal");
-const basketEnquire = document.getElementById("basketEnquire");
+const basketCount = $("basketCount");
+const basketItems = $("basketItems");
+const basketTotal = $("basketTotal");
+const basketEnquire = $("basketEnquire");
 
 function saveBasket() { localStorage.setItem(KEY, JSON.stringify(basket)); renderBasket(); }
 
@@ -132,20 +147,20 @@ function basketSummaryText() {
 }
 
 function renderBasket() {
-  basketCount.textContent = basket.length;
   const total = basket.reduce((s, i) => s + i.price, 0);
-  basketTotal.textContent = gbp(total);
-  basketItems.innerHTML = basket.length
+  if (basketCount) basketCount.textContent = basket.length;
+  if (basketTotal) basketTotal.textContent = gbp(total);
+  if (basketItems) basketItems.innerHTML = basket.length
     ? basket.map((i, idx) => `
         <li><div><strong>${i.name}</strong>${i.detail ? `<em>${i.detail}</em>` : ""}<em>${gbp(i.price)}</em></div>
         <button class="rm" data-rm="${idx}" aria-label="Remove">✕</button></li>`).join("")
     : `<li style="border:none;background:none;color:var(--muted)">Your basket is empty. Add a package or build a quote.</li>`;
-  basketEnquire.href = "mailto:info@hardfilmstudios.com?subject=" +
+  if (basketEnquire) basketEnquire.href = "mailto:info@hardfilmstudios.com?subject=" +
     encodeURIComponent("Booking enquiry: Hard Film Studios") +
     "&body=" + encodeURIComponent(basketSummaryText());
 }
 
-/* fire a Google Analytics / Google Ads event when it's configured (no-op until an ID is set) */
+/* fire a GA4 / Google Ads event when configured (no-op until an ID is set) */
 function track(name, params) {
   if (typeof window.gtag === "function") window.gtag("event", name, params || {});
 }
@@ -159,7 +174,7 @@ function addToBasket(item) {
 
 document.addEventListener("click", e => {
   const add = e.target.closest("[data-add]");
-  if (add) {
+  if (add && CATALOGUE[add.dataset.add]) {
     const c = CATALOGUE[add.dataset.add];
     addToBasket({ name: c.name, price: c.price, detail: c.note });
   }
@@ -170,17 +185,16 @@ document.addEventListener("click", e => {
 /* drawer */
 const openDrawer = () => document.body.classList.add("drawer-open");
 const closeDrawer = () => document.body.classList.remove("drawer-open");
-document.getElementById("basketOpen").addEventListener("click", openDrawer);
-document.getElementById("basketOpen2").addEventListener("click", openDrawer);
-document.getElementById("basketClose").addEventListener("click", closeDrawer);
-document.getElementById("drawerBackdrop").addEventListener("click", closeDrawer);
-document.getElementById("basketClear").addEventListener("click", () => { basket = []; saveBasket(); });
-document.getElementById("basketCopy").addEventListener("click", async () => {
+on($("basketOpen"), "click", openDrawer);
+on($("basketOpen2"), "click", openDrawer);
+on($("basketClose"), "click", closeDrawer);
+on($("drawerBackdrop"), "click", closeDrawer);
+on($("basketClear"), "click", () => { basket = []; saveBasket(); });
+on($("basketCopy"), "click", async () => {
   await navigator.clipboard.writeText(basketSummaryText());
   toast("Basket summary copied. Paste it anywhere.");
 });
-/* enquiry = the conversion that matters; fire a lead event for GA4 / Google Ads */
-basketEnquire.addEventListener("click", () => {
+on(basketEnquire, "click", () => {
   const total = basket.reduce((s, i) => s + i.price, 0);
   track("generate_lead", { currency: "GBP", value: total, items: basket.length });
 });
@@ -188,123 +202,118 @@ basketEnquire.addEventListener("click", () => {
 /* ---------- toast ---------- */
 let toastTimer;
 function toast(msg) {
-  const t = document.getElementById("toast");
+  const t = $("toast");
+  if (!t) return;
   t.textContent = msg;
   t.classList.add("toast--show");
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove("toast--show"), 2200);
 }
 
-/* ---------- quote builder ---------- */
-const qServices = document.getElementById("quoteServices");
-const qAddons = document.getElementById("quoteAddons");
+/* ---------- quote builder (homepage / quote-builder) ---------- */
+const qServices = $("quoteServices");
+const qAddons = $("quoteAddons");
+const quoteRoot = $("quote");
 
-qServices.innerHTML = [...PACKAGES.map(p => ({ id: p.id, name: p.name, price: p.from, desc: p.desc, suffix: p.per })),
-  ...SECTORS.map(s => ({ id: s.id, name: s.name, price: s.price, desc: s.desc }))].map(p => `
-  <label class="opt" data-opt="${p.id}">
-    <input type="checkbox" data-qsvc="${p.id}" data-price="${p.price}">
-    <div class="opt__body"><strong>${p.name}</strong><span>${p.desc}</span></div>
-    <span class="opt__price">from ${gbp(p.price)}${p.suffix || ""}</span>
-  </label>`).join("");
+if (qServices && qAddons && quoteRoot) {
+  qServices.innerHTML = [...PACKAGES.map(p => ({ id: p.id, name: p.name, price: p.from, desc: p.desc, suffix: p.per })),
+    ...SECTORS.map(s => ({ id: s.id, name: s.name, price: s.price, desc: s.desc }))].map(p => `
+    <label class="opt" data-opt="${p.id}">
+      <input type="checkbox" data-qsvc="${p.id}" data-price="${p.price}">
+      <div class="opt__body"><strong>${p.name}</strong><span>${p.desc}</span></div>
+      <span class="opt__price">from ${gbp(p.price)}${p.suffix || ""}</span>
+    </label>`).join("");
 
-qAddons.innerHTML = ADDONS.map(a => `
-  <label class="opt" data-opt="${a.id}">
-    <input type="checkbox" data-qadd="${a.id}" data-price="${a.price}">
-    <div class="opt__body"><strong>${a.name}</strong><span>${a.desc}</span>
-      ${a.qty ? `<div class="opt__qty" hidden><button type="button" data-minus>−</button><span data-qty>1</span><button type="button" data-plus>+</button></div>` : ""}
-    </div>
-    <span class="opt__price">+${gbp(a.price)}${a.qty ? " each" : ""}</span>
-  </label>`).join("");
+  qAddons.innerHTML = ADDONS.map(a => `
+    <label class="opt" data-opt="${a.id}">
+      <input type="checkbox" data-qadd="${a.id}" data-price="${a.price}">
+      <div class="opt__body"><strong>${a.name}</strong><span>${a.desc}</span>
+        ${a.qty ? `<div class="opt__qty" hidden><button type="button" data-minus>−</button><span data-qty>1</span><button type="button" data-plus>+</button></div>` : ""}
+      </div>
+      <span class="opt__price">+${gbp(a.price)}${a.qty ? " each" : ""}</span>
+    </label>`).join("");
 
-const quoteLines = document.getElementById("quoteLines");
-const quoteTotal = document.getElementById("quoteTotal");
-const quoteToBasket = document.getElementById("quoteToBasket");
+  const quoteLines = $("quoteLines");
+  const quoteTotal = $("quoteTotal");
+  const quoteToBasket = $("quoteToBasket");
 
-function quoteState() {
-  const lines = [];
-  document.querySelectorAll("[data-qsvc]:checked").forEach(cb => {
-    const opt = cb.closest(".opt");
-    lines.push({ name: opt.querySelector("strong").textContent, price: +cb.dataset.price });
+  const quoteState = () => {
+    const lines = [];
+    document.querySelectorAll("[data-qsvc]:checked").forEach(cb => {
+      lines.push({ name: cb.closest(".opt").querySelector("strong").textContent, price: +cb.dataset.price });
+    });
+    document.querySelectorAll("[data-qadd]:checked").forEach(cb => {
+      const opt = cb.closest(".opt");
+      const qtyEl = opt.querySelector("[data-qty]");
+      const qty = qtyEl ? +qtyEl.textContent : 1;
+      lines.push({ name: opt.querySelector("strong").textContent + (qty > 1 ? ` ×${qty}` : ""), price: +cb.dataset.price * qty });
+    });
+    return lines;
+  };
+
+  const renderQuote = () => {
+    const lines = quoteState();
+    document.querySelectorAll(".opt").forEach(o => {
+      const cb = o.querySelector("input");
+      o.classList.toggle("opt--on", cb.checked);
+      const qty = o.querySelector(".opt__qty");
+      if (qty) qty.hidden = !cb.checked;
+    });
+    const total = lines.reduce((s, l) => s + l.price, 0);
+    quoteLines.innerHTML = lines.length
+      ? lines.map(l => `<li><span>${l.name}</span><span>${gbp(l.price)}</span></li>`).join("")
+      : `<li class="quote__empty">Nothing selected yet. Tick a package to start.</li>`;
+    quoteTotal.textContent = gbp(total);
+    quoteToBasket.disabled = !lines.length;
+  };
+
+  quoteRoot.addEventListener("change", renderQuote);
+  quoteRoot.addEventListener("click", e => {
+    if (e.target.matches("[data-plus],[data-minus]")) {
+      e.preventDefault();
+      const qtyEl = e.target.closest(".opt__qty").querySelector("[data-qty]");
+      let q = +qtyEl.textContent + (e.target.matches("[data-plus]") ? 1 : -1);
+      qtyEl.textContent = Math.max(1, Math.min(10, q));
+      renderQuote();
+    }
   });
-  document.querySelectorAll("[data-qadd]:checked").forEach(cb => {
-    const opt = cb.closest(".opt");
-    const qtyEl = opt.querySelector("[data-qty]");
-    const qty = qtyEl ? +qtyEl.textContent : 1;
-    lines.push({ name: opt.querySelector("strong").textContent + (qty > 1 ? ` ×${qty}` : ""), price: +cb.dataset.price * qty });
-  });
-  return lines;
-}
 
-function renderQuote() {
-  const lines = quoteState();
-  document.querySelectorAll(".opt").forEach(o => {
-    const cb = o.querySelector("input");
-    o.classList.toggle("opt--on", cb.checked);
-    const qty = o.querySelector(".opt__qty");
-    if (qty) qty.hidden = !cb.checked;
-  });
-  const total = lines.reduce((s, l) => s + l.price, 0);
-  quoteLines.innerHTML = lines.length
-    ? lines.map(l => `<li><span>${l.name}</span><span>${gbp(l.price)}</span></li>`).join("")
-    : `<li class="quote__empty">Nothing selected yet. Tick a package to start.</li>`;
-  quoteTotal.textContent = gbp(total);
-  quoteToBasket.disabled = !lines.length;
-}
-
-document.getElementById("quote").addEventListener("change", renderQuote);
-document.getElementById("quote").addEventListener("click", e => {
-  if (e.target.matches("[data-plus],[data-minus]")) {
-    e.preventDefault();
-    const qtyEl = e.target.closest(".opt__qty").querySelector("[data-qty]");
-    let q = +qtyEl.textContent + (e.target.matches("[data-plus]") ? 1 : -1);
-    qtyEl.textContent = Math.max(1, Math.min(10, q));
+  on(quoteToBasket, "click", () => {
+    const lines = quoteState();
+    const total = lines.reduce((s, l) => s + l.price, 0);
+    addToBasket({ name: "Custom quote", price: total, detail: lines.map(l => l.name).join(" + ") });
+    document.querySelectorAll("#quote input:checked").forEach(cb => (cb.checked = false));
     renderQuote();
-  }
-});
-
-quoteToBasket.addEventListener("click", () => {
-  const lines = quoteState();
-  const total = lines.reduce((s, l) => s + l.price, 0);
-  addToBasket({ name: "Custom quote", price: total, detail: lines.map(l => l.name).join(" + ") });
-  document.querySelectorAll("#quote input:checked").forEach(cb => (cb.checked = false));
-  renderQuote();
-  openDrawer();
-});
-
-/* ---------- work grid: filters + hover play ---------- */
-document.getElementById("workFilters").addEventListener("click", e => {
-  const btn = e.target.closest("[data-filter]");
-  if (!btn) return;
-  document.querySelectorAll("#workFilters .chip").forEach(c => c.classList.remove("chip--active"));
-  btn.classList.add("chip--active");
-  const f = btn.dataset.filter;
-  document.querySelectorAll(".work__item").forEach(item => {
-    item.classList.toggle("work__item--hidden", f !== "all" && !item.dataset.cat.split(" ").includes(f));
+    openDrawer();
   });
-});
 
-document.querySelectorAll(".work__item").forEach(item => {
-  const v = item.querySelector("video");
-  item.addEventListener("mouseenter", () => { v.play().catch(() => {}); });
-  item.addEventListener("mouseleave", () => { v.pause(); });
-  item.addEventListener("click", () => { v.paused ? v.play().catch(() => {}) : v.pause(); });
-});
+  renderQuote();
+}
 
-/* ---------- spotlight cards ----------
-   Aceternity UI "Card Spotlight" pattern (MIT): track the cursor and feed its
-   position to the card's --mx/--my custom properties for the glow. */
-pkgGrid.addEventListener("pointermove", e => {
-  const card = e.target.closest(".pkg");
-  if (!card) return;
-  const r = card.getBoundingClientRect();
-  card.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  card.style.setProperty("--my", `${e.clientY - r.top}px`);
-});
+/* ---------- work grid: filters + hover play (homepage) ---------- */
+const workFilters = $("workFilters");
+if (workFilters) {
+  workFilters.addEventListener("click", e => {
+    const btn = e.target.closest("[data-filter]");
+    if (!btn) return;
+    workFilters.querySelectorAll(".chip").forEach(c => c.classList.remove("chip--active"));
+    btn.classList.add("chip--active");
+    const f = btn.dataset.filter;
+    document.querySelectorAll(".work__item").forEach(item => {
+      item.classList.toggle("work__item--hidden", f !== "all" && !item.dataset.cat.split(" ").includes(f));
+    });
+  });
+  document.querySelectorAll(".work__item").forEach(item => {
+    const v = item.querySelector("video");
+    item.addEventListener("mouseenter", () => { v.play().catch(() => {}); });
+    item.addEventListener("mouseleave", () => { v.pause(); });
+    item.addEventListener("click", () => { v.paused ? v.play().catch(() => {}) : v.pause(); });
+  });
+}
 
-/* ---------- mobile nav ---------- */
-const navLinks = document.getElementById("navLinks");
-document.getElementById("navToggle").addEventListener("click", () => navLinks.classList.toggle("nav__links--open"));
-navLinks.addEventListener("click", () => navLinks.classList.remove("nav__links--open"));
+/* ---------- mobile nav (every page) ---------- */
+const navLinks = $("navLinks");
+on($("navToggle"), "click", () => navLinks && navLinks.classList.toggle("nav__links--open"));
+on(navLinks, "click", () => navLinks.classList.remove("nav__links--open"));
 
 renderBasket();
-renderQuote();

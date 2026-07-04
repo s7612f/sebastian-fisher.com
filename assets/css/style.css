@@ -392,3 +392,69 @@ body.drawer-open .drawer-backdrop { opacity: 1; pointer-events: auto; }
   .contact__row { grid-template-columns: 1fr; gap: 0.3rem; }
   .contact__meta { white-space: normal; }
 }
+
+/* ============ SEO landing pages (services + locations) ============ */
+.subhero {
+  position: relative; padding: 8.5rem 1.5rem 3rem; max-width: 78rem; margin: 0 auto;
+  border-bottom: 1px solid var(--line);
+}
+.subhero__kicker { text-transform: uppercase; letter-spacing: 0.28em; font-size: 0.78rem; color: var(--accent); margin-bottom: 1rem; }
+.subhero h1 { font-size: clamp(2.2rem, 5.5vw, 3.6rem); line-height: 1.04; max-width: 20ch; }
+.subhero h1 em { font-style: normal; color: var(--accent); }
+.subhero__intro { margin-top: 1.3rem; max-width: 46rem; color: #d8d5cd; font-size: 1.08rem; }
+.subhero__ctas { margin-top: 1.8rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.prose { max-width: 78rem; margin: 0 auto; padding: 3.5rem 1.5rem; }
+.prose__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: start; }
+.prose h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 2.2rem 0 0.9rem; }
+.prose h2:first-child { margin-top: 0; }
+.prose h3 { font-size: 1.15rem; margin: 1.4rem 0 0.5rem; }
+.prose p { color: #cfccc4; margin-bottom: 1rem; max-width: 60ch; }
+.prose ul { list-style: none; margin: 0 0 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.prose ul li { color: #cfccc4; padding-left: 1.4rem; position: relative; }
+.prose ul li::before { content: "+"; color: var(--accent); font-weight: 700; position: absolute; left: 0; }
+.prose a.inline { color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.prose a.inline:hover { color: var(--accent-hover); }
+
+.aside-card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 1.5rem;
+  position: sticky; top: 5rem;
+}
+.aside-card h3 { font-size: 1.05rem; margin-bottom: 0.8rem; }
+.aside-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+.aside-card ul li::before { content: none; }
+.aside-card a { color: #d8d5cd; text-decoration: none; font-size: 0.92rem; display: block; padding: 0.3rem 0; border-bottom: 1px solid var(--line); }
+.aside-card a:hover { color: var(--accent); }
+
+/* internal-link cards */
+.linkgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+.linkcard {
+  display: block; background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+  padding: 1.2rem 1.3rem; text-decoration: none; transition: border-color 0.15s, transform 0.15s;
+}
+.linkcard:hover { border-color: var(--accent); transform: translateY(-2px); }
+.linkcard strong { display: block; font-size: 1rem; color: var(--text); margin-bottom: 0.25rem; }
+.linkcard span { font-size: 0.85rem; color: var(--muted); }
+.linkcard::after { content: " →"; color: var(--accent); }
+
+/* CTA band */
+.cta-band {
+  text-align: center; padding: 3.5rem 1.5rem; background: var(--bg-alt);
+  border-block: 1px solid var(--line);
+}
+.cta-band h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin-bottom: 0.7rem; }
+.cta-band p { color: var(--muted); max-width: 40rem; margin: 0 auto 1.6rem; }
+
+/* footer hub with columns */
+.footer-hub { border-top: 1px solid var(--line); padding: 3rem 1.5rem 2rem; max-width: 78rem; margin: 0 auto; }
+.footer-hub__cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 2rem; margin-bottom: 2.2rem; }
+.footer-hub__col h4 { font-family: var(--body); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.9rem; }
+.footer-hub__col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+.footer-hub__col a { color: #cfccc4; text-decoration: none; font-size: 0.9rem; }
+.footer-hub__col a:hover { color: var(--accent); }
+.footer-hub__bottom { border-top: 1px solid var(--line); padding-top: 1.4rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; color: var(--muted); font-size: 0.82rem; }
+
+@media (max-width: 760px) {
+  .prose__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .aside-card { position: static; }
+}

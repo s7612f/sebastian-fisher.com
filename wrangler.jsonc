@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "hardfilmstudios",
+  "name": "personalwebsite",
   "compatibility_date": "2026-05-14",
   "routes": [
     { "pattern": "hardfilmstudios.com", "custom_domain": true },

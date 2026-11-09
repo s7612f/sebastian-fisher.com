@@ -1,10 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "hardfilmstudios",
+  "name": "sebastian-fisher",
   "compatibility_date": "2026-05-14",
   "routes": [
-    { "pattern": "hardfilmstudios.com", "custom_domain": true },
-    { "pattern": "www.hardfilmstudios.com", "custom_domain": true }
+    { "pattern": "sebastian-fisher.com", "custom_domain": true },
+    { "pattern": "www.sebastian-fisher.com", "custom_domain": true }
   ],
   "main": "worker.js",
   "observability": {

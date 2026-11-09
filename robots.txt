@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /archive/
 
-Sitemap: https://hardfilmstudios.com/sitemap.xml
+Sitemap: https://sebastian-fisher.com/sitemap.xml
